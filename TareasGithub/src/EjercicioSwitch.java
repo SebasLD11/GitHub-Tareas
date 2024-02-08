@@ -1,38 +1,30 @@
 public class EjercicioSwitch {
 
 	public static void main(String[] args) {
-int dia = 7; // Por ejemplo, 3 representa el miércoles
-        
-        String nombreDia;
-        
+int dia = 5; // Por ejemplo, 5 representa el viernes        
+        String nomDia;        
         switch (dia) {
             case 1:
-                nombreDia = "Lunes";
+                nomDia = "Lunes";
                 break;
             case 2:
-                nombreDia = "Martes";
+                nomDia = "Martes";
                 break;
             case 3:
-                nombreDia = "Miércoles";
+                nomDia = "Miércoles";
                 break;
             case 4:
-                nombreDia = "Jueves";
+                nomDia = "Jueves";
                 break;
             case 5:
-                nombreDia = "Viernes";
-                break;
-            case 6:
-                nombreDia = "Sábado";
-                break;
-            case 7:
-                nombreDia = "Domingo";
+                nomDia = "Viernes";
                 break;
             default:
-                nombreDia = "Día inválido";
+                nomDia = "Inválido";
                 break;
         }
         
-        System.out.println("El día es: " + nombreDia);
+        System.out.println("El día es: " + nomDia);
         
 	}
 }

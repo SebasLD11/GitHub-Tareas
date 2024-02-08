@@ -7,7 +7,7 @@ public class Ejercicio3T05 {
 		//Cálculo con Double.parseDouble
 		
 		double pi = 3.14;
-		String text_num = JOptionPane.showInputDialog("Area de circulo");
+		String text_num = JOptionPane.showInputDialog("Radio de circulo");
 		
 		final double areacirculo = Double.parseDouble(text_num);
 		
