@@ -1,3 +1,4 @@
+package ud5JavaBasics;
 
 public class EjercicioHorasT05 {
 

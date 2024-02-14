@@ -1,3 +1,4 @@
+package ud5JavaBasics;
 
 public class EjMetodoStringTA05 {
 	public static void main(String[] args) {

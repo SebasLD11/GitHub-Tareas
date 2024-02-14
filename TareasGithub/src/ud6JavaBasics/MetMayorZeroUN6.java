@@ -1,3 +1,4 @@
+package ud6JavaBasics;
 
 public class MetMayorZeroUN6 {
 

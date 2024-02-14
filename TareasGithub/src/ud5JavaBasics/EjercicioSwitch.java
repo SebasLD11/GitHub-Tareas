@@ -1,3 +1,4 @@
+package ud5JavaBasics;
 public class EjercicioSwitch {
 
 	public static void main(String[] args) {

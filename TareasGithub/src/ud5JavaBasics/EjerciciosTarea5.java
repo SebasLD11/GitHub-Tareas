@@ -1,3 +1,4 @@
+package ud5JavaBasics;
 import java.util.Scanner;
 
 public class EjerciciosTarea5 {
