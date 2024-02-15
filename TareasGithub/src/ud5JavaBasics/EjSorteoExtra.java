@@ -15,32 +15,32 @@ public class EjSorteoExtra {
 		Scanner scanner = new Scanner(System.in);
         String[] participantes = new String[10];
 
-        // Nombres de los participantes
+        // Nombres de los participantes y lista 
         
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < participantes.length; i++) {
         	
-        	System.out.print("Ingrese el nombre del participante " + (i + 1) + ": ");
-            participantes[i] = scanner.nextLine();
-            participantes[i] = JOptionPane.showInputDialog("Participante " + (i + 1) );
-        }
-        
-        // Mostrar los participantes con el "for each"
-        
-        	System.out.println("\nLista de participantes:");
-        	JOptionPane.showMessageDialog(null, "\nLista de participantes:");
-        	
-        for (String participante : participantes) {
-            System.out.println("- " + participante);
-            JOptionPane.showMessageDialog(null, "* " + participante);
-            
-        }
+//          System.out.print("Ingrese el nombre del participante " 
+//          				+ (i + 1) + ": ");
+//          participantes[i] = scanner.nextLine();
+      	
+      	participantes[i] = JOptionPane.showInputDialog("Participante " + (i +1) );
+     
+		JOptionPane.showMessageDialog(null, "\nLista de participantes: " + participantes[i]);
+		
+		// Mostrar los participantes
+		
+		for (String participante : participantes) {
+   		System.out.println("* " + participante);
+					
+}
         
         // Sorteo
         
-        int indiceGanador = (int) (Math.random() * participantes.length);
+		int indiceGanador = (int) (Math.random() * participantes.length);
         String ganador = participantes[indiceGanador];
-        System.out.println("\n¡El ganador del sorteo es: " + ganador + "!");
-        JOptionPane.showMessageDialog(null,("\n¡El ganador del sorteo es: " + ganador + "!"));
+//        System.out.println("\n¡El ganador del sorteo es: " + ganador + "!");
+        JOptionPane.showMessageDialog(null, "\n¡El ganador del sorteo es: " + ganador + "!");
+        
     }
 }
-	
+}
