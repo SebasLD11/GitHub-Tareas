@@ -24,10 +24,10 @@ public class Ej9TA06 {
 		}
 		for (int i= 0; i<array9.length; i++) {
 			int sumaTotal = 0;
-				sumaTotal += array9[i];
-			
-		}
+				sumaTotal += array9[i];	
+		
 		scanner.close();
-		System.out.print("La suma total es:" + [sumaTotal]);
+		System.out.print(" La suma total es: " + sumaTotal);
 	}
+}
 }
