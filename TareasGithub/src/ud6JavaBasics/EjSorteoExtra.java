@@ -1,4 +1,4 @@
-package ud5JavaBasics;
+package ud6JavaBasics;
 
 import java.util.Scanner;
 
