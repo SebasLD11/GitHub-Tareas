@@ -67,9 +67,4 @@ public class Ej01T06 {
 	public static double cuadrado(double lado) {
 		return (lado * lado);
 	}
-
-
-
-	}
-
-
+}
