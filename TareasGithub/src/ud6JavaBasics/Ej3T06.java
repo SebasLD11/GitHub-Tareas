@@ -17,11 +17,11 @@ public class Ej3T06 {
 	
 	public static boolean numeroPrimo (int valorPrimo) {
 		boolean primoSiNo = true;
-//		for(int i=valorPrimo-1; i>1; i--) {
-//			if(valorPrimo%i == 0) {
-//				primoSiNo = false;
-//			}
-//		}
+		for(int i=valorPrimo-1; i>1; i--) {
+		if(valorPrimo % i == 0) {
+				primoSiNo = false;
+			}
+	}
 		
 		for (int i = 2; i <= Math.sqrt(valorPrimo); i++) {
             if (valorPrimo % i == 0) {
