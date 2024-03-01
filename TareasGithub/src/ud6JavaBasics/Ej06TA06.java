@@ -1,7 +1,7 @@
 package ud6JavaBasics;
 import java.util.Scanner;
 
-public class Ej7TA06 {
+public class Ej06TA06 {
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);

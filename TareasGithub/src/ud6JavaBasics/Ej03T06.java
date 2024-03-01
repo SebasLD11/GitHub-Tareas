@@ -1,6 +1,6 @@
 package ud6JavaBasics;
 
-public class Ej3T06 {
+public class Ej03T06 {
 
 	public static void main(String[] args) {
 		int numPrimo = 13; //Número que revisamos si es primo

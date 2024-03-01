@@ -2,7 +2,7 @@ package ud6JavaBasics;
 
 import javax.swing.JOptionPane;
 
-public class Ej2T06 {
+public class Ej02T06 {
 
 	public static void main(String[] args) {
 		int cantRadoms = Integer.parseInt(JOptionPane
