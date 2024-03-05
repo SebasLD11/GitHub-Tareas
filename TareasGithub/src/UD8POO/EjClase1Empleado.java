@@ -107,7 +107,7 @@ public class EjClase1Empleado {
 		
 		int numEmpleados = 0;
 		for (int i = 1; i <= numEmpleados; i++) {
-            System.out.print("Ingrese el nombre del alumno/a " + i + apellido1 + apellido2 + ": ");
+            System.out.print("Ingrese el numero de empleados/as " + i + ": ");
             String nombre = new String();
           
         for (EjClase1Empleado entry : EjClase1Empleado.entrySet()) {
