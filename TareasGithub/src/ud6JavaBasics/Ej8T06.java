@@ -15,9 +15,6 @@ public class Ej8T06 {
 			mtrz[i]=numero;
 		
 		System.out.println(mtrz[6] );
-		
-		
 		}
-
 	}
 }

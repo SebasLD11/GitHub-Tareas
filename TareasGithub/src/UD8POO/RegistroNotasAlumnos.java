@@ -9,7 +9,7 @@ public class RegistroNotasAlumnos {
         Scanner scanner = new Scanner(System.in);
 
         // Solicitar el número de alumnos
-        System.out.print("Ingrese el número de alumnos en la clase: ");
+        System.out.print("Ingrese el número de alumnos/as en la clase: ");
         int numAlumnos = scanner.nextInt();
 
         // Crear un HashMap para almacenar nombres y notas
@@ -17,7 +17,7 @@ public class RegistroNotasAlumnos {
 
         // Pedir información para cada alumno
         for (int i = 1; i <= numAlumnos; i++) {
-            System.out.print("Ingrese el nombre del alumno " + i + ": ");
+            System.out.print("Ingrese el nombre del alumno/a " + i + ": ");
             String nombre = scanner.next();
 
             // Crear un objeto Alumno y agregarlo al HashMap
@@ -33,7 +33,7 @@ public class RegistroNotasAlumnos {
         }
 
         // Mostrar la información almacenada
-        System.out.println("\nInformación de los alumnos:");
+        System.out.println("\nInformación de los alumnos/as:");
         for (Map.Entry<String, Alumno> entry : alumnos.entrySet()) {
             String nombre = entry.getKey();
             Alumno alumno = entry.getValue();
