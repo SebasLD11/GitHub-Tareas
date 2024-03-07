@@ -5,13 +5,13 @@ import java.util.Scanner;
 
 public class EjClase1Empleado {
 	//Atributos
-	public int numEmpleados;
 	public String nombre;
 	public	String apellido1;
 	public	String apellido2;
 	public static int edad;
 	public double salario;
 	public Scanner sc = new Scanner(System.in);
+
 	
 	//Constructores
 		public EjClase1Empleado() {
@@ -101,30 +101,38 @@ public class EjClase1Empleado {
 
 		public void setSalario(double salario) {
 			this.salario = salario;
-		}{
-		
-	//Mostrar información de empleado/a.
-		
-		int numEmpleados = 0;
-		for (int i = 1; i <= numEmpleados; i++) {
-            System.out.print("Ingrese el numero de empleados/as " + i + ": ");
-            String nombre = new String();
-          
-        for (EjClase1Empleado entry : EjClase1Empleado.entrySet()) {
-                String nombre1 = (String) ((Object) entry).toString();
-                String apellido1 = (String) ((Object) entrySet());
-                String apellido2 = (String) ((Object) entrySet());
-                System.out.println("Nombre: " + nombre1 + apellido1 + apellido2);
-                System.out.println("Notas parciales: " + EjClase1Empleado.getEdad());
-                System.out.println("Promedio: " + EjClase1Empleado.calcularPromedio());
-                System.out.println();
-            }    
-		
-}
 		}
+		//Método para pedir información y mostrar resultados
+			public void solicitarYMostrarInformacion() {
+				Scanner scanner = new Scanner(System.in);
 
-		private static EjClase1Empleado[] entrySet() {
-			// TODO Auto-generated method stub
-			return null;
-		}
+				System.out.print("Ingrese el nombre: ");
+				this.nombre = scanner.nextLine();
+
+				System.out.print("Ingrese el primer apellido: ");
+				this.apellido1 = scanner.nextLine();
+
+				System.out.print("Ingrese el segundo apellido: ");
+				this.apellido2 = scanner.nextLine();
+
+				System.out.print("Ingrese la edad: ");
+				this.edad = scanner.nextInt();
+				
+				System.out.print("Ingrese el salario: ");
+				this.salario = scanner.nextDouble();
+
+				// Mostrar resultados
+				System.out.println("\nInformación almacenada:");
+				System.out.println("Nombre: " + this.nombre);
+				System.out.println("Primer apellido: " + this.apellido1);
+				System.out.println("Segundo apellido: " + this.apellido2);
+				System.out.println("Edad: " + this.edad);
+				System.out.println("Salario: " + this.salario);
+}
+
+			public static void main(String[] args) {
+				// Ejemplo de uso
+				EjClase1Empleado empleado = new EjClase1Empleado();
+				empleado.solicitarYMostrarInformacion();
+}
 }
