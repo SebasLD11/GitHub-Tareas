@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class EjGrupal3 {
-    private static final String ADMIN_PASSWORD = "Santos";
+    private static final String ADMIN_PASSWORD = "CajaR";
 
     public static void main(String[] args) {
         // Inicializar la base de datos de productos
@@ -80,7 +80,7 @@ public class EjGrupal3 {
             Map<String, Object> productoInfo = entry.getValue();
             int cantidad = (int) productoInfo.get("cantidad");
             double precio = (double) productoInfo.get("precio");
-            listaProductos.append(nombreProducto).append(" - Cantidad: ").append(cantidad).append(", Precio: $").append(precio).append("\n");
+            listaProductos.append(nombreProducto).append(" - Cantidad: ").append(cantidad).append(", Precio: €").append(precio).append("\n");
         }
         JOptionPane.showMessageDialog(null, listaProductos.toString());
     }
@@ -137,7 +137,7 @@ public class EjGrupal3 {
             productoInfo.put("cantidad", cantidadDisponible - cantidadCompra); // Descuenta el stock
         }
 
-        JOptionPane.showMessageDialog(null, "Total a pagar: $" + totalVenta);
+        JOptionPane.showMessageDialog(null, "Total a pagar: €" + totalVenta);
 
         String cantidadPagadaStr = JOptionPane.showInputDialog(null, "Ingrese la cantidad pagada por el cliente:");
         if (cantidadPagadaStr == null) {
@@ -153,7 +153,7 @@ public class EjGrupal3 {
 
         double cambio = cantidadPagada - totalVenta;
         if (cambio >= 0) {
-            JOptionPane.showMessageDialog(null, "Cambio a devolver: $" + cambio);
+            JOptionPane.showMessageDialog(null, "Cambio a devolver: €" + cambio);
             carrito.clear(); // Vaciar el carrito después de la venta exitosa
         } else {
             JOptionPane.showMessageDialog(null, "Cantidad insuficiente. Venta cancelada.");
