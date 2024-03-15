@@ -1,4 +1,4 @@
-package UD8POO;
+package ud7JavaBasics;
 
 import java.util.HashMap;
 import java.util.Map;
