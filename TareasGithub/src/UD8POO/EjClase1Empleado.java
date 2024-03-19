@@ -1,18 +1,16 @@
 package UD8POO;
 
-import java.util.Map;
 import java.util.Scanner;
 
 public class EjClase1Empleado {
 	//Atributos
-	public String nombre;
-	public	String apellido1;
-	public	String apellido2;
-	public static int edad;
-	public double salario;
-	public Scanner sc = new Scanner(System.in);
+	protected String nombre;
+	protected String apellido1;
+	protected String apellido2;
+	protected static int edad;
+	protected double salario;
+	protected Scanner sc;
 
-	
 	//Constructores
 		public EjClase1Empleado() {
 			this.nombre = "";
@@ -36,7 +34,7 @@ public class EjClase1Empleado {
 			this.edad = edad;
 			this.salario = 0.0;
 		}
-		public EjClase1Empleado(double salario) {
+		public EjClase1Empleado(String apellido2, double salario, int edad) {
 			this.nombre = "";
 			this.apellido1 = "";
 			this.apellido2 = apellido2;
@@ -82,7 +80,6 @@ public class EjClase1Empleado {
 		public String getapellido2() {
 			return getapellido1();
 		}
-
 		public void setapellido2(String apellido2) {
 			this.apellido2 = apellido2;
 		}
@@ -103,10 +100,10 @@ public class EjClase1Empleado {
 			this.salario = salario;
 		}
 		//Método para pedir información y mostrar resultados
-			public void solicitarYMostrarInformacion() {
+		
+		public void solicitarYMostrarInformacion() {
+			System.out.print("Ingrese el nombre: ");
 				Scanner scanner = new Scanner(System.in);
-
-				System.out.print("Ingrese el nombre: ");
 				this.nombre = scanner.nextLine();
 
 				System.out.print("Ingrese el primer apellido: ");
@@ -116,7 +113,7 @@ public class EjClase1Empleado {
 				this.apellido2 = scanner.nextLine();
 
 				System.out.print("Ingrese la edad: ");
-				this.edad = scanner.nextInt();
+				EjClase1Empleado.edad = scanner.nextInt();
 				
 				System.out.print("Ingrese el salario: ");
 				this.salario = scanner.nextDouble();
@@ -126,7 +123,7 @@ public class EjClase1Empleado {
 				System.out.println("Nombre: " + this.nombre);
 				System.out.println("Primer apellido: " + this.apellido1);
 				System.out.println("Segundo apellido: " + this.apellido2);
-				System.out.println("Edad: " + this.edad);
+				System.out.println("Edad: " + EjClase1Empleado.edad);
 				System.out.println("Salario: " + this.salario);
 }
 
