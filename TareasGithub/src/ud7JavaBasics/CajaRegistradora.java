@@ -183,7 +183,7 @@ public class CajaRegistradora {
                     editarProductos();
                     break;
                 case "3":
-                    modificarIVAPorProducto();
+                    verModificarIVA();
                     break;
                 case "4":
                     return;
@@ -298,7 +298,36 @@ public class CajaRegistradora {
         JOptionPane.showMessageDialog(null, totalVentas.toString());
     }
 
-    private static void modificarIVAPorProducto() {
+    private static void verModificarIVA() {
+        String nombreProducto = JOptionPane.showInputDialog(null, "Ingrese el nombre del producto:");
+        if (nombreProducto == null || !stockProductos.containsKey(nombreProducto)) {
+            JOptionPane.showMessageDialog(null, "Producto no encontrado.");
+            return;
+        }
+
+        String opcion = JOptionPane.showInputDialog(null,
+                "---- IVA Aplicado al Producto ----\n" +
+                        "1. Ver IVA aplicado\n" +
+                        "2. Modificar IVA\n" +
+                        "Seleccione una opción:");
+
+        if (opcion == null) {
+            return;
+        }
+
+        switch (opcion) {
+            case "1":
+                double ivaProducto = (double) stockProductos.get(nombreProducto).get("iva");
+                JOptionPane.showMessageDialog(null, "El IVA aplicado al producto " + nombreProducto + " es: " + (ivaProducto * 100) + "%");
+                break;
+            case "2":
+                modificarIVAPorProducto(nombreProducto);
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Opción no válida. Inténtelo de nuevo.");
+        }
+    }
+    private static void modificarIVAPorProducto(String nombreProducto2) {
         String nombreProducto = JOptionPane.showInputDialog(null, "Ingrese el nombre del producto:");
         if (nombreProducto == null || !stockProductos.containsKey(nombreProducto)) {
             JOptionPane.showMessageDialog(null, "Producto no encontrado.");
