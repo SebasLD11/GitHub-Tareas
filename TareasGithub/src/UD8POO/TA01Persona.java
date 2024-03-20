@@ -1,118 +1,215 @@
 package UD8POO;
 import javax.swing.JOptionPane;
-import java.util.ArrayList;
-import java.util.List;
 
-public class BaseDeDatos {
-    private List<TA01Persona> personas;
+// Clase base TA01Persona
+public class TA01Persona {
+    // Atributos
+    protected String nombre;
+    protected int edad;
+    protected String DNI;
+    protected char sexo;
+    protected double peso;
+    protected double altura;
+    protected String camiseta;
+    protected String riderOalumno;
+    protected static final char SEXO_POR_DEFECTO = 'H';
 
-    public BaseDeDatos() {
-        this.personas = new ArrayList<>();
+    // Constructores y métodos omitidos para simplificar
+
+    // Método para pedir información
+    public void pedirInformacion() {
+    
+        setNombre(JOptionPane.showInputDialog("Ingrese el nombre:"));
+        setEdad(Integer.parseInt(JOptionPane.showInputDialog("Ingrese la edad:")));
+        setDNI(JOptionPane.showInputDialog("Ingrese el DNI:"));
+        String sexoInput = JOptionPane.showInputDialog("Ingrese el sexo (H para hombre, M para mujer):");
+        setSexo(sexoInput.toUpperCase().charAt(0));
+        setPeso(Double.parseDouble(JOptionPane.showInputDialog("Ingrese el peso:")));
+        setAltura(Double.parseDouble(JOptionPane.showInputDialog("Ingrese la altura en metros:")));
+        setCamiseta(JOptionPane.showInputDialog("Ingrese el tipo de camiseta:"));
     }
 
-    public void agregarPersona(TA01Persona persona) {
-        personas.add(persona);
+    public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public int getEdad() {
+		return edad;
+	}
+
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
+
+	public String getDNI() {
+		return DNI;
+	}
+
+	public void setDNI(String dNI) {
+		DNI = dNI;
+	}
+
+	public char getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(char sexo) {
+		this.sexo = sexo;
+	}
+
+	public double getPeso() {
+		return peso;
+	}
+
+	public void setPeso(double peso) {
+		this.peso = peso;
+	}
+
+	public double getAltura() {
+		return altura;
+	}
+
+	public void setAltura(double altura) {
+		this.altura = altura;
+	}
+
+	public String getCamiseta() {
+		return camiseta;
+	}
+
+	public void setCamiseta(String camiseta) {
+		this.camiseta = camiseta;
+	}
+
+	public String getRiderOalumno() {
+		return riderOalumno;
+	}
+
+	public void setRiderOalumno(String riderOalumno) {
+		this.riderOalumno = riderOalumno;
+	}
+
+	public static char getSexoPorDefecto() {
+		return SEXO_POR_DEFECTO;
+	}
+
+	// Método toString para mostrar información de la persona
+    @Override
+    public String toString() {
+        return "Nombre: " + nombre + "\nEdad: " + edad + "\nDNI: " + DNI + "\nSexo: " + sexo +
+                "\nPeso: " + peso + "\nAltura: " + altura + "\nTipo de camiseta: " + camiseta;
     }
 
-    public void mostrarInfoTotal() {
-        StringBuilder infoTotal = new StringBuilder();
-        for (TA01Persona persona : personas) {
-            infoTotal.append(persona.toString()).append("\n\n");
-        }
-        JOptionPane.showMessageDialog(null, "Información total de personas en la base de datos:\n\n" + infoTotal);
+	public void mostrarInfoPersona(String nombre2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void modificarParametros(String nombre2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void eliminarPersona(String nombre2) {
+		// TODO Auto-generated method stub
+		
+	}
+}
+
+// Subclase Rider
+class Rider extends TA01Persona {
+    // Atributos adicionales
+    private double sueldo;
+    private boolean bonoTransporte;
+    private boolean bonoMerchandising;
+    private boolean bonoFirma;
+    private boolean bonoGira;
+
+    // Constructor
+    public Rider() {
+        super();
     }
 
-    public TA01Persona buscarPersona(String nombre) {
-        for (TA01Persona persona : personas) {
-            if (persona.getNombre().equalsIgnoreCase(nombre)) {
-                return persona;
-            }
-        }
-        return null;
+    // Getters y setters para los atributos adicionales
+    public double getSueldo() {
+        return sueldo;
     }
 
-    public void modificarParametros(String nombre) {
-        TA01Persona persona = buscarPersona(nombre);
-        if (persona != null) {
-            persona.pedirInformacion();
-            JOptionPane.showMessageDialog(null, "Parámetros modificados exitosamente.");
-        } else {
-            JOptionPane.showMessageDialog(null, "Persona no encontrada en la base de datos.");
-        }
+    public void setSueldo(double sueldo) {
+        this.sueldo = sueldo;
     }
 
-    public static void main(String[] args) {
-        BaseDeDatos baseDeDatos = new BaseDeDatos();
-        int opcion;
-        do {
-            opcion = Integer.parseInt(JOptionPane.showInputDialog(
-                    "Menú:\n" +
-                            "1. Agregar nueva persona\n" +
-                            "2. Ver información total de personas\n" +
-                            "3. Ver información de una persona específica\n" +
-                            "4. Modificar parámetros de una persona\n" +
-                            "5. Salir\n" +
-                            "Ingrese el número de la opción deseada:"));
-            switch (opcion) {
-                case 1:
-                    agregarPersona(baseDeDatos);
-                    break;
-                case 2:
-                    baseDeDatos.mostrarInfoTotal();
-                    break;
-                case 3:
-                    mostrarInfoPersona(baseDeDatos);
-                    break;
-                case 4:
-                    modificarParametros(baseDeDatos);
-                    break;
-                case 5:
-                    JOptionPane.showMessageDialog(null, "Saliendo del programa.");
-                    break;
-                default:
-                    JOptionPane.showMessageDialog(null, "Opción no válida. Intente de nuevo.");
-                    break;
-            }
-        } while (opcion != 5);
+    public boolean getBonoTransporte() {
+        return bonoTransporte;
     }
 
-    public static void agregarPersona(BaseDeDatos baseDeDatos) {
-        int opcionTipoPersona = Integer.parseInt(JOptionPane.showInputDialog(
-                "Seleccione el tipo de persona:\n" +
-                        "1. Persona\n" +
-                        "2. Rider\n" +
-                        "3. Alumno"));
-        switch (opcionTipoPersona) {
-            case 1:
-                baseDeDatos.agregarPersona(new TA01Persona());
-                JOptionPane.showMessageDialog(null, "Persona agregada exitosamente a la base de datos.");
-                break;
-            case 2:
-                baseDeDatos.agregarPersona(new Rider());
-                JOptionPane.showMessageDialog(null, "Rider agregado exitosamente a la base de datos.");
-                break;
-            case 3:
-                baseDeDatos.agregarPersona(new Alumno());
-                JOptionPane.showMessageDialog(null, "Alumno agregado exitosamente a la base de datos.");
-                break;
-            default:
-                JOptionPane.showMessageDialog(null, "Opción no válida.");
-                break;
-        }
+    public void setBonoTransporte(boolean bonoTransporte) {
+        this.bonoTransporte = bonoTransporte;
     }
 
-    public static void mostrarInfoPersona(BaseDeDatos baseDeDatos) {
-        String nombre = JOptionPane.showInputDialog("Ingrese el nombre de la persona:");
-        TA01Persona persona = baseDeDatos.buscarPersona(nombre);
-        if (persona != null) {
-            JOptionPane.showMessageDialog(null, "Información de la persona:\n\n" + persona.toString());
-        } else {
-            JOptionPane.showMessageDialog(null, "Persona no encontrada en la base de datos.");
-        }
+    public boolean isBonoMerchandising() {
+        return bonoMerchandising;
     }
 
-    public static void modificarParametros(BaseDeDatos baseDeDatos) {
-        String nombre = JOptionPane.showInputDialog("Ingrese el nombre de la persona a modificar:");
-        baseDeDatos.modificarParametros(nombre);
+    public void setBonoMerchandising(boolean bonoMerchandising) {
+        this.bonoMerchandising = bonoMerchandising;
+    }
+
+    public boolean getBonoFirma() {
+        return bonoFirma;
+    }
+
+    public void setBonoFirma(boolean bonoFirma) {
+        this.bonoFirma = bonoFirma;
+    }
+
+    public boolean getBonoGira() {
+        return bonoGira;
+    }
+
+    public void setBonoGira(boolean bonoGira) {
+        this.bonoGira = bonoGira;
+    }
+}
+
+// Subclase Alumno
+class Alumno1 extends TA01Persona {
+    // Atributos adicionales
+    private String tarifa;
+    private int numClases;
+    private boolean esRider;
+
+    // Constructor
+    public Alumno() {
+        super();
+    }
+
+    // Getters y setters para los atributos adicionales
+    public String getTarifa() {
+        return tarifa;
+    }
+
+    public void setTarifa(String tarifa) {
+        this.tarifa = tarifa;
+    }
+
+    public int getNumClases() {
+        return numClases;
+    }
+
+    public void setNumClases(int numClases) {
+        this.numClases = numClases;
+    }
+
+    public boolean isEsRider() {
+        return esRider;
+    }
+
+    public void setEsRider(boolean esRider) {
+        this.esRider = esRider;
     }
 }
