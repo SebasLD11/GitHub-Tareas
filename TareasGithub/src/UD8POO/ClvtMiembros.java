@@ -65,22 +65,22 @@ public class ClvtMiembros {
 
     public static void agregarPersona() {
         String tipoPersona = JOptionPane.showInputDialog("Ingrese el tipo de persona (R para Rider, A para Alumno, cualquier otra letra para Miembro Básico):").toUpperCase();
-        ClvtMiembros persona;
+        ClvtMiembros miembro;
         switch (tipoPersona) {
             case "R":
-                persona = new Rider();
-                ((Rider) persona).pedirInformacion();
+            	miembro = new Riders();
+               ((Riders) miembro).pedirInformacion();
                 break;
             case "A":
-                persona = new Alumno();
-                ((Alumno) persona).pedirInformacion();
+            	miembro = new Alumno();
+                ((Alumno) miembro).pedirInformacion();
                 break;
             default:
-                persona = new ClvtMiembros();
-                persona.pedirInformacion();
+            	miembro = new ClvtMiembros();
+            	miembro.pedirInformacion();
                 break;
         }
-        personas.put(persona.getNombre(), persona);
+        personas.put(miembro.getNombre(), miembro);
         JOptionPane.showMessageDialog(null, "Persona agregada exitosamente a la base de datos.");
     }
 
@@ -196,28 +196,30 @@ public class ClvtMiembros {
         return camiseta;
     }
 
-    public void setCam
     public void setCamiseta(String camiseta) {
         this.camiseta = camiseta;
     }
 }
 
-class Rider extends ClvtMiembros {
+class Riders extends ClvtMiembros {
     private double sueldo;
-    private boolean bonoTransporte;
+    private double bonoTransporte;
     private boolean bonoMerchandising;
-    private boolean bonoFirma;
+    private int bonoFirma;
     private boolean bonoGira;
 
     public void pedirInformacion() {
         super.pedirInformacion();
         setSueldo(Double.parseDouble(JOptionPane.showInputDialog("Ingrese el sueldo:")));
-        setBonoTransporte(Boolean.parseBoolean(JOptionPane.showInputDialog("¿Tiene bono de transporte? (true/false):")));
+        setBonoTransporte(Double.parseDouble(JOptionPane.showInputDialog("¿Tiene bono de transporte? (true/false):")));
         setBonoMerchandising(Boolean.parseBoolean(JOptionPane.showInputDialog("¿Tiene bono de merchandising? (true/false):")));
-        setBonoFirma(Boolean.parseBoolean(JOptionPane.showInputDialog("¿Tiene bono de firma? (true/false):")));
+        setBonoFirma(Integer.parseInt(JOptionPane.showInputDialog("¿Tiene bono de firma? (true/false):")));
         setBonoGira(Boolean.parseBoolean(JOptionPane.showInputDialog("¿Tiene bono de gira? (true/false):")));
     }
-
+    public Riders() {
+    	super();
+    }
+    
     // Getters y setters para los atributos adicionales
     public double getSueldo() {
         return sueldo;
@@ -227,12 +229,12 @@ class Rider extends ClvtMiembros {
         this.sueldo = sueldo;
     }
 
-    public boolean getBonoTransporte() {
+    public double getBonoTransporte() {
         return bonoTransporte;
     }
 
-    public void setBonoTransporte(boolean bonoTransporte) {
-        this.bonoTransporte = bonoTransporte;
+    public void setBonoTransporte(double b) {
+        this.bonoTransporte = b;
     }
 
     public boolean getBonoMerchandising() {
@@ -243,11 +245,11 @@ class Rider extends ClvtMiembros {
         this.bonoMerchandising = bonoMerchandising;
     }
 
-    public boolean getBonoFirma() {
+    public int getBonoFirma() {
         return bonoFirma;
     }
 
-    public void setBonoFirma(boolean bonoFirma) {
+    public void setBonoFirma(int bonoFirma) {
         this.bonoFirma = bonoFirma;
     }
 
@@ -265,8 +267,27 @@ class Alumno extends ClvtMiembros {
 	private String tarifa;
     private int numClases;
     private boolean esRider;
+    
     public void pedirInformacion() {
         super.pedirInformacion();
         // Añadir aquí solicitudes de información específicas para alumnos, si es necesario.
     }
+	public String getTarifa() {
+		return tarifa;
+	}
+	public void setTarifa(String tarifa) {
+		this.tarifa = tarifa;
+	}
+	public int getNumClases() {
+		return numClases;
+	}
+	public void setNumClases(int numClases) {
+		this.numClases = numClases;
+	}
+	public boolean isEsRider() {
+		return esRider;
+	}
+	public void setEsRider(boolean esRider) {
+		this.esRider = esRider;
+	}
 }
