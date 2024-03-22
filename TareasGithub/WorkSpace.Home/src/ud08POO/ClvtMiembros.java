@@ -290,4 +290,11 @@ class Alumno extends ClvtMiembros {
 	public void setEsRider(boolean esRider) {
 		this.esRider = esRider;
 	}
+
+public static void main(String[] args) {
+	ClvtMiembros miembro = new ClvtMiembros();
+	ClvtMiembros rider = new ClvtMiembros();
+	ClvtMiembros alumno = new ClvtMiembros();
+
+		
 }
