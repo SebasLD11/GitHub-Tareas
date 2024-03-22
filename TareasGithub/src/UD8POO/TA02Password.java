@@ -1,7 +1,6 @@
 package UD8POO;
 
 import java.util.Random;
-
 import javax.swing.JOptionPane;
 
 public class TA02Password {
