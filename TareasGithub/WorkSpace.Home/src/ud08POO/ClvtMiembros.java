@@ -12,12 +12,7 @@ public class ClvtMiembros {
     protected double altura;
     protected String camiseta;
     protected static Map<String, ClvtMiembros> personas = new HashMap<>();
-    protected static final String ADMIN_PASSWORD = "CLVT22";
-
-    public static void main(String[] args) {
-        ClvtMiembros programa = new ClvtMiembros();
-        programa.accederMenuPrincipal();
-    }
+    private static final String ADMIN_PASSWORD = "CLVT22";
 
     public void accederMenuPrincipal() {
         String password = JOptionPane.showInputDialog("Ingrese la contraseña de administrador:");
@@ -202,7 +197,7 @@ public class ClvtMiembros {
 }
 
 class Riders extends ClvtMiembros {
-    private double sueldo;
+    private String sueldo;
     private double bonoTransporte;
     private boolean bonoMerchandising;
     private int bonoFirma;
@@ -210,7 +205,7 @@ class Riders extends ClvtMiembros {
 
     public void pedirInformacion() {
         super.pedirInformacion();
-        setSueldo(Double.parseDouble(JOptionPane.showInputDialog("Ingrese el sueldo:")));
+        setSueldo(JOptionPane.showInputDialog("Ingrese el sueldo:"));
         setBonoTransporte(Double.parseDouble(JOptionPane.showInputDialog("¿Tiene bono de transporte? (true/false):")));
         setBonoMerchandising(Boolean.parseBoolean(JOptionPane.showInputDialog("¿Tiene bono de merchandising? (true/false):")));
         setBonoFirma(Integer.parseInt(JOptionPane.showInputDialog("¿Tiene bono de firma? (true/false):")));
@@ -221,11 +216,11 @@ class Riders extends ClvtMiembros {
     }
     
     // Getters y setters para los atributos adicionales
-    public double getSueldo() {
+    public String getSueldo() {
         return sueldo;
     }
 
-    public void setSueldo(double sueldo) {
+    public void setSueldo(String sueldo) {
         this.sueldo = sueldo;
     }
 
@@ -291,10 +286,8 @@ class Alumno extends ClvtMiembros {
 		this.esRider = esRider;
 	}
 
-public static void main(String[] args) {
-	ClvtMiembros miembro = new ClvtMiembros();
-	ClvtMiembros rider = new ClvtMiembros();
-	ClvtMiembros alumno = new ClvtMiembros();
-
-		
+    public static void main(String[] args) {
+        ClvtMiembros programa = new ClvtMiembros();
+        programa.accederMenuPrincipal();
+    }
 }
