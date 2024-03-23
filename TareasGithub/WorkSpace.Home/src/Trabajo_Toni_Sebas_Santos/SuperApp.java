@@ -1,70 +1,68 @@
 package Trabajo_Toni_Sebas_Santos;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-
 public class SuperApp {
     private static final String CONTRASEÑA = "admin123";
-	public static void main(String[] args) {
-		
-		List<Producto> catalogo = new ArrayList<>();
-		catalogo.add(new Producto("Dragon's Dogma 2", 80, 50, 21));
-		catalogo.add(new Producto("Persona 3 Reloaded", 59.95, 15, 21));
-		catalogo.add(new Producto("Fable", 69.99, 30, 21));
-		catalogo.add(new Producto("The Binding of Isaac", 24.99, 18, 21));
-		catalogo.add(new Producto("Skyrim", 9.99, 13, 21));
-		catalogo.add(new Producto("Dark Souls", 29.99, 10, 21));
-		catalogo.add(new Producto("Minecraft", 24.50, 45, 21));
-		catalogo.add(new Producto("Grand Theft Auto VI", 99.99, 34, 21));
-		catalogo.add(new Producto("Ceboas", 4.80, 15, 21));
-		catalogo.add(new Producto("Fallout", 13.99, 35, 21));
 
-		List<Producto> carrito = new ArrayList<>();
-		while (true) {
-			String opcion = JOptionPane.showInputDialog(null, "---- Ceboas Store ----\n" + "1. Catalogo \n"
-					+ "2. Comprar producto\n" + "3. Modo Admin\n" + "4. Salir\n" + "Seleccione una opción:");
+    public static void main(String[] args) {
+        List<Producto> catalogo = inicializarCatalogo();
 
-			if (opcion == null) {
-				return;
-			}
+        List<Producto> carrito = new ArrayList<>();
+        while (true) {
+            String opcion = JOptionPane.showInputDialog(null, "---- Ceboas Store ----\n" + "1. Catálogo\n"
+                    + "2. Comprar producto\n" + "3. Modo Admin\n" + "4. Salir\n" + "Seleccione una opción:");
 
-			switch (opcion) {
-			case "1":
-				mostrarProductos(catalogo);
-				break;
-			case "2":
-				comprarProductos(catalogo, carrito);
-				break;
-			case "3":
-				String password = JOptionPane.showInputDialog("Ingrese la contraseña de administrador:");
-              if (password != null && password.equals(CONTRASEÑA)) {
-                  modoAdmin(catalogo);
-              } else {
-                  JOptionPane.showMessageDialog(null, "Contraseña incorrecta. Inténtelo de nuevo.");
-              }
-              break;
-				
-			case "4":
-				JOptionPane.showMessageDialog(null, "¡Hasta luego!");
-				return;
-			default:
-				JOptionPane.showMessageDialog(null, "Opción no válida. Inténtelo de nuevo.");
-			}
-		}
-	}
-    private static void mostrarProductos(List<Producto> catalogo) {
-        StringBuilder productosInfo = new StringBuilder();
-        productosInfo.append("Lista de productos:\n");
-        productosInfo.append("---Catálogo del Supermercado---\n");
-        productosInfo.append("----------------------------------------------\n");
-        for (Producto producto : catalogo) {
-            if (producto.getCantidadDisponible() > 0) {
-                productosInfo.append(producto.getNombre()).append("   ").append(formatoDosDecimales(producto.getPrecio())).append("€  ")
-                        .append("IVA del ").append(producto.getIva()).append("% aplicado").append("\n");
+            if (opcion == null) {
+                return;
+            }
+
+            switch (opcion) {
+                case "1":
+                    mostrarCatalogo(catalogo);
+                    break;
+                case "2":
+                    comprarProductos(catalogo, carrito);
+                    break;
+                case "3":
+                    modoAdmin(catalogo);
+                    break;
+                case "4":
+                    JOptionPane.showMessageDialog(null, "¡Hasta luego!");
+                    return;
+                default:
+                    JOptionPane.showMessageDialog(null, "Opción no válida. Inténtelo de nuevo.");
             }
         }
-        JOptionPane.showMessageDialog(null, productosInfo.toString());
+    }
+
+    private static List<Producto> inicializarCatalogo() {
+        List<Producto> catalogo = new ArrayList<>();
+        catalogo.add(new Producto("Dragon's Dogma 2", 80, 50, 21));
+        catalogo.add(new Producto("Persona 3 Reloaded", 59.95, 15, 21));
+        catalogo.add(new Producto("Fable", 69.99, 30, 21));
+        catalogo.add(new Producto("The Binding of Isaac", 24.99, 18, 21));
+        catalogo.add(new Producto("Skyrim", 9.99, 13, 21));
+        catalogo.add(new Producto("Dark Souls", 29.99, 10, 21));
+        catalogo.add(new Producto("Minecraft", 24.50, 45, 21));
+        catalogo.add(new Producto("Grand Theft Auto VI", 99.99, 34, 21));
+        catalogo.add(new Producto("Ceboas", 4.80, 15, 21));
+        catalogo.add(new Producto("Fallout", 13.99, 35, 21));
+        return catalogo;
+    }
+
+    private static void mostrarCatalogo(List<Producto> catalogo) {
+        StringBuilder catalogoInfo = new StringBuilder();
+        catalogoInfo.append("Catálogo de productos:\n");
+        catalogoInfo.append("----------------------------------------------\n");
+        for (Producto producto : catalogo) {
+            if (producto.getCantidadDisponible() > 0) {
+                catalogoInfo.append(producto).append("\n");
+            }
+        }
+        JOptionPane.showMessageDialog(null, catalogoInfo.toString());
     }
 
     private static void comprarProductos(List<Producto> catalogo, List<Producto> carrito) {
@@ -215,20 +213,21 @@ public class SuperApp {
 
     private static void modoAdmin(List<Producto> catalogo) {
         while (true) {
-            String opcion3 = JOptionPane.showInputDialog(null,
-                    "---- Modo Administrador ----\n" + "1. Ver total productos \n" + "2. Agregar productos\n"
-                            + "3. Eliminar productos\n" + "4. Ver total de ventas\n" + "5. Salir modo administrador\n"
+            String opcion = JOptionPane.showInputDialog(null,
+                    "---- Modo Administrador ----\n" + "1. Ver catálogo\n" + "2. Agregar producto\n"
+                            + "3. Eliminar producto\n" + "4. Ver total de ventas\n" + "5. Salir\n"
                             + "Seleccione una opción:");
 
-            if (opcion3 == null) {
+            if (opcion == null) {
                 return;
             }
-            switch (opcion3) {
+
+            switch (opcion) {
                 case "1":
-                    vertotalProductos(catalogo);
+                    mostrarCatalogo(catalogo);
                     break;
                 case "2":
-                    agregarProductos(catalogo);
+                    agregarProducto(catalogo);
                     break;
                 case "3":
                     eliminarProducto(catalogo);
@@ -245,24 +244,10 @@ public class SuperApp {
         }
     }
 
-    private static void vertotalProductos(List<Producto> catalogo) {
-        StringBuilder totalProductos = new StringBuilder();
-        totalProductos.append("Total de productos disponibles:\n");
-        totalProductos.append("---Catálogo del Supermercado---\n");
-        totalProductos.append("----------------------------------------------\n");
-        for (Producto producto : catalogo) {
-            totalProductos.append(producto.getNombre()).append("   ").append(formatoDosDecimales(producto.getPrecio())).append("€  ")
-                    .append("Cantidad: ").append(producto.getCantidadDisponible()).append("  ").append("IVA del ")
-                    .append(producto.getIva()).append("% aplicado").append("\n");
-        }
-        JOptionPane.showMessageDialog(null, totalProductos.toString());
-    }
-
-    private static void agregarProductos(List<Producto> catalogo) {
+    private static void agregarProducto(List<Producto> catalogo) {
         String nombre = JOptionPane.showInputDialog("Ingrese el nombre del nuevo producto:");
         double precio = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el precio del nuevo producto:"));
-        int cantidad = Integer
-                .parseInt(JOptionPane.showInputDialog("Ingrese la cantidad disponible del nuevo producto:"));
+        int cantidad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad disponible del nuevo producto:"));
         int iva = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el valor del IVA del nuevo producto:"));
 
         Producto nuevoProducto = new Producto(nombre, precio, cantidad, iva);
@@ -270,6 +255,7 @@ public class SuperApp {
 
         JOptionPane.showMessageDialog(null, "Producto agregado correctamente.");
     }
+
 
     private static void eliminarProducto(List<Producto> catalogo) {
         if (catalogo.isEmpty()) {
