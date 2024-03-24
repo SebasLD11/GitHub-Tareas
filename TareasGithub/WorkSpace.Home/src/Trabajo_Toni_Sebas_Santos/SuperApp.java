@@ -336,9 +336,6 @@ public class SuperApp {
                     .append("Cantidad: ").append(producto.getCantidadDisponible()).append("\n");
         }
         JOptionPane.showMessageDialog(null, carritoInfo.toString());
-    	for (Producto producto : carrito) {
-        JOptionPane.showMessageDialog(null, "Unidades añadidas de " + producto.getNombre() + ": " + producto.getCantidadDisponible());
-    }
 }
 
     private static void realizarCompra(List<Producto> carrito) {
