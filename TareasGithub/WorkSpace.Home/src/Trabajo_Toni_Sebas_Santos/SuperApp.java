@@ -2,43 +2,13 @@ package Trabajo_Toni_Sebas_Santos;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.swing.JOptionPane;
 
 public class SuperApp {
     private static final String CONTRASEÑA = "admin123";
 
     public static void main(String[] args) {
-        List<Producto> catalogo = inicializarCatalogo();
-
-        List<Producto> carrito = new ArrayList<>();
-        while (true) {
-            String opcion = JOptionPane.showInputDialog(null, "---- Ceboas Store ----\n" + "1. Catálogo\n"
-                    + "2. Comprar producto\n" + "3. Modo Admin\n" + "4. Salir\n" + "Seleccione una opción:");
-
-            if (opcion == null) {
-                return;
-            }
-
-            switch (opcion) {
-                case "1":
-                    mostrarCatalogo(catalogo);
-                    break;
-                case "2":
-                    comprarProductos(catalogo, carrito);
-                    break;
-                case "3":
-                    modoAdmin(catalogo);
-                    break;
-                case "4":
-                    JOptionPane.showMessageDialog(null, "¡Hasta luego!");
-                    return;
-                default:
-                    JOptionPane.showMessageDialog(null, "Opción no válida. Inténtelo de nuevo.");
-            }
-        }
-    }
-
-    private static List<Producto> inicializarCatalogo() {
         List<Producto> catalogo = new ArrayList<>();
         catalogo.add(new Producto("Dragon's Dogma 2", 80, 50, 21));
         catalogo.add(new Producto("Persona 3 Reloaded", 59.95, 15, 21));
@@ -50,19 +20,53 @@ public class SuperApp {
         catalogo.add(new Producto("Grand Theft Auto VI", 99.99, 34, 21));
         catalogo.add(new Producto("Ceboas", 4.80, 15, 21));
         catalogo.add(new Producto("Fallout", 13.99, 35, 21));
-        return catalogo;
-    }
 
-    private static void mostrarCatalogo(List<Producto> catalogo) {
-        StringBuilder catalogoInfo = new StringBuilder();
-        catalogoInfo.append("Catálogo de productos:\n");
-        catalogoInfo.append("----------------------------------------------\n");
-        for (Producto producto : catalogo) {
-            if (producto.getCantidadDisponible() > 0) {
-                catalogoInfo.append(producto).append("\n");
+        List<Producto> carrito = new ArrayList<>();
+
+        while (true) {
+            String opcion = JOptionPane.showInputDialog(null, "---- Ceboas Store ----\n" + "1. Catalogo \n"
+                    + "2. Comprar producto\n" + "3. Modo Admin\n" + "4. Salir\n" + "Seleccione una opción:");
+
+            if (opcion == null) {
+                return;
+            }
+
+            switch (opcion) {
+                case "1":
+                    mostrarProductos(catalogo);
+                    break;
+                case "2":
+                    comprarProductos(catalogo, carrito);
+                    break;
+                case "3":
+                    String password = JOptionPane.showInputDialog("Ingrese la contraseña de administrador:");
+                    if (password != null && password.equals(CONTRASEÑA)) {
+                        modoAdmin(catalogo);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Contraseña incorrecta. Inténtelo de nuevo.");
+                    }
+                    break;
+                case "4":
+                    JOptionPane.showMessageDialog(null, "¡Hasta luego!");
+                    return;
+                default:
+                    JOptionPane.showMessageDialog(null, "Opción no válida. Inténtelo de nuevo.");
             }
         }
-        JOptionPane.showMessageDialog(null, catalogoInfo.toString());
+    }
+
+    private static void mostrarProductos(List<Producto> catalogo) {
+        StringBuilder productosInfo = new StringBuilder();
+        productosInfo.append("Lista de productos:\n");
+        productosInfo.append("---Catálogo del Supermercado---\n");
+        productosInfo.append("----------------------------------------------\n");
+        for (Producto producto : catalogo) {
+            if (producto.getCantidadDisponible() > 0) {
+                productosInfo.append(producto.getNombre()).append("   ").append(formatoDosDecimales(producto.getPrecio())).append("€  ")
+                        .append("IVA del ").append(producto.getIva()).append("% aplicado").append("\n");
+            }
+        }
+        JOptionPane.showMessageDialog(null, productosInfo.toString());
     }
 
     private static void comprarProductos(List<Producto> catalogo, List<Producto> carrito) {
@@ -124,6 +128,179 @@ public class SuperApp {
         } else {
             JOptionPane.showMessageDialog(null, "El producto ingresado no existe en el catálogo.");
         }
+        for (Producto producto : catalogo) {
+            if (producto.stockBajo()) {
+                JOptionPane.showMessageDialog(null, "¡Atención! El producto '" + producto.getNombre() + "' tiene un stock bajo: 5 unidades restantes.");
+            }
+}
+}
+
+    private static void eliminarProducto(List<Producto> catalogo) {
+        if (catalogo.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El catálogo está vacío.");
+            return;
+        }
+
+        StringBuilder opcionesProductos = new StringBuilder();
+        opcionesProductos.append("Seleccione el producto que desea eliminar:\n");
+        for (int i = 0; i < catalogo.size(); i++) {
+            opcionesProductos.append(i + 1).append(". ").append(catalogo.get(i).getNombre()).append("\n");
+        }
+
+        String input = JOptionPane.showInputDialog(null,
+                opcionesProductos.toString() + "Ingrese el número del producto que desea eliminar:");
+        if (input == null || input.trim().isEmpty()) {
+            return;
+        }
+
+        int indiceEliminar = Integer.parseInt(input.trim()) - 1;
+
+        if (indiceEliminar < 0 || indiceEliminar >= catalogo.size()) {
+            JOptionPane.showMessageDialog(null, "Número de producto no válido.");
+            return;
+        }
+
+        Producto producto = catalogo.get(indiceEliminar);
+        int cantidadEliminar = Integer.parseInt(JOptionPane
+                .showInputDialog("Ingrese la cantidad que desea eliminar del producto " + producto.getNombre() + ":"));
+
+        if (cantidadEliminar <= 0 || cantidadEliminar > producto.getCantidadDisponible()) {
+            JOptionPane.showMessageDialog(null, "Cantidad no válida.");
+            return;
+        }
+
+        if (cantidadEliminar == producto.getCantidadDisponible()) {
+            catalogo.remove(indiceEliminar);
+            JOptionPane.showMessageDialog(null,
+                    "Se ha eliminado el producto " + producto.getNombre() + " del catálogo.");
+        } else {
+            producto.setCantidadDisponible(producto.getCantidadDisponible() - cantidadEliminar);
+            JOptionPane.showMessageDialog(null,
+                    "Se han eliminado " + cantidadEliminar + " unidades del producto " + producto.getNombre() + ".");
+        }
+    }
+
+    private static void modoAdmin(List<Producto> catalogo) {
+        while (true) {
+            String opcion3 = JOptionPane.showInputDialog(null,
+                    "---- Modo Administrador ----\n" + "1. Ver total productos \n" + "2. Agregar productos\n"
+                            + "3. Eliminar productos\n" + "4. Modificar IVA del producto\n" + "5. Ver total de ventas\n"
+                            + "6. Salir modo administrador\n" + "Seleccione una opción:");
+
+            if (opcion3 == null) {
+                return;
+            }
+            switch (opcion3) {
+                case "1":
+                    vertotalProductos(catalogo);
+                    break;
+                case "2":
+                    agregarProductos(catalogo);
+                    break;
+                case "3":
+                    eliminarProducto(catalogo);
+                    break;
+                case "4":
+                    modificarIvaProducto(catalogo);
+                    break;
+                case "5":
+                    verTotalVentas();
+                    break;
+                case "6":
+                    JOptionPane.showMessageDialog(null, "¡Hasta luego!");
+                    return;
+                default:
+                    JOptionPane.showMessageDialog(null, "Opción no válida. Inténtelo de nuevo.");
+            }
+        }
+    }
+
+    private static void vertotalProductos(List<Producto> catalogo) {
+        StringBuilder totalProductos = new StringBuilder();
+        totalProductos.append("Total de productos disponibles:\n");
+        totalProductos.append("---Catálogo del Supermercado---\n");
+        totalProductos.append("----------------------------------------------\n");
+        for (Producto producto : catalogo) {
+            totalProductos.append(producto.getNombre()).append("   ").append(formatoDosDecimales(producto.getPrecio())).append("€  ")
+                    .append("Cantidad: ").append(producto.getCantidadDisponible()).append("  ").append("IVA del ")
+                    .append(producto.getIva()).append("% aplicado").append("\n");
+        }
+        JOptionPane.showMessageDialog(null, totalProductos.toString());
+        for (Producto producto : catalogo) {
+            if (producto.stockBajo()) {
+                JOptionPane.showMessageDialog(null, "¡Atención! El producto '" + producto.getNombre() + "' tiene un stock bajo: 5 unidades restantes.");
+            }
+        }
+    }
+
+    private static void agregarProductos(List<Producto> catalogo) {
+        String nombre = JOptionPane.showInputDialog("Ingrese el nombre del nuevo producto:");
+        double precio = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el precio del nuevo producto:"));
+        int cantidad = Integer
+                .parseInt(JOptionPane.showInputDialog("Ingrese la cantidad disponible del nuevo producto:"));
+        int iva = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el valor del IVA del nuevo producto:"));
+
+        Producto nuevoProducto = new Producto(nombre, precio, cantidad, iva);
+        catalogo.add(nuevoProducto);
+
+        JOptionPane.showMessageDialog(null, "Producto agregado correctamente.");
+    }
+
+    private static void modificarIvaProducto(List<Producto> catalogo) {
+        if (catalogo.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El catálogo está vacío.");
+            return;
+        }
+
+        StringBuilder opcionesProductos = new StringBuilder();
+        opcionesProductos.append("Seleccione el producto al que desea modificar el IVA:\n");
+        for (int i = 0; i < catalogo.size(); i++) {
+            opcionesProductos.append(i + 1).append(". ").append(catalogo.get(i).getNombre()).append("\n");
+        }
+
+        String input = JOptionPane.showInputDialog(null, opcionesProductos.toString()
+                + "Ingrese el número del producto al que desea modificar el IVA:");
+        if (input == null || input.trim().isEmpty()) {
+            return;
+        }
+
+        int indiceModificar = Integer.parseInt(input.trim()) - 1;
+
+        if (indiceModificar < 0 || indiceModificar >= catalogo.size()) {
+            JOptionPane.showMessageDialog(null, "Número de producto no válido.");
+            return;
+        }
+
+        Producto producto = catalogo.get(indiceModificar);
+        int nuevoIva = Integer.parseInt(JOptionPane
+                .showInputDialog("Ingrese el nuevo valor del IVA para el producto " + producto.getNombre() + ":"));
+
+        producto.setmodificarIva(nuevoIva);
+    }
+
+    private static void verTotalVentas() {
+        StringBuilder ventasInfo = new StringBuilder();
+        ventasInfo.append("Total de ventas realizadas:\n");
+        ventasInfo.append("----------------------------------------------\n");
+        double totalVentas = Producto.getTotalVentas(); // Accedemos al campo estático de Producto
+        for (String informacionVenta : Producto.getInformacionVentas()) {
+            ventasInfo.append(informacionVenta).append("\n");
+        }
+        ventasInfo.append("----------------------------------------------\n");
+        ventasInfo.append("Total en ventas: ").append(formatoDosDecimales(totalVentas)).append("€");
+        JOptionPane.showMessageDialog(null, ventasInfo.toString());
+    }
+
+    private static double calcularPrecioTotal(List<Producto> carrito) {
+        double precioTotal = 0;
+        for (Producto producto : carrito) {
+            precioTotal += producto.getPrecio() * producto.getCantidadDisponible();
+        }
+        return precioTotal;
+    }
+
+    private static double formatoDosDecimales(double valor) {
+        return Math.round(valor * 100.0) / 100.0;
     }
 
     private static void eliminarProductoDelCarrito(List<Producto> carrito) {
@@ -142,7 +319,7 @@ public class SuperApp {
         int numeroProductoEliminar = Integer.parseInt(JOptionPane
                 .showInputDialog(productosEnCarrito.toString() + "Ingrese el número del producto que desea eliminar:"));
 
-        if (numeroProductoEliminar >= 1 && numeroProductoEliminar        <= carrito.size()) {
+        if (numeroProductoEliminar >= 1 && numeroProductoEliminar <= carrito.size()) {
             Producto productoEliminado = carrito.remove(numeroProductoEliminar - 1);
             JOptionPane.showMessageDialog(null, "Se ha eliminado " + productoEliminado.getNombre() + " del carrito.");
         } else {
@@ -159,15 +336,10 @@ public class SuperApp {
                     .append("Cantidad: ").append(producto.getCantidadDisponible()).append("\n");
         }
         JOptionPane.showMessageDialog(null, carritoInfo.toString());
+    	for (Producto producto : carrito) {
+        JOptionPane.showMessageDialog(null, "Unidades añadidas de " + producto.getNombre() + ": " + producto.getCantidadDisponible());
     }
-
-    private static double calcularPrecioTotal(List<Producto> carrito) {
-        double precioTotal = 0;
-        for (Producto producto : carrito) {
-            precioTotal += producto.getPrecio() * producto.getCantidadDisponible();
-        }
-        return precioTotal;
-    }
+}
 
     private static void realizarCompra(List<Producto> carrito) {
         if (carrito.isEmpty()) {
@@ -208,121 +380,8 @@ public class SuperApp {
             }
         } else {
             JOptionPane.showMessageDialog(null, "No se seleccionó ningún método de pago. La compra se canceló.");
-        }
+        } 
     }
 
-    private static void modoAdmin(List<Producto> catalogo) {
-        while (true) {
-            String opcion = JOptionPane.showInputDialog(null,
-                    "---- Modo Administrador ----\n" + "1. Ver catálogo\n" + "2. Agregar producto\n"
-                            + "3. Eliminar producto\n" + "4. Ver total de ventas\n" + "5. Salir\n"
-                            + "Seleccione una opción:");
-
-            if (opcion == null) {
-                return;
-            }
-
-            switch (opcion) {
-                case "1":
-                    mostrarCatalogo(catalogo);
-                    break;
-                case "2":
-                    agregarProducto(catalogo);
-                    break;
-                case "3":
-                    eliminarProducto(catalogo);
-                    break;
-                case "4":
-                    verTotalVentas();
-                    break;
-                case "5":
-                    JOptionPane.showMessageDialog(null, "¡Hasta luego!");
-                    return;
-                default:
-                    JOptionPane.showMessageDialog(null, "Opción no válida. Inténtelo de nuevo.");
-            }
-        }
+ 
     }
-
-    private static void agregarProducto(List<Producto> catalogo) {
-        String nombre = JOptionPane.showInputDialog("Ingrese el nombre del nuevo producto:");
-        double precio = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el precio del nuevo producto:"));
-        int cantidad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad disponible del nuevo producto:"));
-        int iva = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el valor del IVA del nuevo producto:"));
-
-        Producto nuevoProducto = new Producto(nombre, precio, cantidad, iva);
-        catalogo.add(nuevoProducto);
-
-        JOptionPane.showMessageDialog(null, "Producto agregado correctamente.");
-    }
-
-
-    private static void eliminarProducto(List<Producto> catalogo) {
-        if (catalogo.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "El catálogo está vacío.");
-            return;
-        }
-
-        StringBuilder opcionesProductos = new StringBuilder();
-        opcionesProductos.append("Seleccione el producto que desea eliminar:\n");
-        for (int i = 0; i < catalogo.size(); i++) {
-            opcionesProductos.append(i + 1).append(". ").append(catalogo.get(i).getNombre()).append("\n");
-        }
-
-        String input = JOptionPane.showInputDialog(null,
-                opcionesProductos.toString() + "Ingrese el número del producto que desea eliminar:");
-        if (input == null || input.trim().isEmpty()) {
-            return;
-        }
-
-        int indiceEliminar = Integer.parseInt(input.trim()) - 1;
-
-        if (indiceEliminar < 0 || indiceEliminar >= catalogo.size()) {
-            JOptionPane.showMessageDialog(null, "Número de producto no válido.");
-            return;
-        }
-
-        Producto producto = catalogo.get(indiceEliminar);
-        int cantidadEliminar = Integer.parseInt(JOptionPane
-                .showInputDialog("Ingrese la cantidad que desea eliminar del producto " + producto.getNombre() + ":"));
-
-        if (cantidadEliminar <= 0 || cantidadEliminar > producto.getCantidadDisponible()) {
-            JOptionPane.showMessageDialog(null, "Cantidad no válida.");
-            return;
-        }
-
-        if (cantidadEliminar == producto.getCantidadDisponible()) {
-            catalogo.remove(indiceEliminar);
-            JOptionPane.showMessageDialog(null,
-                    "Se ha eliminado el producto "                    + producto.getNombre() + " del catálogo.");
-        } else {
-            producto.setCantidadDisponible(producto.getCantidadDisponible() - cantidadEliminar);
-            JOptionPane.showMessageDialog(null,
-                    "Se han eliminado " + cantidadEliminar + " unidades del producto " + producto.getNombre() + ".");
-        }
-    }
-
-    private static void verTotalVentas() {
-    	    StringBuilder ventasInfo = new StringBuilder();
-    	    ventasInfo.append("Total de ventas realizadas:\n");
-    	    ventasInfo.append("----------------------------------------------\n");
-    	    double totalVentas = Producto.getTotalVentas(); // Accedemos al campo estático de Producto
-    	    for (String informacionVenta : Producto.getInformacionVentas()) {
-    	        ventasInfo.append(informacionVenta).append("\n");
-    	    }
-    	    ventasInfo.append("----------------------------------------------\n");
-    	    ventasInfo.append("Total en ventas: ").append(formatoDosDecimales(totalVentas)).append("€");
-    	    JOptionPane.showMessageDialog(null, ventasInfo.toString());
-    	}
-    private static double formatoDosDecimales(double valor) {
-        return valor;
-    }
-
-    private static void avisoStockBajo(final List<Producto> catalogo) {
-        for (Producto producto : catalogo) {
-            if (producto.getCantidadDisponible() <= 5) {
-                JOptionPane.showMessageDialog(null, "¡Atención! El producto '" + producto.getNombre() + "' tiene una cantidad baja en stock.");
-            }
-        }
-    }
-}

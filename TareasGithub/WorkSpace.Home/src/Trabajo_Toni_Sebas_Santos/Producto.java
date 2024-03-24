@@ -128,9 +128,14 @@ public class Producto {
         totalVentas += montoVenta;
         informacionVentas.add("Producto: " + producto.getNombre() + " - Precio: " + formatoDosDecimales(producto.getPrecio()) + "€ - Cantidad vendida: " + cantidadVendida);
     }
+    
     private static String formatoDosDecimales(double valor) {
         DecimalFormat df = new DecimalFormat("#.##");
         return df.format(valor);
+    }
+    
+    public boolean stockBajo() {
+        return cantidadDisponible <= 5;
     }
 
 }
