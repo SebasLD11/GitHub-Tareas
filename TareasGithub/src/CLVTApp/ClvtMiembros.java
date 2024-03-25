@@ -30,8 +30,8 @@ public class ClvtMiembros {
         do {
             opcion = Integer.parseInt(JOptionPane.showInputDialog(
                     "Menú Principal:\n" +
-                            "1. Agregar nueva persona\n" +
-                            "2. Ver información total de personas\n" +
+                            "1. Agregar nuevo miembro\n" +
+                            "2. Ver total de miembros\n" +
                             "3. Ver información de una persona específica\n" +
                             "4. Modificar parámetros de una persona\n" +
                             "5. Eliminar persona\n" +
@@ -64,20 +64,24 @@ public class ClvtMiembros {
     }
 
     public static void agregarPersona() {
-        String tipoPersona = JOptionPane.showInputDialog("Ingrese el tipo de persona (R para Rider, A para Alumno, MB para Miembro Básico):").toUpperCase();
+        String tipoMiembros = JOptionPane.showInputDialog("Ingrese el tipo de persona (R para Rider, A para Alumno, EC para Entidad Colaboradora):").toUpperCase();
         ClvtMiembros miembro;
-        switch (tipoPersona) {
+        switch (tipoMiembros) {
             case "R":
-            	miembro = new Riders();
-               ((Riders) miembro).pedirInformacion();
+                miembro = new Riders();
+                ((Riders) miembro).pedirInformacion();
                 break;
             case "A":
-            	miembro = new Alumno();
+                miembro = new Alumno();
                 ((Alumno) miembro).pedirInformacion();
                 break;
+            case "EC":
+                miembro = new EntidadesColaboradoras();
+                ((EntidadesColaboradoras) miembro).pedirInformacion();
+                break;
             default:
-            	miembro = new ClvtMiembros();
-            	miembro.pedirInformacion();
+                miembro = new ClvtMiembros();
+                miembro.pedirInformacion();
                 break;
         }
         personas.put(miembro.getNombre(), miembro);
@@ -85,14 +89,46 @@ public class ClvtMiembros {
     }
 
     public static void mostrarInfoTotal() {
+        String[] opciones = {"Todos los miembros", "Riders", "Alumnos", "Entidades colaboradoras"};
+        String seleccion = (String) JOptionPane.showInputDialog(null, "Seleccione una opción:",
+                "Opciones de visualización", JOptionPane.QUESTION_MESSAGE, null, opciones, opciones[0]);
+
         StringBuilder infoTotal = new StringBuilder();
-        for (ClvtMiembros persona : personas.values()) {
-            infoTotal.append(persona.toString()).append("\n\n");
+        switch (seleccion) {
+            case "Todos los miembros":
+                for (ClvtMiembros miembro : personas.values()) {
+                    infoTotal.append(miembro.toString()).append("\n\n");
+                }
+                break;
+            case "Riders":
+                for (ClvtMiembros miembro : personas.values()) {
+                    if (miembro instanceof Riders) {
+                        infoTotal.append(miembro.toString()).append("\n\n");
+                    }
+                }
+                break;
+            case "Alumnos":
+                for (ClvtMiembros miembro : personas.values()) {
+                    if (miembro instanceof Alumno) {
+                        infoTotal.append(miembro.toString()).append("\n\n");
+                    }
+                }
+                break;
+            case "Entidades colaboradoras":
+                for (ClvtMiembros miembro : personas.values()) {
+                    if (!(miembro instanceof Riders) && !(miembro instanceof Alumno)) {
+                        infoTotal.append(miembro.toString()).append("\n\n");
+                    }
+                }
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Opción no válida. Intente de nuevo.");
+                return;
         }
-        JOptionPane.showMessageDialog(null, "Información total de personas en la base de datos:\n\n" + infoTotal);
+        JOptionPane.showMessageDialog(null, infoTotal.toString(), "Información de miembros", JOptionPane.PLAIN_MESSAGE);
     }
 
-    public static void mostrarInfoPersona() {
+	public static void mostrarInfoPersona() {
         String nombre = JOptionPane.showInputDialog("Ingrese el nombre de la persona:");
         ClvtMiembros persona = personas.get(nombre);
         if (persona != null) {
@@ -138,16 +174,50 @@ public class ClvtMiembros {
         setCamiseta(JOptionPane.showInputDialog("Ingrese el tipo de camiseta:"));
     }
 
-    @Override
-    public String toString() {
-    	return "Nombre: " + nombre + "\nEdad: " + edad + "\nDNI: " + DNI + "\nSexo: " + sexo +
-                "\nPeso: " + peso + "\nAltura: " + altura + "\nTipo de camiseta: " + camiseta;
-    }
+     @Override
+     public String toString() {
 
+    	 StringBuilder infoCompleta = new StringBuilder();
+         infoCompleta.append("Nombre: ").append(nombre).append("\n");
+         infoCompleta.append("Edad: ").append(edad).append("\n");
+         infoCompleta.append("DNI: ").append(DNI).append("\n");
+         infoCompleta.append("Sexo: ").append(sexo).append("\n");
+         infoCompleta.append("Peso: ").append(peso).append("\n");
+         infoCompleta.append("Altura: ").append(altura).append("\n");
+         infoCompleta.append("Tipo de camiseta: ").append(camiseta).append("\n");
+
+         // Verificar si el miembro es un Rider
+         if (this instanceof Riders) {
+             Riders rider = (Riders) this;
+             infoCompleta.append("Funciones de Rider: ").append(rider.getFunciones()).append("\n");
+             infoCompleta.append("Sueldo: ").append(rider.getSueldo()).append("\n");
+             infoCompleta.append("Bono Transporte: ").append(rider.getBonoTransporte()).append("\n");
+             infoCompleta.append("Bono Merchandising: ").append(rider.getBonoMerchandising()).append("\n");
+             infoCompleta.append("Bono Firma: ").append(rider.getBonoFirma()).append("\n");
+             infoCompleta.append("Bono Gira: ").append(rider.getBonoGira()).append("\n");
+         }
+
+         // Verificar si el miembro es un Alumno
+         if (this instanceof Alumno) {
+             Alumno alumno = (Alumno) this;
+             infoCompleta.append("Tarifa: ").append(alumno.getTarifa()).append("\n");
+             infoCompleta.append("Número de Clases: ").append(alumno.getNumClases()).append("\n");
+             infoCompleta.append("Es Rider: ").append(alumno.isEsRider()).append("\n");
+             infoCompleta.append("Aportación: ").append(alumno.getAportacion()).append("\n");
+         }
+
+         // Verificar si el miembro es una Entidad Colaboradora
+         if (this instanceof EntidadesColaboradoras) {
+             EntidadesColaboradoras entidad = (EntidadesColaboradoras) this;
+             infoCompleta.append("Proyecto: ").append(entidad.getProyecto()).append("\n");
+             infoCompleta.append("Año de Colaboración: ").append(entidad.getAñoColabora()).append("\n");
+         }
+         return infoCompleta.toString();
+     }
+  
     public String getNombre() {
         return nombre;
     }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -182,20 +252,16 @@ public class ClvtMiembros {
 
     public void setPeso(double peso) {
         this.peso = peso;
-    }
-
+    }    
     public double getAltura() {
         return altura;
     }
-
     public void setAltura(double altura) {
         this.altura = altura;
     }
-
     public String getCamiseta() {
         return camiseta;
     }
-
     public void setCamiseta(String camiseta) {
         this.camiseta = camiseta;
     }

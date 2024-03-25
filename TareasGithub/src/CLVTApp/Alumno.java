@@ -2,7 +2,7 @@ package CLVTApp;
 
 import javax.swing.JOptionPane;
 
-class Alumno extends ClvtMiembros {
+public class Alumno extends ClvtMiembros {
     // Atributos adicionales para Alumno
 	public Alumno() {
 			super();
@@ -10,14 +10,18 @@ class Alumno extends ClvtMiembros {
 	protected String tarifa;
     protected int numClases;
     protected String esRider;
+    protected String Aportacion;
+    protected String ServDisfrutados;
     
-    public void pedirInformacion() {
+	public void pedirInformacion() {
         super.pedirInformacion();
         setTarifa(JOptionPane.showInputDialog("Tipo de tarifa:"));
+        setAportacion(JOptionPane.showInputDialog("Aportación mensual:"));
         setNumClases(Integer.parseInt(JOptionPane.showInputDialog("Número de clases:")));
-        setEsRider(JOptionPane.showInputDialog("¿Este/a alumn@ es rider?"));  
+        setEsRider(JOptionPane.showInputDialog("¿Este/a alumn@ es rider?")); 
     }
-	public String getTarifa() {
+	
+    public String getTarifa() {
 		return tarifa;
 	}
 	public void setTarifa(String tarifa) {
@@ -35,4 +39,17 @@ class Alumno extends ClvtMiembros {
 	public void setEsRider(String esRider) {
 		this.esRider = esRider;
 	}
+	public String getAportacion() {
+	return Aportacion;
+	}
+	public void setAportacion(String aport) {
+	this.Aportacion = aport;
+}	
+	public String getServDisfrutados() {
+		return ServDisfrutados;
+	}
+	public void setServDisfrutados(String servDisfrutados) {
+		ServDisfrutados = servDisfrutados;
+	}
+
 }
