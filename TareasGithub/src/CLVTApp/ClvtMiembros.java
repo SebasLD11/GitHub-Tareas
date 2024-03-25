@@ -1,4 +1,4 @@
-package UD8POO;
+package CLVTApp;
 import javax.swing.JOptionPane;
 import java.util.HashMap;
 import java.util.Map;
@@ -64,7 +64,7 @@ public class ClvtMiembros {
     }
 
     public static void agregarPersona() {
-        String tipoPersona = JOptionPane.showInputDialog("Ingrese el tipo de persona (R para Rider, A para Alumno, cualquier otra letra para Miembro Básico):").toUpperCase();
+        String tipoPersona = JOptionPane.showInputDialog("Ingrese el tipo de persona (R para Rider, A para Alumno, MB para Miembro Básico):").toUpperCase();
         ClvtMiembros miembro;
         switch (tipoPersona) {
             case "R":
@@ -140,7 +140,7 @@ public class ClvtMiembros {
 
     @Override
     public String toString() {
-        return "Nombre: " + nombre + "\nEdad: " + edad + "\nDNI: " + DNI + "\nSexo: " + sexo +
+    	return "Nombre: " + nombre + "\nEdad: " + edad + "\nDNI: " + DNI + "\nSexo: " + sexo +
                 "\nPeso: " + peso + "\nAltura: " + altura + "\nTipo de camiseta: " + camiseta;
     }
 
@@ -199,95 +199,4 @@ public class ClvtMiembros {
     public void setCamiseta(String camiseta) {
         this.camiseta = camiseta;
     }
-}
-
-class Riders extends ClvtMiembros {
-    private double sueldo;
-    private double bonoTransporte;
-    private boolean bonoMerchandising;
-    private int bonoFirma;
-    private boolean bonoGira;
-
-    public void pedirInformacion() {
-        super.pedirInformacion();
-        setSueldo(Double.parseDouble(JOptionPane.showInputDialog("Ingrese el sueldo:")));
-        setBonoTransporte(Double.parseDouble(JOptionPane.showInputDialog("¿Tiene bono de transporte? (true/false):")));
-        setBonoMerchandising(Boolean.parseBoolean(JOptionPane.showInputDialog("¿Tiene bono de merchandising? (true/false):")));
-        setBonoFirma(Integer.parseInt(JOptionPane.showInputDialog("¿Tiene bono de firma? (true/false):")));
-        setBonoGira(Boolean.parseBoolean(JOptionPane.showInputDialog("¿Tiene bono de gira? (true/false):")));
-    }
-    public Riders() {
-    	super();
-    }
-    
-    // Getters y setters para los atributos adicionales
-    public double getSueldo() {
-        return sueldo;
-    }
-
-    public void setSueldo(double sueldo) {
-        this.sueldo = sueldo;
-    }
-
-    public double getBonoTransporte() {
-        return bonoTransporte;
-    }
-
-    public void setBonoTransporte(double b) {
-        this.bonoTransporte = b;
-    }
-
-    public boolean getBonoMerchandising() {
-        return bonoMerchandising;
-    }
-
-    public void setBonoMerchandising(boolean bonoMerchandising) {
-        this.bonoMerchandising = bonoMerchandising;
-    }
-
-    public int getBonoFirma() {
-        return bonoFirma;
-    }
-
-    public void setBonoFirma(int bonoFirma) {
-        this.bonoFirma = bonoFirma;
-    }
-
-    public boolean getBonoGira() {
-        return bonoGira;
-    }
-
-    public void setBonoGira(boolean bonoGira) {
-        this.bonoGira = bonoGira;
-    }
-}
-
-class Alumno extends ClvtMiembros {
-    // Atributos adicionales para Alumno
-	private String tarifa;
-    private int numClases;
-    private boolean esRider;
-    
-    public void pedirInformacion() {
-        super.pedirInformacion();
-        // Añadir aquí solicitudes de información específicas para alumnos, si es necesario.
-    }
-	public String getTarifa() {
-		return tarifa;
-	}
-	public void setTarifa(String tarifa) {
-		this.tarifa = tarifa;
-	}
-	public int getNumClases() {
-		return numClases;
-	}
-	public void setNumClases(int numClases) {
-		this.numClases = numClases;
-	}
-	public boolean isEsRider() {
-		return esRider;
-	}
-	public void setEsRider(boolean esRider) {
-		this.esRider = esRider;
-	}
 }
