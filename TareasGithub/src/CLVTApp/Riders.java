@@ -80,14 +80,17 @@ public class Riders extends MiembroBase {
     @Override
     public void pedirInformacion() {
         super.pedirInformacion();
-        setFunciones(JOptionPane.showInputDialog("¿Qué funciones tiene este rider?"));
-        setSueldo(JOptionPane.showInputDialog("Ingrese el sueldo:"));
-        setBonoTransporte(JOptionPane.showInputDialog("¿Tiene bono transporte?"));
-        setBonoMerchandising(JOptionPane.showInputDialog("Bono de merchandising:"));
-        setBonoFirma(JOptionPane.showInputDialog("¿Tiene bono de firma?"));
-        setBonoGira(JOptionPane.showInputDialog("¿Tiene bono de gira?"));
-    }
+        this.funciones = JOptionPane.showInputDialog("Funciones:");
+        this.sueldo = (JOptionPane.showInputDialog("Sueldo:"));
 
+        // Opciones para seleccionar el bono de transporte
+        Object[] opcionesBonoTransporte = {"Sí, mensual", "No"};
+        int opcionBonoTransporte = JOptionPane.showOptionDialog(null, "¿Tiene bono de transporte?", "Bono de Transporte",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcionesBonoTransporte, opcionesBonoTransporte[0]);
+        this.bonoTransporte = opcionesBonoTransporte[opcionBonoTransporte].toString();
+
+        // Otras opciones desplegables para bonoMerchandising, bonoFirma y bonoGira
+    }
     @Override
     public String toString() {
         return super.toString() + "\nFunciones: " + funciones +

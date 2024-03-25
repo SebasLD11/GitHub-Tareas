@@ -46,11 +46,15 @@ public class EntidadesColaboradoras extends MiembroBase {
     }
 
     public void pedirInformacion() {
-        // Pedir nombre y población de la superclase MiembroBase
-        setNombre(JOptionPane.showInputDialog("Nombre de la entidad:"));
-        setPoblacion(JOptionPane.showInputDialog("Población de la entidad:"));
-        setProyecto(JOptionPane.showInputDialog("Proyecto de colaboración:"));
-        setAñoColabora(JOptionPane.showInputDialog("Fecha de colaboración:"));
-        setNIF(JOptionPane.showInputDialog("NIF de la entidad:"));
+        // Lógica para pedir información común a todas las clases
+        super.pedirInformacion();
+
+        // Pedir información específica de EntidadesColaboradoras
+        String proyecto = JOptionPane.showInputDialog("Ingrese el proyecto en colaboración:");
+        setProyecto(proyecto);
+
+        String añoColabora = JOptionPane.showInputDialog("Ingrese el año de colaboración:");
+        setAñoColabora(añoColabora);
     }
+
 }

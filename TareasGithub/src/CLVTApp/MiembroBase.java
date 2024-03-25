@@ -125,16 +125,28 @@ public class MiembroBase extends CLVTApp {
 }
 	
 	//método para pedir info
-	 public void pedirInformacion() {
-	        setNombre(JOptionPane.showInputDialog("Ingrese el nombre:"));
-	        setPoblacion(JOptionPane.showInputDialog("Población:"));
-	        setEdad(Integer.parseInt(JOptionPane.showInputDialog("Ingrese la edad:")));
-	        setDNI(JOptionPane.showInputDialog("Ingrese el DNI:"));
-	        setSexo(JOptionPane.showInputDialog("Ingrese el sexo (H=hombre, M=mujer, NE=No especificado"));
-	        setCamiseta(JOptionPane.showInputDialog("Ingrese el tipo de camiseta:"));
-	        setAltura(Double.parseDouble(JOptionPane.showInputDialog("Altura:")));
-	        setPeso(Double.parseDouble(JOptionPane.showInputDialog("Peso:")));	       
-	    }
+	public void pedirInformacion() {
+        this.nombre = JOptionPane.showInputDialog("Nombre:");
+        this.poblacion = JOptionPane.showInputDialog("Población:");
+        this.edad = Integer.parseInt(JOptionPane.showInputDialog("Edad:"));
+        this.DNI = JOptionPane.showInputDialog("DNI:");
+        
+        // Opciones para seleccionar el sexo
+        Object[] opcionesSexo = {"Masculino", "Femenino", "Otro"};
+        int opcionSexo = JOptionPane.showOptionDialog(null, "Seleccione el sexo:", "Sexo",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcionesSexo, opcionesSexo[0]);
+        this.sexo = opcionesSexo[opcionSexo].toString();
+        
+        // Opciones para seleccionar la talla de camiseta
+        Object[] opcionesCamiseta = {"S", "M", "L"};
+        int opcionCamiseta = JOptionPane.showOptionDialog(null, "Seleccione la talla de camiseta:", "Talla de Camiseta",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcionesCamiseta, opcionesCamiseta[0]);
+        this.camiseta = opcionesCamiseta[opcionCamiseta].toString();
+
+        this.peso = Double.parseDouble(JOptionPane.showInputDialog("Peso:"));
+        this.altura = Double.parseDouble(JOptionPane.showInputDialog("Altura:"));
+    }
+
 	 public static void agregarMiembroBase() {
 		    MiembroBase nuevoMiembroBase = new MiembroBase();
 		    nuevoMiembroBase.pedirInformacion();

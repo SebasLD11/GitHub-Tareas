@@ -69,12 +69,18 @@ public class Alumnos extends MiembroBase {
     @Override
     public void pedirInformacion() {
         super.pedirInformacion();
-        setTarifa(JOptionPane.showInputDialog("Tipo de tarifa:"));
-        setAportacion(JOptionPane.showInputDialog("Aportación mensual:"));
-        setNumClases(Integer.parseInt(JOptionPane.showInputDialog("Número de clases:")));
-        setEsRider(JOptionPane.showInputDialog("¿Este/a alumno/a es rider?"));
-        setServDisfrutados(JOptionPane.showInputDialog("¿Que servicios disfruta?"));
+        this.tarifa = JOptionPane.showInputDialog("Tarifa:");
+        this.numClases = Integer.parseInt(JOptionPane.showInputDialog("Número de clases:"));
+        
+        // Opciones desplegables para esRider
+        Object[] opcionesEsRider = {"Sí", "No"};
+        int opcionEsRider = JOptionPane.showOptionDialog(null, "¿Es Rider?", "Es Rider",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcionesEsRider, opcionesEsRider[0]);
+        this.esRider = opcionesEsRider[opcionEsRider].toString();
+
+        // Otras opciones desplegables para aportacion y servicios disfrutados
     }
+
 
     @Override
     public String toString() {
