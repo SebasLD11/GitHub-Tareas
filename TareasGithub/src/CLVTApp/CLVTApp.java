@@ -1,96 +1,135 @@
 package CLVTApp;
-import javax.swing.*;
+import javax.swing.JOptionPane;
 import java.util.HashMap;
 import java.util.Map;
 
 public class CLVTApp {
-    private static final String PASSWORD = "CLVT22";
+
+    private static final String CONTRASENA = "CLVT22";
     private static final int MAX_INTENTOS = 3;
-    private static int intentos = 0;
-    private static Map<String, MiembroBase> personas = new HashMap<>();
+    private static int intentosRestantes = MAX_INTENTOS;
+    protected static final Map<String, MiembroBase> personas = new HashMap<>();
 
     public static void main(String[] args) {
-        while (!autenticar()) {
-            intentos++;
-            if (intentos >= MAX_INTENTOS) {
-                JOptionPane.showMessageDialog(null, "Has excedido el número máximo de intentos.");
-                return;
-            }
-        }
-        mostrarMenuPrincipal();
+        iniciarSesion();
     }
 
-    private static boolean autenticar() {
-        String input = JOptionPane.showInputDialog("Introduce la contraseña:");
-        return input != null && input.equals(PASSWORD);
+    public static void iniciarSesion() {
+        String contrasenaIngresada = "";
+        while (!contrasenaIngresada.equals(CONTRASENA) && intentosRestantes > 0) {
+            contrasenaIngresada = JOptionPane.showInputDialog("Ingrese la contraseña:");
+            if (!contrasenaIngresada.equals(CONTRASENA)) {
+                intentosRestantes--;
+                JOptionPane.showMessageDialog(null, "Contraseña incorrecta. Intentos restantes: " + intentosRestantes);
+            }
+        }
+        if (contrasenaIngresada.equals(CONTRASENA)) {
+            mostrarMenuPrincipal();
+        } else {
+            JOptionPane.showMessageDialog(null, "Has agotado el número de intentos. Saliendo de la aplicación.");
+        }
     }
 
     public static void mostrarMenuPrincipal() {
-    	int opcion;
-        do {
-            opcion = Integer.parseInt(JOptionPane.showInputDialog(
-                    "~~~BIENVENID@ AL MODO ADMIN~~~\n\n" +
-                            "1. Añadir miembro\n" +
-                            "2. Mostrar información de todos los miembros\n" +
-                            "3. Mostrar información de un miembro\n" +
-                            "4. Actualizar información de un miembro\n" +
-                            "5. Eliminar miembro\n" +
-                            "6. Salir"
-            ));
-
-            switch (opcion) {
-                case 1:
-                    añadirMiembro();
+        String[] opcionesMenu = {"Agregar miembro", "Actualizar miembro", "Eliminar miembro", "Mostrar información total", "Mostrar información de un miembro", "Salir"};
+        while (true) {
+            String opcionSeleccionada = (String) JOptionPane.showInputDialog(null, "Seleccione una opción:",
+                    "Menú Principal", JOptionPane.PLAIN_MESSAGE, null, opcionesMenu, opcionesMenu[0]);
+            if (opcionSeleccionada == null || opcionSeleccionada.equals("Salir")) {
+                JOptionPane.showMessageDialog(null, "Saliendo de la aplicación.");
+                break;
+            }
+            switch (opcionSeleccionada) {
+                case "Agregar miembro":
+                    agregarMiembro();
                     break;
-                case 2:
-                    mostrarInfoTotal();
-                    break;
-                case 3:
-                    mostrarInfoPersona();
-                    break;
-                case 4:
+                case "Actualizar miembro":
                     actualizarMiembro();
                     break;
-                case 5:
+                case "Eliminar miembro":
                     eliminarMiembro();
                     break;
-                case 6:
-                    JOptionPane.showMessageDialog(null, "Saliendo de la aplicación...");
+                case "Mostrar información total":
+                    mostrarInfoTotal();
+                    break;
+                case "Mostrar información de un miembro":
+                    mostrarInfoMiembro();
                     break;
                 default:
-                    JOptionPane.showMessageDialog(null, "Opción no válida. Por favor, selecciona una opción válida.");
+                    JOptionPane.showMessageDialog(null, "Opción no válida.");
             }
-        } while (opcion != 6);
-    }
-
-    public static void añadirMiembro() {
-        int tipoMiembro = Integer.parseInt(JOptionPane.showInputDialog(
-                "Selecciona el tipo de miembro a añadir:\n" +
-                        "1. Rider\n" +
-                        "2. Alumno\n" +
-                        "3. Entidad Colaboradora"
-        ));
-
-        switch (tipoMiembro) {
-            case 1:
-                Riders rider = new Riders();
-                rider.pedirInformacion();
-                personas.put(rider.getNombre(), rider);
-                break;
-            case 2:
-                Alumnos alumno = new Alumnos();
-                alumno.pedirInformacion();
-                personas.put(alumno.getNombre(), alumno);
-                break;
-            case 3:
-                EntidadesColaboradoras entidad = new EntidadesColaboradoras();
-                entidad.pedirInformacion();
-                personas.put(entidad.getNombre(), entidad);
-                break;
-            default:
-                JOptionPane.showMessageDialog(null, "Tipo de miembro no válido. Por favor, selecciona un tipo válido.");
         }
     }
+
+    public static void agregarMiembro() {
+        String[] tiposMiembro = {"Rider", "Alumno", "Entidad Colaboradora", "Miembro Base"};
+        String tipoMiembro = (String) JOptionPane.showInputDialog(null, "Seleccione el tipo de miembro a agregar:",
+                "Agregar Miembro", JOptionPane.PLAIN_MESSAGE, null, tiposMiembro, tiposMiembro[0]);
+        switch (tipoMiembro) {
+            case "Rider":
+                agregarRider();
+                break;
+            case "Alumno":
+                agregarAlumno();
+                break;
+            case "Entidad Colaboradora":
+                agregarEntidadColaboradora();
+                break;
+            case "Miembro Base":
+                agregarMiembroBase();
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Tipo de miembro no válido.");
+        }
+    }
+
+	public static void agregarRider() {
+		    Riders nuevoRider = new Riders();
+		    nuevoRider.pedirInformacion();
+		    String nombre = nuevoRider.getNombre();
+		    if (!personas.containsKey(nombre)) {
+		        personas.put(nombre, nuevoRider);
+		        JOptionPane.showMessageDialog(null, "Rider agregado correctamente.");
+		    } else {
+		        JOptionPane.showMessageDialog(null, "Ya existe un miembro con ese nombre.");
+		    }
+		}
+	
+	public static void agregarAlumno() {
+	    Alumnos nuevoAlumno = new Alumnos();
+	    nuevoAlumno.pedirInformacion();
+	    String nombre = nuevoAlumno.getNombre();
+	    if (!personas.containsKey(nombre)) {
+	        personas.put(nombre, nuevoAlumno);
+	        JOptionPane.showMessageDialog(null, "Alumno agregado correctamente.");
+	    } else {
+	        JOptionPane.showMessageDialog(null, "Ya existe un miembro con ese nombre.");
+	    }
+	}
+	
+	public static void agregarEntidadColaboradora() {
+	    EntidadesColaboradoras nuevaEntidad = new EntidadesColaboradoras();
+	    nuevaEntidad.pedirInformacion();
+	    String nombre = nuevaEntidad.getNombre();
+	    if (!personas.containsKey(nombre)) {
+	        personas.put(nombre, nuevaEntidad);
+	        JOptionPane.showMessageDialog(null, "Entidad Colaboradora agregada correctamente.");
+	    } else {
+	        JOptionPane.showMessageDialog(null, "Ya existe un miembro con ese nombre.");
+	    }
+	}
+
+	public static void agregarMiembroBase() {
+	    MiembroBase nuevoMiembroBase = new MiembroBase();
+	    nuevoMiembroBase.pedirInformacion();
+	    String nombre = nuevoMiembroBase.getNombre();
+	    if (!personas.containsKey(nombre)) {
+	        personas.put(nombre, nuevoMiembroBase);
+	        JOptionPane.showMessageDialog(null, "Miembro Base agregado correctamente.");
+	    } else {
+	        JOptionPane.showMessageDialog(null, "Ya existe un miembro con ese nombre.");
+	    }
+	}
 
     public static void mostrarInfoTotal() {
         StringBuilder infoTotal = new StringBuilder();
@@ -110,63 +149,119 @@ public class CLVTApp {
         JOptionPane.showMessageDialog(null, infoTotal.toString());
     }
 
-    public static void mostrarInfoPersona() {
-        String nombre = JOptionPane.showInputDialog("Ingrese el nombre del miembro:");
-        MiembroBase persona = personas.get(nombre);
-        StringBuilder infoPersona = new StringBuilder();
+    private static void mostrarInfoMiembro() {
+        String[] tiposMiembro = {"Rider", "Alumno", "Entidad Colaboradora", "Miembro Base"};
+        String tipoMiembro = (String) JOptionPane.showInputDialog(null, "Seleccione el tipo de miembro:",
+                "Mostrar Información de Miembro", JOptionPane.QUESTION_MESSAGE, null, tiposMiembro, tiposMiembro[0]);
 
-        if (persona != null) {
-            infoPersona.append("~~~MIEMBROS CLVT~~~\n\n");
-            infoPersona.append("Nombre: ").append(persona.getNombre()).append("\n");
-            infoPersona.append("Población: ").append(persona.getPoblacion()).append("\n");
-            if (persona instanceof Riders) {
-                infoPersona.append("Tipo de Miembro: Rider\n\n");
-                infoPersona.append("Funciones: ").append(((Riders) persona).getFunciones()).append("\n");
-                infoPersona.append("Sueldo: ").append(((Riders) persona).getSueldo()).append("\n");
-                infoPersona.append("Bono transporte: ").append(((Riders) persona).getBonoTransporte()).append("\n");
-                infoPersona.append("Bono Merchandising: ").append(((Riders) persona).getBonoMerchandising()).append("\n");
-                infoPersona.append("Bono Firma: ").append(((Riders) persona).getBonoFirma()).append("\n");
-                infoPersona.append("Bono Gira: ").append(((Riders) persona).getBonoGira()).append("\n");
-            } else if (persona instanceof Alumnos) {
-                infoPersona.append("Tipo de Miembro: Alumno\n\n");
-                infoPersona.append("Tarifa: ").append(((Alumnos) persona).getTarifa()).append("\n");
-                infoPersona.append("Número de clases: ").append(((Alumnos) persona).getNumClases()).append("\n");
-                infoPersona.append("¿Es Rider? ").append(((Alumnos) persona).getEsRider()).append("\n");
-                infoPersona.append("Aportación: ").append(((Alumnos) persona).getAportacion()).append("\n");
-                infoPersona.append("Servicios que disfruta: ").append(((Alumnos) persona).getServDisfrutados()).append("\n");
-            } else if (persona instanceof EntidadesColaboradoras) {
-                infoPersona.append("Tipo de Miembro: Entidad colaboradora\n\n");
-                infoPersona.append("NIF de la entidad: ").append(((EntidadesColaboradoras) persona).getNIF()).append("\n");
-                infoPersona.append("Proyecto en colaboración: ").append(((EntidadesColaboradoras) persona).getProyecto()).append("\n");
-                infoPersona.append("Año de colaboración: ").append(((EntidadesColaboradoras) persona).getAñoColabora()).append("\n");
+        if (tipoMiembro != null) {
+            String nombre = JOptionPane.showInputDialog("Ingrese el nombre del miembro:");
+            MiembroBase miembro = personas.get(nombre);
+
+            if (miembro != null) {
+                StringBuilder infoMiembro = new StringBuilder();
+                infoMiembro.append("~~~INFORMACIÓN DEL MIEMBRO~~~\n\n");
+                infoMiembro.append("Nombre: ").append(miembro.getNombre()).append("\n");
+                infoMiembro.append("Población: ").append(miembro.getPoblacion()).append("\n");
+                infoMiembro.append("Edad: ").append(miembro.getEdad()).append("\n");
+                infoMiembro.append("DNI: ").append(miembro.getDNI()).append("\n");
+                infoMiembro.append("Sexo: ").append(miembro.getSexo()).append("\n");
+
+                switch (tipoMiembro) {
+                    case "Rider":
+                        if (miembro instanceof Riders) {
+                            Riders rider = (Riders) miembro;
+                            infoMiembro.append("Tipo de Miembro: Rider\n");
+                            infoMiembro.append("Funciones: ").append(rider.getFunciones()).append("\n");
+                            infoMiembro.append("Sueldo: ").append(rider.getSueldo()).append("\n");
+                            infoMiembro.append("Bono de Transporte: ").append(rider.getBonoTransporte()).append("\n");
+                            infoMiembro.append("Bono de Merchandising: ").append(rider.getBonoMerchandising()).append("\n");
+                            infoMiembro.append("Bono de Firma: ").append(rider.getBonoFirma()).append("\n");
+                            infoMiembro.append("Bono de Gira: ").append(rider.getBonoGira()).append("\n");
+                        }
+                        break;
+                    case "Alumno":
+                        if (miembro instanceof Alumnos) {
+                            Alumnos alumno = (Alumnos) miembro;
+                            infoMiembro.append("Tipo de Miembro: Alumno\n");
+                            infoMiembro.append("Tarifa: ").append(alumno.getTarifa()).append("\n");
+                            infoMiembro.append("Número de Clases: ").append(alumno.getNumClases()).append("\n");
+                            infoMiembro.append("Es Rider: ").append(alumno.getEsRider()).append("\n");
+                            infoMiembro.append("Aportación: ").append(alumno.getAportacion()).append("\n");
+                            infoMiembro.append("Servicios Disfrutados: ").append(alumno.getServDisfrutados()).append("\n");
+                        }
+                        break;
+                    case "Entidad Colaboradora":
+                        if (miembro instanceof EntidadesColaboradoras) {
+                            EntidadesColaboradoras entidad = (EntidadesColaboradoras) miembro;
+                            infoMiembro.append("Tipo de Miembro: Entidad Colaboradora\n");
+                            infoMiembro.append("Proyecto en Colaboración: ").append(entidad.getProyecto()).append("\n");
+                            infoMiembro.append("Año de Colaboración: ").append(entidad.getAñoColabora()).append("\n");
+                        }
+                        break;
+                    case "Miembro Base":
+                        if (miembro instanceof MiembroBase) {
+                            // Aquí agregamos la información específica de MiembroBase
+                            infoMiembro.append("Este miembro es de la clase MiembroBase").append("\n");
+                            // Agregamos la información común a todas las clases
+                            infoMiembro.append("Edad: ").append(((MiembroBase) miembro).getEdad()).append("\n");
+                            infoMiembro.append("DNI: ").append(((MiembroBase) miembro).getDNI()).append("\n");
+                            infoMiembro.append("Sexo: ").append(((MiembroBase) miembro).getSexo()).append("\n");
+                            infoMiembro.append("Altura: ").append(((MiembroBase) miembro).getAltura()).append("\n");
+                            infoMiembro.append("Peso: ").append(((MiembroBase) miembro).getPeso()).append("\n");
+                            infoMiembro.append("Talla de camiseta: ").append(((MiembroBase) miembro).getCamiseta()).append("\n");
+                        }
+                        break;
+                }
+                JOptionPane.showMessageDialog(null, infoMiembro.toString());
+            } else {
+                JOptionPane.showMessageDialog(null, "Miembro no encontrado en la base de datos.");
             }
-
-            JOptionPane.showMessageDialog(null, infoPersona.toString());
-        } else {
-            JOptionPane.showMessageDialog(null, "Persona no encontrada en la base de datos.");
         }
     }
 
     private static void actualizarMiembro() {
-        String nombre = JOptionPane.showInputDialog("Ingrese el nombre del miembro a actualizar:");
-        MiembroBase miembro = personas.get(nombre);
+        String[] tiposMiembro = {"Rider", "Alumno", "Entidad Colaboradora"};
+        String tipoMiembro = (String) JOptionPane.showInputDialog(null, "Seleccione el tipo de miembro a actualizar:",
+                "Actualizar Miembro", JOptionPane.QUESTION_MESSAGE, null, tiposMiembro, tiposMiembro[0]);
 
-        if (miembro != null) {
-            if (miembro instanceof Riders) {
-                Riders rider = (Riders) miembro;
-                rider.pedirInformacion();
-                JOptionPane.showMessageDialog(null, "Rider actualizado correctamente.");
-            } else if (miembro instanceof Alumnos) {
-                Alumnos alumno = (Alumnos) miembro;
-                alumno.pedirInformacion();
-                JOptionPane.showMessageDialog(null, "Alumno actualizado correctamente.");
-            } else if (miembro instanceof EntidadesColaboradoras) {
-                EntidadesColaboradoras entidad = (EntidadesColaboradoras) miembro;
-                entidad.pedirInformacion();
-                JOptionPane.showMessageDialog(null, "Entidad colaboradora actualizada correctamente.");
+        if (tipoMiembro != null) {
+            String nombre = JOptionPane.showInputDialog("Ingrese el nombre del miembro a actualizar:");
+            MiembroBase miembro = personas.get(nombre);
+
+            if (miembro != null) {
+                switch (tipoMiembro) {
+                    case "Rider":
+                        if (miembro instanceof Riders) {
+                            Riders rider = (Riders) miembro;
+                            rider.pedirInformacion();
+                            JOptionPane.showMessageDialog(null, "Rider actualizado correctamente.");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "El miembro no es un Rider.");
+                        }
+                        break;
+                    case "Alumno":
+                        if (miembro instanceof Alumnos) {
+                            Alumnos alumno = (Alumnos) miembro;
+                            alumno.pedirInformacion();
+                            JOptionPane.showMessageDialog(null, "Alumno actualizado correctamente.");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "El miembro no es un Alumno.");
+                        }
+                        break;
+                    case "Entidad Colaboradora":
+                        if (miembro instanceof EntidadesColaboradoras) {
+                            EntidadesColaboradoras entidad = (EntidadesColaboradoras) miembro;
+                            entidad.pedirInformacion();
+                            JOptionPane.showMessageDialog(null, "Entidad colaboradora actualizada correctamente.");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "El miembro no es una Entidad Colaboradora.");
+                        }
+                        break;
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Miembro no encontrado en la base de datos.");
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Miembro no encontrado en la base de datos.");
         }
     }
 

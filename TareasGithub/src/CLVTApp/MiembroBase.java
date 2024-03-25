@@ -135,9 +135,20 @@ public class MiembroBase extends CLVTApp {
 	        setAltura(Double.parseDouble(JOptionPane.showInputDialog("Altura:")));
 	        setPeso(Double.parseDouble(JOptionPane.showInputDialog("Peso:")));	       
 	    }
+	 public static void agregarMiembroBase() {
+		    MiembroBase nuevoMiembroBase = new MiembroBase();
+		    nuevoMiembroBase.pedirInformacion();
+		    String nombre = nuevoMiembroBase.getNombre();
+		    if (!personas.containsKey(nombre)) {
+		        personas.put(nombre, nuevoMiembroBase);
+		        JOptionPane.showMessageDialog(null, "Miembro Base agregado correctamente.");
+		    } else {
+		        JOptionPane.showMessageDialog(null, "Ya existe un miembro con ese nombre.");
+		    }
+		}
 
 	    @Override
-	    public String toString() {
+	 public String toString() {
 	        return "Nombre: " + nombre + "\nEdad: " + edad + "\nDNI: " + DNI + "\nSexo: " + sexo +
 	                "\nCamiseta: " + camiseta;
 	    }
