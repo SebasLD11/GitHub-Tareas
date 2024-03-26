@@ -143,12 +143,14 @@ public class CLVTApp {
                     infoTotal.append("Tipo de Miembro: Alumno\n\n");
                 } else if (miembro instanceof EntidadesColaboradoras) {
                     infoTotal.append("Tipo de Miembro: Entidad colaboradora\n\n");
+                }  else if (miembro instanceof MiembroBase) {
+                        infoTotal.append("Tipo de Miembro: Miembro Base\n\n");
                 }
             }
         }
         JOptionPane.showMessageDialog(null, infoTotal.toString());
     }
-
+    
     private static void mostrarInfoMiembro() {
         String[] tiposMiembro = {"Rider", "Alumno", "Entidad Colaboradora", "Miembro Base"};
         String tipoMiembro = (String) JOptionPane.showInputDialog(null, "Seleccione el tipo de miembro:",

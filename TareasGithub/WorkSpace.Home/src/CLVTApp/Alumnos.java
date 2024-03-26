@@ -69,17 +69,36 @@ public class Alumnos extends MiembroBase {
     @Override
     public void pedirInformacion() {
         super.pedirInformacion();
-        this.tarifa = JOptionPane.showInputDialog("Tarifa:");
         this.numClases = Integer.parseInt(JOptionPane.showInputDialog("Número de clases:"));
         
-        // Opciones desplegables para esRider
-        Object[] opcionesEsRider = {"Sí", "No"};
-        int opcionEsRider = JOptionPane.showOptionDialog(null, "¿Es Rider?", "Es Rider",
-                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcionesEsRider, opcionesEsRider[0]);
+        // Opciones para seleccionar si es Rider
+        
+        Object[] opcionesEsRider = {"Sí", "No", "Proyecto amateur"};
+        int opcionEsRider = JOptionPane.showOptionDialog(null, "¿Es Rider?",
+                "Rider", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null,
+                opcionesEsRider, opcionesEsRider[0]);
         this.esRider = opcionesEsRider[opcionEsRider].toString();
-
-        // Otras opciones desplegables para aportacion y servicios disfrutados
+        
+        Object[] opcionestarifa = {"Reducida", "Completa", "Reducida +2h particulares", "Completa +4h particulares"};
+        int opciontarifa = JOptionPane.showOptionDialog(null, "¿Que tarifa tiene?",
+                "tarifa", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null,
+                opcionestarifa, opcionestarifa[0]);
+        this.tarifa = opcionestarifa[opciontarifa].toString();
+        
+        Object[] opcionesaportacion = {"25€", "35€", "50€", "80€"};
+        int opcionaportacion = JOptionPane.showOptionDialog(null, "¿Aportación de la tarifa?",
+                "aportacion", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null,
+                opcionesaportacion, opcionesaportacion[0]);
+        this.aportacion = opcionesaportacion[opcionaportacion].toString();
+        
+        Object[] opcionesservDisfrutados = {"Taller Básico Skate/Scooter Completo", "Taller Básico Skate/Scooter Reducido", "Taller Básico Skate/Scooter Reducido+2h", "Taller Básico Skate/Scooter Completo+4h"};
+        int opcionservDisfrutados = JOptionPane.showOptionDialog(null, "¿Aportación de la tarifa?",
+                "servDisfrutados", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null,
+                opcionesservDisfrutados, opcionesservDisfrutados[0]);
+        this.servDisfrutados = opcionesservDisfrutados[opcionservDisfrutados].toString();
+       
     }
+
 
 
     @Override

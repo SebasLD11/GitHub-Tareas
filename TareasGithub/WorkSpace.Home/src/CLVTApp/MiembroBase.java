@@ -129,16 +129,21 @@ public class MiembroBase extends CLVTApp {
         this.nombre = JOptionPane.showInputDialog("Nombre:");
         this.poblacion = JOptionPane.showInputDialog("Población:");
         this.edad = Integer.parseInt(JOptionPane.showInputDialog("Edad:"));
-        this.DNI = JOptionPane.showInputDialog("DNI:");
+
+        // Opciones para pedir info de miembros base
+        Object[] opcionesDNI = {"DNI", "NIE/TIE", "NIF/CIF"};
+        int opcionDNI = JOptionPane.showOptionDialog(null, "Seleccione el tipo de documento", "Documento",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcionesDNI, opcionesDNI[0]);
+        this.DNI = opcionesDNI[opcionDNI].toString();
+        this.DNI = JOptionPane.showInputDialog("Número de documento:");
         
-        // Opciones para seleccionar el sexo
         Object[] opcionesSexo = {"Masculino", "Femenino", "Otro"};
         int opcionSexo = JOptionPane.showOptionDialog(null, "Seleccione el sexo:", "Sexo",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcionesSexo, opcionesSexo[0]);
         this.sexo = opcionesSexo[opcionSexo].toString();
         
         // Opciones para seleccionar la talla de camiseta
-        Object[] opcionesCamiseta = {"S", "M", "L"};
+        Object[] opcionesCamiseta = {"S", "M", "L", "XL"};
         int opcionCamiseta = JOptionPane.showOptionDialog(null, "Seleccione la talla de camiseta:", "Talla de Camiseta",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcionesCamiseta, opcionesCamiseta[0]);
         this.camiseta = opcionesCamiseta[opcionCamiseta].toString();
