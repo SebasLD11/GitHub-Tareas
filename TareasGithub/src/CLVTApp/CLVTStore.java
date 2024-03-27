@@ -4,8 +4,8 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-public class CLVTStore {
-    private static final String CONTRASEÑA = "admin123";
+public class CLVTStore extends MenuControlador {
+    private static final String CONTRASEÑA = "CultiStore";
 
     public static void main(String[] args) {
         List<Producto> catalogo = new ArrayList<>();
@@ -54,10 +54,10 @@ public class CLVTStore {
         }
     }
 
-    private static void mostrarProductos(List<Producto> catalogo) {
+    protected static void mostrarProductos(List<Producto> catalogo) {
         StringBuilder productosInfo = new StringBuilder();
         productosInfo.append("Lista de productos:\n");
-        productosInfo.append("---Catálogo del Supermercado---\n");
+        productosInfo.append("~~~Catálogo CLVT~~~\n");
         productosInfo.append("----------------------------------------------\n");
         for (Producto producto : catalogo) {
             if (producto.getCantidadDisponible() > 0) {
@@ -68,7 +68,7 @@ public class CLVTStore {
         JOptionPane.showMessageDialog(null, productosInfo.toString());
     }
 
-    private static void comprarProductos(List<Producto> catalogo, List<Producto> carrito) {
+    protected static void comprarProductos(List<Producto> catalogo, List<Producto> carrito) {
         while (true) {
             String opcion2 = JOptionPane.showInputDialog(null,
                     "---- Cesta Compra ----\n" + "1. Añadir Producto \n" + "2. Eliminar producto del carrito\n"
@@ -100,7 +100,7 @@ public class CLVTStore {
         }
     }
 
-    private static void añadirProductoAlCarrito(List<Producto> catalogo, List<Producto> carrito) {
+    protected static void añadirProductoAlCarrito(List<Producto> catalogo, List<Producto> carrito) {
         String nombreProducto = JOptionPane.showInputDialog("Ingrese el nombre del producto a agregar al carrito:");
 
         Producto productoEnCatalogo = null;
@@ -134,7 +134,7 @@ public class CLVTStore {
 }
 }
 
-    private static void eliminarProducto(List<Producto> catalogo) {
+    protected static void eliminarProducto(List<Producto> catalogo) {
         if (catalogo.isEmpty()) {
             JOptionPane.showMessageDialog(null, "El catálogo está vacío.");
             return;
@@ -179,8 +179,9 @@ public class CLVTStore {
         }
     }
 
-    private static void modoAdmin(List<Producto> catalogo) {
-        while (true) {
+    protected static void modoAdmin(List<Producto> catalogo) {
+       
+    	while (true) {
             String opcion3 = JOptionPane.showInputDialog(null,
                     "---- Modo Administrador ----\n" + "1. Ver total productos \n" + "2. Agregar productos\n"
                             + "3. Eliminar productos\n" + "4. Modificar IVA del producto\n" + "5. Ver total de ventas\n"
@@ -214,7 +215,7 @@ public class CLVTStore {
         }
     }
 
-    private static void vertotalProductos(List<Producto> catalogo) {
+    protected static void vertotalProductos(List<Producto> catalogo) {
         StringBuilder totalProductos = new StringBuilder();
         totalProductos.append("Total de productos disponibles:\n");
         totalProductos.append("---Catálogo del Supermercado---\n");
@@ -232,7 +233,7 @@ public class CLVTStore {
         }
     }
 
-    private static void agregarProductos(List<Producto> catalogo) {
+    protected static void agregarProductos(List<Producto> catalogo) {
         String nombre = JOptionPane.showInputDialog("Ingrese el nombre del nuevo producto:");
         double precio = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el precio del nuevo producto:"));
         int cantidad = Integer
@@ -245,7 +246,7 @@ public class CLVTStore {
         JOptionPane.showMessageDialog(null, "Producto agregado correctamente.");
     }
 
-    private static void modificarIvaProducto(List<Producto> catalogo) {
+    protected static void modificarIvaProducto(List<Producto> catalogo) {
         if (catalogo.isEmpty()) {
             JOptionPane.showMessageDialog(null, "El catálogo está vacío.");
             return;
@@ -277,7 +278,7 @@ public class CLVTStore {
         producto.setmodificarIva(nuevoIva);
     }
 
-    private static void verTotalVentas() {
+    protected static void verTotalVentas() {
         StringBuilder ventasInfo = new StringBuilder();
         ventasInfo.append("Total de ventas realizadas:\n");
         ventasInfo.append("----------------------------------------------\n");
@@ -290,7 +291,7 @@ public class CLVTStore {
         JOptionPane.showMessageDialog(null, ventasInfo.toString());
     }
 
-    private static double calcularPrecioTotal(List<Producto> carrito) {
+    protected static double calcularPrecioTotal(List<Producto> carrito) {
         double precioTotal = 0;
         for (Producto producto : carrito) {
             precioTotal += producto.getPrecio() * producto.getCantidadDisponible();
@@ -298,11 +299,11 @@ public class CLVTStore {
         return precioTotal;
     }
 
-    private static double formatoDosDecimales(double valor) {
+    protected static double formatoDosDecimales(double valor) {
         return Math.round(valor * 100.0) / 100.0;
     }
 
-    private static void eliminarProductoDelCarrito(List<Producto> carrito) {
+    protected static void eliminarProductoDelCarrito(List<Producto> carrito) {
         if (carrito.isEmpty()) {
             JOptionPane.showMessageDialog(null, "El carrito está vacío.");
             return;
@@ -326,7 +327,7 @@ public class CLVTStore {
         }
     }
 
-    private static void mostrarCarrito(List<Producto> carrito) {
+    protected static void mostrarCarrito(List<Producto> carrito) {
         StringBuilder carritoInfo = new StringBuilder();
         carritoInfo.append("Contenido de la cesta:\n");
         carritoInfo.append("----------------------------------------------\n");
@@ -337,7 +338,7 @@ public class CLVTStore {
         JOptionPane.showMessageDialog(null, carritoInfo.toString());
 }
 
-    private static void realizarCompra(List<Producto> carrito) {
+    protected static void realizarCompra(List<Producto> carrito) {
         if (carrito.isEmpty()) {
             JOptionPane.showMessageDialog(null, "El carrito está vacío. No se puede realizar la compra.");
             return;

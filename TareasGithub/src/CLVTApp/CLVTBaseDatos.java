@@ -3,7 +3,7 @@ import javax.swing.JOptionPane;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CLVTBaseDatos {
+public class CLVTBaseDatos extends MenuControlador {
 
     private static final String CONTRASENA = "CLVT22";
     private static final int MAX_INTENTOS = 3;
@@ -34,9 +34,9 @@ public class CLVTBaseDatos {
         String[] opcionesMenu = {"Agregar miembro", "Actualizar miembro", "Eliminar miembro", "Mostrar información total", "Mostrar información de un miembro", "Salir"};
         while (true) {
             String opcionSeleccionada = (String) JOptionPane.showInputDialog(null, "Seleccione una opción:",
-                    "Menú Principal", JOptionPane.PLAIN_MESSAGE, null, opcionesMenu, opcionesMenu[0]);
+                    "~~~BIENVENIDO/A AL MODO ADMINISTRADOR~~~", JOptionPane.PLAIN_MESSAGE, null, opcionesMenu, opcionesMenu[0]);
             if (opcionSeleccionada == null || opcionSeleccionada.equals("Salir")) {
-                JOptionPane.showMessageDialog(null, "Saliendo de la aplicación.");
+                JOptionPane.showMessageDialog(null, "Hasta la próxima.");
                 break;
             }
             switch (opcionSeleccionada) {
