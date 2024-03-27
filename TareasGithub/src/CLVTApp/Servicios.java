@@ -6,6 +6,8 @@ public class Servicios {
     private String descripcion;
     private double precio;
     private String claseServicios;
+	private String[] OpcionesCampus;
+	
 
     public Servicios(String nombre, String descripcion, double precio, String claseServicios) {
         this.nombre = nombre;
@@ -19,6 +21,10 @@ public class Servicios {
 		this.descripcion = "";
 		this.precio = 0.0;
 		this.claseServicios = "";
+	}
+
+	public Servicios(String nombre2, String descripcion2, double precio2, String[] strings) {
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getNombre() {
@@ -86,13 +92,50 @@ public class Servicios {
     	 this.precio = Double.parseDouble(JOptionPane.showInputDialog("Nombre:"));
              
         // Opciones para seleccionar la info especial de Riders
-        Object[] opcionesclasesServicio = {"Taller básico", "Programa STAIRS", "Clases particulares", "Campus Workout", "50€/h"};
+        Object[] opcionesclasesServicio = {"Taller básico", "Programa STAIRS", "Clases particulares", "Campus Workout", "Alquiler material"};
         int opcionclaseServicios = JOptionPane.showOptionDialog(null, "¿Que sueldo recibe?",
                 "Clase de Servicio", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null,
                 opcionesclasesServicio, opcionesclasesServicio[0]);
         this.claseServicios = opcionesclasesServicio[opcionclaseServicios].toString();
         
 }
+
+    public static void mostrarServicios() {
+        // Definir los servicios
+        Servicios[] servicios = {
+                new Servicios("Talleres básicos", "Descripción del taller básico", 0.0, new String[]{"Completo", "Reducido", "Completo+4H", "Reducido+2H"}),
+                new Servicios("Clases particulares", "Descripción de las clases particulares", 0.0, new String[]{"Rider: Sebastián López", "Rider: Daniel Carrillo"}),
+                new Servicios("Programa 'STAIRS'", "Descripción del programa STAIRS", 0.0, new String[]{"Bono día", "Bono Mensual", "Bono Trimestral", "Bono Anual"}),
+                new Servicios("Campus Workout", "Descripción del Campus Workout", 0.0, new String[]{"Entreno Personal", "Entreno dirigido", "Tecnificación skate/scooter", "Casal lúdico/recreativo", "Todos los servicios"})
+        };
+
+        // Construir el mensaje con la información de los servicios
+        StringBuilder mensaje = new StringBuilder();
+        mensaje.append("SERVICIOS DISPONIBLES:\n");
+        for (int i = 0; i < servicios.length; i++) {
+            mensaje.append(i + 1).append(". ").append(servicios[i].getNombre()).append("\n");
+            mensaje.append("   Descripción: ").append(servicios[i].getDescripcion()).append("\n");
+            mensaje.append("   Precio: ").append(servicios[i].getPrecio()).append("€\n");
+
+            String[] opciones = ((servicios[i]).getOpcionesServicios());
+        if (opciones != null && opciones.length > 0) {
+                mensaje.append("   Opciones: ").append(String.join(", ", opciones)).append("\n");
+            }
+
+            mensaje.append("\n");
+        }
+
+        // Mostrar el mensaje
+        JOptionPane.showMessageDialog(null, mensaje.toString(), "Servicios Disponibles", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+	public String[] getOpcionesServicios() {
+		return OpcionesCampus;
+	}
+	public void setOpcionesCampus(String[] opcionesCampus) {
+		OpcionesCampus = opcionesCampus;
+	}
 }
+
 
 

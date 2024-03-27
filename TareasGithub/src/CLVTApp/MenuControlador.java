@@ -24,7 +24,7 @@ public class MenuControlador {
 	                    agregarInfoNosotros();
 	                    break;
 	                case "CLVT Store":
-	                    iniciaCLVTStore();
+	                    CLVTStore.Iniciar();
 	                    break;
 	                case "Servicios":
 	                    mostrarServicios();
@@ -43,55 +43,11 @@ public class MenuControlador {
 	            }
 	        }
 	    }
-		public static void iniciaCLVTStore() {
-		    final String CONTRASEÑA = "CultiStore";
-
-		    List<Producto> catalogo = new ArrayList<>();
-		    catalogo.add(new Producto("Camiseta Asociad@", 19.99, 35, 21));
-		    catalogo.add(new Producto("Gorra Green Olive", 14.99, 10, 21));
-		    catalogo.add(new Producto("Gorra Gris", 14.99, 10, 21));
-		    catalogo.add(new Producto("Sudadera Gris", 39.99, 15, 21));
-		    catalogo.add(new Producto("Sudadera Negro", 39.99, 15, 21));
-		    catalogo.add(new Producto("Sudadera Navy",  39.99, 10, 21));
-		    catalogo.add(new Producto("Loto Candle: modelo 'Fire'", 14.99, 25, 21));
-		    catalogo.add(new Producto("Loto Candle: modelo 'Purple'", 54.99, 25, 21));
-		    catalogo.add(new Producto("Tabla de Skate CLVT ONE", 54.99, 25, 21));
-		    catalogo.add(new Producto("Brain Pocket Wax (para Skate/Scooter)", 6.95, 20, 21));
-
-		    List<Producto> carrito = new ArrayList<>();
-
-		    while (true) {
-		        String opcion = JOptionPane.showInputDialog(null, "~~~ CLVT STORE ~~~\n" + "1. Catalogo \n"
-		                + "2. Comprar producto\n" + "3. Modo Admin\n" + "4. Salir\n" + "Seleccione una opción:");
-
-		        if (opcion == null) {
-		            return;
-		        }
-
-		        switch (opcion) {
-		            case "1":
-		                mostrarProductos(catalogo);
-		                break;
-		            case "2":
-		                comprarProductos(catalogo, carrito);
-		                break;
-		            case "3":
-		                String password = JOptionPane.showInputDialog("Ingrese la contraseña de administrador:");
-		                if (password != null && password.equals(CONTRASEÑA)) {
-		                    modoAdmin(catalogo);
-		                } else {
-		                    JOptionPane.showMessageDialog(null, "Contraseña incorrecta. Inténtelo de nuevo.");
-		                }
-		                break;
-		            case "4":
-		                JOptionPane.showMessageDialog(null, "¡Hasta luego!");
-		                return;
-		            default:
-		                JOptionPane.showMessageDialog(null, "Opción no válida. Inténtelo de nuevo.");
-		        }
-		    }mostrarProductos();
-		    comprar
-		}
+		
+		protected static double formatoDosDecimales(double valor) {
+		        return Math.round(valor * 100.0) / 100.0;
+		    }
+		
 
 		public static void agregarInfoNosotros() {
 		    String textoInfo = JOptionPane.showInputDialog(null, "Por favor, ingrese un texto explicativo sobre nuestra entidad:");

@@ -7,8 +7,9 @@ import javax.swing.JOptionPane;
 public class CLVTStore extends MenuControlador {
     private static final String CONTRASEÑA = "CultiStore";
 
-    public static void main(String[] args) {
-        List<Producto> catalogo = new ArrayList<>();
+    public static void Iniciar() {
+        
+    	List<Producto> catalogo = new ArrayList<>();
         catalogo.add(new Producto("Camiseta Asociad@", 19.99, 35, 21));
         catalogo.add(new Producto("Gorra Green Olive", 14.99, 10, 21));
         catalogo.add(new Producto("Gorra Gris", 14.99, 10, 21));
@@ -379,4 +380,5 @@ public class CLVTStore extends MenuControlador {
             JOptionPane.showMessageDialog(null, "No se seleccionó ningún método de pago. La compra se canceló.");
         } 
     }
+
 }
