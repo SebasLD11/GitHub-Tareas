@@ -2,7 +2,7 @@ package CLVTApp;
 
 import javax.swing.JOptionPane;
 
-public class MiembroBase extends CLVTApp {
+public class MiembroBase extends CLVTBaseDatos {
     protected String nombre;
     protected String poblacion;
     protected int edad;

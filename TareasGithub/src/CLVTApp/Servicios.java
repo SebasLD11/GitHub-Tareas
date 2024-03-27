@@ -89,7 +89,7 @@ public class Servicios {
     public void pedirInformacion() {
     	 this.nombre = JOptionPane.showInputDialog("Nombre:");
     	 this.descripcion = JOptionPane.showInputDialog("Descripción:");
-    	 this.precio = Double.parseDouble(JOptionPane.showInputDialog("Nombre:"));
+    	 this.precio = Double.parseDouble(JOptionPane.showInputDialog("Precio:"));
              
         // Opciones para seleccionar la info especial de Riders
         Object[] opcionesclasesServicio = {"Taller básico", "Programa STAIRS", "Clases particulares", "Campus Workout", "Alquiler material"};
