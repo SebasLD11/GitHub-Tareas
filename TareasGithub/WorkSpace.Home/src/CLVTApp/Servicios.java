@@ -1,14 +1,12 @@
 package CLVTApp;
 import javax.swing.JOptionPane;
 
-public class Servicios {
+public class Servicios extends MenuControlador{
     private String nombre;
     private String descripcion;
     private double precio;
     private String claseServicios;
-	private String[] OpcionesCampus;
 	
-
     public Servicios(String nombre, String descripcion, double precio, String claseServicios) {
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -21,10 +19,6 @@ public class Servicios {
 		this.descripcion = "";
 		this.precio = 0.0;
 		this.claseServicios = "";
-	}
-
-	public Servicios(String nombre2, String descripcion2, double precio2, String[] strings) {
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getNombre() {
@@ -93,10 +87,18 @@ public class Servicios {
              
         // Opciones para seleccionar la info especial de Riders
         Object[] opcionesclasesServicio = {"Taller básico", "Programa STAIRS", "Clases particulares", "Campus Workout", "Alquiler material"};
-        int opcionclaseServicios = JOptionPane.showOptionDialog(null, "¿Que sueldo recibe?",
+        int opcionclaseServicios = JOptionPane.showOptionDialog(null, "¿Que servicio disfruta?",
                 "Clase de Servicio", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null,
                 opcionesclasesServicio, opcionesclasesServicio[0]);
         this.claseServicios = opcionesclasesServicio[opcionclaseServicios].toString();
 }	
+    
+    public void mostrarInformacion() {
+        StringBuilder info = new StringBuilder();
+        info.append("Nombre: ").append(nombre).append("\n");
+        info.append("Descripción: ").append(descripcion).append("\n");
+        info.append("Precio: ").append(precio).append("€\n");
 
+        JOptionPane.showMessageDialog(null, info.toString(), "Información del Servicio", JOptionPane.INFORMATION_MESSAGE);
+    }
 }

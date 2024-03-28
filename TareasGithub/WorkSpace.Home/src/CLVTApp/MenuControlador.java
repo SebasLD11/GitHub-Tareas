@@ -6,222 +6,144 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 public class MenuControlador {
+    private static String infoNosotros;
+    private static List<Proyectos> listaProyectos = new ArrayList<>();
+    private static List<Eventos> listaEventos = new ArrayList<>();
+    private static InfoAdicional infoAdicional = new InfoAdicional();
 
-	public static void main(String[] args) {
-	    mostrarMenuControlador();
-	}
-		public static void mostrarMenuControlador() {
-			String[] opcionesMenu = {"Sobre nosotros", "CLVT Store", "Servicios", "Proyectos","Eventos", "Información adicional", "Salir"};
-	        while (true) {
-	            String opcionSeleccionada = (String) JOptionPane.showInputDialog(null, "Seleccione una opción:",
-	                    "~~~ASOCIACIÓN CUTLIVATE~~~", JOptionPane.PLAIN_MESSAGE, null, opcionesMenu, opcionesMenu[0]);
-	            if (opcionSeleccionada == null || opcionSeleccionada.equals("Salir")) {
-	                JOptionPane.showMessageDialog(null, "Saliendo de la aplicación.");
-	                break;
-	            }
-	            switch (opcionSeleccionada) {
-	                case "Sobre nosotros":
-	                    agregarInfoNosotros();
-	                    break;
-	                case "CLVT Store":
-	                    iniciarCLVTStore();
-	                    break;
-	                case "Servicios":
-	                    mostrarServicios();
-	                    break;
-	                case "Proyectos":
-	                    mostrarProyectos();
-	                    break;
-	                case "Eventos":
-	                    mostrarEventos();
-	                    break;
-	                case "Información adicional":
-	                    mostrarinfoAdicional();
-	                    break;
-	                default:
-	                    JOptionPane.showMessageDialog(null, "Opción no válida.");
-	            }
-	        }
-	    }
-		
-		protected static double formatoDosDecimales(double valor) {
-		        return Math.round(valor * 100.0) / 100.0;
-		    }
-		
+    public static String getInfoNosotros() {
+        return infoNosotros;
+    }
 
-		public static void agregarInfoNosotros() {
-		    String textoInfo = JOptionPane.showInputDialog(null, "Por favor, ingrese un texto explicativo sobre nuestra entidad:");
-		    if (textoInfo != null && !textoInfo.isEmpty()) {
-		        // Aquí puedes guardar el texto en alguna estructura de datos o simplemente mostrarlo
-		        JOptionPane.showMessageDialog(null, "Información agregada correctamente:\n" + textoInfo);
-		    } else {
-		        JOptionPane.showMessageDialog(null, "No se ingresó ningún texto. La información no se ha guardado.");
-		    }
-		}
-		
-		public static void iniciarCLVTStore() {
-	        CLVTStore.main(null);
-	    }
+    public static void setInfoNosotros(String infoNosotros) {
+        MenuControlador.infoNosotros = infoNosotros;
+    }
 
-		 public static void mostrarServicios() {
-		        JOptionPane.showMessageDialog(null, "Mostrando servicios disponibles...");
+    public static void main(String[] args) {
+        listaProyectos.add(new Proyectos("Proyecto 1", "Descripción del proyecto 1", null, 0, 0));
+        listaProyectos.add(new Proyectos("Proyecto 2", "Descripción del proyecto 2", null, 0, 0));
 
-		        // Aquí puedes implementar la lógica para mostrar los servicios disponibles
-		        String[] servicios = {"Talleres básicos", "Clases particulares", "Programa 'STAIRS'",
-		                "Campus Workout"};
+        listaEventos.add(new Eventos("Evento 1", "Fecha evento 1", "Descripción evento 1", new String[]{"Organizador 1"}, new ArrayList<>(), "ABIERTO"));
+        listaEventos.add(new Eventos("Evento 2", "Fecha evento 2", "Descripción evento 2", new String[]{"Organizador 2"}, new ArrayList<>(), "FINALIZADO"));
 
-		        String servicioSeleccionado = (String) JOptionPane.showInputDialog(null,
-		                "Seleccione un servicio:", "Servicios disponibles",
-		                JOptionPane.QUESTION_MESSAGE, null, servicios, servicios[0]);
+        mostrarMenuControlador();
+    }
 
-		        if (servicioSeleccionado != null) {
-		            // Aquí puedes agregar lógica adicional según el servicio seleccionado
-		            switch (servicioSeleccionado) {
-		                case "Talleres básicos":
-		                	Servicios talleresBasicos = new Servicios("Talleres Básicos", "Descripción de los talleres básicos", 0);
-		                    talleresBasicos.mostrarInformacion();
-		                    talleresBasicos.contratarServicio();
-		                	String[] opcionesTalleres = {"Reducida", "Completa", "Reducida + 2H particulares", "Completa + 4H particulares"};
-		                    String tallerSeleccionado = (String) JOptionPane.showInputDialog(null,
-		                            "Seleccione una opción de taller:", "Talleres básicos",
-		                            JOptionPane.QUESTION_MESSAGE, null, opcionesTalleres, opcionesTalleres[0]);
+    public static void mostrarMenuControlador() {
+        String[] opcionesMenu = {"Sobre nosotros", "CLVT Store", "Servicios", "Proyectos", "Eventos", "Información adicional", "Salir"};
+        while (true) {
+            String opcionSeleccionada = (String) JOptionPane.showInputDialog(null, "Seleccione una opción:",
+                    "~~~ASOCIACIÓN CUTLIVATE~~~", JOptionPane.PLAIN_MESSAGE, null, opcionesMenu, opcionesMenu[0]);
+            if (opcionSeleccionada == null || opcionSeleccionada.equals("Salir")) {
+                JOptionPane.showMessageDialog(null, "Saliendo de la aplicación.");
+                break;
+            }
+            switch (opcionSeleccionada) {
+                case "Sobre nosotros":
+                    mostrarInfoNosotros();
+                    break;
+                case "CLVT Store":
+                    iniciarCLVTStore();
+                    break;
+                case "Servicios":
+                    mostrarServicios();
+                    break;
+                case "Proyectos":
+                    mostrarProyectos();
+                    break;
+                case "Eventos":
+                    mostrarEventos();
+                    break;
+                case "Información adicional":
+                    mostrarInfoAdicional();
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Opción no válida.");
+            }
+        }
+    }
 
-		                    if (tallerSeleccionado != null) {
-		                        double precioTaller = 0;
+    private static void mostrarInfoNosotros() {
+        JOptionPane.showMessageDialog(null, getInfoNosotros(), "Sobre Nosotros", JOptionPane.INFORMATION_MESSAGE);
+    }
 
-		                        switch (tallerSeleccionado) {
-		                            case "Reducida":
-		                                precioTaller = 25.0;
-		                                break;
-		                            case "Completa":
-		                                precioTaller = 35.0;
-		                                break;
-		                            case "Reducida + 2H particulares":
-		                                precioTaller = 50.0;
-		                                break;
-		                            case "Completa + 4H particulares":
-		                                precioTaller = 80.0;
-		                                break;
-		                            default:
-		                                JOptionPane.showMessageDialog(null, "Opción de taller no válida.");
-		                                break;
-		                        }
+    private static void iniciarCLVTStore() {
+        CLVTStore.main(null);
+    }
 
-		                        JOptionPane.showMessageDialog(null, "Usted ha seleccionado el taller: " + tallerSeleccionado +
-		                                "\nPrecio: " + precioTaller + "€");
-		                    }
-		                    break;
-		                    
-		                case "Clases particulares":
-		                    String[] opcionesMonitor = {"Daniel Carrillo. Scooter (20€/h)", "Sebastián López. Skate (35€/h)"};
-		                    String monitorSeleccionado = (String) JOptionPane.showInputDialog(null,
-		                            "Seleccione el monitor para las clases particulares:", "Clases particulares",
-		                            JOptionPane.QUESTION_MESSAGE, null, opcionesMonitor, opcionesMonitor[0]);
+    private static void mostrarServicios() {
+        JOptionPane.showMessageDialog(null, "Mostrando servicios disponibles...");
 
-		                    if (monitorSeleccionado != null) {
-		                        double precioClases = 0;
+        // Aquí puedes implementar la lógica para mostrar los servicios disponibles
+        String[] servicios = {"Talleres básicos", "Clases particulares", "Programa 'STAIRS'",
+                "Campus Workout"};
 
-		                        switch (monitorSeleccionado) {
-		                            case "Daniel Carrillo. Scooter (20€/h)":
-		                                precioClases = 20.0;
-		                                break;
-		                            case "Sebastián López. Skate (35€/h)":
-		                                precioClases = 35.0;
-		                                break;
-		                            default:
-		                                JOptionPane.showMessageDialog(null, "Opción de monitor no válida.");
-		                                break;
-		                        }
+        String servicioSeleccionado = (String) JOptionPane.showInputDialog(null,
+                "Seleccione un servicio:", "Servicios disponibles",
+                JOptionPane.QUESTION_MESSAGE, null, servicios, servicios[0]);
 
-		                        JOptionPane.showMessageDialog(null, "Usted ha seleccionado el monitor para las clases particulares: " +
-		                                monitorSeleccionado + "\nPrecio: " + precioClases + "€/h");
-		                    }
-		                    break;
+        if (servicioSeleccionado != null) {
+            // Aquí puedes agregar lógica adicional según el servicio seleccionado
+            switch (servicioSeleccionado) {
+                case "Talleres básicos":
+                    // Lógica para los talleres básicos
+                    break;
+                case "Clases particulares":
+                    // Lógica para las clases particulares
+                    break;
+                case "Programa STAIRS":
+                    // Lógica para el programa STAIRS
+                    break;
+                case "Campus Workout":
+                    // Lógica para el Campus Workout
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Servicio no válido.");
+            }
+        }
+    }
 
-		                case "Programa STAIRS":
-		                    String[] opcionesBono = {"MENSUAL 120€.// 180€/mes, segundo año", "TRIMESTRAL 345€ (115€/mes).// 450€ (150€/mes, segundo año)",
-		                    		"SEMESTRAL 630€ (315€/cuota trimestral).// 780€ (390€/trimestral, segundo año) ", "ANUAL 1140€ (285€/cuota trimestral).//"
-		                    				+ " 1260€ (315€/trimestral, segundo año) "};
-		                    String bonoSeleccionado = (String) JOptionPane.showInputDialog(null,
-		                            "Seleccione el tipo de bono para el Programa STAIRS:", "Programa STAIRS",
-		                            JOptionPane.QUESTION_MESSAGE, null, opcionesBono, opcionesBono[0]);
+    private static void mostrarProyectos() {
+        StringBuilder proyectosInfo = new StringBuilder("Proyectos:\n");
+        for (Proyectos proyecto : listaProyectos) {
+            proyectosInfo.append(proyecto.toString()).append("\n");
+        }
+        JOptionPane.showMessageDialog(null, proyectosInfo.toString());
+    }
 
-		                    if (bonoSeleccionado != null) {
-		                        double precioBono = 0;
+    private static void mostrarEventos() {
+        // Crear un array de Strings para mostrar los nombres de los eventos en el menú
+        String[] nombresEventos = new String[listaEventos.size()];
+        for (int i = 0; i < listaEventos.size(); i++) {
+            nombresEventos[i] = listaEventos.get(i).getNombre();
+        }
 
-		                        switch (bonoSeleccionado) {
-		                            case "MENSUAL 120€.// 180€/mes, segundo año":
-		                                precioBono = 120.0;
-		                                break;
-		                            case "TRIMESTRAL 345€ (115€/mes).// 450€ (150€/mes, segundo año)":
-		                                precioBono = 345.0;
-		                                break;
-		                            case "SEMESTRAL 630€ (315€/cuota trimestral).// 780€ (390€/trimestral, segundo año) ":
-		                                precioBono = 630.0;
-		                                break;
-		                            case  "ANUAL 1140€ (285€/cuota trimestral).//"
-		                    				+ " 1260€ (315€/trimestral, segundo año)":
-		                                precioBono = 1140.0;
-		                                break;
-		                            default:
-		                                JOptionPane.showMessageDialog(null, "Opción de bono no válida.");
-		                                break;
-		                        }
+        // Mostrar el menú de selección de eventos
+        String eventoSeleccionado = (String) JOptionPane.showInputDialog(
+                null, "Seleccione un evento:", "Eventos disponibles",
+                JOptionPane.QUESTION_MESSAGE, null, nombresEventos, nombresEventos[0]);
 
-		                        JOptionPane.showMessageDialog(null, "Usted ha seleccionado el bono para el Programa STAIRS: " +
-		                                bonoSeleccionado + "\nPrecio: " + precioBono + "€");
-		                    }
-		                    break;
+        // Mostrar la información del evento seleccionado
+        if (eventoSeleccionado != null) {
+            for (Eventos evento : listaEventos) {
+                if (evento.getNombre().equals(eventoSeleccionado)) {
+                    evento.mostrarEventos();
 
-		                case "Campus Workout":
-		                    String[] opcionesServicio = {"Completo (180€ pack de 5 días)", "Parcial (110€ pack de 3 días)", "Servicio Individual (40€ día suelto)"};
-		                    String servicioSelec = (String) JOptionPane.showInputDialog(null,
-		                            "Seleccione el tipo de servicio para el Campus Workout:", "Campus Workout",
-		                            JOptionPane.QUESTION_MESSAGE, null, opcionesServicio, opcionesServicio[0]);
+                    // Preguntar si el usuario quiere participar en el evento
+                    int opcion = JOptionPane.showConfirmDialog(null,
+                            "¿Desea participar en este evento?", "Participar en evento",
+                            JOptionPane.YES_NO_OPTION);
+                    if (opcion == JOptionPane.YES_OPTION) {
+                        evento.participarEnEvento();
+                    }
+                    break;
+                }
+            }
+        }
+    }
 
-		                    if (servicioSelec != null) {
-		                        double precioServicio = 0;
-
-		                        switch (servicioSelec) {
-		                            case "Completo (180€ pack de 5 días. 4h/día)":
-		                                precioServicio = 180.0;
-		                                break;
-		                            case "Parcial (110€ pack de 3 días. 4h/día)":
-		                                precioServicio = 110.0;
-		                                break;
-		                            case "Servicio Individual (40€ día suelto. 2h/servicio)":
-		                                String[] opcionesIndividual = {"Entrenamiento Personal", "Entrenamiento Dirigido", "Tecnificación Skate/Scooter", "Casal Lúdico/Recreativo"};
-		                                String individualSeleccionado = (String) JOptionPane.showInputDialog(null,
-		                                        "Seleccione el tipo de servicio individual:", "Servicio Individual",
-		                                        JOptionPane.QUESTION_MESSAGE, null, opcionesIndividual, opcionesIndividual[0]);
-
-		                                if (individualSeleccionado != null) {
-		                                    switch (individualSeleccionado) {
-		                                        case "Entrenamiento Personal":
-		                                        case "Entrenamiento Dirigido":
-		                                        case "Tecnificación Skate/Scooter":
-		                                        case "Casal Lúdico/Recreativo":
-		                                            precioServicio = 40.0;		                                           
-		                                            break;
-		                                        default:
-		                                            JOptionPane.showMessageDialog(null, "Opción de servicio individual no válida.");
-		                                            break;
-		                                    }
-		                                }
-		                                break;
-		                            default:
-		                                JOptionPane.showMessageDialog(null, "Opción de servicio no válida.");
-		                                break;
-		                        }
-
-		                        JOptionPane.showMessageDialog(null, "Usted ha seleccionado el servicio para el Campus Workout: " +
-		                                servicioSelec + "\nPrecio: " + precioServicio + "€");
-		                    }
-		                    break;
-
-		                default:
-		                    JOptionPane.showMessageDialog(null, "Servicio no válido.");
-		            }
-		        }
-		    }
+    protected static void mostrarInfoAdicional() {
+        MenuControlador.mostrarInfoAdicional();
+    }
 }
+
