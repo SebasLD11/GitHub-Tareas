@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 public class CLVTStore extends MenuControlador {
     private static final String CONTRASEÑA = "CultiStore";
 
-    public static void Iniciar() {
+    public static void mainIniciar(String [] args) {
         
     	List<Producto> catalogo = new ArrayList<>();
         catalogo.add(new Producto("Camiseta Asociad@", 19.99, 35, 21));

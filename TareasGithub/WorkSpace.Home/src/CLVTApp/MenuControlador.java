@@ -20,12 +20,7 @@ public class MenuControlador {
     }
 
     public static void main(String[] args) {
-        listaProyectos.add(new Proyectos("Proyecto 1", "Descripción del proyecto 1", null, 0, 0));
-        listaProyectos.add(new Proyectos("Proyecto 2", "Descripción del proyecto 2", null, 0, 0));
-
-        listaEventos.add(new Eventos("Evento 1", "Fecha evento 1", "Descripción evento 1", new String[]{"Organizador 1"}, new ArrayList<>(), "ABIERTO"));
-        listaEventos.add(new Eventos("Evento 2", "Fecha evento 2", "Descripción evento 2", new String[]{"Organizador 2"}, new ArrayList<>(), "FINALIZADO"));
-
+    	
         mostrarMenuControlador();
     }
 
@@ -34,10 +29,7 @@ public class MenuControlador {
         while (true) {
             String opcionSeleccionada = (String) JOptionPane.showInputDialog(null, "Seleccione una opción:",
                     "~~~ASOCIACIÓN CUTLIVATE~~~", JOptionPane.PLAIN_MESSAGE, null, opcionesMenu, opcionesMenu[0]);
-            if (opcionSeleccionada == null || opcionSeleccionada.equals("Salir")) {
-                JOptionPane.showMessageDialog(null, "Saliendo de la aplicación.");
-                break;
-            }
+          
             switch (opcionSeleccionada) {
                 case "Sobre nosotros":
                     mostrarInfoNosotros();
@@ -49,9 +41,13 @@ public class MenuControlador {
                     mostrarServicios();
                     break;
                 case "Proyectos":
+                	   listaProyectos.add(new Proyectos("Proyecto 1", "Descripción del proyecto 1", null, 0, 0));
+                       listaProyectos.add(new Proyectos("Proyecto 2", "Descripción del proyecto 2", null, 0, 0));
                     mostrarProyectos();
                     break;
                 case "Eventos":
+                	 listaEventos.add(new Eventos());
+                     listaEventos.add(new Eventos());
                     mostrarEventos();
                     break;
                 case "Información adicional":
@@ -59,48 +55,24 @@ public class MenuControlador {
                     break;
                 default:
                     JOptionPane.showMessageDialog(null, "Opción no válida.");
-            }
+            }if (opcionSeleccionada == null || opcionSeleccionada.equals("Salir")) {
+                JOptionPane.showMessageDialog(null, "Saliendo de la aplicación.");
+                break;
         }
     }
-
+    }
     private static void mostrarInfoNosotros() {
         JOptionPane.showMessageDialog(null, getInfoNosotros(), "Sobre Nosotros", JOptionPane.INFORMATION_MESSAGE);
     }
 
     private static void iniciarCLVTStore() {
-        CLVTStore.main(null);
+        CLVTStore.mainIniciar(null);
     }
 
     private static void mostrarServicios() {
         JOptionPane.showMessageDialog(null, "Mostrando servicios disponibles...");
 
-        // Aquí puedes implementar la lógica para mostrar los servicios disponibles
-        String[] servicios = {"Talleres básicos", "Clases particulares", "Programa 'STAIRS'",
-                "Campus Workout"};
-
-        String servicioSeleccionado = (String) JOptionPane.showInputDialog(null,
-                "Seleccione un servicio:", "Servicios disponibles",
-                JOptionPane.QUESTION_MESSAGE, null, servicios, servicios[0]);
-
-        if (servicioSeleccionado != null) {
-            // Aquí puedes agregar lógica adicional según el servicio seleccionado
-            switch (servicioSeleccionado) {
-                case "Talleres básicos":
-                    // Lógica para los talleres básicos
-                    break;
-                case "Clases particulares":
-                    // Lógica para las clases particulares
-                    break;
-                case "Programa STAIRS":
-                    // Lógica para el programa STAIRS
-                    break;
-                case "Campus Workout":
-                    // Lógica para el Campus Workout
-                    break;
-                default:
-                    JOptionPane.showMessageDialog(null, "Servicio no válido.");
-            }
-        }
+        // Implementa la lógica para mostrar los servicios
     }
 
     private static void mostrarProyectos() {
@@ -112,38 +84,22 @@ public class MenuControlador {
     }
 
     private static void mostrarEventos() {
-        // Crear un array de Strings para mostrar los nombres de los eventos en el menú
-        String[] nombresEventos = new String[listaEventos.size()];
-        for (int i = 0; i < listaEventos.size(); i++) {
-            nombresEventos[i] = listaEventos.get(i).getNombre();
+        StringBuilder eventosInfo = new StringBuilder("Eventos:\n");
+        for (Eventos evento : listaEventos) {
+            eventosInfo.append(evento.toString()).append("\n");
         }
-
-        // Mostrar el menú de selección de eventos
-        String eventoSeleccionado = (String) JOptionPane.showInputDialog(
-                null, "Seleccione un evento:", "Eventos disponibles",
-                JOptionPane.QUESTION_MESSAGE, null, nombresEventos, nombresEventos[0]);
-
-        // Mostrar la información del evento seleccionado
-        if (eventoSeleccionado != null) {
-            for (Eventos evento : listaEventos) {
-                if (evento.getNombre().equals(eventoSeleccionado)) {
-                    evento.mostrarEventos();
-
-                    // Preguntar si el usuario quiere participar en el evento
-                    int opcion = JOptionPane.showConfirmDialog(null,
-                            "¿Desea participar en este evento?", "Participar en evento",
-                            JOptionPane.YES_NO_OPTION);
-                    if (opcion == JOptionPane.YES_OPTION) {
-                        evento.participarEnEvento();
-                    }
-                    break;
-                }
-            }
-        }
+        JOptionPane.showMessageDialog(null, eventosInfo.toString());
     }
 
     protected static void mostrarInfoAdicional() {
-        MenuControlador.mostrarInfoAdicional();
+        InfoAdicional.mostrarInfoAdicional();
     }
-}
 
+	public static InfoAdicional getInfoAdicional() {
+		return infoAdicional;
+	}
+
+	public static void setInfoAdicional(InfoAdicional infoAdicional) {
+		MenuControlador.infoAdicional = infoAdicional;
+	}
+}

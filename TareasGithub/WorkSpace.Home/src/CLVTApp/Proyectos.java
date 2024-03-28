@@ -3,8 +3,6 @@ package CLVTApp;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JOptionPane;
-
 public class Proyectos extends MenuControlador{
     private String nombre;
     private String descripcion;
@@ -20,15 +18,25 @@ public class Proyectos extends MenuControlador{
         this.inversionEntrar = inversionEntrar;
         this.rentabilidadTrimestral = rentabilidadTrimestral;
     }
+    
+    public Proyectos(List<String> personasResponsables) {
+		super();
+		this.nombre = "";
+		this.descripcion = "";
+		this.personasResponsables = personasResponsables;
+		this.inversionEntrar = 0.0;
+		this.rentabilidadTrimestral = 0.0;
+	}
 
-    // Getters y Setters
+
+	// Getters y Setters
 
     public String getNombre() {
         return nombre;
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        this.nombre = "PROYECTO EMPRESARIAL VALODI SERVICES";
     }
 
     public String getDescripcion() {
@@ -36,7 +44,9 @@ public class Proyectos extends MenuControlador{
     }
 
     public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+        this.descripcion = "Empresa multiservicios para el desarrollo de proyectos y el desarrollo comunitario."
+        		+ "Creamos comunidades y acercamos tus proyectos a la realidad. "
+        		+ "Creemos, Creamos, Construimos!";
     }
 
     public List<String> getPersonasResponsables() {
@@ -44,7 +54,11 @@ public class Proyectos extends MenuControlador{
     }
 
     public void setPersonasResponsables(List<String> personasResponsables) {
-        this.personasResponsables = personasResponsables;
+        personasResponsables.add("Sebastián López, CEO. Rama fisico-deportiva y Mundo Digital.");
+        personasResponsables.add("Marina Figueras, Cofunder. Rama AMZN FBA.");
+        personasResponsables.add("Milena López, Cofunder. Rama Terapeutica.");
+        personasResponsables.add("Ingrid, Cofunder. Rama artistica.");
+    	this.personasResponsables = personasResponsables;
     }
 
     public double getInversionEntrar() {
@@ -52,7 +66,7 @@ public class Proyectos extends MenuControlador{
     }
 
     public void setInversionEntrar(double inversionEntrar) {
-        this.inversionEntrar = inversionEntrar;
+        this.inversionEntrar = 500.0;
     }
 
     public double getRentabilidadTrimestral() {
@@ -60,7 +74,7 @@ public class Proyectos extends MenuControlador{
     }
 
     public void setRentabilidadTrimestral(double rentabilidadTrimestral) {
-        this.rentabilidadTrimestral = rentabilidadTrimestral;
+        this.rentabilidadTrimestral = 2.0;
     }
 
     @Override
@@ -69,8 +83,8 @@ public class Proyectos extends MenuControlador{
                 "nombre='" + nombre + '\'' +
                 ", descripcion='" + descripcion + '\'' +
                 ", personasResponsables=" + personasResponsables +
-                ", inversionEntrar=" + inversionEntrar +
-                ", rentabilidadTrimestral=" + rentabilidadTrimestral +
+                ", inversionEntrar=" + inversionEntrar + "€" +
+                ", rentabilidadTrimestral=" + rentabilidadTrimestral + "%" +
                 '}';
     }
 
