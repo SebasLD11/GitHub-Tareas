@@ -66,14 +66,16 @@ public class InfoAdicional extends MenuControlador {
         		+ "\r\n"
         		+ "722 199 574";
     }
+     
+    //Métodos
     public String obtenerAvisoLegal() {
         return avisoLegal;
     }
 
-    // Método para obtener la política de privacidad preestablecida
     public String obtenerPoliticaPrivacidad() {
         return politicaPrivacidad;
     }
+    
     // Método para que cualquier persona pueda hacer un donativo económico
     public void hacerDonativo() {
         String nombre = JOptionPane.showInputDialog("Ingrese su nombre:");
@@ -86,28 +88,21 @@ public class InfoAdicional extends MenuControlador {
         donativosRegistrados.add(nuevoDonativo);
         apoyoDonativo += cantidad;
 
-        JOptionPane.showMessageDialog(null, "¡Gracias por su donativo!");
-    }
-
-    // Método para introducir información legal relevante sobre la entidad
-    public void introducirAvisoLegal() {
-        this.avisoLegal = JOptionPane.showInputDialog("Introduzca el aviso legal:");
-    }
-
-    // Método para introducir información sobre la política de privacidad
-    public void introducirPoliticaPrivacidad() {
-        this.politicaPrivacidad = JOptionPane.showInputDialog("Introduzca la política de privacidad:");
+        JOptionPane.showMessageDialog(null, "¡Gracias por tu donativo! En un máximo de 72 horas nos pondremos en contacto contigo.");
     }
 
     // Método para mostrar la información
+
     public void mostrarInformacion() {
-        StringBuilder info = new StringBuilder();
-        info.append("Apoyo Donativo Recibido: ").append(apoyoDonativo).append("€\n");
+    	StringBuilder info = new StringBuilder();
+        info.append("Donativo Total Recibido: ").append(apoyoDonativo).append("€\n");
+        info.append("¿Quien colabora?:");
+        	for (Donativo donativo : donativosRegistrados) {
+            info.append("Nombre: ").append(donativo.getNombre()).append(", Cantidad Donada: ").append(donativo.getCantidad()).append("€\n");
         info.append("Aviso Legal: ").append(avisoLegal).append("\n");
         info.append("Política de Privacidad: ").append(politicaPrivacidad).append("\n");
 
-        JOptionPane.showMessageDialog(null, info.toString(), "Información Adicional", JOptionPane.INFORMATION_MESSAGE);
-    }
-  
+         }JOptionPane.showMessageDialog(null, info.toString(), "Información Adicional", JOptionPane.INFORMATION_MESSAGE);
+}  
 }
 

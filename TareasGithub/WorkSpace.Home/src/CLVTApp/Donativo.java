@@ -1,6 +1,6 @@
 package CLVTApp;
 
-public class Donativo {
+public class Donativo extends InfoAdicional {
     
 	private String nombre;
     private String documento;
@@ -45,4 +45,5 @@ public class Donativo {
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
+
 }

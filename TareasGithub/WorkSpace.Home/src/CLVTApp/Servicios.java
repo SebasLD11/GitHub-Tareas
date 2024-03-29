@@ -2,7 +2,7 @@ package CLVTApp;
 import javax.swing.JOptionPane;
 
 public class Servicios extends MenuControlador {
-    private String nombre;
+    private static String nombre;
     private String descripcion;
     private double precio;
     private String claseServicios;
@@ -11,8 +11,8 @@ public class Servicios extends MenuControlador {
     public Servicios() {
         this.setNombre("");
         this.setDescripcion("");
-        this.setPrecio(0.0); // Precio predeterminado
-        this.setClaseServicios(""); // La clase de servicio se pedirá al mostrar las opciones
+        this.setPrecio(0.0); 
+        this.setClaseServicios("");
     }
 
     // Constructor con parámetros
@@ -24,21 +24,22 @@ public class Servicios extends MenuControlador {
     }
 
     // Método para mostrar las opciones de servicio
-    public void mostrarOpcionesServicio() {
+    public static void mostrarOpcionesServicio() {
         // Mostrar las opciones de servicio usando un bucle switch
         StringBuilder opciones = new StringBuilder("Opciones de Servicio:\n");
-        opciones.append("1. Taller básico (25€ - Reducido, 35€ - Completo, 50€ - Reducido + 2h particulares, 70€ - Completo + 4h particulares)\n");
+        opciones.append("1. Taller básico (25€ - Reducido, 35€ - Completo, 50€ - Reducido + 2h particulares, 80€ - Completo + 4h particulares)\n");
         opciones.append("2. Programa STAIRS (MENSUAL: 120€/mes, TRIMESTRAL: 345€/trimestre, SEMESTRAL: 630€/semestre, ANUAL: 1140€/año)\n");
         opciones.append("3. Clases particulares (Daniel Carrillo - 20€/h, Sebastián López - 35€/h)\n");
         opciones.append("4. Campus Workout (Individual 2h: 40€, Parcial 3 días 4h/día: 110€, Completo 5 días: 180€)\n");
         opciones.append("5. Alquiler de material (Skate - 5€/h, Scooter - 7€/h)\n");
+        opciones.append("6. Salidas Individuales (Asociad@s y externos - 20€, Riders/Alumn@s - 10€)\n");
 
         JOptionPane.showMessageDialog(null, opciones.toString(), "Opciones de Servicio", JOptionPane.INFORMATION_MESSAGE);
 
         // Pedir al usuario que elija una opción
         int opcionElegida = Integer.parseInt(JOptionPane.showInputDialog("Seleccione una opción:"));
         switch (opcionElegida) {
-            case 1:
+            case 1: 
                 mostrarOpcionesTallerBasico();
                 break;
             case 2:
@@ -53,6 +54,9 @@ public class Servicios extends MenuControlador {
             case 5:
                 mostrarOpcionesAlquilerMaterial();
                 break;
+            case 6:
+                mostrarOpcionesSalidas();
+                break;
             default:
                 JOptionPane.showMessageDialog(null, "Opción no válida", "Error", JOptionPane.ERROR_MESSAGE);
                 break;
@@ -61,88 +65,84 @@ public class Servicios extends MenuControlador {
     
     // Método para mostrar las opciones
     
-    private void mostrarOpcionesTallerBasico() {
-        String[] opciones = {
-                "Taller básico - Reducido (25€)",
-                "Taller básico - Completo (35€)",
-                "Taller básico - Reducido + 2h particulares (50€)",
-                "Taller básico - Completo + 4h particulares (70€)"
-        };
+    private static void mostrarOpcionesTallerBasico() {
+    	StringBuilder opciones = new StringBuilder("Opciones de Taller Básico:\n");
+   	 opciones.append("1. Reducido - 25€. 4 días/mes en fin de semana, 2h/día.\n");
+   	 opciones.append("2. Completo - 35€. 8 días/mes en fin de semana, 2h/día.\n");
+   	 opciones.append("3. Reducido + 2hparticulares/mes - 50€. 4 días/mes en fin de semana, 2h/día.\n");
+   	 opciones.append("4. Completo + 4hparticulares/mes - 80€. 8 días/mes en fin de semana, 2h/día.\n");
+ 
+   	 int opcionElegida = Integer.parseInt(JOptionPane.showInputDialog(opciones.toString() + "\nSeleccione una opción:"));
+     double precio = 0.0;
 
-        int opcionSeleccionada = JOptionPane.showOptionDialog(null, "Seleccione una opción de taller básico:",
-                "Opciones de Taller Básico", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
-                null, opciones, opciones[0]);
-
-        switch (opcionSeleccionada) {
-            case 0:
-                contratarTallerBasico("Taller básico - Reducido", 25);
-                break;
-            case 1:
-                contratarTallerBasico("Taller básico - Completo", 35);
-                break;
-            case 2:
-                contratarTallerBasico("Taller básico - Reducido + 2h particulares", 50);
-                break;
-            case 3:
-                contratarTallerBasico("Taller básico - Completo + 4h particulares", 70);
-                break;
-            default:
-                break;
-        }
+     switch (opcionElegida) {
+        case 1:
+        	precio = 25.0;
+        	break;
+        case 2:
+        	precio = 35.0;
+            break;
+        case 3:
+        	precio = 50.0;
+            break;
+        case 4:
+        	precio = 80.0;
+            break;
+        default:
+            break;
     }
+    contratarServicio("Taller Básico", precio);
+}
 
     // Método para mostrar las opciones de campus workout
-    private void mostrarOpcionesCampusWorkout() {
-        String[] opciones = {
-                "Servicio individual de 2h (40€)",
-                "Campus parcial de 3 días (110€)",
-                "Campus completo de 5 días (180€)"
-        };
+    private static void mostrarOpcionesCampusWorkout() {
+    	StringBuilder opciones = new StringBuilder("Opciones de Campus:\n");
+    	 opciones.append("1. Servicio individual de 2h, 40€\n");
+    	 opciones.append("2. Campus parcial de 3 días, 4h/dia, 110€\n");
+    	 opciones.append("3. Campus completo de 5 días,  4h/dia, 180€\n");
+        
+    	 int opcionElegida = Integer.parseInt(JOptionPane.showInputDialog(opciones.toString() + "\nSeleccione una opción:"));
+         double precio = 0.0;
 
-        int opcionSeleccionada = JOptionPane.showOptionDialog(null, "Seleccione una opción de campus workout:",
-                "Opciones de Campus Workout", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
-                null, opciones, opciones[0]);
-
-        switch (opcionSeleccionada) {
-            case 0:
-                contratarCampusWorkout("Servicio individual de 2h", 40);
-                break;
+        switch (opcionElegida) {
             case 1:
-                contratarCampusWorkout("Campus parcial de 3 días", 110);
-                break;
+            	precio = 40.0;
+            	break;
             case 2:
-                contratarCampusWorkout("Campus completo de 5 días", 180);
+            	precio = 110.0;
+                break;
+            case 3:
+            	precio = 180.0;
                 break;
             default:
                 break;
         }
+        contratarServicio("Campus Workout", precio);
     }
 
     // Método para mostrar las opciones de alquiler de material
-    private void mostrarOpcionesAlquilerMaterial() {
-        String[] opciones = {
-                "Alquiler de Skate (5€/h)",
-                "Alquiler de Scooter (7€/h)"
-        };
-
-        int opcionSeleccionada = JOptionPane.showOptionDialog(null, "Seleccione una opción de alquiler de material:",
-                "Opciones de Alquiler de Material", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
-                null, opciones, opciones[0]);
-
-        switch (opcionSeleccionada) {
-            case 0:
-                contratarAlquilerMaterial("Alquiler de Skate", 5);
-                break;
+    private static void mostrarOpcionesAlquilerMaterial() {
+    	StringBuilder opciones = new StringBuilder("Opciones de Alquiler:\n");
+        opciones.append("1. Skate - 5€/2h\n");
+        opciones.append("2. Scooter - 7€/2h\n");
+        int opcionElegida = Integer.parseInt(JOptionPane.showInputDialog(opciones.toString() + "\nSeleccione una opción:"));
+        double precio = 0.0;
+        switch (opcionElegida) {
             case 1:
-                contratarAlquilerMaterial("Alquiler de Scooter", 7);
+            	precio = 5.0;
+                break;
+            case 2:
+            	precio = 7.0;
                 break;
             default:
-                break;
+                JOptionPane.showMessageDialog(null, "Opción no válida", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
         }
+        contratarServicio("Alquiler de material", precio);
     }
 
-    
-    private void mostrarOpcionesProgramaSTAIRS() {
+    // Método para mostrar las opciones de campus workout
+    private static void mostrarOpcionesProgramaSTAIRS() {
         StringBuilder opciones = new StringBuilder("Opciones de Programa STAIRS:\n");
         opciones.append("1. MENSUAL: 120€/mes\n");
         opciones.append("2. TRIMESTRAL: 345€/trimestre\n");
@@ -150,54 +150,73 @@ public class Servicios extends MenuControlador {
         opciones.append("4. ANUAL: 1140€/año\n");
 
         int opcionElegida = Integer.parseInt(JOptionPane.showInputDialog(opciones.toString() + "\nSeleccione una opción:"));
-        double precioServicio = 0.0;
+        double precio = 0.0;
         switch (opcionElegida) {
             case 1:
-                precioServicio = 120.0;
+            	precio = 120.0;
                 break;
             case 2:
-                precioServicio = 345.0;
+            	precio = 345.0;
                 break;
             case 3:
-                precioServicio = 630.0;
+            	precio = 630.0;
                 break;
             case 4:
-                precioServicio = 1140.0;
+            	precio = 1140.0;
                 break;
             default:
                 JOptionPane.showMessageDialog(null, "Opción no válida", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
         }
-        contratarServicio("Programa STAIRS", precioServicio);
+        contratarServicio("Programa STAIRS", precio);
     }
 
     // Método para mostrar las opciones de clases particulares
-    private void mostrarOpcionesClasesParticulares() {
+    private static void mostrarOpcionesClasesParticulares() {
         StringBuilder opciones = new StringBuilder("Opciones de Clases Particulares:\n");
         opciones.append("1. Daniel Carrillo - 20€/h\n");
         opciones.append("2. Sebastián López - 35€/h\n");
 
         int opcionElegida = Integer.parseInt(JOptionPane.showInputDialog(opciones.toString() + "\nSeleccione una opción:"));
-        double precioServicio = 0.0;
+        double precio = 0.0;
         switch (opcionElegida) {
             case 1:
-                precioServicio = 20.0;
+            	precio = 20.0;
                 break;
             case 2:
-                precioServicio = 35.0;
+            	precio = 35.0;
                 break;
             default:
                 JOptionPane.showMessageDialog(null, "Opción no válida", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
         }
-        contratarServicio("Clases Particulares", precioServicio);
+        contratarServicio("Clases Particulares", precio);
+    }
+    
+    // Método para mostrar las opciones de salidas
+    private static void mostrarOpcionesSalidas() {
+    	StringBuilder opciones = new StringBuilder("Opciones de Salidas particulares:\n");
+    	opciones.append("1. Riders/Alumn@s - 10€");
+    	opciones.append("2. Asociad@s y extern@s - 20€");
+    	int opcionElegida = Integer.parseInt(JOptionPane.showInputDialog(opciones.toString() + "\nSeleccione una opción:"));
+        double precio = 0.0;
+        switch (opcionElegida) {
+            case 1:
+            	precio = 10.0;
+                break;
+            case 2:
+            	precio = 20.0;
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Opción no válida", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+        }
+        contratarServicio("Salidas Particulares", precio);
     }
 
-    // Métodos para mostrar las opciones de campus workout y alquiler de material (implementa estos métodos de manera similar a mostrarOpcionesProgramaSTAIRS y mostrarOpcionesClasesParticulares)
-
     // Métodos para contratar el servicio seleccionado
-    private void contratarServicio(String nombreServicio, double precioServicio) {
-        JOptionPane.showMessageDialog(null, "Contratando servicio: " + nombreServicio);
+    private static void contratarServicio(String nombreServicio, double precioServicio) {
+        JOptionPane.showMessageDialog( null, "Contratando servicio: " + nombre);
 
         String nombreCliente = JOptionPane.showInputDialog("Ingrese su nombre:");
         String dniCliente = JOptionPane.showInputDialog("Ingrese su DNI:");
@@ -214,130 +233,17 @@ public class Servicios extends MenuControlador {
                 "Edad: " + edadCliente + "\n" +
                 "Correo electrónico: " + correoElectronicoCliente + "\n" +
                 "Nombre del Servicio: " + nombreServicio + "\n" +
-                "Precio: " + precioServicio);
+                "Precio: " + precioServicio+"€");
+        JOptionPane.showMessageDialog(null, "¡Gracias por contratar nuestro servicio! En un plazo máximo de 48h contactaremos contigo.");
     }
 
-    // (Implementa los métodos para contratar el servicio seleccionado de manera similar a contratarServicio, mostrando la información del servicio contratado)
-
-//Método para contratar el servicio seleccionado del taller básico
-private void contratarTallerBasico(String tipoTaller, double precioTaller) {
- JOptionPane.showMessageDialog(null, "Contratando servicio: " + tipoTaller);
-
- String nombreCliente = JOptionPane.showInputDialog("Ingrese su nombre:");
- String dniCliente = JOptionPane.showInputDialog("Ingrese su DNI:");
- String poblacionCliente = JOptionPane.showInputDialog("Ingrese su población:");
- String edadClienteStr = JOptionPane.showInputDialog("Ingrese su edad:");
- int edadCliente = Integer.parseInt(edadClienteStr);
- String correoElectronicoCliente = JOptionPane.showInputDialog("Ingrese su correo electrónico:");
-
- // Aquí puedes procesar la información del cliente y realizar otras operaciones
- JOptionPane.showMessageDialog(null, "Servicio contratado con éxito:\n" +
-         "Nombre: " + nombreCliente + "\n" +
-         "DNI: " + dniCliente + "\n" +
-         "Población: " + poblacionCliente + "\n" +
-         "Edad: " + edadCliente + "\n" +
-         "Correo electrónico: " + correoElectronicoCliente + "\n" +
-         "Tipo de Taller: " + tipoTaller + "\n" +
-         "Precio: " + precioTaller);
-}
-
-//Método para contratar el servicio seleccionado del programa STAIRS
-@SuppressWarnings("unused")
-private void contratarProgramaSTAIRS(String tipoPrograma, double precioPrograma) {
- JOptionPane.showMessageDialog(null, "Contratando servicio: " + tipoPrograma);
-
- String nombreCliente = JOptionPane.showInputDialog("Ingrese su nombre:");
- String dniCliente = JOptionPane.showInputDialog("Ingrese su DNI:");
- String poblacionCliente = JOptionPane.showInputDialog("Ingrese su población:");
- String edadClienteStr = JOptionPane.showInputDialog("Ingrese su edad:");
- int edadCliente = Integer.parseInt(edadClienteStr);
- String correoElectronicoCliente = JOptionPane.showInputDialog("Ingrese su correo electrónico:");
-
- // Aquí puedes procesar la información del cliente y realizar otras operaciones
- JOptionPane.showMessageDialog(null, "Servicio contratado con éxito:\n" +
-         "Nombre: " + nombreCliente + "\n" +
-         "DNI: " + dniCliente + "\n" +
-         "Población: " + poblacionCliente + "\n" +
-         "Edad: " + edadCliente + "\n" +
-         "Correo electrónico: " + correoElectronicoCliente + "\n" +
-         "Tipo de Programa: " + tipoPrograma + "\n" +
-         "Precio: " + precioPrograma);
-}
-//Método para contratar el servicio seleccionado de clases particulares
-@SuppressWarnings("unused")
-private void contratarClasesParticulares(String tipoClases, double precioClases) {
-  JOptionPane.showMessageDialog(null, "Contratando servicio: " + tipoClases);
-
-  String nombreCliente = JOptionPane.showInputDialog("Ingrese su nombre:");
-  String dniCliente = JOptionPane.showInputDialog("Ingrese su DNI:");
-  String poblacionCliente = JOptionPane.showInputDialog("Ingrese su población:");
-  String edadClienteStr = JOptionPane.showInputDialog("Ingrese su edad:");
-  int edadCliente = Integer.parseInt(edadClienteStr);
-  String correoElectronicoCliente = JOptionPane.showInputDialog("Ingrese su correo electrónico:");
-
-  // Aquí puedes procesar la información del cliente y realizar otras operaciones
-  JOptionPane.showMessageDialog(null, "Servicio contratado con éxito:\n" +
-          "Nombre: " + nombreCliente + "\n" +
-          "DNI: " + dniCliente + "\n" +
-          "Población: " + poblacionCliente + "\n" +
-          "Edad: " + edadCliente + "\n" +
-          "Correo electrónico: " + correoElectronicoCliente + "\n" +
-          "Tipo de Clases: " + tipoClases + "\n" +
-          "Precio: " + precioClases);
-}
-
-//Método para contratar el servicio seleccionado de campus workout
-private void contratarCampusWorkout(String tipoCampus, double precioCampus) {
-  JOptionPane.showMessageDialog(null, "Contratando servicio: " + tipoCampus);
-
-  String nombreCliente = JOptionPane.showInputDialog("Ingrese su nombre:");
-  String dniCliente = JOptionPane.showInputDialog("Ingrese su DNI:");
-  String poblacionCliente = JOptionPane.showInputDialog("Ingrese su población:");
-  String edadClienteStr = JOptionPane.showInputDialog("Ingrese su edad:");
-  int edadCliente = Integer.parseInt(edadClienteStr);
-  String correoElectronicoCliente = JOptionPane.showInputDialog("Ingrese su correo electrónico:");
-
-  // Aquí puedes procesar la información del cliente y realizar otras operaciones
-  JOptionPane.showMessageDialog(null, "Servicio contratado con éxito:\n" +
-          "Nombre: " + nombreCliente + "\n" +
-          "DNI: " + dniCliente + "\n" +
-          "Población: " + poblacionCliente + "\n" +
-          "Edad: " + edadCliente + "\n" +
-          "Correo electrónico: " + correoElectronicoCliente + "\n" +
-          "Tipo de Campus: " + tipoCampus + "\n" +
-          "Precio: " + precioCampus);
-}
-
-//Método para contratar el servicio seleccionado de alquiler de material
-private void contratarAlquilerMaterial(String tipoMaterial, double precioMaterial) {
-  JOptionPane.showMessageDialog(null, "Contratando servicio: " + tipoMaterial);
-
-  String nombreCliente = JOptionPane.showInputDialog("Ingrese su nombre:");
-  String dniCliente = JOptionPane.showInputDialog("Ingrese su DNI:");
-  String poblacionCliente = JOptionPane.showInputDialog("Ingrese su población:");
-  String edadClienteStr = JOptionPane.showInputDialog("Ingrese su edad:");
-  int edadCliente = Integer.parseInt(edadClienteStr);
-  String correoElectronicoCliente = JOptionPane.showInputDialog("Ingrese su correo electrónico:");
-
-  // Aquí puedes procesar la información del cliente y realizar otras operaciones
-  JOptionPane.showMessageDialog(null, "Servicio contratado con éxito:\n" +
-          "Nombre: " + nombreCliente + "\n" +
-          "DNI: " + dniCliente + "\n" +
-          "Población: " + poblacionCliente + "\n" +
-          "Edad: " + edadCliente + "\n" +
-          "Correo electrónico: " + correoElectronicoCliente + "\n" +
-          "Tipo de Material: " + tipoMaterial + "\n" +
-          "Precio: " + precioMaterial);
-}
-
-
+//getters y setters
 public String getNombre() {
 	return nombre;
 }
 
-
 public void setNombre(String nombre) {
-	this.nombre = nombre;
+	Servicios.nombre = nombre;
 }
 
 public String getDescripcion() {
@@ -362,5 +268,9 @@ public String getClaseServicios() {
 
 public void setClaseServicios(String opciones) {
 	this.claseServicios = opciones;
+}
+
+public static void mainIniciarServicios (String[] args) {
+	Servicios.mostrarOpcionesServicio();
 }
 }

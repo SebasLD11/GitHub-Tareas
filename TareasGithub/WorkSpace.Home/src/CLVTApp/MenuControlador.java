@@ -7,7 +7,6 @@ import javax.swing.JOptionPane;
 
 public class MenuControlador {
     private static String infoNosotros;
-    private static List<Proyectos> listaProyectos = new ArrayList<>();
     private static List<Eventos> listaEventos = new ArrayList<>();
     private static InfoAdicional infoAdicional = new InfoAdicional();
 
@@ -21,10 +20,10 @@ public class MenuControlador {
 
     public static void main(String[] args) {
     	
-        mostrarMenuControlador();
+    	IniciaMenuControlador();
     }
 
-    public static void mostrarMenuControlador() {
+    public static void IniciaMenuControlador() {
         String[] opcionesMenu = {"Sobre nosotros", "CLVT Store", "Servicios", "Proyectos", "Eventos", "Información adicional", "Salir"};
         while (true) {
             String opcionSeleccionada = (String) JOptionPane.showInputDialog(null, "Seleccione una opción:",
@@ -40,28 +39,25 @@ public class MenuControlador {
                 case "Servicios":
                     mostrarServicios();
                     break;
-                case "Proyectos":
-                	   listaProyectos.add(new Proyectos("Proyecto 1", "Descripción del proyecto 1", null, 0, 0));
-                       listaProyectos.add(new Proyectos("Proyecto 2", "Descripción del proyecto 2", null, 0, 0));
+                case "Proyectos":   
                     mostrarProyectos();
                     break;
-                case "Eventos":
-                	 listaEventos.add(new Eventos());
-                     listaEventos.add(new Eventos());
+                case "Eventos":                  
                     mostrarEventos();
                     break;
                 case "Información adicional":
-                    mostrarInfoAdicional();
+                	mostrarInfoAdicional();
                     break;
-                default:
-                    JOptionPane.showMessageDialog(null, "Opción no válida.");
+                default:                   
             }if (opcionSeleccionada == null || opcionSeleccionada.equals("Salir")) {
-                JOptionPane.showMessageDialog(null, "Saliendo de la aplicación.");
+                JOptionPane.showMessageDialog(null, "Cultiva tu mente, cultiva tu cuerpo, CULTIVATE!");
+                JOptionPane.showMessageDialog(null, "Hasta la próxima!");
                 break;
         }
     }
     }
-    private static void mostrarInfoNosotros() {
+
+	private static void mostrarInfoNosotros() {
         JOptionPane.showMessageDialog(null, getInfoNosotros(), "Sobre Nosotros", JOptionPane.INFORMATION_MESSAGE);
     }
 
@@ -70,27 +66,17 @@ public class MenuControlador {
     }
 
     private static void mostrarServicios() {
-        JOptionPane.showMessageDialog(null, "Mostrando servicios disponibles...");
-
-        // Implementa la lógica para mostrar los servicios
+       
+        Servicios.mainIniciarServicios(null); // Llama al método mostrarOpcionesServicio de la clase Servicios
     }
 
     private static void mostrarProyectos() {
-        StringBuilder proyectosInfo = new StringBuilder("Proyectos:\n");
-        for (Proyectos proyecto : listaProyectos) {
-            proyectosInfo.append(proyecto.toString()).append("\n");
-        }
-        JOptionPane.showMessageDialog(null, proyectosInfo.toString());
+    	Proyectos.mainIniciarProyectos(null);
     }
-
-    private static void mostrarEventos() {
-        StringBuilder eventosInfo = new StringBuilder("Eventos:\n");
-        for (Eventos evento : listaEventos) {
-            eventosInfo.append(evento.toString()).append("\n");
-        }
-        JOptionPane.showMessageDialog(null, eventosInfo.toString());
+    protected static void mostrarEventos() {
+     Eventos.mostrarEventos();
     }
-
+    
     protected static void mostrarInfoAdicional() {
         InfoAdicional.mostrarInfoAdicional();
     }
@@ -101,5 +87,13 @@ public class MenuControlador {
 
 	public static void setInfoAdicional(InfoAdicional infoAdicional) {
 		MenuControlador.infoAdicional = infoAdicional;
+	}
+
+	public static List<Eventos> getListaEventos() {
+		return listaEventos;
+	}
+
+	public static void setListaEventos(List<Eventos> listaEventos) {
+		MenuControlador.listaEventos = listaEventos;
 	}
 }
