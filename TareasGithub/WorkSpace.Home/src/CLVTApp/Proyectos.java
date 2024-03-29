@@ -159,8 +159,7 @@ public class Proyectos extends MenuControlador{
                      + "- Creemos, Creamos, Construimos!",
                     personasResponsables, 500.0, 2.0);
             // Mostrar información del proyecto utilizando JOptionPane
-            JOptionPane.showMessageDialog(null, proyecto.toString(), "Información del Proyecto", JOptionPane.INFORMATION_MESSAGE);
-
+            JOptionPane.showMessageDialog(null, proyecto.toString(), "Información del Proyecto", JOptionPane.INFORMATION_MESSAGE);           
             // Participar en el proyecto
             Proyectos.participarProyecto();
         }
