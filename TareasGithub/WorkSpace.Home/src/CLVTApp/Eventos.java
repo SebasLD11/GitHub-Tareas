@@ -2,163 +2,216 @@ package CLVTApp;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.JOptionPane;
 
-public class Eventos extends MenuControlador{
-    private static String nombre;
-    private static String fecha;
-    private static String descripcion;
-    private static String[] organizadores;
-    private static List<Participante> participantes = new ArrayList<Participante>();
-    private static String estado;
-    private static List<Eventos> listaEventos = new ArrayList<Eventos>();
+public class Eventos {
+    private String nombre;
+    private String fecha;
+    private String descripcion;
+    private String[] organizadores;
+    private List<Participante> participantes;
+    private String estado;
 
-    // Constructor que establece la información preestablecida
-	
-    public Eventos(String nombre, String fecha, String descripción, String[] organizadores, List<Participante> participantes, String estado) {      
-    	Eventos.nombre = nombre;
-        Eventos.fecha = fecha;
-        Eventos.descripcion = descripción;;
-        Eventos.organizadores = new String[]{"Asociación Cultivate, CLVT", "Joventut Cambrils"};;
-        Eventos.participantes = new ArrayList<Participante>(participantes);
-        Eventos.estado = estado;
+    private static List<Eventos> listaEventos = new ArrayList<>();
+
+    public Eventos(String nombre, String fecha, String descripcion, String[] organizadores, List<Participante> participantes, String estado) {      
+        this.nombre = nombre;
+        this.fecha = fecha;
+        this.descripcion = descripcion;
+        this.organizadores = organizadores;
+        this.participantes = new ArrayList<>(participantes);
+        this.estado = estado;
     }
-    public Eventos( String[] organizadores, List<Participante> participantes, String estado) {      
-    	Eventos.nombre = "";
-        Eventos.fecha = "";
-        Eventos.descripcion = "";;
-        Eventos.organizadores = new String[]{"Asociación Cultivate, CLVT", "Joventut Cambrils"};;
-        Eventos.participantes = new ArrayList<Participante>(participantes);
-        Eventos.estado = "";
-    }
-    
-    public Eventos( List<Participante> participantes, String estado) {      
-    	Eventos.nombre = "";
-        Eventos.fecha = "";
-        Eventos.descripcion = "";;
-        Eventos.organizadores = new String[]{"Asociación Cultivate, CLVT", "Joventut Cambrils"};;
-        Eventos.participantes = new ArrayList<Participante>(participantes);
-        Eventos.estado = "";
-    }
-    
+
     public static void inicializarEventos() {
-        listaEventos.add(new Eventos("Evento verano: CLVT Fest", "8 y 9 de junio","La programación engloba las dos modalidades,"
-        		+ " skate y scooter, siendo la misma para los dos días. Las competiciones"
-        		+ " se llevarán a cabo en días diferentes y NO en el mismo día las dos modalidades;"
-        		+ " es decir, sábado skate y domingo scooter; "
-        		+ "en horarios de 10h a 14:30h. Y los talleres de iniciación de 16:00h a 19:00h.",
-        		new String[]{"Asociación Cultivate, CLVT", "Joventut Cambrils"}, new ArrayList<Participante>(participantes),
-        		"ABIERTO"));
+        listaEventos.add(new Eventos("Evento verano: CLVT Fest", "8 y 9 de junio\n"
+            + "\r\n"
+            ,"La programación engloba las dos modalidades skate y scooter, siendo\n"
+            + " la misma para los dos días. Las competiciones se llevarán a cabo en\n"
+            + " días diferentes y NO en el mismo día las dos modalidades; es decir,\n"
+            + " sábado skate y domingo scooter;en horarios de 10h a 14:30h. Y los\n"
+            + " talleres de iniciación de 16:00h a 19:00h.\n"
+            , new String[]{"Asociación Cultivate, CLVT", "Joventut Cambrils"}
+            , new ArrayList<>(),
+            "ABIERTO"));
         
-        listaEventos.add(new Eventos("Evento otoño: HALLOWEEN Skate Jam Party - HSK8jPTY", "Domingo 27 de octubre", 
-        		"El evento será "       	
-        		+ " cercano al día de Halloween, por lo que será un evento temático donde participantes, asistentes"
-        		+ " y organizadores tendrán la opción de ir disfrazados. Además los que vengan"
-        		+ " disfrazados entrarán en un sorteo, junto con asociados y participantes, que se celebrará antes de"
-        		+ " finalizar el evento.\r\n"
-        		+ "\r\n"
-        		+ " ", new String[]{"Asociación Cultivate, CLVT", "Joventut Cambrils"}, new ArrayList<Participante>(participantes), "ABIERTO"));
-    }// Agrega más eventos según sea necesario 
+        listaEventos.add(new Eventos("Evento otoño: HALLOWEEN Skate Jam Party - HSK8jPTY.\n"
+            + "\r\n"
+            ,"Domingo 27 de octubre", 
+            "El evento será cercano al día de Halloween, por lo que será un evento temático donde participantes,\n"
+            + " asistentes y organizadores tendrán la opción de ir disfrazados. Además l@s que vengan disfrazad@s\n"
+            + " entrarán en un sorteo, junto con asociados y participantes, que se celebrará antes de finalizar el evento.\n"
+            + "\r\n"
+            , new String[]{"Asociación Cultivate, CLVT", "Joventut Cambrils"}
+            , new ArrayList<>(), "ABIERTO"));
+    }
+    public static void mostrarMenuEventos() {
+        // Mostrar el menú de eventos y obtener la opción seleccionada
+        String opcionSeleccionada = JOptionPane.showInputDialog(
+                null, 
+                getMenuText(), 
+                "Menú de Eventos", 
+                JOptionPane.PLAIN_MESSAGE);
+        
+        // Manejar la opción seleccionada del menú de eventos
+        switch (opcionSeleccionada) {
+            case "1": 
+                mostrarEventos();
+                break;
+            case "2":
+            	mostrarEventos();
+                
+                // Preguntar al usuario por el índice del evento en el que desea participar
+                int indiceEvento = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el número del evento en el que desea participar:"));
+
+                // Verificar si el índice ingresado es válido
+                if (indiceEvento >= 1 && indiceEvento <= listaEventos.size()) {
+                    // Obtener el evento seleccionado por el usuario
+                    Eventos eventoSeleccionado = listaEventos.get(indiceEvento - 1);
+                    
+                    // Preguntar si el usuario desea participar en el evento seleccionado
+                    int opcion = JOptionPane.showConfirmDialog(null, "¿Desea participar en este evento?", "Participar en evento", JOptionPane.YES_NO_OPTION);
+                    
+                    if (opcion == JOptionPane.YES_OPTION) {
+                        // Llamar al método para participar en el evento seleccionado
+                        participarEnEvento(eventoSeleccionado);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Índice de evento no válido. Por favor, ingrese un número válido.");
+                }
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Opción no válida. Por favor, seleccione una opción válida.");
+                break;
+            case "3":
+                // Mostrar eventos disponibles
+                mostrarEventos();
+
+                // Preguntar al usuario por el índice del evento del que desea ver la lista de participantes
+                int indiceEventoListaParticipantes = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el número del evento del que desea ver la lista de participantes:"));
+
+                // Verificar si el índice ingresado es válido
+                if (indiceEventoListaParticipantes >= 1 && indiceEventoListaParticipantes <= listaEventos.size()) {
+                    // Obtener el evento seleccionado por el usuario
+                    Eventos eventoSeleccionadoListaParticipantes = listaEventos.get(indiceEventoListaParticipantes - 1);
+
+                    // Mostrar la lista de participantes del evento seleccionado
+                    mostrarListaParticipantes(eventoSeleccionadoListaParticipantes);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Índice de evento no válido. Por favor, ingrese un número válido.");
+                }
+                break;
+
+            case "4":              
+                return;
+            
+        }
+    }
+
     
     public static void mostrarEventos() {
         inicializarEventos(); 
         
         // Mostrar información detallada de cada evento antes de preguntar por la participación
         for (Eventos evento : listaEventos) {
-            StringBuilder infoEventoCLVTFest = new StringBuilder();
-            infoEventoCLVTFest.append("Nombre: ").append(evento.getNombre()).append("\n");
-            infoEventoCLVTFest.append("Fecha: ").append(evento.getFecha()).append("\n");
-            infoEventoCLVTFest.append("Descripción: ").append(evento.getDescripcion()).append("\n");
-            infoEventoCLVTFest.append("Organizadores: ").append(String.join(", ", evento.getOrganizadores())).append("\n");
-            infoEventoCLVTFest.append("Estado: ").append(Eventos.getEstado()).append("\n");
+            StringBuilder infoEvento = new StringBuilder();
+            infoEvento.append("Nombre: ").append(evento.getNombre()).append("\n");
+            infoEvento.append("Fecha: ").append(evento.getFecha()).append("\n");
+            infoEvento.append("Descripción: ").append(evento.getDescripcion()).append("\n");
+            infoEvento.append("Organizadores: ").append(String.join(", ", evento.getOrganizadores())).append("\n");
+            infoEvento.append("Estado: ").append(evento.getEstado()).append("\n");
 
-            JOptionPane.showMessageDialog(null, infoEventoCLVTFest.toString(), "Detalles del Evento", JOptionPane.INFORMATION_MESSAGE);
-
-            // Preguntar si el usuario desea participar en el evento actual
-            int opcion = JOptionPane.showConfirmDialog(null,
-                    "¿Desea participar en este evento?", "Participar en evento",
-                    JOptionPane.YES_NO_OPTION);
-            if (opcion == JOptionPane.YES_OPTION) {
-                Eventos.participarEnEvento(); // Llamar al método para participar en el evento
-            }
-        }
+            JOptionPane.showMessageDialog(null, infoEvento.toString(), "Detalles del Evento", JOptionPane.INFORMATION_MESSAGE);
     }
-
-    // Método para que una persona participe en el evento
-    public static void participarEnEvento() {
+}
+    public static void participarEnEvento(Eventos evento) {
+    	
         String nombre = JOptionPane.showInputDialog("Ingrese su nombre:");
         int edad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese su edad:"));
         String email = JOptionPane.showInputDialog("Ingrese su email:");
         String telefono = JOptionPane.showInputDialog("Ingrese su teléfono de contacto:");
 
         Participante nuevoParticipante = new Participante(nombre, edad, email, telefono);
-        agregarParticipante(nuevoParticipante);
+        evento.agregarParticipante(nuevoParticipante);
 
-        JOptionPane.showMessageDialog(null, "¡Gracias por participar en el evento! Recuerda apuntar las fechas. Proporcionaremos más información" 
-        		+ "relevante al respecto en nuestra página principal.");
+        JOptionPane.showMessageDialog(null, "¡Gracias por participar en el evento! Recuerda apuntar las fechas.\n"
+        		+ " Proporcionaremos más información relevante al respecto en nuestra página principal.");
+        }
+    
+    public static void mostrarListaParticipantes(Eventos evento) {
+        StringBuilder participantesInfo = new StringBuilder("Lista de Participantes:\n");
+        for (Participante participante : evento.getParticipantes()) {
+            participantesInfo.append("Nombre: ").append(participante.getNombre()).append(", Edad: ").append(participante.getEdad()).append("\n");
+        }
+        JOptionPane.showMessageDialog(null, participantesInfo.toString(), "Lista de Participantes", JOptionPane.INFORMATION_MESSAGE);
     }
 
-    public static void agregarParticipante(Participante participante) {
-    	Eventos.participantes.add(participante);
-    }
-    
-	//getters y setters
-    
+	 // Getters y Setters
     public String getNombre() {
-		return nombre;
-	}
+        return nombre;
+    }
 
-	public void setNombre(String nombre) {
-		Eventos.nombre = nombre;
-	}
+    public String getFecha() {
+        return fecha;
+    }
 
-	public String getFecha() {
-		return fecha;
-	}
+    public String getDescripcion() {
+        return descripcion;
+    }
 
-	public void setFecha(String fecha) {
-		Eventos.fecha = fecha;
-	}
+    public String[] getOrganizadores() {
+        return organizadores;
+    }
 
-	public String getDescripcion() {
-		return descripcion;
-	}
+    public List<Participante> getParticipantes() {
+        return participantes;
+    }
 
-	public void setDescripcion(String descripcion) {
-		Eventos.descripcion = descripcion;
-	}
-
-	public String[] getOrganizadores() {
-		return organizadores;
-	}
-
-	public void setOrganizadores(String[] organizadores) {
-		Eventos.organizadores = organizadores;
-	}
-
-	public static List<Participante> getParticipantes() {
-		return participantes;
-	}
-
-	public void setParticipantes(List<Participante> participantes) {
-		Eventos.participantes = participantes;
-	}
-
-	public static void setEstado(String estado) {
-		Eventos.estado = estado;
-	}
-	
-
-    public static String getEstado() {
+    public String getEstado() {
         return estado;
     }
 
+    public static List<Eventos> getListaEventos() {
+        return listaEventos;
+    }
 
-	public static List<Eventos> getListaEventos() {
-		return listaEventos;
-	}
-	public static void setListaEventos(List<Eventos> listaEventos) {
-		Eventos.listaEventos = listaEventos;
-	}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public void setOrganizadores(String[] organizadores) {
+        this.organizadores = organizadores;
+    }
+
+    public void setParticipantes(List<Participante> participantes) {
+        this.participantes = participantes;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public void agregarParticipante(Participante participante) {
+        this.participantes.add(participante);
+    }
+    
+    public static String getMenuText() {
+        // Crear el texto del menú de eventos usando StringBuilder
+        StringBuilder menuText = new StringBuilder();
+        menuText.append("1. Ver Eventos\n");
+        menuText.append("2. Participar en Eventos\n");
+        menuText.append("3.Lista de participantes\n");
+        menuText.append("4.Volver\n");
+        menuText.append("Seleccione una opción:");
+        return menuText.toString();
+    }
+
 }

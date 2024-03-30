@@ -1,4 +1,7 @@
 package CLVTApp;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JOptionPane;
 
 public class Servicios extends MenuControlador {
@@ -6,13 +9,15 @@ public class Servicios extends MenuControlador {
     private String descripcion;
     private double precio;
     private String claseServicios;
-
+    private static List<String> serviciosContratados;
+    
     // Constructor con atributos predeterminados
     public Servicios() {
         this.setNombre("");
         this.setDescripcion("");
         this.setPrecio(0.0); 
         this.setClaseServicios("");
+        serviciosContratados = new ArrayList<>();
     }
 
     // Constructor con parámetros
@@ -66,7 +71,10 @@ public class Servicios extends MenuControlador {
     // Método para mostrar las opciones
     
     private static void mostrarOpcionesTallerBasico() {
-    	StringBuilder opciones = new StringBuilder("Opciones de Taller Básico:\n");
+    	StringBuilder opciones = new StringBuilder("Opciones de Taller Básico: taller de entrenamiento grupal\n"
+    			+ "de skate y scooter. Conocimientos básicos: equilibrio, posicionamiento, fluidez. Horario de tarde,\n"
+    			+ "de 16:30h a 18:30h.\n");
+    	
    	 opciones.append("1. Reducido - 25€. 4 días/mes en fin de semana, 2h/día.\n");
    	 opciones.append("2. Completo - 35€. 8 días/mes en fin de semana, 2h/día.\n");
    	 opciones.append("3. Reducido + 2hparticulares/mes - 50€. 4 días/mes en fin de semana, 2h/día.\n");
@@ -94,9 +102,13 @@ public class Servicios extends MenuControlador {
     contratarServicio("Taller Básico", precio);
 }
 
-    // Método para mostrar las opciones de campus workout
+
     private static void mostrarOpcionesCampusWorkout() {
-    	StringBuilder opciones = new StringBuilder("Opciones de Campus:\n");
+    	StringBuilder opciones = new StringBuilder("Opciones de Campus: 4 horas de servicios variados, en  los\n"
+    			+ "que encontramos: entrenamiento personal, entrenamiento dirigido, tecnificación de skate/scooter y\n"
+    			+ "casal ludico-recreativo. Donde tanto niñ@s como adultos tendrán la opción de escoger solo 2h de un servicio\n"
+    			+ "o bien, disfrutar las 4 horas de campus de forma parcial (3 días) o completa (5 días).\n");
+    	
     	 opciones.append("1. Servicio individual de 2h, 40€\n");
     	 opciones.append("2. Campus parcial de 3 días, 4h/dia, 110€\n");
     	 opciones.append("3. Campus completo de 5 días,  4h/dia, 180€\n");
@@ -120,9 +132,10 @@ public class Servicios extends MenuControlador {
         contratarServicio("Campus Workout", precio);
     }
 
-    // Método para mostrar las opciones de alquiler de material
     private static void mostrarOpcionesAlquilerMaterial() {
-    	StringBuilder opciones = new StringBuilder("Opciones de Alquiler:\n");
+    	StringBuilder opciones = new StringBuilder("Opciones de Alquiler: ¿No tienes skate o scooter? No te preocupes, en nuestra\n"
+    			+ "entidad contamos con skate y scooters completos y funcionales con los que disfrutar de cualquier sesión de entrenamiento.\n");
+    	
         opciones.append("1. Skate - 5€/2h\n");
         opciones.append("2. Scooter - 7€/2h\n");
         int opcionElegida = Integer.parseInt(JOptionPane.showInputDialog(opciones.toString() + "\nSeleccione una opción:"));
@@ -141,9 +154,20 @@ public class Servicios extends MenuControlador {
         contratarServicio("Alquiler de material", precio);
     }
 
-    // Método para mostrar las opciones de campus workout
     private static void mostrarOpcionesProgramaSTAIRS() {
-        StringBuilder opciones = new StringBuilder("Opciones de Programa STAIRS:\n");
+        StringBuilder opciones = new StringBuilder("Opciones de Programa STAIRS: \n"
+        		+ "Programa de entrenamiento focalizado y personalizado. Cuenta con: \n"
+        		+ "\r\n"
+        		+ "- Seguro y registro federativo.\n"
+        		+ "- 8 días mensuales de entrenamiento.\n"
+        		+ "- 2 horas por día.\n"
+        		+ "- Preparación física y técnica.\n"
+        		+ "- 9 categorías de entrenamiento.\n"
+        		+ "- Salidas, actividades y sesiones especiales.|n"
+        		+ "- Eventos y celebraciones.\n"
+        		+ "- Merchandising de regalo.\n"
+        		+ "- Para particulares y entidades.\n");
+        
         opciones.append("1. MENSUAL: 120€/mes\n");
         opciones.append("2. TRIMESTRAL: 345€/trimestre\n");
         opciones.append("3. SEMESTRAL: 630€/semestre\n");
@@ -171,11 +195,14 @@ public class Servicios extends MenuControlador {
         contratarServicio("Programa STAIRS", precio);
     }
 
-    // Método para mostrar las opciones de clases particulares
     private static void mostrarOpcionesClasesParticulares() {
-        StringBuilder opciones = new StringBuilder("Opciones de Clases Particulares:\n");
-        opciones.append("1. Daniel Carrillo - 20€/h\n");
-        opciones.append("2. Sebastián López - 35€/h\n");
+        StringBuilder opciones = new StringBuilder("Opciones de Clases Particulares: ¿Quieres aprender y no tienes quien te ayude?\n"
+        		+ "¿Dispones de escasas horas para aprender a patinar y quieres que alguien te ayude en esos momentos?\n"
+        		+ "No esperes más y disfruta de horas particulares, centradas en ti y tus necesidades. Nuestros riders con años\n"
+        		+ "de experiencia te ayudaran a completar cualquier parte de tu aprendizaje. \n");
+        
+        opciones.append("1. Daniel Carrillo (Scooter) - 20€/h\n");
+        opciones.append("2. Sebastián López (Skate) - 35€/h\n");
 
         int opcionElegida = Integer.parseInt(JOptionPane.showInputDialog(opciones.toString() + "\nSeleccione una opción:"));
         double precio = 0.0;
@@ -193,9 +220,12 @@ public class Servicios extends MenuControlador {
         contratarServicio("Clases Particulares", precio);
     }
     
-    // Método para mostrar las opciones de salidas
     private static void mostrarOpcionesSalidas() {
-    	StringBuilder opciones = new StringBuilder("Opciones de Salidas particulares:\n");
+    	StringBuilder opciones = new StringBuilder("Opciones de Salidas particulares:"
+    			+ "Salidas privadas organizadas por los riders y miembros de la entidad en las cuales\n"
+    			+ "se pretende tener sesiones de entrenamiento especiales en otros lugares de la provincia\n"
+    			+ "y cercanias, donde conocemos otros skateparks y personas de la comunidad.\n");
+    	
     	opciones.append("1. Riders/Alumn@s - 10€");
     	opciones.append("2. Asociad@s y extern@s - 20€");
     	int opcionElegida = Integer.parseInt(JOptionPane.showInputDialog(opciones.toString() + "\nSeleccione una opción:"));
@@ -215,8 +245,9 @@ public class Servicios extends MenuControlador {
     }
 
     // Métodos para contratar el servicio seleccionado
+ // Métodos para contratar el servicio seleccionado
     private static void contratarServicio(String nombreServicio, double precioServicio) {
-        JOptionPane.showMessageDialog( null, "Contratando servicio: " + nombre);
+        JOptionPane.showMessageDialog( null, "Contratando servicio: " + nombreServicio);
 
         String nombreCliente = JOptionPane.showInputDialog("Ingrese su nombre:");
         String dniCliente = JOptionPane.showInputDialog("Ingrese su DNI:");
@@ -268,6 +299,14 @@ public String getClaseServicios() {
 
 public void setClaseServicios(String opciones) {
 	this.claseServicios = opciones;
+}
+
+public static List<String> getServiciosContratados() {
+	return serviciosContratados;
+}
+
+public static void setServiciosContratados(List<String> serviciosContratados) {
+	Servicios.serviciosContratados = serviciosContratados;
 }
 
 public static void mainIniciarServicios (String[] args) {
