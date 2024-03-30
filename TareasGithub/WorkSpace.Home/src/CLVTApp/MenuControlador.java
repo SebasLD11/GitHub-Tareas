@@ -113,7 +113,11 @@ public class MenuControlador {
     	Eventos.mostrarEventos();
     }
     
-    protected static void mostrarInfoAdicional() {
-        InfoAdicional.mostrarInfoAdicional();
+    public static void mostrarInfoAdicional() {
+        // Crear un objeto de la clase InfoAdicional
+        InfoAdicional info = new InfoAdicional();
+
+        // Llamar al método mostrarInformacion()
+        info.mostrarInformacion();
     }
 }
