@@ -102,7 +102,7 @@ public class MenuControlador {
 
     private static void mostrarServicios() {
        
-        Servicios.mainIniciarServicios(null); // Llama al método mostrarOpcionesServicio de la clase Servicios
+        Servicios.mostrarOpcionesServicio(); // Llama al método mostrarOpcionesServicio de la clase Servicios
     }
 
     private static void mostrarProyectos() {

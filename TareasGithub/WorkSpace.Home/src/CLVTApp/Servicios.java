@@ -4,12 +4,12 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-public class Servicios extends MenuControlador {
+public class Servicios  {
     private static String nombre;
     private String descripcion;
     private double precio;
     private String claseServicios;
-    private static List<String> serviciosContratados;
+    private static List<String> serviciosContratados ;
     
     // Constructor con atributos predeterminados
     public Servicios() {
@@ -245,8 +245,7 @@ public class Servicios extends MenuControlador {
     }
 
     // Métodos para contratar el servicio seleccionado
- // Métodos para contratar el servicio seleccionado
-    private static void contratarServicio(String nombreServicio, double precioServicio) {
+    public static void contratarServicio(String nombreServicio, double precioServicio) {
         JOptionPane.showMessageDialog( null, "Contratando servicio: " + nombreServicio);
 
         String nombreCliente = JOptionPane.showInputDialog("Ingrese su nombre:");
@@ -266,9 +265,36 @@ public class Servicios extends MenuControlador {
                 "Nombre del Servicio: " + nombreServicio + "\n" +
                 "Precio: " + precioServicio+"€");
         JOptionPane.showMessageDialog(null, "¡Gracias por contratar nuestro servicio! En un plazo máximo de 48h contactaremos contigo.");
-    }
+     // Agregar el servicio contratado a la lista de servicios contratados
+        String servicioContratado = 
+        				"Nombre: " + nombreCliente + "\n" +
+                        "DNI: " + dniCliente + "\n" +
+                        "Población: " + poblacionCliente + "\n" +
+                        "Edad: " + edadCliente + "\n" +
+                        "Correo electrónico: " + correoElectronicoCliente + "\n" +
+                        "Nombre del Servicio: " + nombreServicio + "\n" +
+                        "Precio: " + precioServicio+"€";
+        serviciosContratados.add(servicioContratado);
 
-//getters y setters
+        // Mostrar los servicios contratados actualizados
+        verServiciosContratados();
+    }
+    
+    // Método para acceder a los servicios contratados desde el modo admin
+    public static void verServiciosContratados() {
+        if (serviciosContratados.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No hay servicios contratados actualmente.", "Servicios Contratados", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+        StringBuilder infoServicios = new StringBuilder("Servicios contratados:\n");
+        for (String servicio : serviciosContratados) {
+            infoServicios.append(servicio).append("\n\n");
+        }
+        JOptionPane.showMessageDialog(null, infoServicios.toString(), "Servicios Contratados", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    //getters y setters
 public String getNombre() {
 	return nombre;
 }
@@ -309,7 +335,4 @@ public static void setServiciosContratados(List<String> serviciosContratados) {
 	Servicios.serviciosContratados = serviciosContratados;
 }
 
-public static void mainIniciarServicios (String[] args) {
-	Servicios.mostrarOpcionesServicio();
-}
 }
