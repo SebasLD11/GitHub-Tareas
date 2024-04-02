@@ -3,11 +3,11 @@ package CLVTApp;
 import javax.swing.JOptionPane;
 
 public class Alumnos extends MiembroBase {
-	private String tarifa;
-	private int numClases;
-	private String esRider;
-	private String aportacion;
-	private String servDisfrutados;
+    protected String tarifa;
+    protected int numClases;
+    protected String esRider;
+    protected String aportacion;
+    protected String servDisfrutados;
 
     //constructors por defecto
     public Alumnos(String nombre, String poblacion, int edad, String dNI, String sexo, double peso, double altura,
@@ -98,6 +98,8 @@ public class Alumnos extends MiembroBase {
         this.servDisfrutados = opcionesservDisfrutados[opcionservDisfrutados].toString();
        
     }
+
+
 
     @Override
     public String toString() {

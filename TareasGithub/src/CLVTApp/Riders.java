@@ -3,12 +3,12 @@ package CLVTApp;
 import javax.swing.JOptionPane;
 
 public class Riders extends MiembroBase {
-    private String funciones;
-    private String sueldo;
-    private String bonoTransporte;
-    private String bonoMerchandising;
-    private String bonoFirma;
-    private String bonoGira;
+    protected String funciones;
+    protected String sueldo;
+    protected String bonoTransporte;
+    protected String bonoMerchandising;
+    protected String bonoFirma;
+    protected String bonoGira;
 
     //constructors por defecto
     public Riders(String nombre, String poblacion, int edad, String dNI, String sexo, double peso, double altura,

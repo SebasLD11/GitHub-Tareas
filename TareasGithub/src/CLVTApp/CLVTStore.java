@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 public class CLVTStore extends MenuControlador {
     private static final String CONTRASEÑA = "CultiStore";
 
-    public static void Iniciar() {
+    public static void mainIniciar(String [] args) {
         
     	List<Producto> catalogo = new ArrayList<>();
         catalogo.add(new Producto("Camiseta Asociad@", 19.99, 35, 21));
@@ -186,7 +186,7 @@ public class CLVTStore extends MenuControlador {
             String opcion3 = JOptionPane.showInputDialog(null,
                     "---- Modo Administrador ----\n" + "1. Ver total productos \n" + "2. Agregar productos\n"
                             + "3. Eliminar productos\n" + "4. Modificar IVA del producto\n" + "5. Ver total de ventas\n"
-                            + "6. Salir modo administrador\n" + "Seleccione una opción:");
+                            + "6.Servicios contratados\n" + "7. Salir modo administrador\n" + "Seleccione una opción:");
 
             if (opcion3 == null) {
                 return;
@@ -208,6 +208,9 @@ public class CLVTStore extends MenuControlador {
                     verTotalVentas();
                     break;
                 case "6":
+                    Servicios.verServiciosContratados(); // Mostramos los servicios contratados
+                    break;
+                case "7":
                     JOptionPane.showMessageDialog(null, "¡Hasta luego!");
                     return;
                 default:
