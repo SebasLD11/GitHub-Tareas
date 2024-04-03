@@ -1,7 +1,5 @@
 package UD09Herencias;
 
-import javax.swing.JOptionPane;
-
 public class Lavadora extends T9Ej1Electrodomesticos {
     // Atributo
     private int carga;
@@ -36,23 +34,5 @@ public class Lavadora extends T9Ej1Electrodomesticos {
         }
 
         return precioFinal;
-    }
-
-    public static void main(String[] args) {
-        double precioBase = Double.parseDouble(JOptionPane.showInputDialog("Introduce el precio base:"));
-        double peso = Double.parseDouble(JOptionPane.showInputDialog("Introduce el peso:"));
-        String color = JOptionPane.showInputDialog("Introduce el color:");
-        char consumoEnergetico = JOptionPane.showInputDialog("Introduce el consumo energético (de A a F):").charAt(0);
-        int carga = Integer.parseInt(JOptionPane.showInputDialog("Introduce la carga:"));
-
-        Lavadora lavadora = new Lavadora(precioBase, peso, color, consumoEnergetico, carga);
-
-        JOptionPane.showMessageDialog(null, "Información de la lavadora:\n" +
-                "Precio Base: " + lavadora.getPrecioBase() + " €\n" +
-                "Color: " + lavadora.getColor() + "\n" +
-                "Consumo Energético: " + lavadora.getConsumoEnergetico() + "\n" +
-                "Peso: " + lavadora.getPeso() + " kg\n" +
-                "Carga: " + lavadora.getCarga() + " kg\n" +
-                "Precio Final: " + lavadora.precioFinal() + " €");
     }
 }
