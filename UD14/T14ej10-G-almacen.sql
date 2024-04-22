@@ -1,31 +1,33 @@
-CREATE DATABASE G-almacen;
-USE G-almacen;
+CREATE DATABASE GrAlmacen;
+USE GrAlmacen;
 
 CREATE TABLE productos (
-    codigoProd INT AUTO_INCREMENT ,
-    nombre NVARCHAR (100) NOT NULL,
-    precio INT NOT NULL,
-    PRIMARY KEY(codigoProd));
+    codProd INT AUTO_INCREMENT PRIMARY KEY,
+    nombre NVARCHAR(100) NOT NULL,
+    precio INT NOT NULL);
 
 CREATE TABLE cajeros (
-    codCaje INT AUTO_INCREMENT ,
-    nomApels NVARCHAR (100) NOT NULL,
-    PRIMARY KEY(codCaje));
+    codCaje INT AUTO_INCREMENT PRIMARY KEY,
+    nomApels NVARCHAR(100) NOT NULL);
 
 CREATE TABLE maqRegistra (
-    codMaqReg INT AUTO_INCREMENT ,
-    piso INT NOT NULL,
-    PRIMARY KEY(codCaje));
+    codMaqReg INT AUTO_INCREMENT PRIMARY KEY,
+    piso INT NOT NULL);
 
 CREATE TABLE venta (
+    codProd INT,
+    codCaje INT,
     codMaqReg INT,
-    idproyec INT,
-    PRIMARY KEY(codigoProd,codCaje,codMaqReg),
-    FOREIGN KEY (idcient) 
-    REFERENCES cientificos (idcient) 
-    ON DELETE CASCADE 
-    ON UPDATE CASCADE,
-    FOREIGN KEY (idproyec) 
-    REFERENCES proyectos (idproyec) 
-    ON DELETE CASCADE 
-    ON UPDATE CASCADE);
+    PRIMARY KEY(codCaje, codProd, codMaqReg),
+    FOREIGN KEY (codCaje) 
+        REFERENCES cajeros (codCaje) 
+        ON DELETE CASCADE 
+        ON UPDATE CASCADE,
+    FOREIGN KEY (codMaqReg) 
+        REFERENCES maqRegistra (codMaqReg) 
+        ON DELETE CASCADE 
+        ON UPDATE CASCADE,
+    FOREIGN KEY (codProd) 
+        REFERENCES productos (codProd) 
+        ON DELETE CASCADE 
+        ON UPDATE CASCADE);
