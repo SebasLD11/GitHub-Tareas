@@ -1,5 +1,5 @@
-CREATE DATABASE GrAlmacen;
-USE GrAlmacen;
+CREATE DATABASE GrAlmacenes;
+USE GrAlmacenes;
 
 CREATE TABLE productos (
     codProd INT AUTO_INCREMENT PRIMARY KEY,
