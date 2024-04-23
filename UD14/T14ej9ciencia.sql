@@ -2,18 +2,19 @@ CREATE DATABASE cientProy;
 USE cientProy;
 
 CREATE TABLE cientificos (
-    idcient INT AUTO_INCREMENT ,
-    nombre VARCHAR (100) NOT NULL,
+    idcient INT NOT NULL ,
+    nomApels VARCHAR (100) NOT NULL,
     PRIMARY KEY(idcient));
 
 CREATE TABLE proyectos (
-    idproyec INT AUTO_INCREMENT ,
-    nombre VARCHAR (100) NOT NULL,
+    idproyec INT NOT NULL,
+    nomProy VARCHAR (100) NOT NULL,
+    horas INT,
     PRIMARY KEY(idproyec));
 
 CREATE TABLE asignadoA (
-    idcient INT,
-    idproyec INT,
+    idcient INT NOT NULL,
+    idproyec INT NOT NULL,
     PRIMARY KEY(idcient,idproyec),
     FOREIGN KEY (idcient) 
     REFERENCES cientificos (idcient) 

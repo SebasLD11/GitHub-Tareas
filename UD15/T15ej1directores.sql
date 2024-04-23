@@ -20,3 +20,4 @@ INSERT INTO directores (DNI, NomApels, DNIJefe, despacho) VALUES
 
 -- UPDATE posterior a la insercción inicial
 UPDATE `directores` SET `DNIJefe` = '444' WHERE `directores`.`DNI` = '777';
+
