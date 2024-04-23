@@ -9,7 +9,6 @@ INSERT INTO cajeros (nomApels) VALUES
 ('Sofía López'),
 ('Pablo Ruiz'),
 ('Elena Martín');
-
 INSERT INTO productos (nombre, precio) VALUES
 ('Producto A', 10),
 ('Producto B', 20),
@@ -21,7 +20,6 @@ INSERT INTO productos (nombre, precio) VALUES
 ('Producto H', 35),
 ('Producto I', 28),
 ('Producto J', 40);
-
 INSERT INTO maqRegistra (piso) VALUES
 (1),
 (2),
@@ -33,7 +31,6 @@ INSERT INTO maqRegistra (piso) VALUES
 (2),
 (1),
 (3);
-
 INSERT INTO venta (codCaje, codMaqReg, codProd) VALUES
 (1, 1, 1),
 (2, 2, 2),

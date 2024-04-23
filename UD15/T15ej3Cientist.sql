@@ -10,7 +10,6 @@ INSERT INTO cientificos (idcient, nomApels) VALUES
 ('89012345', 'Sofía López Martínez'),
 ('90123456', 'Pablo Pérez Rodríguez'),
 ('11234567', 'Elena Martínez García');
-
 -- Insertar 10 tuplas en la tabla 'proyectos'
 INSERT INTO proyectos (idproyec, nomProy, horas) VALUES
 ('1', 'Desarrollo de Software', 100),
@@ -23,7 +22,6 @@ INSERT INTO proyectos (idproyec, nomProy, horas) VALUES
 ('8', 'Realidad Virtual', 160),
 ('9', 'Exploración Espacial', 240),
 ('10', 'Biotecnología', 170);
-
 -- Insertar 10 tuplas en la tabla 'asignado'
 -- Se asignan aleatoriamente científicos y proyectos
 INSERT INTO asignadoA (idcient, idproyec) VALUES
