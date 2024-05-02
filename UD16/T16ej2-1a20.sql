@@ -44,5 +44,46 @@ INSERT INTO EMPLEADOS_DEPARTAMENTOS (dni, departamento) VALUES
 INSERT INTO EMPLEADOS_DEPARTAMENTOS (dni, departamento) VALUES 
     ('xxxxxxxM', 2), ('xxxxxxxM', 9),('xxxxxxxM', 11);
 
---Ejercicio 2.15.
+
+--Ejercicio 2, DEL 1 AL 20
+
+SELECT apellidos FROM EMPLEADOS;
+SELECT DISTINCT apellidos FROM EMPLEADOS;
+SELECT * FROM EMPLEADOS WHERE apellidos = 'López Díaz';
+SELECT * FROM EMPLEADOS WHERE apellidos = 'López Díaz' OR apellidos = 'Pérez';
+SELECT * FROM EMPLEADOS WHERE departamento = 14;
+SELECT * FROM EMPLEADOS WHERE departamento = 37 OR departamento = 77;
+SELECT * FROM EMPLEADOS WHERE apellidos LIKE 'P%';
+SELECT SUM(presupuesto) AS presupuesto_total
+    FROM departamentos;
+SELECT d.nombre AS nombre_departamento, COUNT(*) AS numero_empleados FROM departamentos d 
+    LEFT JOIN empleados e ON d.codigo = e.departamento
+    GROUP BY d.nombre;
+SELECT e.*, d.nombre AS nombre_departamento, d.presupuesto
+    FROM empleados e
+    LEFT JOIN departamentos d ON e.departamento = d.codigo;
+SELECT e.nombre, e.apellidos, d.nombre AS nombre_departamento, d.presupuesto
+    FROM empleados e
+    LEFT JOIN departamentos d ON e.departamento = d.codigo;
+SELECT e.nombre, e.apellidos FROM empleados e INNER JOIN departamentos d ON e.departamento = d.codigo
+    WHERE d.presupuesto > 60000;
+SELECT * FROM departamentos
+    WHERE presupuesto > (SELECT AVG(presupuesto) FROM departamentos);
+SELECT d.nombre FROM departamentos d 
+    INNER JOIN empleados e ON d.codigo = e.departamento 
+    GROUP BY d.nombre HAVING COUNT(*) > 2;
 INSERT INTO departamentos (codigo, nombre, presupuesto) VALUES (11, 'CALIDAD', 40000);
+INSERT INTO EMPLEADOS (dni, nombre, apellidos, departamento) VALUES ('89267109', 'Esther', 'Vázquez', 11);
+UPDATE departamentos
+    SET presupuesto = presupuesto * 0.9;
+UPDATE empleados
+    SET departamento = 14
+    WHERE departamento = 77;
+DELETE FROM empleados
+    WHERE departamento = 14;
+DELETE FROM empleados
+    WHERE departamento IN (SELECT codigo FROM departamentos WHERE presupuesto > 60000);
+DELETE FROM empleados
+    WHERE departamento IN (SELECT codigo FROM departamentos WHERE presupuesto > 60000);
+DELETE FROM empleados;
+
