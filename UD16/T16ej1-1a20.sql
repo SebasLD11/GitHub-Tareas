@@ -13,11 +13,11 @@ WHERE codart = 4;
 
 -- consultas propias de los ejercicios del 1 al 20.
 
-SELECT nombre FROM articulos;
-SELECT nombre, precio FROM articulos;
-SELECT nombre FROM articulos WHERE precio <= 200;
+SELECT nomArt FROM articulos;
+SELECT nomArt, precio FROM articulos;
+SELECT nomArt FROM articulos WHERE precio <= 200;
 SELECT * FROM articulos WHERE precio BETWEEN 60 AND 120;
-SELECT nombre, precio * 166.386 AS precio_pesetas FROM articulos;
+SELECT nomArt, precio * 166.386 AS precio_pesetas FROM articulos;
 SELECT AVG(precio) AS precio_medio FROM articulos;
 SELECT AVG(precio) AS precio_medio FROM articulos 
     WHERE fabricante = 2;

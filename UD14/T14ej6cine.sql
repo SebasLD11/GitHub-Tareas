@@ -4,7 +4,7 @@ USE cine;
 CREATE TABLE peliculas (
     codigo INT AUTO_INCREMENT ,
     nombre VARCHAR (100) NOT NULL,
-    caledad INT NOT NULL,
+    calidad INT NOT NULL,
     PRIMARY KEY(codigo));
 
 CREATE TABLE salas (
