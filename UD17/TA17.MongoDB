@@ -1,0 +1,117 @@
+use Biblioteca
+db.createCollection('Libros')
+
+// Insertar los 10 libros
+
+db.libros.insertMany([
+  {
+    "titulo": "El poder del ahora",
+    "fecha_lanzamiento": new Date("1997-07-29"),
+    "autor": "Eckhart Tolle",
+    "categoria": "Autoayuda",
+    "editorial": "Gaia Ediciones",
+    "idioma": "Español",
+    "paginas": 224,
+    "descripcion": "Este libro explora la importancia de vivir en el momento presente y cómo liberarse del sufrimiento mental.",
+    "portada": "https://ejemplo.com/portadas/el_poder_del_ahora.jpg"
+  },
+  {
+    "titulo": "Mindset: La actitud del éxito",
+    "fecha_lanzamiento": new Date("2006-01-01"),
+    "autor": "Carol S. Dweck",
+    "categoria": "Psicología",
+    "editorial": "Urano",
+    "idioma": "Español",
+    "paginas": 320,
+    "descripcion": "Dweck presenta la idea de que la mentalidad de las personas, ya sea fija o de crecimiento, afecta su éxito y felicidad en la vida.",
+    "portada": "https://ejemplo.com/portadas/mindset_la_actitud_del_exito.jpg"
+  },
+  {
+    "titulo": "Padre Rico, Padre Pobre",
+    "fecha_lanzamiento": new Date("1997-01-01"),
+    "autor": "Robert T. Kiyosaki",
+    "categoria": "Finanzas",
+    "editorial": "Aguilar",
+    "idioma": "Español",
+    "paginas": 336,
+    "descripcion": "Este libro desafía la idea convencional sobre el dinero y presenta lecciones sobre cómo pensar y actuar financieramente.",
+    "portada": "https://ejemplo.com/portadas/padre_rico_padre_pobre.jpg"
+  },
+  {
+    "titulo": "Los 7 hábitos de la gente altamente efectiva",
+    "fecha_lanzamiento": new Date("1989-01-01"),
+    "autor": "Stephen R. Covey",
+    "categoria": "Desarrollo personal",
+    "editorial": "Paidos",
+    "idioma": "Español",
+    "paginas": 464,
+    "descripcion": "Covey presenta siete hábitos que pueden llevar a una vida más efectiva y satisfactoria en el trabajo y en el hogar.",
+    "portada": "https://ejemplo.com/portadas/los_7_habitos_de_la_gente_altamente_efectiva.jpg"
+  },
+  {
+    "titulo": "Clean Code: A Handbook of Agile Software Craftsmanship",
+    "fecha_lanzamiento": new Date("2008-01-01"),
+    "autor": "Robert C. Martin",
+    "categoria": "Programación",
+    "editorial": "Prentice Hall",
+    "idioma": "Inglés",
+    "paginas": 464,
+    "descripcion": "Este libro proporciona pautas prácticas para escribir código limpio y mantenible en proyectos de software.",
+    "portada": "https://ejemplo.com/portadas/clean_code.jpg"
+  },
+  {
+    "titulo": "El monje que vendió su Ferrari",
+    "fecha_lanzamiento": new Date("1999-01-01"),
+    "autor": "Robin Sharma",
+    "categoria": "Autoayuda",
+    "editorial": "Grijalbo",
+    "idioma": "Español",
+    "paginas": 224,
+    "descripcion": "Una historia inspiradora sobre el viaje espiritual y personal de un abogado que busca el significado de la vida y la felicidad.",
+    "portada": "https://ejemplo.com/portadas/el_monje_que_vendio_su_ferrari.jpg"
+  },
+  {
+    "titulo": "Inteligencia emocional",
+    "fecha_lanzamiento": new Date("1995-01-01"),
+    "autor": "Daniel Goleman",
+    "categoria": "Psicología",
+    "editorial": "Kairós",
+    "idioma": "Español",
+    "paginas": 384,
+    "descripcion": "Goleman explora la importancia de la inteligencia emocional en la vida cotidiana y en el éxito profesional.",
+    "portada": "https://ejemplo.com/portadas/inteligencia_emocional.jpg"
+  },
+  {
+    "titulo": "Dinero: domina el juego",
+    "fecha_lanzamiento": new Date("2014-01-01"),
+    "autor": "Tony Robbins",
+    "categoria": "Finanzas",
+    "editorial": "Grijalbo",
+    "idioma": "Español",
+    "paginas": 688,
+    "descripcion": "Robbins comparte estrategias y consejos de inversión de algunos de los inversores más exitosos del mundo.",
+    "portada": "https://ejemplo.com/portadas/dinero_domina_el_juego.jpg"
+  },
+  {
+    "titulo": "El código de la emoción",
+    "fecha_lanzamiento": new Date("2019-01-01"),
+    "autor": "Bradley Nelson",
+    "categoria": "Desarrollo personal",
+    "editorial": "Ediciones Urano",
+    "idioma": "Español",
+    "paginas": 416,
+    "descripcion": "Nelson presenta el método Emotion Code para identificar y liberar emociones atrapadas que pueden estar afectando la salud y el bienestar.",
+    "portada": "https://ejemplo.com/portadas/el_codigo_de_la_emocion.jpg"
+  },
+  {
+    "titulo": "Cracking the Coding Interview",
+    "fecha_lanzamiento": new Date("2015-01-01"),
+    "autor": "Gayle Laakmann McDowell",
+    "categoria": "Programación",
+    "editorial": "CareerCup",
+    "idioma": "Inglés",
+    "paginas": 687,
+    "descripcion": "Este libro ofrece consejos y ejemplos de entrevistas técnicas para ayudar a los ingenieros de software a prepararse para los procesos de selección en empresas de tecnología.",
+    "portada": "https://ejemplo.com/portadas/cracking_the_coding_interview.jpg"
+  }
+]);

@@ -1,0 +1,114 @@
+use TiendaInformatica
+db.createCollection('Articulos')
+
+// Insertar los 10 libros
+
+db.libros.insertMany([
+  {
+    "Código de artículo": "A01",
+    "Nombre de artículo": "Laptop Dell XPS 13",
+    "Precio": 1299.99,
+    "Fabricante": "Dell"
+  },
+  {
+    "Código de artículo": "A02",
+    "Nombre de artículo": "Monitor LG UltraWide 34\"",
+    "Precio": 599.99,
+    "Fabricante": "LG"
+  },
+  {
+    "Código de artículo": "A03",
+    "Nombre de artículo": "Teclado mecánico Corsair K95 RGB Platinum XT",
+    "Precio": 199.99,
+    "Fabricante": "Corsair"
+  },
+  {
+    "Código de artículo": "A04",
+    "Nombre de artículo": "Mouse inalámbrico Logitech MX Master 3",
+    "Precio": 99.99,
+    "Fabricante": "Logitech"
+  },
+  {
+    "Código de artículo": "A05",
+    "Nombre de artículo": "Router ASUS RT-AX86U",
+    "Precio": 249.99,
+    "Fabricante": "ASUS"
+  },
+  {
+    "Código de artículo": "A06",
+    "Nombre de artículo": "Tarjeta gráfica NVIDIA GeForce RTX 3080",
+    "Precio": 699.99,
+    "Fabricante": "NVIDIA"
+  },
+  {
+    "Código de artículo": "A07",
+    "Nombre de artículo": "Disco duro SSD Samsung 970 EVO Plus 1TB",
+    "Precio": 169.99,
+    "Fabricante": "Samsung"
+  },
+  {
+    "Código de artículo": "A08",
+    "Nombre de artículo": "Impresora multifunción HP OfficeJet Pro 9015",
+    "Precio": 229.99,
+    "Fabricante": "HP"
+  },
+  {
+    "Código de artículo": "A09",
+    "Nombre de artículo": "Auriculares inalámbricos Sony WH-1000XM4",
+    "Precio": 349.99,
+    "Fabricante": "Sony"
+  },
+  {
+    "Código de artículo": "A10",
+    "Nombre de artículo": "Cámara digital Canon EOS R5",
+    "Precio": 3899.99,
+    "Fabricante": "Canon"
+  }
+])
+
+//Insertar 10 Fabricantes
+
+db.createCollection('Fabricantes')
+db.libros.insertMany([
+[
+  {
+    "Código de fabricante": "F01",
+    "Nombre de fabricante": "Dell"
+  },
+  {
+    "Código de fabricante": "F02",
+    "Nombre de fabricante": "LG"
+  },
+  {
+    "Código de fabricante": "F03",
+    "Nombre de fabricante": "Corsair"
+  },
+  {
+    "Código de fabricante": "F04",
+    "Nombre de fabricante": "Logitech"
+  },
+  {
+    "Código de fabricante": "F05",
+    "Nombre de fabricante": "ASUS"
+  },
+  {
+    "Código de fabricante": "F06",
+    "Nombre de fabricante": "NVIDIA"
+  },
+  {
+    "Código de fabricante": "F07",
+    "Nombre de fabricante": "Samsung"
+  },
+  {
+    "Código de fabricante": "F08",
+    "Nombre de fabricante": "HP"
+  },
+  {
+    "Código de fabricante": "F09",
+    "Nombre de fabricante": "Sony"
+  },
+  {
+    "Código de fabricante": "F10",
+    "Nombre de fabricante": "Canon"
+  }
+])
