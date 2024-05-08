@@ -1,0 +1,58 @@
+use Almacenes
+
+// Crear la colección 'almacenes' y insertar documentos
+
+db.createCollection('almacenes')
+db.almacenes.insertMany([
+  {
+    "código de almacén": "A01",
+    "lugar": "Almacén principal",
+    "capacidad": 1000
+  },
+  {
+    "código de almacén": "A02",
+    "lugar": "Almacén secundario",
+    "capacidad": 500
+  },
+  {
+    "código de almacén": "A03",
+    "lugar": "Almacén de productos frágiles",
+    "capacidad": 300
+  }
+])
+
+// Crear la colección 'cajas' y insertar documentos
+
+db.createCollection('cajas')
+db.cajas.insertMany([
+  {
+    "número de referencia": "R001",
+    "contenido": "Libros",
+    "valor": 50,
+    "almacen": "A01"
+  },
+  {
+    "número de referencia": "R002",
+    "contenido": "Electrodomésticos",
+    "valor": 200,
+    "almacen": "A02"
+  },
+  {
+    "número de referencia": "R003",
+    "contenido": "Ropa",
+    "valor": 100,
+    "almacen": "A01"
+  },
+  {
+    "número de referencia": "R004",
+    "contenido": "Electrónica",
+    "valor": 300,
+    "almacen": "A03"
+  },
+  {
+    "número de referencia": "R005",
+    "contenido": "Artículos de decoración",
+    "valor": 150,
+    "almacen": "A02"
+  }
+])

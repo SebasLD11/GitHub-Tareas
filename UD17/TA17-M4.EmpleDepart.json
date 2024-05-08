@@ -1,0 +1,124 @@
+use EmpleDepart
+
+// Crear la colección de Departamentos y insertar documentos
+
+db.createCollection('Departamentos')
+db.Departamentos.insertMany([
+  {
+    "código de departamento": "DP01",
+    "Nombre": "Ventas",
+    "Presupuesto": 100000
+  },
+  {
+    "código de departamento": "DP02",
+    "Nombre": "Marketing",
+    "Presupuesto": 80000
+  },
+  {
+    "código de departamento": "DP03",
+    "Nombre": "AD, desarrollo de actividades y servicios",
+    "Presupuesto": 120000
+  },
+  {
+    "código de departamento": "DP04",
+    "Nombre": "Recursos Humanos",
+    "Presupuesto": 90000
+  },
+  {
+    "código de departamento": "DP05",
+    "Nombre": "Finanzas",
+    "Presupuesto": 110000
+  },
+  {
+    "código de departamento": "DP06",
+    "Nombre": "Producción",
+    "Presupuesto": 150000
+  },
+  {
+    "código de departamento": "DP07",
+    "Nombre": "Tecnología de la Información",
+    "Presupuesto": 130000
+  },
+  {
+    "código de departamento": "DP08",
+    "Nombre": "Legal",
+    "Presupuesto": 95000
+  },
+  {
+    "código de departamento": "DP09",
+    "Nombre": "Servicio al Cliente",
+    "Presupuesto": 85000
+  },
+  {
+    "código de departamento": "DP10",
+    "Nombre": "Investigación y Desarrollo",
+    "Presupuesto": 140000
+  }
+])
+
+// Crear la colección de Empleados e insertar documentos
+
+db.createCollection('Empleados')
+db.Empleados.insertMany([
+  {
+    "DNI/NIE": "xxxxxxxR",
+    "Nombre": "Juan Sebastián",
+    "Apellidos": "López Díaz",
+    "Departamento": ['DP02', 'DP03', 'DP05', 'DP10']
+  },
+  {
+    "DNI/NIE": "xxxxxxxP",
+    "Nombre": "Sergio",
+    "Apellidos": "Morales Segura",
+    "Departamento": ['DP04', 'DP09']
+  },
+  {
+    "DNI/NIE": "xxxxxxxL",
+    "Nombre": "Lucas",
+    "Apellidos": "Caballero",
+    "Departamento": 'DP09'
+  },
+  {
+    "DNI/NIE": "xxxxxxxD",
+    "Nombre": "Daniel",
+    "Apellidos": "Carrilo",
+    "Departamento": 'DP09'
+  },
+  {
+    "DNI/NIE": "xxxxxxxC",
+    "Nombre": "Nacho",
+    "Apellidos": "Climent",
+    "Departamento": 'DP09'
+  },
+  {
+    "DNI/NIE": "xxxxxxxJ",
+    "Nombre": "Joel",
+    "Apellidos": "Oliveira",
+    "Departamento": 'DP09'
+  },
+  {
+    "DNI/NIE": "xxxxxxxF",
+    "Nombre": "Ramón",
+    "Apellidos": "Ferran",
+    "Departamento": 'DP09'
+  },
+  {
+    "DNI/NIE": "xxxxxxxT",
+    "Nombre": "Tina",
+    "Apellidos": "Perez",
+    "Departamento": ['DP03', 'DP09']
+  },
+  {
+    "DNI/NIE": "xxxxxxxS",
+    "Nombre": "Sergio",
+    "Apellidos": "Guerrero",
+    "Departamento": 'DP03'
+  },
+  {
+    "DNI/NIE": "xxxxxxxM",
+    "Nombre": "Milena",
+    "Apellidos": "López Díaz",
+    "Departamento": ['DP03', 'DP06', 'DP10']
+  }
+])
+

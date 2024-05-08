@@ -1,0 +1,213 @@
+use GrAlmacenes
+db.createCollection('productos')
+db.productos.insertMany([
+{
+        "código": "PR011",
+        "nombre": "Calcetines",
+        "precio": 5.99
+},
+{
+        "código": "PR012",
+        "nombre": "Zapatos",
+        "precio": 39.99
+},
+{
+        "código": "PR013",
+        "nombre": "Pantalón corto",
+        "precio": 19.99
+},
+{
+        "código": "PR014",
+        "nombre": "Camisa",
+        "precio": 29.99
+},
+{
+        "código": "PR015",
+        "nombre": "Sudadera",
+        "precio": 24.99
+},
+{
+        "código": "PR016",
+        "nombre": "Bolso",
+        "precio": 49.99
+},
+{
+        "código": "PR017",
+        "nombre": "Gorra",
+        "precio": 9.99
+},
+{
+        "código": "PR018",
+        "nombre": "Bufanda",
+        "precio": 14.99
+},
+{
+        "código": "PR019",
+        "nombre": "Guantes",
+        "precio": 12.99
+},
+{
+        "código": "PR020",
+        "nombre": "Sombrero",
+        "precio": 17.99
+}
+])
+db.createCollection('cajeros')
+db.cajeros.insertMany([
+{
+        "código": "CJ003",
+        "nombre": "Elena",
+        "apellidos": "García Pérez"
+},
+{
+        "código": "CJ004",
+        "nombre": "José",
+        "apellidos": "Martínez Rodríguez"
+},
+{
+        "código": "CJ005",
+        "nombre": "Lucía",
+        "apellidos": "Sánchez López"
+},
+{
+        "código": "CJ006",
+        "nombre": "Diego",
+        "apellidos": "Gómez Ruiz"
+},
+{
+        "código": "CJ007",
+        "nombre": "Ana",
+        "apellidos": "Fernández Martínez"
+},
+{
+        "código": "CJ008",
+        "nombre": "Sara",
+        "apellidos": "López García"
+},
+{
+        "código": "CJ009",
+        "nombre": "Mario",
+        "apellidos": "Rodríguez Sánchez"
+},
+{
+        "código": "CJ010",
+        "nombre": "Laura",
+        "apellidos": "Pérez Ruiz"
+},
+{
+        "código": "CJ011",
+        "nombre": "Carlos",
+        "apellidos": "González López"
+},
+{
+        "código": "CJ012",
+        "nombre": "María",
+        "apellidos": "Martínez Sánchez"
+}
+])
+db.createCollection('Máq_Registradora')
+db.Máq_Registradora.insertMany([
+{
+        "código": "MR003",
+        "nombre": "Máquina 3",
+        "piso": 1
+},
+{
+        "código": "MR004",
+        "nombre": "Máquina 4",
+        "piso": 2
+},
+{
+        "código": "MR005",
+        "nombre": "Máquina 5",
+        "piso": 1
+},
+{
+        "código": "MR006",
+        "nombre": "Máquina 6",
+        "piso": 3
+},
+{
+        "código": "MR007",
+        "nombre": "Máquina 7",
+        "piso": 2
+},
+{
+        "código": "MR008",
+        "nombre": "Máquina 8",
+        "piso": 1
+},
+{
+        "código": "MR009",
+        "nombre": "Máquina 9",
+        "piso": 3
+},
+{
+        "código": "MR010",
+        "nombre": "Máquina 10",
+        "piso": 2
+},
+{
+        "código": "MR011",
+        "nombre": "Máquina 11",
+        "piso": 1
+},
+{
+        "código": "MR012",
+        "nombre": "Máquina 12",
+        "piso": 3
+}
+])
+db.createCollection('ventas')
+db.ventas.insertMany([
+{
+    "cajero": "CJ003",
+    "máquina": "MR003",
+    "producto": "PR011"
+  },
+  {
+    "cajero": "CJ004",
+    "máquina": "MR004",
+    "producto": "PR012"
+  },
+  {
+    "cajero": "CJ005",
+    "máquina": "MR005",
+    "producto": "PR013"
+  },
+  {
+    "cajero": "CJ006",
+    "máquina": "MR006",
+    "producto": "PR014"
+  },
+  {
+    "cajero": "CJ007",
+    "máquina": "MR007",
+    "producto": "PR015"
+  },
+  {
+    "cajero": "CJ008",
+    "máquina": "MR008",
+    "producto": "PR016"
+  },
+  {
+    "cajero": "CJ009",
+    "máquina": "MR009",
+    "producto": "PR017"
+  },
+  {
+    "cajero": "CJ010",
+    "máquina": "MR010",
+    "producto": "PR018"
+  },
+  {
+    "cajero": "CJ011",
+    "máquina": "MR011",
+    "producto": "PR019"
+  },
+  {
+    "cajero": "CJ012",
+    "máquina": "MR012",
+    "producto": "PR020"
+  }
+])

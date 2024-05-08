@@ -1,0 +1,223 @@
+use InvestFacult
+db.createCollection('facultad')
+db.facultad.inserMany([
+{
+    "código": "F001",
+    "nombre": "Facultad de Ciencias"
+  },
+  {
+    "código": "F002",
+    "nombre": "Facultad de Ingeniería"
+  },
+  {
+    "código": "F003",
+    "nombre": "Facultad de Medicina"
+  },
+  {
+    "código": "F004",
+    "nombre": "Facultad de Economía"
+  },
+  {
+    "código": "F005",
+    "nombre": "Facultad de Derecho"
+  },
+  {
+    "código": "F006",
+    "nombre": "Facultad de Humanidades"
+  },
+  {
+    "código": "F007",
+    "nombre": "Facultad de Arquitectura"
+  },
+  {
+    "código": "F008",
+    "nombre": "Facultad de Educación"
+  },
+  {
+    "código": "F009",
+    "nombre": "Facultad de Psicología"
+  },
+  {
+    "código": "F010",
+    "nombre": "Facultad de Bellas Artes"
+  }
+])
+db.createCollection('investigadores')
+db.investigadores.inserMany([
+{
+    "DNI": "12345678A",
+    "nombre": "Laura",
+    "apellidos": "Gómez Pérez",
+    "facultad": "F001"
+  },
+  {
+    "DNI": "98765432Z",
+    "nombre": "Carlos",
+    "apellidos": "Martínez Ruiz",
+    "facultad": "F002"
+  },
+  {
+    "DNI": "33333333C",
+    "nombre": "María",
+    "apellidos": "Sánchez López",
+    "facultad": "F003"
+  },
+  {
+    "DNI": "44444444D",
+    "nombre": "Pedro",
+    "apellidos": "García Fernández",
+    "facultad": "F004"
+  },
+  {
+    "DNI": "55555555E",
+    "nombre": "Sara",
+    "apellidos": "Rodríguez García",
+    "facultad": "F005"
+  },
+  {
+    "DNI": "66666666F",
+    "nombre": "Lucía",
+    "apellidos": "López Martínez",
+    "facultad": "F006"
+  },
+  {
+    "DNI": "77777777G",
+    "nombre": "Javier",
+    "apellidos": "Fernández Sánchez",
+    "facultad": "F007"
+  },
+  {
+    "DNI": "88888888H",
+    "nombre": "Elena",
+    "apellidos": "Pérez Ruiz",
+    "facultad": "F008"
+  },
+  {
+    "DNI": "99999999I",
+    "nombre": "Diego",
+    "apellidos": "Martínez López",
+    "facultad": "F009"
+  },
+  {
+    "DNI": "101010101J",
+    "nombre": "Ana",
+    "apellidos": "González García",
+    "facultad": "F010"
+  }
+])
+db.createCollection('equipos')
+db.equipos.inserMany([
+{
+    "número de serie": "E001",
+    "nombre": "Equipo de Investigación 1",
+    "facultad": "F001"
+  },
+  {
+    "número de serie": "E002",
+    "nombre": "Equipo de Investigación 2",
+    "facultad": "F002"
+  },
+  {
+    "número de serie": "E003",
+    "nombre": "Equipo de Investigación 3",
+    "facultad": "F003"
+  },
+  {
+    "número de serie": "E004",
+    "nombre": "Equipo de Investigación 4",
+    "facultad": "F004"
+  },
+  {
+    "número de serie": "E005",
+    "nombre": "Equipo de Investigación 5",
+    "facultad": "F005"
+  },
+  {
+    "número de serie": "E006",
+    "nombre": "Equipo de Investigación 6",
+    "facultad": "F006"
+  },
+  {
+    "número de serie": "E007",
+    "nombre": "Equipo de Investigación 7",
+    "facultad": "F007"
+  },
+  {
+    "número de serie": "E008",
+    "nombre": "Equipo de Investigación 8",
+    "facultad": "F008"
+  },
+  {
+    "número de serie": "E009",
+    "nombre": "Equipo de Investigación 9",
+    "facultad": "F009"
+  },
+  {
+    "número de serie": "E010",
+    "nombre": "Equipo de Investigación 10",
+    "facultad": "F010"
+  }
+])
+db.createCollection('reserva')
+db.reserva.inserMany([
+{
+    "DNI": "12345678A",
+    "número de serie": "E001",
+    "comienzo": "2024-06-01",
+    "fin": "2024-06-10"
+  },
+  {
+    "DNI": "98765432Z",
+    "número de serie": "E002",
+    "comienzo": "2024-06-05",
+    "fin": "2024-06-15"
+  },
+  {
+    "DNI": "33333333C",
+    "número de serie": "E003",
+    "comienzo": "2024-06-10",
+    "fin": "2024-06-20"
+  },
+  {
+    "DNI": "44444444D",
+    "número de serie": "E004",
+    "comienzo": "2024-06-15",
+    "fin": "2024-06-25"
+  },
+  {
+    "DNI": "55555555E",
+    "número de serie": "E005",
+    "comienzo": "2024-06-20",
+    "fin": "2024-06-30"
+  },
+  {
+    "DNI": "66666666F",
+    "número de serie": "E006",
+    "comienzo": "2024-06-25",
+    "fin": "2024-07-05"
+  },
+  {
+    "DNI": "77777777G",
+    "número de serie": "E007",
+    "comienzo": "2024-07-01",
+    "fin": "2024-07-10"
+  },
+  {
+    "DNI": "88888888H",
+    "número de serie": "E008",
+    "comienzo": "2024-07-05",
+    "fin": "2024-07-15"
+  },
+  {
+    "DNI": "99999999I",
+    "número de serie": "E009",
+    "comienzo": "2024-07-10",
+    "fin": "2024-07-20"
+  },
+  {
+    "DNI": "101010101J",
+    "número de serie": "E010",
+    "comienzo": "2024-07-15",
+    "fin": "2024-07-25"
+  }
+])

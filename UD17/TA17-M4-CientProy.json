@@ -1,0 +1,154 @@
+use CientProyec
+db.createCollection('cientificos')
+db.cientificos.inserMany([
+{
+    "DNI": "12345678A",
+    "nombre": "Laura",
+    "apellidos": "Gómez Pérez"
+  },
+  {
+    "DNI": "98765432Z",
+    "nombre": "Carlos",
+    "apellidos": "Martínez Ruiz"
+  },
+  {
+    "DNI": "33333333C",
+    "nombre": "María",
+    "apellidos": "Sánchez López"
+  },
+  {
+    "DNI": "44444444D",
+    "nombre": "Pedro",
+    "apellidos": "García Fernández"
+  },
+  {
+    "DNI": "55555555E",
+    "nombre": "Sara",
+    "apellidos": "Rodríguez García"
+  },
+  {
+    "DNI": "66666666F",
+    "nombre": "Lucía",
+    "apellidos": "López Martínez"
+  },
+  {
+    "DNI": "77777777G",
+    "nombre": "Javier",
+    "apellidos": "Fernández Sánchez"
+  },
+  {
+    "DNI": "88888888H",
+    "nombre": "Elena",
+    "apellidos": "Pérez Ruiz"
+  },
+  {
+    "DNI": "99999999I",
+    "nombre": "Diego",
+    "apellidos": "Martínez López"
+  },
+  {
+    "DNI": "101010101J",
+    "nombre": "Ana",
+    "apellidos": "González García"
+  }
+
+])
+
+db.createCollection('proyecto')
+db.proyecto.inserMany([
+{
+    "id": "PRJ001",
+    "nombre": "Proyecto de Investigación 1",
+    "horas": 100
+  },
+  {
+    "id": "PRJ002",
+    "nombre": "Proyecto de Investigación 2",
+    "horas": 200
+  },
+  {
+    "id": "PRJ003",
+    "nombre": "Proyecto de Investigación 3",
+    "horas": 150
+  },
+  {
+    "id": "PRJ004",
+    "nombre": "Proyecto de Investigación 4",
+    "horas": 180
+  },
+  {
+    "id": "PRJ005",
+    "nombre": "Proyecto de Investigación 5",
+    "horas": 220
+  },
+  {
+    "id": "PRJ006",
+    "nombre": "Proyecto de Investigación 6",
+    "horas": 130
+  },
+  {
+    "id": "PRJ007",
+    "nombre": "Proyecto de Investigación 7",
+    "horas": 190
+  },
+  {
+    "id": "PRJ008",
+    "nombre": "Proyecto de Investigación 8",
+    "horas": 210
+  },
+  {
+    "id": "PRJ009",
+    "nombre": "Proyecto de Investigación 9",
+    "horas": 140
+  },
+  {
+    "id": "PRJ010",
+    "nombre": "Proyecto de Investigación 10",
+    "horas": 230
+  }
+
+])
+
+db.createCollection('asignado_a')
+db.asignado_a.inserMany([
+{
+    "cientifico": "12345678A",
+    "proyecto": "PRJ001"
+  },
+  {
+    "cientifico": "98765432Z",
+    "proyecto": "PRJ002"
+  },
+  {
+    "cientifico": "33333333C",
+    "proyecto": "PRJ003"
+  },
+  {
+    "cientifico": "44444444D",
+    "proyecto": "PRJ004"
+  },
+  {
+    "cientifico": "55555555E",
+    "proyecto": "PRJ005"
+  },
+  {
+    "cientifico": "66666666F",
+    "proyecto": "PRJ006"
+  },
+  {
+    "cientifico": "77777777G",
+    "proyecto": "PRJ007"
+  },
+  {
+    "cientifico": "88888888H",
+    "proyecto": "PRJ008"
+  },
+  {
+    "cientifico": "99999999I",
+    "proyecto": "PRJ009"
+  },
+  {
+    "cientifico": "101010101J",
+    "proyecto": "PRJ010"
+  }
+])

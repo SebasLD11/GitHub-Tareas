@@ -1,0 +1,140 @@
+use PiezProvee
+db.createCollection('piezas')
+db.piezas.insertMany([
+ {
+    "código de pieza": "PZ001",
+    "nombre": "Tuerca"
+  },
+  {
+    "código de pieza": "PZ002",
+    "nombre": "Tornillo"
+  },
+  {
+    "código de pieza": "PZ003",
+    "nombre": "Arandela"
+  },
+  {
+    "código de pieza": "PZ004",
+    "nombre": "Resorte"
+  },
+  {
+    "código de pieza": "PZ005",
+    "nombre": "Tubo"
+  },
+  {
+    "código de pieza": "PZ006",
+    "nombre": "Clavo"
+  },
+  {
+    "código de pieza": "PZ007",
+    "nombre": "Engranaje"
+  },
+  {
+    "código de pieza": "PZ008",
+    "nombre": "Correa"
+  },
+  {
+    "código de pieza": "PZ009",
+    "nombre": "Cadena"
+  },
+  {
+    "código de pieza": "PZ010",
+    "nombre": "Polea"
+}
+])
+db.createCollection('proveedor')
+db.proveedor.inserMany([
+{
+        "código proveedor": "PR001",
+        "nombre": "Proveedor A"
+},
+{
+        "código proveedor": "PR002",
+        "nombre": "Proveedor B"
+},
+{
+        "código proveedor": "PR003",
+        "nombre": "Proveedor C"
+},
+{
+        "código proveedor": "PR004",
+        "nombre": "Proveedor D"
+},
+{
+        "código proveedor": "PR005",
+        "nombre": "Proveedor E"
+},
+{
+        "código proveedor": "PR006",
+        "nombre": "Proveedor F"
+},
+{
+        "código proveedor": "PR007",
+        "nombre": "Proveedor G"
+},
+{
+        "código proveedor": "PR008",
+        "nombre": "Proveedor H"
+},
+{
+        "código proveedor": "PR009",
+        "nombre": "Proveedor I"
+},
+{
+        "código proveedor": "PR010",
+        "nombre": "Proveedor J"
+}
+])
+db.createCollection('suministra')
+db.suministra.insertMany([
+{
+ "código de pieza": "PZ001",
+ "código proveedor": "PR001",
+ "precio": 1.5
+},
+{
+  "código de pieza": "PZ002",
+  "código proveedor": "PR002",
+  "precio": 2.0
+},
+{
+  "código de pieza": "PZ003",
+  "código proveedor": "PR003",
+  "precio": 0.75
+},
+{
+        "código de pieza": "PZ004",
+        "código proveedor": "PR004",
+        "precio": 1.2
+},
+{
+        "código de pieza": "PZ005",
+        "código proveedor": "PR005",
+        "precio": 3.5
+},
+{
+        "código de pieza": "PZ006",
+        "código proveedor": "PR006",
+        "precio": 0.6
+},
+{
+        "código de pieza": "PZ007",
+        "código proveedor": "PR007",
+        "precio": 2.8
+},
+{
+        "código de pieza": "PZ008",
+        "código proveedor": "PR008",
+        "precio": 1.8
+},
+{
+        "código de pieza": "PZ009",
+        "código proveedor": "PR009",
+        "precio": 2.2
+},
+{
+        "código de pieza": "PZ010",
+        "código proveedor": "PR010",
+        "precio": 3.0
+}
+])

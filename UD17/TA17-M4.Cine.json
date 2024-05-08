@@ -1,0 +1,110 @@
+use Cine
+db.createCollection('películas')
+db.películas.insertMany([
+{
+    "código de película": "P001",
+    "nombre": "El Padrino",
+    "calificación de edad": "18+"
+  },
+  {
+    "código de película": "P002",
+    "nombre": "Titanic",
+    "calificación de edad": "12+"
+  },
+  {
+    "código de película": "P003",
+    "nombre": "Parásitos",
+    "calificación de edad": "16+"
+  },
+  {
+    "código de película": "P004",
+    "nombre": "Joker",
+    "calificación de edad": "16+"
+  },
+  {
+    "código de película": "P005",
+    "nombre": "La La Land",
+    "calificación de edad": "7+"
+  },
+  {
+    "código de película": "P006",
+    "nombre": "Inception",
+    "calificación de edad": "12+"
+  },
+  {
+    "código de película": "P007",
+    "nombre": "Pulp Fiction",
+    "calificación de edad": "18+"
+  },
+  {
+    "código de película": "P008",
+    "nombre": "Avengers: Endgame",
+    "calificación de edad": "12+"
+  },
+  {
+    "código de película": "P009",
+    "nombre": "Interstellar",
+    "calificación de edad": "12+"
+  },
+  {
+    "código de película": "P010",
+    "nombre": "The Shawshank Redemption",
+    "calificación de edad": "16+"
+  }
+])
+
+// Salas
+db.createCollection('salas')
+db.salas.insertMany([
+
+  {
+    "código de sala": "S001",
+    "nombre": "Sala 1",
+    "película": "El Padrino"
+  },
+  {
+    "código de sala": "S002",
+    "nombre": "Sala 2",
+    "película": "Titanic"
+  },
+  {
+    "código de sala": "S003",
+    "nombre": "Sala 3",
+    "película": "Parásitos"
+  },
+  {
+    "código de sala": "S004",
+    "nombre": "Sala 4",
+    "película": "Joker"
+  },
+  {
+    "código de sala": "S005",
+    "nombre": "Sala 5",
+    "película": "La La Land"
+  },
+  {
+    "código de sala": "S006",
+    "nombre": "Sala 6",
+    "película": "Inception"
+  },
+  {
+    "código de sala": "S007",
+    "nombre": "Sala 7",
+    "película": "Pulp Fiction"
+  },
+  {
+    "código de sala": "S008",
+    "nombre": "Sala 8",
+    "película": "Avengers: Endgame"
+  },
+  {
+    "código de sala": "S009",
+    "nombre": "Sala 9",
+    "película": "Interstellar"
+  },
+  {
+    "código de sala": "S010",
+    "nombre": "Sala 10",
+    "película": "The Shawshank Redemption"
+}    
+])
