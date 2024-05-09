@@ -1,7 +1,7 @@
 use TiendaInformatica
 db.createCollection('Articulos')
 
-// Insertar los 10 libros
+// Insertar los 10 articulos
 
 db.libros.insertMany([
   {
