@@ -19,7 +19,7 @@ public class CLVTStore extends MenuControlador {
         catalogo.add(new Producto("Loto Candle: modelo 'Fire'", 14.99, 25, 21));
         catalogo.add(new Producto("Loto Candle: modelo 'Purple'", 54.99, 25, 21));
         catalogo.add(new Producto("Tabla de Skate CLVT ONE", 54.99, 25, 21));
-        catalogo.add(new Producto("Brain Pocket Wax (para Skate/Scooter)", 6.95, 20, 21));
+        catalogo.add(new Producto("Brain Pocket Wax (para Skate/Scooter)", 7.95, 30, 21));
 
         List<Producto> carrito = new ArrayList<>();
 

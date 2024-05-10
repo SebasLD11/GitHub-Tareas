@@ -1,66 +1,111 @@
 package TAGrupalMAS;
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.geom.*;
+import java.text.*;
+
+import javax.swing.*;
 import javax.swing.border.*;
 
-public class Calculadora extends JFrame {
+public class Calculadora {
+    public static void main(String[] args) {
+        int numeros[] = {7,8,9,4,5,6,1,2,3,0};
+        String operadores[] = {"/","*","-", ",", "+", "C", "="};
 
-    private static final long serialVersionUID = 1L;
+        // VENTANA //
 
-    public Calculadora() {
-        setTitle("Calculadora");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(350, 500);
-        setLocationRelativeTo(null);
-        
+        JFrame frame = new JFrame("Calculadora");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(350, 500);
+
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+
+        // VENTANA //
+
+        // PANTALLA DE CÁLCULO //
+
+        JPanel pantalla = new JPanel();
+
+        JTextPane pantallita = new JTextPane();
+        pantallita.setBorder(new LineBorder(new Color(160, 80, 190), 4));
+        pantallita.setMaximumSize(new Dimension(340, 75));
+        pantallita.setFont(new Font("arial", Font.BOLD, 30));
+        pantallita.setEditable(false);
+        pantallita.setText("0");
+
+        pantalla.add(pantallita);
+        
         panel.setBorder(new EmptyBorder(10, 20, 10, 20));
 
-        JTextPane pantalla = new JTextPane();
-        pantalla.setBorder(new LineBorder(new Color(160, 80, 190), 4));
-        pantalla.setMaximumSize(new Dimension(340, 75));
-        pantalla.setFont(new Font("Arial", Font.BOLD, 30));
-        pantalla.setEditable(false);
-        pantalla.setText("0");
+        panel.add(pantallita);
 
-        panel.add(pantalla);
+        // PANTALLA DE CÁLCULO //
+
+        // PANEL BOTONES NÚMEROS //
 
         JPanel botones = new JPanel();
         botones.setLayout(new GridBagLayout());
-        GridBagConstraints c = new GridBagConstraints();
-        c.fill = GridBagConstraints.BOTH;
-        c.weightx = 1;
-        c.weighty = 1;
+        GridBagConstraints caracteristicasCelda = new GridBagConstraints();
+        caracteristicasCelda.fill = GridBagConstraints.BOTH;
+        caracteristicasCelda.weightx = 1;
+        caracteristicasCelda.weighty = 1;
 
         int indice_op = 0;
         int indice_nu = 0;
         int num_cel = 0;
         boolean doble = false;
-
+        
         for (int j = 1; j <= 5; j++) {
             for (int i = 1; i <= 4; i++) {
                 if (num_cel == 13 || num_cel == 15 || num_cel == 16) {
-                    c.gridwidth = 2;
+                    caracteristicasCelda.gridwidth = 2;
                     doble = true;
                 } else {
-                    c.gridwidth = 1;
+                    caracteristicasCelda.gridwidth = 1;
                     doble = false;
                 }
-                if (!(i % 4 == 0) && !(num_cel == 12) && !(j == 5)) {
-                    RoundedButton boton = new RoundedButton(String.valueOf(indice_nu), 25, "numeros");
-                    botones.add(boton, c);
+                if (!(i%4 == 0) && !(num_cel == 12) && !(j == 5)) {
+                    JPanel panel_boton = new JPanel(new BorderLayout()); 
+                    panel_boton.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2)); 
+
+                    RoundedButton boton = new RoundedButton(String.valueOf(numeros[indice_nu]), 25, "numeros");
+                    panel_boton.add(boton, BorderLayout.CENTER);
+
+                    caracteristicasCelda.gridx = i;
+                    caracteristicasCelda.gridy = j;
+
+                    botones.add(panel_boton, caracteristicasCelda);
                     indice_nu++;
 
                     if (doble) {
                         i++;
                     }
                 } else {
-                    String[] operadores = {"/","*","-", ",", "+", "C", "="};
-                    RoundedButton boton = new RoundedButton(operadores[indice_op], 25, "operadores");
-                    botones.add(boton, c);
+                    JPanel panel_boton = new JPanel(new BorderLayout()); 
+                    panel_boton.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2)); 
+
+                    RoundedButton boton = new RoundedButton(null);
+                    switch (num_cel) {
+                        case 15:
+                            boton = new RoundedButton(operadores[indice_op], 25, "cancelar");
+                            break;
+                    
+                        case 16:
+                            boton = new RoundedButton(operadores[indice_op], 25, "resultado");
+                            break;
+                    
+                        default:
+                            boton = new RoundedButton(operadores[indice_op], 25, "string");
+                            break;
+                    }
+
+                    panel_boton.add(boton, BorderLayout.CENTER);
+                    
+                    caracteristicasCelda.gridx = i;
+                    caracteristicasCelda.gridy = j;
+
+                    botones.add(panel_boton, caracteristicasCelda);
+
                     indice_op++;
 
                     if (doble) {
@@ -72,133 +117,156 @@ public class Calculadora extends JFrame {
         }
 
         panel.add(botones);
-        add(panel);
-        setVisible(true);
+
+        // PANEL BOTONES NÚMEROS //
+
+        // FUNCIONES BOTONES //
+
+        StringBuilder operacion = new StringBuilder();
+
+        for (Component componente : botones.getComponents()) {
+            if (componente instanceof JPanel) {
+                JPanel panelBoton = (JPanel) componente;
+                Component[] botones_array = panelBoton.getComponents();
+                for (Component componente_boton : botones_array) {
+                    if (componente_boton instanceof RoundedButton) {
+                        RoundedButton boton = (RoundedButton) componente_boton;
+                        boton.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                double decimal = 0;
+                                int entero = 0;
+                                boolean hayOperador = false;
+                                double num1 = 0;
+                                double num2 = 0;
+                                String simbolo = "";
+                                double resultado = 0;
+
+                                DecimalFormat formato = new DecimalFormat("#.##");
+
+                                String entrada = boton.getText();
+
+                                try {
+                                    decimal = Double.parseDouble(entrada);
+                                    if (!necesitaDecimal(decimal)) {
+                                        entero = (int) decimal;
+                                        operacion.append(entero);
+                                    } else {
+                                        operacion.append(formato.format(decimal));
+                                    }
+                                    pantallita.setText(operacion.toString());
+                                    pantallita.repaint();
+                                    pantallita.revalidate();
+                                } catch (Exception exception) {
+                                    if (entrada.equals("=") || hayOperador) {
+                                        String partes[] = operacion.toString().split(" ");
+                                        try {
+                                            num1 = Double.parseDouble(partes[0]);
+                                            simbolo = partes[1];
+                                            num2 = Double.parseDouble(partes[2]);
+
+                                            resultado = operaciones(num1, num2, simbolo);
+                                            if (necesitaDecimal(resultado)) {
+                                                resultado = (double) resultado;
+                                            } else {
+                                                resultado = (int) resultado;
+                                            }
+                                            if (entrada.equals("=")) {
+                                                operacion.setLength(0);
+                                                pantallita.setText(String.valueOf(resultado));
+                                                pantallita.repaint();
+                                                pantallita.revalidate();
+                                            } else {
+                                                operacion.setLength(0);
+                                                operacion.append(resultado);
+                                                pantallita.setText(String.valueOf(resultado));
+                                                pantallita.repaint();
+                                                pantallita.revalidate();
+                                            }
+                                        } catch (Exception exceptiones) {
+                                        }
+                                    } else {
+                                    switch (entrada) {
+                                        case "C":
+                                            hayOperador = false;
+                                            operacion.setLength(0);
+                                            pantallita.setText("");
+                                            pantallita.repaint();
+                                            pantallita.revalidate();
+                                            break;
+
+                                        case "+":
+                                        case "-":
+                                        case "*":
+                                        case "/":
+                                            operacion.append(" "+entrada+" ");
+                                            pantallita.setText(operacion.toString());
+                                            pantallita.repaint();
+                                            pantallita.revalidate();
+                                            hayOperador = true;
+                                            break;
+                                
+                                        default:
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    }
+                }
+            }
+        }
+
+        // FUNCIONES BOTONES //
+
+        frame.add(panel);
+        frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(Calculadora::new);
-    }
-}
-
-class RoundedButton extends JButton {
-
-    private static final long serialVersionUID = 1L;
-
-    private int arco = 0;
-    private Color colorPredeterminado = new Color(ABORT);
-    private Color colorBorde = new Color(ABORT);
-    private Color colorHover = new Color(ABORT);
-
-    private Color col_numeros = new Color(189, 207, 213);
-    private Color col_strings = new Color(33, 184, 236);
-    private Color col_cancelar = new Color(255, 59, 59);
-    private Color col_resultado = new Color(34, 135, 216);
-
-    public RoundedButton(String text) {
-        super(text);
-        setContentAreaFilled(false);
+    public static RoundedButton caracteristicas_botones(RoundedButton boton) {
+        boton.setBorder(new EmptyBorder(2,2,2,2));
+        boton.setFont(new Font("arial", Font.BOLD, 16));
+        
+        return boton;
     }
 
-    public RoundedButton(String text, int arco) {
-        super(text);
-        this.arco = arco;
-        setContentAreaFilled(false);
-    }
-
-    public RoundedButton(String text, int arco, String tipo) {
-        super(text);
-        this.arco = arco;
-
-        int rojo = 0;
-        int verde = 0;
-        int azul = 0;
-
-        switch (tipo) {
-            case "numeros":
-                rojo = (int) (col_numeros.getRed() * 0.6);
-                verde = (int) (col_numeros.getGreen() * 0.6);
-                azul = (int) (col_numeros.getBlue() * 0.6);
-                colorHover = new Color(rojo, verde, azul);
-
-                rojo = (int) (col_numeros.getRed() * 0.8);
-                verde = (int) (col_numeros.getGreen() * 0.8);
-                azul = (int) (col_numeros.getBlue() * 0.8);
-                colorBorde = new Color(rojo, verde, azul);
-
-                colorPredeterminado = new Color(col_numeros.getRGB());
-
+    public static double operaciones(double op1, double op2, String operador) {
+        double result = 0;
+        switch (operador) {
+            case "+":
+                result = (op1 + op2);
                 break;
-
-            case "cancelar":
-                rojo = (int) (col_cancelar.getRed() * 0.6);
-                verde = (int) (col_cancelar.getGreen() * 0.6);
-                azul = (int) (col_cancelar.getBlue() * 0.6);
-                colorHover = new Color(rojo, verde, azul);
-
-                rojo = (int) (col_cancelar.getRed() * 0.8);
-                verde = (int) (col_cancelar.getGreen() * 0.8);
-                azul = (int) (col_cancelar.getBlue() * 0.8);
-                colorBorde = new Color(rojo, verde, azul);
-
-                colorPredeterminado = new Color(col_cancelar.getRGB());
-
+        
+            case "-":
+                result = (op1 - op2);
                 break;
-
-            case "resultado":
-                rojo = (int) (col_resultado.getRed() * 0.6);
-                verde = (int) (col_resultado.getGreen() * 0.6);
-                azul = (int) (col_resultado.getBlue() * 0.6);
-                colorHover = new Color(rojo, verde, azul);
-
-                rojo = (int) (col_resultado.getRed() * 0.8);
-                verde = (int) (col_resultado.getGreen() * 0.8);
-                azul = (int) (col_resultado.getBlue() * 0.8);
-                colorBorde = new Color(rojo, verde, azul);
-
-                colorPredeterminado = new Color(col_resultado.getRGB());
-
+        
+            case "*":
+                result = (op1 * op2);  
                 break;
-
-            case "string":
-                rojo = (int) (col_strings.getRed() * 0.6);
-                verde = (int) (col_strings.getGreen() * 0.6);
-                azul = (int) (col_strings.getBlue() * 0.6);
-                colorHover = new Color(rojo, verde, azul);
-
-                rojo = (int) (col_strings.getRed() * 0.6);
-                verde = (int) (col_strings.getGreen() * 0.6);
-                azul = (int) (col_strings.getBlue() * 0.6);
-                colorBorde = new Color(rojo, verde, azul);
-
-                colorPredeterminado = new Color(col_strings.getRGB());
-
+        
+            case "/":
+                result = (op1 / op2);
                 break;
-
+        
             default:
-                colorHover = new Color(Color.black.getRGB());
+                System.out.println("¡Has tenido un error por gilipollas!");
                 break;
         }
-        setContentAreaFilled(false);
+
+        return result;
     }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        if (getModel().isArmed()) {
-            g.setColor(colorHover);
-        } else {
-            g.setColor(colorPredeterminado);
+    public static boolean necesitaDecimal(double numero) {
+        boolean necesario = false;
+        String numeroStr = String.valueOf(numero);
+        String partes[] = numeroStr.split("[,.]");
+        int decimales = Integer.parseInt(partes[1]);
+        if (decimales != 0) {
+            necesario = true;
         }
-        g.fillRoundRect(0, 0, getWidth(), getHeight(), arco, arco);
-        super.paintComponent(g);
-    }
-
-    @Override
-    protected void paintBorder(Graphics g) {
-        Graphics2D g2 = (Graphics2D) g.create();
-        g2.setStroke(new BasicStroke(3));
-        g2.setColor(colorBorde);
-        g2.draw(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), arco, arco));
-        g2.dispose();
+        return necesario;
     }
 }
