@@ -1,4 +1,4 @@
-package TAGrupalMAS;
+package UD19.SwingAwr;
 import java.awt.*;
 import java.awt.event.*;
 import java.text.*;
@@ -6,7 +6,7 @@ import java.text.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
-public class Calculadora {
+public class Ej4Ud19Calculador {
     public static void main(String[] args) {
         int numeros[] = {7,8,9,4,5,6,1,2,3,0};
         String operadores[] = {"/","*","-", ",", "+", "C", "="};
