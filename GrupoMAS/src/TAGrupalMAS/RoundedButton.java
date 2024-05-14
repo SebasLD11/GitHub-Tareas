@@ -5,7 +5,12 @@ import java.awt.geom.*;
 
 public class RoundedButton extends JButton {
 
-    // ATRIBUTOS
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	// ATRIBUTOS
     private int arco = 0;
     private Color colorPredeterminado = new Color(ABORT);
     private Color colorBorde = new Color(ABORT);
