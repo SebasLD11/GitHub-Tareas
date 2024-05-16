@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class ExceptionApp {
+public class UD10Ej02ExceptionApp {
 
 	    public static void main(String[] args) {
 	    		FileReader fr = null;
