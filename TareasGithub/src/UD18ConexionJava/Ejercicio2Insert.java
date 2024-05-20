@@ -38,7 +38,7 @@ public class Ejercicio2Insert {
             statement.executeUpdate("INSERT INTO empleados (dni, nombre, apellidos, departamento) VALUES ('xxxxxxH','Ayman', 'Mohammed Haouri', '5')");
             statement.executeUpdate("INSERT INTO empleados (dni, nombre, apellidos, departamento) VALUES ('xxxxxxI','Ingrid', 'López', '5')");                    
             
-            // Consultar registros en la tabla 'empleadosdepart'
+            // Consultar registros en la tabla 'empleados y departamentos'
             ResultSet resultSet = statement.executeQuery("SELECT * FROM departamentos");
             System.out.println("Registros en la tabla 'Departamentos':");
             while (resultSet.next()) {

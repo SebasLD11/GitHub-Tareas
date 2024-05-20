@@ -37,7 +37,7 @@ package UD18ConexionJava;
 	            statement.executeUpdate("INSERT INTO cajas (nref, contenido, valor, almacen) VALUES ('CA007','Brain Pocket Wax', '160', '15')");
 	            statement.executeUpdate("INSERT INTO cajas (nref, contenido, valor, almacen) VALUES ('CA011','Rodamientos', '180', '15')");                    
 	            
-	            // Consultar registros en la tabla 'almacenes'
+	            // Consultar registros en la tabla 'almacenes y cajas'
 	            ResultSet resultSet = statement.executeQuery("SELECT * FROM almacenes");
 	            System.out.println("Registros en la tabla 'Almacenes':");
 	            while (resultSet.next()) {
@@ -45,13 +45,13 @@ package UD18ConexionJava;
 	                                   " Lugar: " + resultSet.getString("lugar") +
 	                                   " Capacidad: " + resultSet.getString("capacidad"));
 	            } 
-	            ResultSet resultSetEmpleados = statement.executeQuery("SELECT * FROM cajas");
+	            ResultSet resultSetCajas = statement.executeQuery("SELECT * FROM cajas");
 	            System.out.println("Registros en la tabla 'Cajas':");
-	            while (resultSetEmpleados.next()) {
-	                System.out.println("Número de referencia: " + resultSetEmpleados.getString("nref") + 
-	                                   " Contenido: " + resultSetEmpleados.getString("contenido") +
-	                                   " Valor: " + resultSetEmpleados.getString("valor") +
-	                                   " Almacen: " + resultSetEmpleados.getInt("almacen"));}
+	            while (resultSetCajas.next()) {
+	                System.out.println("Número de referencia: " + resultSetCajas.getString("nref") + 
+	                                   " Contenido: " + resultSetCajas.getString("contenido") +
+	                                   " Valor: " + resultSetCajas.getString("valor") +
+	                                   " Almacen: " + resultSetCajas.getInt("almacen"));}
 	        }catch (SQLException e) {
 	            System.out.println("Error al conectar a la base de datos: " + e.getMessage());
 	        } finally {
