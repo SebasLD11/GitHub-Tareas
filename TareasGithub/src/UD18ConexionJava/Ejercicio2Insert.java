@@ -25,18 +25,18 @@ public class Ejercicio2Insert {
             statement = conexion.createStatement();
 
             // Insertar 5 registros en la tabla 'departamentos'. Ejercicio 2
-            //statement.executeUpdate("INSERT INTO departamentos (nombre, presupuesto) VALUES ('ACTIVIDADES EXTERNAS', '5000')");
-            //statement.executeUpdate("INSERT INTO departamentos (nombre, presupuesto) VALUES ('EQUIPOS', '10000')");
-            //statement.executeUpdate("INSERT INTO departamentos (nombre, presupuesto) VALUES ('LOGISTICA', '20000')");
-            //statement.executeUpdate("INSERT INTO departamentos (nombre, presupuesto) VALUES ('REDES Y TELECOMUNICACIONES', '6500')");
-            //statement.executeUpdate("INSERT INTO departamentos (nombre, presupuesto) VALUES ('I+D', '15000')");
+            statement.executeUpdate("INSERT INTO departamentos (nombre, presupuesto) VALUES ('ACTIVIDADES EXTERNAS', '5000')");
+            statement.executeUpdate("INSERT INTO departamentos (nombre, presupuesto) VALUES ('EQUIPOS', '10000')");
+            statement.executeUpdate("INSERT INTO departamentos (nombre, presupuesto) VALUES ('LOGISTICA', '20000')");
+            statement.executeUpdate("INSERT INTO departamentos (nombre, presupuesto) VALUES ('REDES Y TELECOMUNICACIONES', '6500')");
+            statement.executeUpdate("INSERT INTO departamentos (nombre, presupuesto) VALUES ('I+D', '15000')");
             
             // Insertar 5 registros en la tabla 'empleados'. Ejercicio 2
-            //statement.executeUpdate("INSERT INTO empleados (dni, nombre, apellidos, departamento) VALUES ('xxxxxxO','Oriol', 'Basols Muñoz', '1')");
-            // statement.executeUpdate("INSERT INTO empleados (dni, nombre, apellidos, departamento) VALUES ('xxxxxxN', 'Sergi', 'Nacarino', '10')");
-            //statement.executeUpdate("INSERT INTO empleados (dni, nombre, apellidos, departamento) VALUES ('xxxxxxY','Cesar', 'Saday Peña', '1')");
-            //statement.executeUpdate("INSERT INTO empleados (dni, nombre, apellidos, departamento) VALUES ('xxxxxxH','Ayman', 'Mohammed Haouri', '5')");
-            //statement.executeUpdate("INSERT INTO empleados (dni, nombre, apellidos, departamento) VALUES ('xxxxxxI','Ingrid', 'López', '5')");                    
+            statement.executeUpdate("INSERT INTO empleados (dni, nombre, apellidos, departamento) VALUES ('xxxxxxO','Oriol', 'Basols Muñoz', '1')");
+            statement.executeUpdate("INSERT INTO empleados (dni, nombre, apellidos, departamento) VALUES ('xxxxxxN', 'Sergi', 'Nacarino', '10')");
+            statement.executeUpdate("INSERT INTO empleados (dni, nombre, apellidos, departamento) VALUES ('xxxxxxY','Cesar', 'Saday Peña', '1')");
+            statement.executeUpdate("INSERT INTO empleados (dni, nombre, apellidos, departamento) VALUES ('xxxxxxH','Ayman', 'Mohammed Haouri', '5')");
+            statement.executeUpdate("INSERT INTO empleados (dni, nombre, apellidos, departamento) VALUES ('xxxxxxI','Ingrid', 'López', '5')");                    
             
             // Consultar registros en la tabla 'empleadosdepart'
             ResultSet resultSet = statement.executeQuery("SELECT * FROM departamentos");
