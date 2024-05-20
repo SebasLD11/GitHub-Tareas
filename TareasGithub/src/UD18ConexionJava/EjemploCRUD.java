@@ -21,25 +21,23 @@ public class EjemploCRUD {
             statement = conexion.createStatement();
 
             // Actualizar el nombre de un registro en la tabla 'fabricantes'
-            statement.executeUpdate("UPDATE fabricantes SET codigo = '4' WHERE codigo = '5'");
-            statement.executeUpdate("UPDATE fabricantes SET codigo = '5' WHERE codigo = '6'");
-            statement.executeUpdate("UPDATE fabricantes SET codigo = '6' WHERE codigo = '8'");
-            statement.executeUpdate("UPDATE fabricantes SET codigo = '7' WHERE codigo = '9'");
-            statement.executeUpdate("UPDATE fabricantes SET codigo = '8' WHERE codigo = '10'");
-            statement.executeUpdate("UPDATE fabricantes SET codigo = '9' WHERE codigo = '11'");
-            statement.executeUpdate("UPDATE fabricantes SET codigo = '10' WHERE codigo = '12'");
-            statement.executeUpdate("UPDATE fabricantes SET codigo = '11' WHERE codigo = '14'");
+            //statement.executeUpdate("UPDATE fabricantes SET codigo = '12' WHERE codigo = '22'");
+            //statement.executeUpdate("UPDATE fabricantes SET codigo = '13' WHERE codigo = '23'");
+            //statement.executeUpdate("UPDATE fabricantes SET codigo = '14' WHERE codigo = '24'");
+            //statement.executeUpdate("UPDATE fabricantes SET codigo = '15' WHERE codigo = '25'");
+            //statement.executeUpdate("UPDATE fabricantes SET codigo = '16' WHERE codigo = '26'");
+          
            
-            // Insertar 3 registros en la tabla 'fabricantes'
-            statement.executeUpdate("INSERT INTO fabricantes (nombre) VALUES ('Motorola')");
-            statement.executeUpdate("INSERT INTO fabricantes (nombre) VALUES ('Nokia')");
-            statement.executeUpdate("INSERT INTO fabricantes (nombre) VALUES ('Xiaomi')");
-            statement.executeUpdate("INSERT INTO fabricantes (nombre) VALUES ('Huawei')");
-            statement.executeUpdate("INSERT INTO fabricantes (nombre) VALUES ('Siemens')");
+            // Insertar 5 registros en la tabla 'fabricantes'. Ejercicio 1
+            //statement.executeUpdate("INSERT INTO fabricantes (nombre) VALUES ('Motorola')");
+            //statement.executeUpdate("INSERT INTO fabricantes (nombre) VALUES ('Nokia')");
+            //statement.executeUpdate("INSERT INTO fabricantes (nombre) VALUES ('Xiaomi')");
+            //statement.executeUpdate("INSERT INTO fabricantes (nombre) VALUES ('Huawei')");
+            //statement.executeUpdate("INSERT INTO fabricantes (nombre) VALUES ('Siemens')");
 
             
             // Eliminar un registro específico de la tabla 'fabricantes'
-            statement.executeUpdate("DELETE FROM fabricantes WHERE codigo = 16");
+            //statement.executeUpdate("DELETE FROM fabricantes WHERE codigo = 16");
 
             // Consultar y mostrar los registros de la tabla 'fabricantes'
             ResultSet resultSet = statement.executeQuery("SELECT * FROM fabricantes");
