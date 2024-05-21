@@ -24,18 +24,23 @@ public class Ejercicio5Insert{
             statement = conexion.createStatement();
 
             // Insertar 5 registros en la tabla 'despachos'. Ejercicio 3
-            //statement.executeUpdate("INSERT INTO despachos (num, capacidad) VALUES ('11','15')");
-            //statement.executeUpdate("INSERT INTO despachos (num, capacidad) VALUES ('12','24')");
-            //statement.executeUpdate("INSERT INTO despachos (num, capacidad) VALUES ('13','10')");
-            // statement.executeUpdate("INSERT INTO despachos (num, capacidad) VALUES ('14','30')");
-            //statement.executeUpdate("INSERT INTO despachos (num, capacidad) VALUES ('15','45')");
+            statement.executeUpdate("INSERT INTO despachos (num, capacidad) VALUES ('11','15')");
+            statement.executeUpdate("INSERT INTO despachos (num, capacidad) VALUES ('12','24')");
+            statement.executeUpdate("INSERT INTO despachos (num, capacidad) VALUES ('13','10')");
+            statement.executeUpdate("INSERT INTO despachos (num, capacidad) VALUES ('14','30')");
+            statement.executeUpdate("INSERT INTO despachos (num, capacidad) VALUES ('15','45')");
             
             // Insertar 5 registros en la tabla 'directores'. Ejercicio 3
-            statement.executeUpdate("INSERT INTO directores (DNI, NomApels, DNIJefe, despacho) VALUES ('254157','Juan', '111', '11')");
-            statement.executeUpdate("INSERT INTO directores (DNI, NomApels, DNIJefe, despacho) VALUES ('258746','Cris', '', '11')");
-            statement.executeUpdate("INSERT INTO directores (DNI, NomApels, DNIJefe, despacho) VALUES ('257489','Fermin', '', '11')");
-            statement.executeUpdate("INSERT INTO directores (DNI, NomApels, DNIJefe, despacho) VALUES ('245785','Aaron', '222', '11')");
-            statement.executeUpdate("INSERT INTO directores (DNI, NomApels, DNIJefe, despacho) VALUES ('635744','Camilo', '333', '11')");                    
+            // Insertar directores que serán jefes primero
+            
+            statement.executeUpdate("INSERT INTO directores (DNI, NomApels, DNIJefe, despacho) VALUES ('1111', 'Juan', NULL, '1')");
+            statement.executeUpdate("INSERT INTO directores (DNI, NomApels, DNIJefe, despacho) VALUES ('2222', 'Aaron', NULL, '13')");
+            statement.executeUpdate("INSERT INTO directores (DNI, NomApels, DNIJefe, despacho) VALUES ('100298', 'Camilo', NULL, '15')");
+
+            // Insertar otros directores
+            statement.executeUpdate("INSERT INTO directores (DNI, NomApels, DNIJefe, despacho) VALUES ('258746', 'Cris', 1111, '11')");
+            statement.executeUpdate("INSERT INTO directores (DNI, NomApels, DNIJefe, despacho) VALUES ('257489', 'Fermin', 3333, '12')");
+
             
             // Consultar registros en la tabla 'despachos y directores'
             ResultSet resultSet = statement.executeQuery("SELECT * FROM despachos");
