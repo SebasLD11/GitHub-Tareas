@@ -23,38 +23,38 @@ public class Ejercicio9Insert{
             // Crear un objeto Statement para ejecutar consultas SQL
             statement = conexion.createStatement();
 
-   // Insertar 5 registros en la tabla 'investigadores'. Ejercicio 6
-            //statement.executeUpdate("INSERT INTO investigadores (dni,nomapels,codFac) VALUES ('32548971J', 'Carla Guirao', '3')");
-            //statement.executeUpdate("INSERT INTO investigadores (dni,nomapels,codFac) VALUES ('24577927K', 'Miguel Contreras', '5')");
-            //statement.executeUpdate("INSERT INTO investigadores (dni,nomapels,codFac) VALUES ('64497821E', 'Jose Pablo Kito', '7')");
-            //statement.executeUpdate("INSERT INTO investigadores (dni,nomapels,codFac) VALUES ('65872216R', 'Mauricio Ponci', '9')");
-            //statement.executeUpdate("INSERT INTO investigadores (dni,nomapels,codFac) VALUES ('36548789W', 'Juan Fernando Saez', '1')");
+   //Insertar 5 registros en la tabla 'investigadores'. Ejercicio 6
+       statement.executeUpdate("INSERT INTO investigadores (dni,nomapels,codFac) VALUES ('32548971J', 'Carla Guirao', '3')");
+       statement.executeUpdate("INSERT INTO investigadores (dni,nomapels,codFac) VALUES ('24577927K', 'Miguel Contreras', '5')");
+       statement.executeUpdate("INSERT INTO investigadores (dni,nomapels,codFac) VALUES ('64497821E', 'Jose Pablo Kito', '7')");
+       statement.executeUpdate("INSERT INTO investigadores (dni,nomapels,codFac) VALUES ('65872216R', 'Mauricio Ponci', '9')");
+       statement.executeUpdate("INSERT INTO investigadores (dni,nomapels,codFac) VALUES ('36548789W', 'Juan Fernando Saez', '1')");
            
    //Insertar 5 registros en la tabla 'facultades'. Ejercicio 6
-            //statement.executeUpdate("INSERT INTO facultades (nombre) VALUES ('Facultad de ciencias del deporte')");
-            //statement.executeUpdate("INSERT INTO facultades (nombre) VALUES ('Facultad de ciencias matemáticas aplicadas')");
-            //statement.executeUpdate("INSERT INTO facultades (nombre) VALUES ('Facultad de Derecho')");
-            //statement.executeUpdate("INSERT INTO facultades (nombre) VALUES ('Facultad de Diseño y arte')");
-            //statement.executeUpdate("INSERT INTO facultades (nombre) VALUES ('Facultad de ciencias de la comunicación')");
+       statement.executeUpdate("INSERT INTO facultades (nombre) VALUES ('Facultad de ciencias del deporte')");
+       statement.executeUpdate("INSERT INTO facultades (nombre) VALUES ('Facultad de ciencias matemáticas aplicadas')");
+       statement.executeUpdate("INSERT INTO facultades (nombre) VALUES ('Facultad de Derecho')");
+       statement.executeUpdate("INSERT INTO facultades (nombre) VALUES ('Facultad de Diseño y arte')");
+       statement.executeUpdate("INSERT INTO facultades (nombre) VALUES ('Facultad de ciencias de la comunicación')");
             
    //Insertar 5 registros en la tabla 'equipos'. Ejercicio 6
-   //statement.executeUpdate("INSERT INTO equipos (numserie, nombre, codFac) VALUES ('E11', 'Equipo de Investigación "
-   //																							+ "en procesos deportivos', '11')");
-   //statement.executeUpdate("INSERT INTO equipos (numserie, nombre, codFac) VALUES ('E12', 'Equipo de Investigación "
-   //																							+ "en matemáticas sociales', '12')");
-   //statement.executeUpdate("INSERT INTO equipos (numserie, nombre, codFac) VALUES ('E13', 'Equipo de Investigación"
-   //																							+ " en derecho civil, laboral y cooporativo', '13')");
-   //statement.executeUpdate("INSERT INTO equipos (numserie, nombre, codFac) VALUES ('E14', 'Equipo de Investigación"
-   //																							+ " en procesos artisticos y creativos', '14')");
-   //statement.executeUpdate("INSERT INTO equipos (numserie, nombre, codFac) VALUES ('E15', 'Equipo de Investigación "
-   //																							+ "en procesos y medios comunicativos', '15')");
+       statement.executeUpdate("INSERT INTO equipos (numserie, nombre, codFac) VALUES ('E11', 'Equipo de Investigación "
+   																							+ "en procesos deportivos', '11')");
+       statement.executeUpdate("INSERT INTO equipos (numserie, nombre, codFac) VALUES ('E12', 'Equipo de Investigación "
+   																							+ "en matemáticas sociales', '12')");
+       statement.executeUpdate("INSERT INTO equipos (numserie, nombre, codFac) VALUES ('E13', 'Equipo de Investigación"
+   																							+ " en derecho civil, laboral y cooporativo', '13')");
+       statement.executeUpdate("INSERT INTO equipos (numserie, nombre, codFac) VALUES ('E14', 'Equipo de Investigación"
+   																							+ " en procesos artisticos y creativos', '14')");
+       statement.executeUpdate("INSERT INTO equipos (numserie, nombre, codFac) VALUES ('E15', 'Equipo de Investigación "
+   																							+ "en procesos y medios comunicativos', '15')");
             
   //Insertar 5 registros en la tabla 'reserva'. Ejercicio 6
-            //statement.executeUpdate("INSERT INTO reserva (dni, numserie, comienzo, fin) VALUES ('67890123F', 'E11', '2024-01-01', '2025-01-01')");
-            //statement.executeUpdate("INSERT INTO reserva (dni, numserie, comienzo, fin) VALUES ('65872216R', 'E12', '2024-02-10', '2025-01-01')");
-            //statement.executeUpdate("INSERT INTO reserva (dni, numserie, comienzo, fin) VALUES ('32548971J', 'E13', '2024-02-21', '2025-01-01')");
-            //statement.executeUpdate("INSERT INTO reserva (dni, numserie, comienzo, fin) VALUES ('64497821E', 'E14', '2024-03-15', '2025-01-01')");
-            //statement.executeUpdate("INSERT INTO reserva (dni, numserie, comienzo, fin) VALUES ('24577927K', 'E15', '2024-03-20', '2025-01-01')");
+            statement.executeUpdate("INSERT INTO reserva (dni, numserie, comienzo, fin) VALUES ('67890123F', 'E11', '2024-01-01', '2025-01-01')");
+            statement.executeUpdate("INSERT INTO reserva (dni, numserie, comienzo, fin) VALUES ('65872216R', 'E12', '2024-02-10', '2025-01-01')");
+            statement.executeUpdate("INSERT INTO reserva (dni, numserie, comienzo, fin) VALUES ('32548971J', 'E13', '2024-02-21', '2025-01-01')");
+            statement.executeUpdate("INSERT INTO reserva (dni, numserie, comienzo, fin) VALUES ('64497821E', 'E14', '2024-03-15', '2025-01-01')");
+            statement.executeUpdate("INSERT INTO reserva (dni, numserie, comienzo, fin) VALUES ('24577927K', 'E15', '2024-03-20', '2025-01-01')");
             
   //Consultar registros en la tabla 'productos, cajeros, máquinas y venta'
     ResultSet resultSet = statement.executeQuery("SELECT * FROM investigadores");
