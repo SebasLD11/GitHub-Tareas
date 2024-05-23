@@ -23,35 +23,35 @@ public class Ejercicio8Insert{
             // Crear un objeto Statement para ejecutar consultas SQL
             statement = conexion.createStatement();
 
-            // Insertar 5 registros en la tabla 'productos'. Ejercicio 6
-            //statement.executeUpdate("INSERT INTO productos (nombre,precio) VALUES ('Producto K', '15')");
-            //statement.executeUpdate("INSERT INTO productos (nombre,precio) VALUES ('Producto L', '12')");
-            //statement.executeUpdate("INSERT INTO productos (nombre,precio) VALUES ('Producto M', '55')");
-            //statement.executeUpdate("INSERT INTO productos (nombre,precio) VALUES ('Producto N', '35')");
-            //statement.executeUpdate("INSERT INTO productos (nombre,precio) VALUES ('Producto O', '45')");
+          // Insertar 5 registros en la tabla 'productos'. Ejercicio 6
+            statement.executeUpdate("INSERT INTO productos (nombre,precio) VALUES ('Producto K', '15')");
+            statement.executeUpdate("INSERT INTO productos (nombre,precio) VALUES ('Producto L', '12')");
+            statement.executeUpdate("INSERT INTO productos (nombre,precio) VALUES ('Producto M', '55')");
+            statement.executeUpdate("INSERT INTO productos (nombre,precio) VALUES ('Producto N', '35')");
+            statement.executeUpdate("INSERT INTO productos (nombre,precio) VALUES ('Producto O', '45')");
+           
+          //Insertar 5 registros en la tabla 'cajeros'. Ejercicio 6
+            statement.executeUpdate("INSERT INTO cajeros (nomApels) VALUES ('Miguel Cabrera')");
+            statement.executeUpdate("INSERT INTO cajeros (nomApels) VALUES ('Juan Jose Quiros')");
+            statement.executeUpdate("INSERT INTO cajeros (nomApels) VALUES ('Ramón Gonzalez')");
+            statement.executeUpdate("INSERT INTO cajeros (nomApels) VALUES ('Andrea Joita')");
+            statement.executeUpdate("INSERT INTO cajeros (nomApels) VALUES ('Valentina Vasquez')");
             
-            //Insertar 5 registros en la tabla 'cajeros'. Ejercicio 6
-            //statement.executeUpdate("INSERT INTO cajeros (nomApels) VALUES ('Miguel Cabrera')");
-            //statement.executeUpdate("INSERT INTO cajeros (nomApels) VALUES ('Juan Jose Quiros')");
-            //statement.executeUpdate("INSERT INTO cajeros (nomApels) VALUES ('Ramón Gonzalez')");
-            //statement.executeUpdate("INSERT INTO cajeros (nomApels) VALUES ('Andrea Joita')");
-            //statement.executeUpdate("INSERT INTO cajeros (nomApels) VALUES ('Valentina Vasquez')");
-            
-            //Insertar 5 registros en la tabla 'maqregistra'. Ejercicio 6
-            //statement.executeUpdate("INSERT INTO maqregistra (piso) VALUES ('2')");
-            //statement.executeUpdate("INSERT INTO maqregistra (piso) VALUES ('1')");
-            //statement.executeUpdate("INSERT INTO maqregistra (piso) VALUES ('3')");
-            //statement.executeUpdate("INSERT INTO maqregistra (piso) VALUES ('1')");
-            //statement.executeUpdate("INSERT INTO maqregistra (piso) VALUES ('3')");
+          //Insertar 5 registros en la tabla 'maqregistra'. Ejercicio 6
+            statement.executeUpdate("INSERT INTO maqregistra (piso) VALUES ('2')");
+            statement.executeUpdate("INSERT INTO maqregistra (piso) VALUES ('1')");
+            statement.executeUpdate("INSERT INTO maqregistra (piso) VALUES ('3')");
+            statement.executeUpdate("INSERT INTO maqregistra (piso) VALUES ('1')");
+            statement.executeUpdate("INSERT INTO maqregistra (piso) VALUES ('3')");
             
           //Insertar 5 registros en la tabla 'venta'. Ejercicio 6
-            //statement.executeUpdate("INSERT INTO venta (codProd, codCaje, codMaqReg) VALUES ('11', '11','11')");
-            //statement.executeUpdate("INSERT INTO venta (codProd, codCaje, codMaqReg) VALUES ('12', '12','12')");
-            //statement.executeUpdate("INSERT INTO venta (codProd, codCaje, codMaqReg) VALUES ('13', '13','13')");
-            //statement.executeUpdate("INSERT INTO venta (codProd, codCaje, codMaqReg) VALUES ('14', '14','14')");
-            //statement.executeUpdate("INSERT INTO venta (codProd, codCaje, codMaqReg) VALUES ('15', '15','15')");
+            statement.executeUpdate("INSERT INTO venta (codProd, codCaje, codMaqReg) VALUES ('11', '11','11')");
+            statement.executeUpdate("INSERT INTO venta (codProd, codCaje, codMaqReg) VALUES ('12', '12','12')");
+            statement.executeUpdate("INSERT INTO venta (codProd, codCaje, codMaqReg) VALUES ('13', '13','13')");
+            statement.executeUpdate("INSERT INTO venta (codProd, codCaje, codMaqReg) VALUES ('14', '14','14')");
+            statement.executeUpdate("INSERT INTO venta (codProd, codCaje, codMaqReg) VALUES ('15', '15','15')");
             
-         // Consultar registros en la tabla 'productos, cajeros, máquinas y venta'
+          //Consultar registros en la tabla 'productos, cajeros, máquinas y venta'
             ResultSet resultSet = statement.executeQuery("SELECT * FROM productos");
             System.out.println("Registros en la tabla 'Productos':");
             while (resultSet.next()) {
