@@ -24,16 +24,16 @@ public class Ejercicio7Insert{
             statement = conexion.createStatement();
 
             // Insertar 5 registros en la tabla 'cientificos'. Ejercicio 6
-            //statement.executeUpdate("INSERT INTO cientificos (idcient,nomApels) VALUES ('32587435', 'Milena López Diaz')");
-            //statement.executeUpdate("INSERT INTO cientificos (idcient,nomApels) VALUES ('25478359', 'Raquel Fisiote')");
-            //statement.executeUpdate("INSERT INTO cientificos (idcient,nomApels) VALUES ('15496875', 'Marina FigLa' )");
-            //statement.executeUpdate("INSERT INTO cientificos (idcient,nomApels) VALUES ('68359752', 'Silvia ClavAra')");
-            //statement.executeUpdate("INSERT INTO cientificos (idcient,nomApels) VALUES ('36528475', 'Ayman Barkane')");
+            statement.executeUpdate("INSERT INTO cientificos (idcient,nomApels) VALUES ('32587435', 'Milena López Diaz')");
+            statement.executeUpdate("INSERT INTO cientificos (idcient,nomApels) VALUES ('25478359', 'Raquel Fisiote')");
+            statement.executeUpdate("INSERT INTO cientificos (idcient,nomApels) VALUES ('15496875', 'Marina FigLa' )");
+            statement.executeUpdate("INSERT INTO cientificos (idcient,nomApels) VALUES ('68359752', 'Silvia ClavAra')");
+            statement.executeUpdate("INSERT INTO cientificos (idcient,nomApels) VALUES ('36528475', 'Ayman Barkane')");
             
             //Insertar 5 registros en la tabla 'proyectos'. Ejercicio 6
-            //statement.executeUpdate("INSERT INTO proyectos (idproyec,nomProy,horas) VALUES ('11', 'Ciencias terapeuticas naturales', '10000')");
-            //statement.executeUpdate("INSERT INTO proyectos (idproyec,nomProy,horas) VALUES ('12', 'Fisioterapia Deportiva y Clinica', '10000')");
-            //statement.executeUpdate("INSERT INTO proyectos (idproyec,nomProy,horas) VALUES ('13', 'Comportamiento en el consumo y ventas', '1500')");
+            statement.executeUpdate("INSERT INTO proyectos (idproyec,nomProy,horas) VALUES ('11', 'Ciencias terapeuticas naturales', '10000')");
+            statement.executeUpdate("INSERT INTO proyectos (idproyec,nomProy,horas) VALUES ('12', 'Fisioterapia Deportiva y Clinica', '10000')");
+            statement.executeUpdate("INSERT INTO proyectos (idproyec,nomProy,horas) VALUES ('13', 'Comportamiento en el consumo y ventas', '1500')");
             statement.executeUpdate("INSERT INTO proyectos (idproyec,nomProy,horas) VALUES ('14', 'Ciencias psicológicas y mentales', '2000')");
             statement.executeUpdate("INSERT INTO proyectos (idproyec,nomProy,horas) VALUES ('15', 'Biomencánica del deporte en la defensa personal', '3000')");
             
