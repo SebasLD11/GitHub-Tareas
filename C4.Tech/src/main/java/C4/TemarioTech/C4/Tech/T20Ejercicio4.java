@@ -66,4 +66,3 @@ public class T20Ejercicio4 {
         frame.setVisible(true);
     }
 }
-
