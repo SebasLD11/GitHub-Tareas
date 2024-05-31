@@ -11,12 +11,13 @@ public class Calculadora extends JFrame implements ActionListener {
     private JTextField display;
     private double tempFirst = 0.0;
     private double tempSecond = 0.0;
-    private boolean[] operation = new boolean[4];
-    private JButton[] buttons = new JButton[16];
+    private double memory = 0.0; // Variable de memoria
+    private boolean[] operation = new boolean[4]; // /, *, -, +
+    private JButton[] buttons = new JButton[21]; // 17 botones originales + 4 botones de memoria
 
     public Calculadora() {
         setTitle("Calculadora");
-        setSize(400, 500);
+        setSize(400, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
@@ -26,16 +27,17 @@ public class Calculadora extends JFrame implements ActionListener {
         add(display, BorderLayout.NORTH);
 
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(4, 4));
+        panel.setLayout(new GridLayout(6, 4)); // Aumentamos a 6 filas para incluir los botones de memoria
 
         String[] buttonText = {
             "7", "8", "9", "/",
             "4", "5", "6", "*",
             "1", "2", "3", "-",
-            "0", ".", "=", "+"
+            "0", ".", "=", "+",
+            "C", "MC", "MR", "M+", "M-" // Botones de borrado y memoria
         };
 
-        for (int i = 0; i < 16; i++) {
+        for (int i = 0; i < 21; i++) {
             buttons[i] = new JButton(buttonText[i]);
             buttons[i].setFont(new Font("Arial", Font.BOLD, 30));
             buttons[i].addActionListener(this);
@@ -87,15 +89,31 @@ public class Calculadora extends JFrame implements ActionListener {
                 case "=":
                     tempSecond = Double.parseDouble(display.getText());
                     if (operation[0]) {
-                        display.setText(String.valueOf(tempFirst / tempSecond));
+                        display.setText(String.valueOf(divide(tempFirst, tempSecond)));
                     } else if (operation[1]) {
-                        display.setText(String.valueOf(tempFirst * tempSecond));
+                        display.setText(String.valueOf(multiply(tempFirst, tempSecond)));
                     } else if (operation[2]) {
-                        display.setText(String.valueOf(tempFirst - tempSecond));
+                        display.setText(String.valueOf(subtract(tempFirst, tempSecond)));
                     } else if (operation[3]) {
-                        display.setText(String.valueOf(tempFirst + tempSecond));
+                        display.setText(String.valueOf(add(tempFirst, tempSecond)));
                     }
                     clearOperationFlags();
+                    break;
+                case "C":
+                    display.setText("");
+                    clearOperationFlags();
+                    break;
+                case "MC":
+                    memoryClear();
+                    break;
+                case "MR":
+                    memoryRecall();
+                    break;
+                case "M+":
+                    memoryAdd(Double.parseDouble(display.getText()));
+                    break;
+                case "M-":
+                    memorySubtract(Double.parseDouble(display.getText()));
                     break;
             }
         } catch (NumberFormatException ex) {
@@ -110,6 +128,7 @@ public class Calculadora extends JFrame implements ActionListener {
             operation[i] = false;
         }
     }
+
     public double divide(double a, double b) {
         if (b == 0) {
             throw new ArithmeticException("División por cero");
@@ -128,7 +147,23 @@ public class Calculadora extends JFrame implements ActionListener {
     public double add(double a, double b) {
         return a + b;
     }
-    
+
+    public void memoryClear() {
+        memory = 0.0;
+    }
+
+    public void memoryRecall() {
+        display.setText(String.valueOf(memory));
+    }
+
+    public void memoryAdd(double value) {
+        memory += value;
+    }
+
+    public void memorySubtract(double value) {
+        memory -= value;
+    }
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             Calculadora calculadora = new Calculadora();

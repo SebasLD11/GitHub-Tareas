@@ -8,8 +8,8 @@ public class CalculadoraTest {
     Calculadora calc = new Calculadora();
 
     @Test
-    public void testAddition() {
-        assertEquals(5.0, calc.add(calc, 2, 3));
+    public void testAdd() {
+        assertEquals(5.0, calc.add(2, 3));
     }
 
     @Test
