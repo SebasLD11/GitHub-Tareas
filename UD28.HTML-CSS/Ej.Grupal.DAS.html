@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Piece</title>
+    <style>
+    
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .images img {
+            width: 200px;
+            height: auto;
+            margin-right: 10px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .form-group button {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    
+    </style>
+    <link rel="stylesheet" href="/UD28.HTML-CSS/CSS/estiloGrupal.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>One Piece Wiki</h1>
+            <p>Bienvenidos a la página de nuestro proyecto grupal. Aquí encontrarás información sobre nuestro equipo y nuestro trabajo.
+                En esta página encontrarás información sobre personajes de la emblemática serie One Piece. 
+                One Piece es un manga escrito e ilustrado por el mangaka japonés Eiichirō Oda. Comenzó a publicarse en la revista Japonesa
+                Weekly Shōnen Jump el 22 de julio de 1997 y a la fecha se han publicado 108 volúmenes. One Piece es el manga más vendido
+                de la revista Weekly Shōnen Jump ( la más importante, reconocida y vendida del medio), de la Editorial Shueisha, y de 
+                toda la historia de Japón, con más de 516 millones de copias vendidas a nivel mundial (416 millones en Japón, y 100 
+                millones en 60 países juntos),​ y en Japón fue el manga más vendido de manera consecutiva desde el año 2007 hasta 2018
+                logrando un récord histórico.
+            </p>
+        </header>
+
+        <section>
+            <h2>Miembros del Grupo</h2>
+            <ul>
+                <li>Diego</li>
+                <li>Abdel</li>
+                <li>Sebas</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Galería de Imágenes</h2>
+            <div class="images">
+                <img src="imagen1.jpg" alt="Descripción de la imagen 1">
+                <img src="imagen2.jpg" alt="Descripción de la imagen 2">
+                <img src="imagen3.jpg" alt="Descripción de la imagen 3">
+            </div>
+        </section>
+
+        <section>
+            <h2>Contacto</h2>
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="name">Nombre:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo Electrónico:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensaje:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Enviar</button>
+                </div>
+            </form>
+        </section>
+    </div>
+</body>
+</html>

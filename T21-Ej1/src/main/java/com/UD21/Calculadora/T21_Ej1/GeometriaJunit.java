@@ -10,5 +10,4 @@ public class GeometriaJunit
 	   gm.setArea(areaCirc);    
 	   System.out.println(gm);
     }
-
 }

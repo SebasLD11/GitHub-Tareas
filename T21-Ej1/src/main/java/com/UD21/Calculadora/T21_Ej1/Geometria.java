@@ -1,9 +1,7 @@
 package com.UD21.Calculadora.T21_Ej1;
-
 public class Geometria {
     private int id;
-    private String nom;
-	
+    private String nom;	
     public Geometria(int id, String nom) {
         this.setId(id);
         this.setNom(nom);
@@ -16,17 +14,14 @@ public class Geometria {
         public double areaCirculo(double radio) {
             return Math.PI * radio * radio;
         }
-
         // Método para calcular el área de un cuadrado
         public double areaCuadrado(double lado) {
             return lado * lado;
         }
-
         // Método para calcular el área de un rectángulo
         public double areaRectangulo(double base, double altura) {
             return base * altura;
         }
-
         // Método para calcular el área de un triángulo
         public double areaTriangulo(double base, double altura) {
             return (base * altura) / 2;
@@ -45,8 +40,4 @@ public class Geometria {
 		public void setNom(String nom) {
 			this.nom = nom;
 		}
-    }
-
-
-
-
+}
