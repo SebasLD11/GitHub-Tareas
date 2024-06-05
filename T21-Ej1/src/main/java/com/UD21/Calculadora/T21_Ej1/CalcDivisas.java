@@ -130,38 +130,47 @@
 	        }
 	    }
 	
-	    protected void convertCurrency() throws Exception {
+	    protected void convertCurrency(String fromCurrency, String toCurrency) throws Exception {
 	        String amountText = currentInput.toString();
 	        if (amountText.isEmpty()) {
 	            display.setText("Error: Entrada no válida");
-	            return;
+	            throw new NumberFormatException("Entrada no válida");
 	        }
-	
+
 	        double amount;
 	        try {
 	            amount = Double.parseDouble(amountText);
 	        } catch (NumberFormatException e) {
 	            display.setText("Error: Entrada no válida");
-	            return;
+	            throw e;  // Rethrow the exception to allow the test to catch it
 	        }
-	
-	        String fromCurrency = (String) JOptionPane.showInputDialog(this, "De moneda:", "Moneda", JOptionPane.QUESTION_MESSAGE, null, new String[]{"USD", "EUR", "GBP"}, "USD");
-	        String toCurrency = (String) JOptionPane.showInputDialog(this, "A moneda:", "Moneda", JOptionPane.QUESTION_MESSAGE, null, new String[]{"USD", "EUR", "GBP"}, "USD");
-	
+
+	        if (fromCurrency == null || toCurrency == null) {
+	            fromCurrency = (String) JOptionPane.showInputDialog(this, "De moneda:", "Moneda", 
+	            		JOptionPane.QUESTION_MESSAGE, null, new String[]{"USD", "EUR", "GBP"}, "USD");
+	            toCurrency = (String) JOptionPane.showInputDialog(this, "A moneda:", "Moneda", 
+	            		JOptionPane.QUESTION_MESSAGE, null, new String[]{"USD", "EUR", "GBP"}, "USD");
+	        }
+
 	        if (fromCurrency == null || toCurrency == null) {
 	            display.setText("Error: Moneda no seleccionada");
-	            return;
+	            throw new IllegalArgumentException("Moneda no seleccionada");
 	        }
-	
+
 	        double rate = getExchangeRate(fromCurrency, toCurrency);
 	        double result = amount * rate;
 	        display.setText(String.format("%.2f %s", result, toCurrency));
-	
+
 	        // Actualizar historial
 	        historyArea.append(String.format("%s %s = %.2f %s\n", amountText, fromCurrency, result, toCurrency));
 	        currentInput.setLength(0);
 	    }
-	
+
+	    // Método original sin parámetros para mantener compatibilidad
+	    protected void convertCurrency() throws Exception {
+	        convertCurrency(null, null);
+	    }
+
 	    protected void initializeStaticRates() {
 	        // Tasas de cambio simuladas
 	        rateCache.put("USDUSD", 1.0);
