@@ -1,0 +1,11 @@
+/*p:first-child {
+    color: blue;
+} /* Primer parrafo en azul
+
+p i:first-child {
+ color: blue;
+}
+
+p:first-child i {
+ color: blue;
+}

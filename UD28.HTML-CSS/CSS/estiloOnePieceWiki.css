@@ -1,11 +1,20 @@
 h1 {
-  font-family: "One Piece", url("/UD28.HTML-CSS/Grupal.DAS/onepiecefont.ttf");
+  font-family: "One Piece", sans-serif;
   font-size: 80px;
 }
+
 body {
-  background-color: url("/UD28.HTML-CSS/Grupal.DAS/backgroundWeb.jpg");
+  background-image: url("/UD28.HTML-CSS/Grupal.DAS/backgroundWeb.jpg");
+  background-size: 1800px;
+
+  font-size: 21px;
+}
+
+p {
+  font-weight: bold;
   font-size: 20px;
 }
+
 p {
   font-weight: bold;
   font-size: 20px;
