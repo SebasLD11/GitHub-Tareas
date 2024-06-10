@@ -1,8 +1,6 @@
 package com.UD22.MVC.TA22_Ejercicios;
 
-import Controlador.controllerEj1T22;
-import Modelo.ClienteAdmin;
-import Vista.vistaEj1T22;
+import com.UD22.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -38,9 +36,10 @@ public class MainEj1T22 {
         createTable(dbcURL, dbcUsername, dbcPassword);
 
         // Inicializar el administrador, la vista y el controlador
-        ClienteAdmin admin = new ClienteAdmin(dbcURL, dbcUsername, dbcPassword);
+        ClienteAdmin admin = new ClienteAdmin();
         vistaEj1T22 vista = new vistaEj1T22();
-        controllerEj1T22 controller = new controllerEj1T22(vista, admin);
+        @SuppressWarnings("unused")
+		controllerEj1T22 controller = new controllerEj1T22(vista, admin);
     }
 
     private static void createTable(String dbcURL, String dbcUsername, String dbcPassword) {

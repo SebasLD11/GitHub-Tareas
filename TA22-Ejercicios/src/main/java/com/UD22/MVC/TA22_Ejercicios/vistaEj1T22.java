@@ -1,7 +1,7 @@
-package Vista;
-	import Modelo.Cliente;
+package com.UD22.MVC.TA22_Ejercicios;
 	import javax.swing.*;
-	import java.awt.*;
+
+import java.awt.*;
 	import java.awt.event.ActionListener;
 	import java.sql.Date;
 	import java.util.List;

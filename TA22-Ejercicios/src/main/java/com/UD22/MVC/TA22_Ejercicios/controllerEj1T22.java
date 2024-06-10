@@ -1,8 +1,5 @@
-package Controlador;
+package com.UD22.MVC.TA22_Ejercicios;
 
-import Modelo.ClienteAdmin;
-import Modelo.Cliente;
-import Vista.vistaEj1T22;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
@@ -37,12 +34,8 @@ public class controllerEj1T22 {
          cliente.setDni(dni);
          cliente.setFecha(fecha);
 
-         try {
-             admin.insertCliente(cliente);
-             vista.showMessage("Cliente añadido correctamente!");
-         } catch (SQLException ex) {
-             vista.showError("Error al añadir cliente: " + ex.getMessage());
-         }
+         admin.insertCliente(cliente);
+		 vista.showMessage("Cliente añadido correctamente!");
      }
  }
 
