@@ -1,12 +1,11 @@
 package com.UD22.MVC.TA22_Ejercicios;
 
-import com.UD22.*;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Properties;
 
 public class MainEj1T22 {
