@@ -24,7 +24,7 @@ import java.awt.*;
 	    private JTextArea displayArea;
 
 	    public vistaEj1T22() {
-	        setTitle("Cliente Management");
+	        setTitle("Administración de clientes");
 	        setSize(400, 500);
 	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	        setLayout(new FlowLayout());
@@ -36,10 +36,10 @@ import java.awt.*;
 	        dniField = new JTextField(20);
 	        fechaField = new JTextField(20);
 
-	        insertButton = new JButton("Insert");
-	        listButton = new JButton("List All");
-	        updateButton = new JButton("Update");
-	        deleteButton = new JButton("Delete");
+	        insertButton = new JButton("Insertar");
+	        listButton = new JButton("Lista de clientes");
+	        updateButton = new JButton("Actualizar");
+	        deleteButton = new JButton("Borrar");
 
 	        displayArea = new JTextArea(10, 30);
 
