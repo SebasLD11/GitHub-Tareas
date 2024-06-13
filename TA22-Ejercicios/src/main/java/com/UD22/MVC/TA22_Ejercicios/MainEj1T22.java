@@ -1,55 +1,43 @@
 package com.UD22.MVC.TA22_Ejercicios;
 
-import java.io.IOException;
-import java.io.InputStream;
+import Controlador.controllerEj1T22;
+import Modelo.ClienteAdmin;
+import Vista.vistaEj1T22;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Properties;
 
 public class MainEj1T22 {
-    // Ruta al archivo de propiedades
-    static final String PROPERTIES_FILE = "database.properties";
+    // Datos de conexión a la base de datos
+    static final String URL = "jdbc:mysql://localhost:3306/ejt22mvc";
+    static final String USER = "root";
+    static final String PASSWORD = "";
 
     public static void main(String[] args) {
-        // Cargar las propiedades de la base de datos desde el archivo de propiedades
-        Properties props = new Properties();
-        try (InputStream input = MainEj1T22.class.getClassLoader().getResourceAsStream(PROPERTIES_FILE)) {
-            if (input == null) {
-                System.out.println("Lo siento, no se pudo encontrar " + PROPERTIES_FILE);
-                return;
-            }
-            // Cargar el archivo de propiedades
-            props.load(input);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return;
-        }
-
-        String dbcURL = props.getProperty("db.url");
-        String dbcUsername = props.getProperty("db.username");
-        String dbcPassword = props.getProperty("db.password");
-
-        // Crear la tabla de clientes si no existe
-        createTable(dbcURL, dbcUsername, dbcPassword);
-
-        // Inicializar el administrador, la vista y el controlador
-        ClienteAdmin admin = new ClienteAdmin();
-        vistaEj1T22 vista = new vistaEj1T22();
-        @SuppressWarnings("unused")
-		controllerEj1T22 controller = new controllerEj1T22(vista, admin);
-    }
-
-    private static void createTable(String dbcURL, String dbcUsername, String dbcPassword) {
         Connection conexion = null;
-        Statement statement = null;
 
         try {
             // Establecer la conexión
-            conexion = DriverManager.getConnection(dbcURL, dbcUsername, dbcPassword);
+            conexion = DriverManager.getConnection(URL, USER, PASSWORD);
             System.out.println("Conexión exitosa a la base de datos");
 
+            // Crear la tabla de clientes si no existe
+            createTable(conexion);
+
+            // Inicializar el administrador, la vista y el controlador
+            ClienteAdmin admin = new ClienteAdmin(conexion);
+            vistaEj1T22 vista = new vistaEj1T22();
+            new controllerEj1T22(vista, admin);
+
+        } catch (SQLException e) {
+            System.out.println("Error al conectar a la base de datos: " + e.getMessage());
+        }
+    }
+
+    private static void createTable(Connection conexion) {
+        Statement statement = null;
+        try {
             // Crear un objeto Statement para ejecutar consultas SQL
             statement = conexion.createStatement();
             
@@ -65,14 +53,12 @@ public class MainEj1T22 {
             System.out.println("Tabla 'Clientes' creada o ya existe");
 
         } catch (SQLException e) {
-            System.out.println("Error al conectar a la base de datos: " + e.getMessage());
+            System.out.println("Error al crear la tabla: " + e.getMessage());
         } finally {
             try {
                 if (statement != null) statement.close();
-                if (conexion != null) conexion.close();
-                System.out.println("Conexión cerrada");
             } catch (SQLException e) {
-                System.out.println("Error al cerrar la conexión: " + e.getMessage());
+                System.out.println("Error al cerrar el Statement: " + e.getMessage());
             }
         }
     }
