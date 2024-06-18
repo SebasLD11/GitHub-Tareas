@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>JavaScript Switch con meses</h2>
+<p id="Mes"></p>
+<script>
+    var mes;
+    switch (new Date().getMonth()) {
+     case 0:
+     mes = "Enero"; break;
+     case 1:
+     mes = "Febrero"; break;
+     case 2:
+     mes = "Marzo"; break;
+     case 3:
+     mes = "Abril"; break;
+     case 4:
+     mes = "Mayo"; break;
+     case 5:
+     mes = "Junio"; break;
+     case 6:
+     mes = "Julio";
+    }
+    document.getElementById("Mes").innerHTML = "Estamos en el mes de" + mes;
+    </script>
+    </body>
+    </html>
+    

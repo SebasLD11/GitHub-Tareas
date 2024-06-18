@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Switch condicional</title>
+<h1>Ejercicio Switch Condicional</h1>
+<p id="Día"></p>
+<p id="Mes"></p>
+
+<script>
+    var dia;
+    switch (new Date().getDay()) {
+     case 0:
+     dia = "Domingo"; break;
+     case 1:
+     dia = "Lunes"; break;
+     case 2:
+     dia = "Martes"; break;
+     case 3:
+     dia = "Miércoles"; break;
+     case 4:
+     dia = "Jueves"; break;
+     case 5:
+     dia = "Viernes"; break;
+     case 6:
+     dia = "Sábado";
+    }
+    document.getElementById("Switch").innerHTML = "Hoy es " + dia;
+    document.write(new Date());
+</script>
+<script src="../UD28.HTML-CSS/JS/generar-mes.js"></script>
+</body>
+</html>
+    
