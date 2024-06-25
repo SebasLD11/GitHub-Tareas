@@ -1,0 +1,20 @@
+body {
+    background-color: #a5d2f9; /* Color del fondo */
+    color: #541313; /* Color de la fuente */
+    font-family: Arial, sans-serif; /* Familia tipográfica */
+    font-size: 16px; /* Tamaño de la fuente */
+}
+
+/* Estilos para el título h1 */
+h1 {
+    color: #00008b; /* Color de la fuente */
+    font-family: 'Verdana', sans-serif; /* Familia tipográfica */
+    font-size: 2.5em; /* Tamaño de la fuente */
+}
+
+/* Estilos para el párrafo */
+p {
+    color: #5d1a06; /* Color de la fuente */
+    font-family: 'Georgia', serif; /* Familia tipográfica */
+    font-size: 1.2em; /* Tamaño de la fuente */
+}

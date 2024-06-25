@@ -1,0 +1,57 @@
+body {
+    font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+    margin: 20px;
+    background-color: #ffffff;
+    color: #333333;
+}
+h1 {
+    font-size: 2.5em;
+    color: #6B8E23;
+    text-align: center;
+}
+h1 .granate {
+    color: #800000; /* Color granate */
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+ul li {
+    display: inline;
+    margin-right: 10px;
+}
+a {
+    text-decoration: none;
+    color: #0073e6;
+}
+a:hover {
+    text-decoration: underline;
+}
+h2 {
+    font-size: 2em;
+    font-weight: bold;
+    color: #6B8E23;
+    margin-top: 20px;
+    background-color: #E0FFE0;
+    padding: 10px;
+    border: 1px solid #BDB76B;
+    text-align: justify;
+}
+h3 {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #800000;
+    margin-top: 15px;
+}
+p {
+    font-size: 1em;
+    line-height: 1.6;
+    margin-top: 10px;
+    text-align: justify;
+}
+.box {
+    border: 1px solid #BDB76B;
+    background-color: #F5F5DC;
+    padding: 10px;
+}
