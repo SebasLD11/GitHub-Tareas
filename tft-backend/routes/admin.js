@@ -1,20 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth'); // Importar middleware de autenticación
-const verifyRole = require('../middleware/role'); // Importar middleware de roles, si está definido en un archivo separado
+const verifyRole = require('../middleware/role'); // Importar middleware de roles
 const User = require('../models/User');
 const Service = require('../models/Service');
 const Booking = require('../models/Booking');
-
-// Middleware para verificar el rol de administrador
-function verificarRol(requiredRole) {
-    return (req, res, next) => {
-        if (req.user.role !== requiredRole) {
-            return res.status(403).json({ message: 'Access denied' });
-        }
-        next();
-    };
-}
 
 // Obtener todos los usuarios (solo administrador)
 router.get('/users', auth, verifyRole('admin'), async (req, res) => {

@@ -3,9 +3,9 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
-const auth = require('../middleware/auth'); // Importar middleware de autenticación
+const auth = require('../middleware/auth');
 
-// Register a new user
+// Registro de usuario
 router.post('/register', async (req, res) => {
     const { username, email, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -24,7 +24,7 @@ router.post('/register', async (req, res) => {
     }
 });
 
-// Login user
+// Login de usuario
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
@@ -42,7 +42,7 @@ router.post('/login', async (req, res) => {
     res.json({ token });
 });
 
-// Get user profile
+// Obtener perfil de usuario
 router.get('/profile', auth, async (req, res) => {
     try {
         const user = await User.findById(req.user.id).select('-password');

@@ -5,7 +5,7 @@ const Booking = require('../models/Booking');
 const Service = require('../models/Service');
 const User = require('../models/User');
 
-// Get all bookings
+// Obtener todas las reservas
 router.get('/', auth, async (req, res) => {
     try {
         const bookings = await Booking.find().populate('user').populate('service');
@@ -15,7 +15,7 @@ router.get('/', auth, async (req, res) => {
     }
 });
 
-// Get bookings for a specific user
+// Obtener reservas de un usuario específico
 router.get('/user/:userId', auth, async (req, res) => {
     try {
         const bookings = await Booking.find({ user: req.params.userId }).populate('service');
@@ -25,17 +25,17 @@ router.get('/user/:userId', auth, async (req, res) => {
     }
 });
 
-// Create a new booking
+// Crear una nueva reserva
 router.post('/', auth, async (req, res) => {
     const { service, date, timeSlot } = req.body;
 
-    // Check if the service exists
+    // Verifica si el servicio existe
     const existingService = await Service.findById(service);
     if (!existingService) {
         return res.status(404).json({ message: 'Service not found' });
     }
 
-    // Check if the user exists
+    // Verifica si el usuario existe
     const existingUser = await User.findById(req.user.id);
     if (!existingUser) {
         return res.status(404).json({ message: 'User not found' });
@@ -56,7 +56,7 @@ router.post('/', auth, async (req, res) => {
     }
 });
 
-// Delete a booking
+// Eliminar una reserva
 router.delete('/:id', auth, async (req, res) => {
     try {
         const booking = await Booking.findById(req.params.id);
