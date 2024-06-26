@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Especies del Parque Natural Sierra Bicuerna</title>
+    <link rel="stylesheet" href="/HTML-CSS-JS/CSS/estiloT26-Ej10.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var path = window.location.pathname;
+            var page = path.split("/").pop();
+            var navLinks = document.querySelectorAll('nav ul li a');
+            navLinks.forEach(function(link) {
+                if (link.getAttribute('href') === page) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="/HTML-CSS-JS/T26.EJERCICIOS/ParqueNatural/img/parqueN.jpg" alt="Panorama del Parque Natural">
+            <h1>Parque Natural <span class="granate">Sierra Bicuerna</span></h1>
+        </header>
+        <div class="clearfix">
+            <nav>
+                <ul>
+                <li><a href="T26-Ej10Index.html" class="active">Inicio</a></li>
+                <li><a href="T26-Ej10Especies.html">Especies</a></li>
+                <li><a href="reservas.html">Reservas</a></li>
+                <li><a href="galeria.html">Galería</a></li>
+            </ul>
+        </nav>
+        <div class="content">
+            <h2>Especies del parque</h2>
+            <div class="box">
+                <p>Estos son algunos de los habitantes del parque:</p>
+                <h3>Nutria</h3>
+                <p>La nutria europea o paleártica (Lutra lutra) es un mamífero carnívoro de hábitat acuático.
+                   Se alimenta de peces, ranas y pequeñas presas que caza en el río. Cerca de sus lugares de cobijo,
+                   podremos ver toboganes que crean para llegar rápidamente al agua.</p>
+                
+                <h3>Buitre leonado</h3>
+                <p>El buitre leonado (Gyps fulvus) es un ave rapaz, una de las mayores que puede encontrarse en la Península Ibérica.
+                   Su alimentación principal es la carroña, que localiza con su aguda vista.</p>
+                
+                <h3>Gineta</h3>
+                <p>La gineta (Genetta genetta) es una especie de mamífero carnívoro. Son grandes trepadoras, 
+                   muy ágiles y grandes cazadoras de pequeños animales. Aunque también se alimentan de los 
+                   frutos del bosque que se pueden encontrar en el parque.</p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        La imagen del título pertenece a <a href="https://www.flickr.com/photos/amagill/">AMagill</a> y se distribuye bajo licencia <a href="https://creativecommons.org/licenses/by-sa/2.0/">CreativeCommons</a>.
+    </footer>
+</div>
+</body>
+</html>

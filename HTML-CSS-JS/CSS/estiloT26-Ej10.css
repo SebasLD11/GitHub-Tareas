@@ -1,0 +1,137 @@
+body {
+    font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+    margin: 0;
+    background-color: #f0f0f0;
+    color: #333333;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 900px;
+    margin: 20px;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+header img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px 15px 0 0;
+}
+
+.container h1 {
+    font-size: 2.5em;
+    color: #6B8E23;
+    padding: 0.5em;
+    display: inline-block;
+    margin: 0;
+    position: relative;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+h1 .granate {
+    color: #800000; /* Color granate */
+}
+
+nav {
+    float: left;
+    width: 200px;
+    margin-right: 20px;
+    padding-top: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+}
+
+nav ul li {
+    margin-bottom: 10px;
+}
+
+nav ul li a {
+    display: block;
+    padding: 10px;
+    background-color: #E0FFE0;
+    color: #0073e6;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+nav ul li a:hover {
+    background-color: #B0E57C;
+    color: #333;
+}
+
+nav ul li a.active {
+    background-color: #C0C0C0;
+    color: #333;
+}
+
+.content {
+    float: right;
+    width: calc(100% - 260px); /* Adjusting for nav width and margin */
+    padding: 20px;
+    background: linear-gradient(to top, #ffffff, #e4e4e4, #dddddd);
+    border-radius: 15px 15px 15px 15px;
+}
+
+h2 {
+    font-size: 2em;
+    font-weight: bold;
+    color: #6B8E23;
+    margin-top: 20px;
+    background-color: #E0FFE0;
+    padding: 10px;
+    border: 1px solid #BDB76B;
+    border-radius: 5px;
+}
+
+h3 {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #800000; /* Color granate */
+    margin-top: 15px;
+}
+
+p {
+    font-size: 1em;
+    line-height: 1.6;
+    margin-top: 10px;
+    text-align: justify;
+}
+
+.box {
+    border: 1px solid #BDB76B;
+    background-color: #F5F5DC;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #f0f0f0;
+    border-top: 1px solid #ccc;
+    border-radius: 0 0 15px 15px;
+    font-size: 0.9em;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
