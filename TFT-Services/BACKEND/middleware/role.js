@@ -1,4 +1,3 @@
-// middleware/role.js
 function verifyRole(requiredRole) {
     return (req, res, next) => {
         if (req.user.role !== requiredRole) {

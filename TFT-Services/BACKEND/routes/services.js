@@ -1,32 +1,28 @@
 const express = require('express');
 const router = express.Router();
-const Service = require('../models/Service');
+const Service = require('../models/service');
+const auth = require('../middleware/auth');
+const verifyRole = require('../middleware/role');
 
-// Get all services
+// Crear servicio (solo administrador)
+router.post('/', auth, verifyRole('admin'), async (req, res) => {
+    const { name, description, category, price, imageUrl } = req.body;
+    try {
+        const service = new Service({ name, description, category, price, imageUrl });
+        await service.save();
+        res.status(201).json({ message: 'Service created successfully' });
+    } catch (err) {
+        res.status(500).json({ message: 'Error creating service' });
+    }
+});
+
+// Obtener todos los servicios
 router.get('/', async (req, res) => {
     try {
         const services = await Service.find();
         res.json(services);
     } catch (err) {
-        res.status(500).json({ message: err.message });
-    }
-});
-
-// Add a new service
-router.post('/', async (req, res) => {
-    const service = new Service({
-        name: req.body.name,
-        description: req.body.description,
-        category: req.body.category,
-        price: req.body.price,
-        imageUrl: req.body.imageUrl
-    });
-
-    try {
-        const newService = await service.save();
-        res.status(201).json(newService);
-    } catch (err) {
-        res.status(400).json({ message: err.message });
+        res.status(500).json({ message: 'Error fetching services' });
     }
 });
 

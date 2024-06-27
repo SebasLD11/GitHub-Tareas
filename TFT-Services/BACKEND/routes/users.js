@@ -1,54 +1,26 @@
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const User = require('../models/User');
+const User = require('../models/user');
 const auth = require('../middleware/auth');
+const verifyRole = require('../middleware/role');
 
-// Registro de usuario
-router.post('/register', async (req, res) => {
-    const { username, email, password } = req.body;
-    const hashedPassword = await bcrypt.hash(password, 10);
-    
-    const user = new User({
-        username,
-        email,
-        password: hashedPassword
-    });
-
-    try {
-        const newUser = await user.save();
-        res.status(201).json(newUser);
-    } catch (err) {
-        res.status(400).json({ message: err.message });
-    }
-});
-
-// Login de usuario
-router.post('/login', async (req, res) => {
-    const { email, password } = req.body;
-    const user = await User.findOne({ email });
-    
-    if (!user) {
-        return res.status(400).json({ message: 'User not found' });
-    }
-
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-        return res.status(400).json({ message: 'Invalid credentials' });
-    }
-
-    const token = jwt.sign({ id: user._id, role: user.role }, 'secret_key', { expiresIn: '1h' });
-    res.json({ token });
-});
-
-// Obtener perfil de usuario
+// Obtener perfil de usuario autenticado
 router.get('/profile', auth, async (req, res) => {
     try {
         const user = await User.findById(req.user.id).select('-password');
         res.json(user);
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        res.status(500).json({ message: 'Error fetching user profile' });
+    }
+});
+
+// Obtener todos los usuarios (solo administrador)
+router.get('/', auth, verifyRole('admin'), async (req, res) => {
+    try {
+        const users = await User.find().select('-password');
+        res.json(users);
+    } catch (err) {
+        res.status(500).json({ message: 'Error fetching users' });
     }
 });
 
