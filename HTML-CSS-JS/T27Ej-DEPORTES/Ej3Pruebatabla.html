@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabla Ejercicio</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        .title {
+            background-color: #ccffcc;
+        }
+        .celda2_3 {
+            background-color: #ffccff;
+        }
+        .celda4_5 {
+            background-color: #40e0d0;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>TITULO DE LA TABLA</h2>
+    <table>
+        <tr>
+            <td class="title" colspan="3">CELDA TITULO</td>
+        </tr>
+        <tr>
+            <td class="celda2_3" rowspan="2">CELDA 2</td>
+            <td>CELDA 1</td>
+            <td class="celda4_5" rowspan="2">CELDA 4</td>
+        </tr>
+        <tr>
+            <td>CELDA 3</td>
+        </tr>
+        <tr>
+            <td>CELDA 7</td>
+            <td>CELDA 6</td>
+            <td>CELDA 5</td>
+        </tr>
+    </table>
+</body>
+</html>
