@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const Service = require('../models/service');
 const auth = require('../middleware/auth');
 const verifyRole = require('../middleware/role');
+const Service = require('../models/Service');
 
 // Crear servicio (solo administrador)
 router.post('/', auth, verifyRole('admin'), async (req, res) => {
@@ -12,7 +12,7 @@ router.post('/', auth, verifyRole('admin'), async (req, res) => {
         await service.save();
         res.status(201).json({ message: 'Service created successfully' });
     } catch (err) {
-        res.status(500).json({ message: 'Error creating service' });
+        res.status(500).json({ message: 'Error creating service', error: err.message });
     }
 });
 
@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
         const services = await Service.find();
         res.json(services);
     } catch (err) {
-        res.status(500).json({ message: 'Error fetching services' });
+        res.status(500).json({ message: 'Error fetching services', error: err.message });
     }
 });
 
