@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 15</title>
+    <style>
+        .table {
+            display: table;
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .row {
+            display: table-row;
+        }
+        .cell {
+            display: table-cell;
+            border: 1px solid black;
+            padding: 10px;
+            vertical-align: top;
+        }
+        .nested-table {
+            display: table;
+            width: 100%;
+        }
+        .nested-row {
+            display: table-row;
+        }
+        .nested-cell {
+            display: table-cell;
+            padding: 5px;
+            border: none;
+        }
+        .header {
+            font-weight: bold;
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <h2>Diarios de:</h2>
+    <div class="table">
+        <div class="row header">
+            <div class="cell">1. ESPAÑA...</div>
+            <div class="cell">2. EE.UU.</div>
+        </div>
+        <div class="row">
+            <div class="cell">
+                <div class="nested-table">
+                    <div class="nested-row">
+                        <div class="nested-cell">a. El Mundo</div>
+                    </div>
+                    <div class="nested-row">
+                        <div class="nested-cell">b. El País</div>
+                    </div>
+                    <div class="nested-row">
+                        <div class="nested-cell">c. La Vanguardia</div>
+                    </div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="nested-table">
+                    <div class="nested-row">
+                        <div class="nested-cell">I. New York Times</div>
+                    </div>
+                    <div class="nested-row">
+                        <div class="nested-cell">II. The Washington Post</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 16</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .table {
+            display: table;
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .row {
+            display: table-row;
+        }
+        .cell {
+            display: table-cell;
+            border: 1px solid black;
+            padding: 10px;
+            vertical-align: middle;
+        }
+        .title {
+            font-weight: bold;
+            background-color: #d8e4bc;
+            text-align: center;
+            font-size: 1.2em;
+        }
+        .header {
+            font-weight: bold;
+            background-color: #fde9d9;
+            text-align: center;
+        }
+        .highlight {
+            background-color: #ffffcc;
+            text-align: center;
+        }
+        .footprint {
+            background-image: url('path/to/footprint.png'); /* Ruta de la imagen de la huella */
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
+    </style>
+</head>
+<body>
+    <div class="table">
+        <div class="row">
+            <div class="cell title" colspan="4">DIFERENCIAS ENTRE EL PERRO Y EL HOMBRE</div>
+        </div>
+        <div class="row">
+            <div class="cell header">DIFERENCIAS</div>
+            <div class="cell header" colspan="2">PERRO</div>
+            <div class="cell header">HOMBRE</div>
+        </div>
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell highlight" colspan="2">PEQUEÑO</div>
+            <div class="cell highlight">GRANDE</div>
+        </div>
+        <div class="row">
+            <div class="cell footprint">Duración crecimiento</div>
+            <div class="cell">10 meses</div>
+            <div class="cell">18 a 24 meses</div>
+            <div class="cell">16 años</div>
+        </div>
+        <div class="row">
+            <div class="cell footprint">Tiempo de gestación</div>
+            <div class="cell">58 a 63 días</div>
+            <div class="cell">58 a 63 días</div>
+            <div class="cell">9 meses</div>
+        </div>
+        <div class="row">
+            <div class="cell footprint">Duración de vida del pelo/cabello</div>
+            <div class="cell">1 año</div>
+            <div class="cell"></div>
+            <div class="cell">2 a 7 años</div>
+        </div>
+    </div>
+</body>
+</html>

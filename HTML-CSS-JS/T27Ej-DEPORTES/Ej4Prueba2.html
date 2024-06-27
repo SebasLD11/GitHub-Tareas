@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 14</title>
+    <style>
+        body {
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+        }
+        .background-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: auto;
+            height: 80vh; /* Ajusta la altura según sea necesario */
+            z-index: -1;
+        }
+        table {
+            border: 2px solid black;
+            border-collapse: collapse;
+            width: 50%;
+            background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semi-transparente */
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 15px;
+            text-align: center;
+        }
+        th {
+            background-color: #FFFFCC; /* Color de fondo del encabezado */
+        }
+        td {
+            background-color: #FFFF99; /* Color de fondo de las celdas de datos */
+        }
+    </style>
+</head>
+<body>
+    <img src="/HTML-CSS-JS/mar.jpg" alt="Imagen de fondo" class="background-image">
+    <table>
+        <tr>
+            <th colspan="2">ENCABEZADO</th>
+        </tr>
+        <tr>
+            <td>CELDA 1</td>
+            <td>CELDA 2</td>
+        </tr>
+    </table>
+</body>
+</html>
