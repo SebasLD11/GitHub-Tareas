@@ -20,6 +20,7 @@ exports.login = async (req, res) => {
     try {
         const user = await User.findOne({ email });
         if (user && bcrypt.compareSync(password, user.password)) {
+            console.log('Secret Key:', process.env.SECRET_KEY);  // Verificar el `SECRET_KEY`
             const token = jwt.sign({ id: user._id, role: user.role }, process.env.SECRET_KEY, { expiresIn: '1h' });
             res.json({ token });
         } else {
