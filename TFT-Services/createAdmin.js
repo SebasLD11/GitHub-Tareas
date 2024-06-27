@@ -3,10 +3,7 @@ const bcrypt = require('bcryptjs');
 const User = require('./models/User'); // Asegúrate de que la ruta al modelo de usuario es correcta
 
 // Conectar a la base de datos
-mongoose.connect('mongodb://localhost:27017/tftservices', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
+mongoose.connect('mongodb://localhost:27017/tftservices')
 .then(async () => {
     console.log('MongoDB connected');
 
@@ -18,7 +15,9 @@ mongoose.connect('mongodb://localhost:27017/tftservices', {
     const adminUser = await User.findOne({ email: adminEmail });
 
     if (adminUser) {
-        console.log('Admin user already exists');
+        adminUser.role = 'admin';
+        await adminUser.save();
+        console.log('Admin user updated');
     } else {
         // Crear el usuario administrador
         const hashedPassword = await bcrypt.hash(adminPassword, 10);
