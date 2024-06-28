@@ -21,11 +21,13 @@ const authRoutes = require('./routes/auth');
 const serviceRoutes = require('./routes/services');
 const bookingRoutes = require('./routes/bookings');
 const userRoutes = require('./routes/users');
+const adminRoutes = require('./routes/admin');  // Añadido
 
 app.use('/api/auth', authRoutes);
 app.use('/api/services', serviceRoutes);
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/admin', adminRoutes);  // Añadido
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
