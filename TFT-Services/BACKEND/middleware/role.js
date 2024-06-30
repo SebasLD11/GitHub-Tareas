@@ -1,10 +1,11 @@
-function verifyRole(requiredRole) {
+const verifyRole = (role) => {
     return (req, res, next) => {
-        if (req.user.role !== requiredRole) {
-            return res.status(403).json({ message: 'Access denied' });
+        if (req.user && req.user.role === role) {
+            next();
+        } else {
+            res.status(403).json({ message: 'Access denied' });
         }
-        next();
     };
-}
+};
 
 module.exports = verifyRole;

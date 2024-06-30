@@ -26,6 +26,7 @@ router.post('/register-admin', auth, verifyRole('admin'), async (req, res) => {
 });
 // Obtener todos los usuarios (solo accesible para administradores)
 router.get('/users', auth, verifyRole('admin'), async (req, res) => {
+    console.log('Authenticated Admin:', req.user);  // Log del usuario administrador
     try {
         const users = await User.find().select('-password');
         res.json(users);
@@ -33,6 +34,7 @@ router.get('/users', auth, verifyRole('admin'), async (req, res) => {
         res.status(500).json({ message: 'Error fetching users', error: err.message });
     }
 });
+
 // Actualizar un usuario (solo accesible para administradores)
 router.put('/users/:id', auth, verifyRole('admin'), async (req, res) => {
     const { id } = req.params;

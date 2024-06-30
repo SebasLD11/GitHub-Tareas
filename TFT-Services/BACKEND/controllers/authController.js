@@ -5,7 +5,7 @@ require('dotenv').config();  // Asegúrate de cargar dotenv
 
 // Registrar usuario
 exports.register = async (req, res) => {
-    const { username, email, password } = req.body;
+    const { username, email, password, role } = req.body;
     try {
         const user = new User({ username, email, password: bcrypt.hashSync(password, 10) });
         await user.save();
