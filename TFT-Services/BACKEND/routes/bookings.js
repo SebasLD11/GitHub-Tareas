@@ -26,5 +26,4 @@ router.get('/', auth, async (req, res) => {
         res.status(500).json({ message: 'Error fetching bookings', error: err.message });
     }
 });
-
 module.exports = router;
