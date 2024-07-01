@@ -1,0 +1,12 @@
+{"level":"info","message":"MongoDB connected: localhost"}
+{"level":"info","message":"MongoDB connected: localhost"}
+{"level":"info","message":"MongoDB connected: localhost"}
+{"level":"info","message":"MongoDB connected: localhost"}
+{"level":"info","message":"MongoDB connected: localhost"}
+{"level":"info","message":"MongoDB connected: localhost"}
+{"level":"info","message":"MongoDB connected: localhost"}
+{"level":"info","message":"MongoDB connected: localhost"}
+{"level":"info","message":"MongoDB connected: localhost"}
+2024-07-01T21:15:29.142Z [error]: Error: Cannot read properties of undefined (reading 'host')
+2024-07-01T21:15:29.777Z [error]: Error: Cannot read properties of undefined (reading 'host')
+2024-07-01T21:15:30.075Z [error]: Error: Cannot read properties of undefined (reading 'host')
