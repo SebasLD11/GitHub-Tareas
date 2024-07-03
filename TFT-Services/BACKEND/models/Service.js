@@ -19,4 +19,6 @@ const serviceSchema = new mongoose.Schema({
     },
 });
 
+// Verifica que no haya `ensureIndex` aquí
+
 module.exports = mongoose.model('Service', serviceSchema);

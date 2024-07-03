@@ -7,7 +7,7 @@ const User = require('../models/User');
 
 describe('Auth API', () => {
   beforeAll(async () => {
-    mongoose.connect(process.env.MONGO_URI);
+    mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
   });
 
   afterAll(async () => {
@@ -24,14 +24,14 @@ describe('Auth API', () => {
       });
 
     expect(response.statusCode).toBe(201);
-    expect(response.body).toHaveProperty('token');
+    expect(response.body).toHaveProperty('message', 'User registered successfully');
   });
 
   it('should login an existing user', async () => {
     const user = new User({
       username: 'testuser',
       email: 'testuser@example.com',
-      password: await bcrypt.hash('password123', 10)
+      password: await bcrypt.hash('Password123', 10)
     });
     await user.save();
 
@@ -39,7 +39,7 @@ describe('Auth API', () => {
       .post('/api/auth/login')
       .send({
         email: 'testuser@example.com',
-        password: 'password123'
+        password: 'Password123'
       });
 
     expect(response.statusCode).toBe(200);

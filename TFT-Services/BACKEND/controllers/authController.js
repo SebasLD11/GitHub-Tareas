@@ -1,15 +1,21 @@
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-require('dotenv').config();  // Asegúrate de cargar dotenv
+require('dotenv').config();
+
+const generateToken = (id, role) => {
+    return jwt.sign({ id, role }, process.env.SECRET_KEY, { expiresIn: '1h' });
+};
 
 // Registrar usuario
 exports.register = async (req, res) => {
-    const { username, email, password, role } = req.body;
+    const { username, email, password, role = 'user' } = req.body;
     try {
-        const user = new User({ username, email, password: bcrypt.hashSync(password, 10) });
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const user = new User({ username, email, password: hashedPassword, role });
         await user.save();
-        res.status(201).json({ message: 'User registered successfully' });
+        const token = generateToken(user._id, user.role);
+        res.status(201).json({ message: 'User registered successfully', token });
     } catch (err) {
         res.status(500).json({ message: 'Error registering user', error: err.message });
     }
@@ -20,8 +26,8 @@ exports.login = async (req, res) => {
     const { email, password } = req.body;
     try {
         const user = await User.findOne({ email });
-        if (user && bcrypt.compareSync(password, user.password)) {
-            const token = jwt.sign({ id: user._id, role: user.role }, process.env.SECRET_KEY, { expiresIn: '1h' });
+        if (user && await bcrypt.compare(password, user.password)) {
+            const token = generateToken(user._id, user.role);
             res.json({ token });
         } else {
             res.status(401).json({ message: 'Invalid credentials' });

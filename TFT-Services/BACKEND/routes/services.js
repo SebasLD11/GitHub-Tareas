@@ -6,7 +6,7 @@ const Service = require('../models/Service');
 
 // Crear servicio (solo administrador)
 router.post('/', auth, verifyRole('admin'), async (req, res) => {
-    const { name, description, category, price, imageUrl } = req.body;
+    const { name, description, category, price } = req.body;
     try {
         const service = new Service({ name, description, category, price, imageUrl });
         await service.save();

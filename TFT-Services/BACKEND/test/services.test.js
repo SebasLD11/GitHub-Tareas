@@ -8,7 +8,7 @@ const User = require('../models/User');
 
 describe('Services API', () => {
   beforeAll(async () => {
-    mongoose.connect(process.env.MONGO_URI);
+    await mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
   });
 
   afterAll(async () => {
@@ -37,8 +37,9 @@ describe('Services API', () => {
       });
 
     expect(response.statusCode).toBe(201);
-    expect(response.body).toHaveProperty('_id');
-    expect(response.body.name).toBe('Consultoria Digital');
+    expect(response.body).toHaveProperty('message', 'Service created successfully');
+    expect(response.body.service).toHaveProperty('_id');
+    expect(response.body.service.name).toBe('Consultoria Digital');
   });
 
   it('should get all services', async () => {
