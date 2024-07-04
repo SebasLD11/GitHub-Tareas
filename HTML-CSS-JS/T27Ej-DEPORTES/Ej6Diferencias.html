@@ -12,6 +12,7 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            border: 2px solid black;
         }
         .row {
             display: table-row;
@@ -24,13 +25,19 @@
         }
         .title {
             font-weight: bold;
-            background-color: #d8e4bc;
+            background-color: #6fa56f;
             text-align: center;
             font-size: 1.2em;
+            color: white;
         }
         .header {
             font-weight: bold;
-            background-color: #fde9d9;
+            background-color: #f5c6a1;
+            text-align: center;
+        }
+        .subheader {
+            font-weight: bold;
+            background-color: #f5e8c0;
             text-align: center;
         }
         .highlight {
@@ -39,44 +46,51 @@
         }
         .footprint {
             background-image: url('path/to/footprint.png'); /* Ruta de la imagen de la huella */
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
+            background-repeat: repeat;
+            background-size: 20px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
     <div class="table">
         <div class="row">
-            <div class="cell title" colspan="4">DIFERENCIAS ENTRE EL PERRO Y EL HOMBRE</div>
+            <div class="cell title" colspan="5">DIFERENCIAS ENTRE EL PERRO Y EL HOMBRE</div>
+            <div class="cell title"></div>
+            <div class="cell title"></div>
+            <div class="cell title"></div>
+
         </div>
         <div class="row">
-            <div class="cell header">DIFERENCIAS</div>
+            <div class="cell header" rowspan="2">DIFERENCIAS</div>
             <div class="cell header" colspan="2">PERRO</div>
-            <div class="cell header">HOMBRE</div>
+            <div class="cell header"></div>
+            <div class="cell header" rowspan="2">HOMBRE</div>
+
         </div>
         <div class="row">
-            <div class="cell"></div>
-            <div class="cell highlight" colspan="2">PEQUEÑO</div>
-            <div class="cell highlight">GRANDE</div>
+            <div class="cell subheader"></div>
+            <div class="cell subheader">PEQUEÑO</div>
+            <div class="cell subheader">GRANDE</div>
+            <div class="cell subheader"></div>
         </div>
         <div class="row">
             <div class="cell footprint">Duración crecimiento</div>
-            <div class="cell">10 meses</div>
-            <div class="cell">18 a 24 meses</div>
-            <div class="cell">16 años</div>
+            <div class="cell highlight">10 meses</div>
+            <div class="cell highlight">18 a 24 meses</div>
+            <div class="cell highlight">16 años</div>
         </div>
         <div class="row">
             <div class="cell footprint">Tiempo de gestación</div>
-            <div class="cell">58 a 63 días</div>
-            <div class="cell">58 a 63 días</div>
-            <div class="cell">9 meses</div>
+            <div class="cell highlight">58 a 63 días</div>
+            <div class="cell highlight">58 a 63 días</div>
+            <div class="cell highlight">9 meses</div>
         </div>
         <div class="row">
             <div class="cell footprint">Duración de vida del pelo/cabello</div>
-            <div class="cell">1 año</div>
-            <div class="cell"></div>
-            <div class="cell">2 a 7 años</div>
+            <div class="cell highlight">1 año</div>
+            <div class="cell highlight"></div>
+            <div class="cell highlight">2 a 7 años</div>
         </div>
     </div>
 </body>
