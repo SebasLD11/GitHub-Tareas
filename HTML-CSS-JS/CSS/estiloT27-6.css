@@ -1,0 +1,39 @@
+body {
+    font-family: Arial, sans-serif;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 2px solid black;
+}
+th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+    border: 2px solid black;
+}
+.title {
+    font-weight: bold;
+    background-color: #6fa56f;
+    font-size: 1.2em;
+    color: white;
+}
+.header {
+    font-weight: bold;
+    background-color: #f5c6a1;
+}
+.subheader {
+    font-weight: bold;
+    background-color: #f5e8c0;
+}
+.highlight {
+    background-color: #ffffcc;
+}
+.footprint {
+    background-image: url('/HTML-CSS-JS/T27Ej-DEPORTES/print-huella.jpg'); /* Ruta de la imagen de la huella */
+    background-repeat: no-repeat;
+    background-size: cover; /* Tamaño más pequeño de la imagen */
+    text-align: center;
+}
