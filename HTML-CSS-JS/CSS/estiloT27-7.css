@@ -1,0 +1,116 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('/HTML-CSS-JS/T27Ej-DEPORTES/floral-print.jpg'); /* Ruta de la imagen de fondo */
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: table;
+}
+
+.row {
+    display: table-row;
+}
+
+.cell {
+    display: table-cell;
+    padding: 10px;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    font-size: 1.5em;
+    color: black;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+.a {
+    background-color: red;
+    background-image: url('/HTML-CSS-JS/T27Ej-DEPORTES/mantel-picnic.jpg'); /* Ruta de la imagen del patrón */
+    background-size: cover;
+    text-align: top;
+}
+
+.b {
+    background-color: red;
+    padding: 10px; /* Agrega padding interno al div B */
+    background-image: url('/HTML-CSS-JS/T27Ej-DEPORTES/mantel-picnic.jpg'); /* Ruta de la imagen del patrón */
+    background-size: calc(100% - 20px) calc(100% - 20px); /* Ajusta el tamaño de la imagen para respetar el padding */
+    background-origin: content-box; /* Hace que la imagen comience desde el área de contenido */
+    background-clip: content-box; /* Evita que la imagen se extienda al padding */
+}
+
+.c {
+    background-color: red;
+    background-image: url('/HTML-CSS-JS/T27Ej-DEPORTES/mantel-picnic2.jpg'); /* Ruta de la imagen del patrón */
+    background-size: cover;
+}
+
+.d {
+    background-color: red;
+    padding: 10px; /* Agrega padding interno al div D */
+    background-image: url('/HTML-CSS-JS/T27Ej-DEPORTES/mantel-picnic2.jpg'); /* Ruta de la imagen del patrón */
+    background-size: calc(100% - 0px) calc(100% - 0px); /* Ajusta el tamaño de la imagen para respetar el padding */
+    background-origin: content-box; /* Hace que la imagen comience desde el área de contenido */
+    background-clip: content-box; /* Evita que la imagen se extienda al padding */
+}
+
+.e {
+    background-color: red;
+    background-image: url('/HTML-CSS-JS/T27Ej-DEPORTES/obra-arte.jpg'); /* Ruta de la imagen del patrón */
+    background-size: cover;
+    text-align: top;
+}
+.f {
+    background-color: red;
+    padding: 10px; /* Agrega padding interno al div F */
+    background-image: url('/HTML-CSS-JS/T27Ej-DEPORTES/obra-arte.jpg'); /* Ruta de la imagen del patrón */
+    background-size: calc(100% - 20px) calc(100% - 20px); /* Ajusta el tamaño de la imagen para respetar el padding */
+    background-origin: content-box; /* Hace que la imagen comience desde el área de contenido */
+    background-clip: content-box; /* Evita que la imagen se extienda al padding */
+}
+.g {
+    background-color: red;
+    padding: 20px 0px; /* Agrega padding interno al div G */
+    background-image: url('/HTML-CSS-JS/T27Ej-DEPORTES/obra-arte2.jpg'); /* Ruta de la imagen del patrón */
+    background-size: calc(100% - 160px) calc(100% - 90px); /* Ajusta el tamaño de la imagen para respetar el padding */
+    background-origin: content-box; /* Hace que la imagen comience desde el área de contenido */
+    background-clip: content-box; /* Evita que la imagen se extienda al padding */
+}
+
+.h {
+    background-color: red;
+    padding: 0px 20px; /* Agrega padding interno al div G */
+    background-image: url('/HTML-CSS-JS/T27Ej-DEPORTES/obra-arte2.jpg'); /* Ruta de la imagen del patrón */
+    background-size: calc(100% - 160px) calc(100% - 90px); /* Ajusta el tamaño de la imagen para respetar el padding */
+    background-origin: content-box; /* Hace que la imagen comience desde el área de contenido */
+    background-clip: content-box; /* Evita que la imagen se extienda al padding */}
+
+.i {
+    background-image: linear-gradient(to right, #58af58, #8ebe8e, #e9f8e9);
+}
+
+.j {
+    background-image: linear-gradient(to top, #873b2d, #a2776d, #e9f8e9);
+}
+
+.k {
+    background-image: linear-gradient(to bottom, #58bb4d, #8ab77f, #f2f4f0);
+}
+
+.l {
+    background-image: linear-gradient(to bottom, #00ff00, #99ff99);
+}
