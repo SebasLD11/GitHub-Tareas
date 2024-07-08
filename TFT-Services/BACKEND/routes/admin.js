@@ -38,9 +38,9 @@ router.get('/users', auth, verifyRole('admin'), async (req, res) => {
 // Actualizar un usuario (solo accesible para administradores)
 router.put('/users/:id', auth, verifyRole('admin'), async (req, res) => {
     const { id } = req.params;
-    const { username, email, role } = req.body;
+    const { username, email, password, role } = req.body;
     try {
-        const user = await User.findByIdAndUpdate(id, { username, email, role }, { new: true });
+        const user = await User.findByIdAndUpdate(id, { username, email, password, role }, { new: true });
         res.json(user);
     } catch (err) {
         res.status(500).json({ message: 'Error updating user', error: err.message });
@@ -87,9 +87,9 @@ router.post('/services', auth, verifyRole('admin'), async (req, res) => {
 // Actualizar un servicio (solo accesible para administradores)
 router.put('/services/:id', auth, verifyRole('admin'), async (req, res) => {
     const { id } = req.params;
-    const { name, description, price } = req.body;
+    const { name, description, category, price } = req.body;
     try {
-        const service = await Service.findByIdAndUpdate(id, { name, description, price }, { new: true });
+        const service = await Service.findByIdAndUpdate(id, { name, description, category, price }, { new: true });
         res.json(service);
     } catch (err) {
         res.status(500).json({ message: 'Error updating service', error: err.message });

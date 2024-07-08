@@ -8,7 +8,7 @@ const Service = require('../models/Service');
 router.post('/', auth, verifyRole('admin'), async (req, res) => {
     const { name, description, category, price } = req.body;
     try {
-        const service = new Service({ name, description, category, price, imageUrl });
+        const service = new Service({ name, description, category, price});
         await service.save();
         res.status(201).json({ message: 'Service created successfully' });
     } catch (err) {
