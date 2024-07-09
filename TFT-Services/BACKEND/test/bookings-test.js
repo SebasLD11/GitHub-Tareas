@@ -10,10 +10,9 @@ describe('Bookings API', () => {
     await mongoose.connect(process.env.MONGO_URI);
   });
 
-  afterAll(async () => {
-    await mongoose.connection.close();
+  beforeEach(async () => {
+      await Booking.deleteMany({});
   });
-
   it('should create a new booking', async () => {
     const user = new User({
       username: 'testuser',
@@ -64,4 +63,7 @@ describe('Bookings API', () => {
     expect(response.statusCode).toBe(200);
     expect(response.body.length).toBeGreaterThan(0);
   });
+ afterAll(async () => {
+     await mongoose.connection.close();
+   });
 });

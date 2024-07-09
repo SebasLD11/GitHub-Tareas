@@ -6,6 +6,7 @@ const Service = require('../models/Service'); // Asegúrate de que esté importa
 const Booking = require('../models/Booking');
 const auth = require('../middleware/auth');
 const verifyRole = require('../middleware/role');
+const serviceController = require('../controllers/serviceController');
 require('dotenv').config();
 
 // Registrar administrador (solo accesible para administradores)
@@ -58,54 +59,18 @@ router.delete('/users/:id', auth, verifyRole('admin'), async (req, res) => {
     }
 });
 
-// Obtener todos los servicios (solo accesible para administradores)
-router.get('/services', auth, verifyRole('admin'), async (req, res) => {
-    try {
-        const services = await Service.find();
-        res.json(services);
-    } catch (err) {
-        res.status(500).json({ message: 'Error fetching services', error: err.message });
-    }
-});
-// Crear un nuevo servicio (solo accesible para administradores)
-router.post('/services', auth, verifyRole('admin'), async (req, res) => {
-    const { name, description, category, price } = req.body;
-    try {
-        const service = new Service({
-            name,
-            description,
-			category,
-            price
-        });
-        await service.save();
-        res.status(201).json({ message: 'Service created successfully', service });
-    } catch (err) {
-        res.status(500).json({ message: 'Error creating service', error: err.message });
-    }
-});
+// Crear servicio (solo administrador)
+router.post('/', auth, verifyRole('admin'), serviceController.createService);
 
-// Actualizar un servicio (solo accesible para administradores)
-router.put('/services/:id', auth, verifyRole('admin'), async (req, res) => {
-    const { id } = req.params;
-    const { name, description, category, price } = req.body;
-    try {
-        const service = await Service.findByIdAndUpdate(id, { name, description, category, price }, { new: true });
-        res.json(service);
-    } catch (err) {
-        res.status(500).json({ message: 'Error updating service', error: err.message });
-    }
-});
+// Obtener todos los servicios
+router.get('/', serviceController.getAllServices);
 
-// Eliminar un servicio (solo accesible para administradores)
-router.delete('/services/:id', auth, verifyRole('admin'), async (req, res) => {
-    const { id } = req.params;
-    try {
-        await Service.findByIdAndDelete(id);
-        res.json({ message: 'Service deleted successfully' });
-    } catch (err) {
-        res.status(500).json({ message: 'Error deleting service', error: err.message });
-    }
-});
+//Actualizar Servicio (solo admin)
+router.put('/services/:id', auth, verifyRole('admin'), serviceController.updateService);
+
+//Eliminar Servicio(solo admin)
+router.delete('/services/:id', auth, verifyRole('admin'), serviceController.deleteService);
+
 // Obtener todas las reservas (solo accesible para administradores)
 router.get('/bookings', auth, verifyRole('admin'), async (req, res) => {
     try {

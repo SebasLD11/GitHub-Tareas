@@ -2,28 +2,18 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
 const verifyRole = require('../middleware/role');
-const Service = require('../models/Service');
+const serviceController = require('../controllers/serviceController');
 
 // Crear servicio (solo administrador)
-router.post('/', auth, verifyRole('admin'), async (req, res) => {
-    const { name, description, category, price } = req.body;
-    try {
-        const service = new Service({ name, description, category, price});
-        await service.save();
-        res.status(201).json({ message: 'Service created successfully' });
-    } catch (err) {
-        res.status(500).json({ message: 'Error creating service', error: err.message });
-    }
-});
+router.post('/', auth, verifyRole('admin'), serviceController.createService);
 
 // Obtener todos los servicios
-router.get('/', async (req, res) => {
-    try {
-        const services = await Service.find();
-        res.json(services);
-    } catch (err) {
-        res.status(500).json({ message: 'Error fetching services', error: err.message });
-    }
-});
+router.get('/', serviceController.getAllServices);
+
+//Actualizar Servicio (solo admin)
+router.put('/:id', auth, verifyRole('admin'), serviceController.updateService);
+
+//Eliminar Servicio(solo admin)
+router.delete('/:id', auth, verifyRole('admin'), serviceController.deleteService);
 
 module.exports = router;

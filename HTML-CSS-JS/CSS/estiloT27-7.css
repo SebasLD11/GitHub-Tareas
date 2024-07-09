@@ -83,6 +83,7 @@ body {
     background-clip: content-box; /* Evita que la imagen se extienda al padding */
 }
 .g {
+    background-color: red;
     padding: 20px 0px; /* Agrega padding interno al div G */
     background-image: url('/HTML-CSS-JS/T27Ej-DEPORTES/obra-arte2.jpg'); /* Ruta de la imagen del patrón */
     background-size: calc(100% - 160px) calc(100% - 90px); /* Ajusta el tamaño de la imagen para respetar el padding */

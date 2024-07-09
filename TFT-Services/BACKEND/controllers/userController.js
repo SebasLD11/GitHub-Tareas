@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 // Función para actualizar el perfil del usuario
 exports.updateUserProfile = async (req, res) => {
