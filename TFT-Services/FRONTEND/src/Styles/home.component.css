@@ -1,6 +1,7 @@
 /* styles.css */
 
 body {
+    overflow-x: hidden;
     font-family: Arial, sans-serif;
     background: url('/TFT-Services/FRONTEND/src/assets/IMAGENES FRONT/background-PF.png') no-repeat center center fixed;
     background-size: cover;
@@ -11,6 +12,7 @@ body {
     flex-direction: column;
     align-items: center;
     height: 100%;
+    min-height: 100vh;
 }
 
 .navbar {
@@ -218,8 +220,10 @@ body {
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    padding: 20px;
+    padding: 10px;
     box-sizing: border-box;
+    background-color: #333;
+    background-color: transparent;
 }
 
 .info-container, .social-icons {
@@ -354,8 +358,8 @@ body {
     background-color: #333;
     color: white;
     width: 100%;
-    text-align: center;
-    margin-top: 40px;
+    align-items: center;
+    margin-top: auto;
     position: relative;
     left: 0;
     bottom: 0;
@@ -368,7 +372,7 @@ body {
 }
 
 .info-box, .slider-container, .social-box, .contact-section, .footer {
-    margin-bottom: 40px;
+    margin-bottom: 80px;
 }
 
 .info-box {

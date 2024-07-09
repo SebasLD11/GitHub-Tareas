@@ -1,12 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VALODI Services</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VALODI Services</title>
+    <link rel="stylesheet" href="/TFT-Services/FRONTEND/src/Styles/home.component.css">
 </head>
 <body>
-  <app-root></app-root>
+    <div id="header"></div>
+    <div id="body"></div>
+    <div id="footer"></div>
+
+    <script>
+        function loadHTML(elementId, url) {
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(elementId).innerHTML = data;
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadHTML('header', 'header.html');
+            loadHTML('body', 'body.html');
+            loadHTML('footer', 'footer.html');
+        });
+    </script>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            const slider = document.querySelector('.slider');
+            slider.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showSlide(currentSlide);
+            setInterval(nextSlide, 3000); // Moves to the next slide every 3 seconds
+        });
+
+        // Add this script to handle the navbar contraction
+        const navbar = document.querySelector('.navbar');
+        const navLinks = document.querySelector('.nav-links');
+        const authButtons = document.querySelector('.auth-buttons');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navLinks.classList.add('hidden');
+                authButtons.classList.add('hidden');
+                navbar.classList.add('shrink');
+            } else {
+                navLinks.classList.remove('hidden');
+                authButtons.classList.remove('hidden');
+                navbar.classList.remove('shrink');
+            }
+        });
+    </script>
 </body>
 </html>
