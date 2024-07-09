@@ -1,31 +1,22 @@
 import { Component } from '@angular/core';
+import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  standalone: true,
-  imports: [],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  credentials = {
-    email: '',
-    password: ''
-  };
+  email: string = '';
+  password: string = '';
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
-  login() {
-    this.authService.login(this.credentials).subscribe(
-      response => {
-        console.log('User logged in:', response);
-        // Guardar el token en localStorage o en el estado de la aplicación
-        // Redirigir al usuario o mostrar un mensaje de éxito
-      },
-      error => {
-        console.error('Error logging in:', error);
-        // Mostrar mensaje de error
-      }
-    );
+  login(): void {
+    this.authService.login({ email: this.email, password: this.password }).subscribe(response => {
+      localStorage.setItem('token', response.token);
+      this.router.navigate(['/']);
+    });
   }
 }

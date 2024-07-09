@@ -1,31 +1,23 @@
 import { Component } from '@angular/core';
+import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
-  standalone: true,
-  imports: [],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  formData = {
-    username: '',
-    email: '',
-    password: ''
-  };
+  username: string = '';
+  email: string = '';
+  password: string = '';
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
-  register() {
-    this.authService.register(this.formData).subscribe(
-      response => {
-        console.log('User registered:', response);
-        // Redirigir al usuario o mostrar un mensaje de éxito
-      },
-      error => {
-        console.error('Error registering user:', error);
-        // Mostrar mensaje de error
-      }
-    );
+  register(): void {
+    this.authService.register({ username: this.username, email: this.email, password: this.password }).subscribe(response => {
+      localStorage.setItem('token', response.token);
+      this.router.navigate(['/']);
+    });
   }
 }
