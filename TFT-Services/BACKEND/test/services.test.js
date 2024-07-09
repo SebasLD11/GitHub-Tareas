@@ -47,7 +47,7 @@ describe('Services API', () => {
 
         expect(response.statusCode).toBe(201);
         expect(response.body).toHaveProperty('_id');
-        expect(response.body.name).toBe('Consultoria Digital');
+        expect(response.body.name).toBe('Pack Marketing Digital. 6 meses.');
     });
 
     it('should get all services', async () => {

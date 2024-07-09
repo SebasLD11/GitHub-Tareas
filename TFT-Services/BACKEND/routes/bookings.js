@@ -5,8 +5,6 @@ const auth = require('../middleware/auth');
 const verifyRole = require('../middleware/role');
 const Booking = require('../models/Booking');
 const Service = require('../models/Service');  // Asegúrate de importar el modelo de servicio
-const nodemailer = require('nodemailer');  // Asegúrate de importar nodemailer
-
 
 // Crear reserva (autenticado)
 router.post('/', auth, async (req, res) => {

@@ -28,5 +28,5 @@ mongoose.connect(process.env.MONGO_URI)
 	app.use('/api/bookings', bookingRoutes);
 	app.use('/api/users', userRoutes);
 	app.use('/api/admin', adminRoutes);
-	
+
 module.exports = app;
