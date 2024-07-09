@@ -6,7 +6,6 @@ const logger = require('./utils/logger');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors());
@@ -30,7 +29,4 @@ mongoose.connect(process.env.MONGO_URI)
 	app.use('/api/users', userRoutes);
 	app.use('/api/admin', adminRoutes);
 
-app.listen(PORT, () => {
-	    logger.info(`Server is running on port ${PORT}`);
-	});	
 module.exports = app;
