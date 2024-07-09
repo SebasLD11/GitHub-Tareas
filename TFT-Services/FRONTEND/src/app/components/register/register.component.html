@@ -1,0 +1,8 @@
+<!-- src/app/components/register/register.component.html -->
+<form (submit)="register()">
+    <input type="text" [(ngModel)]="formData.username" placeholder="Username" name="username" required>
+    <input type="email" [(ngModel)]="formData.email" placeholder="Email" name="email" required>
+    <input type="password" [(ngModel)]="formData.password" placeholder="Password" name="password" required>
+    <button type="submit">Register</button>
+  </form>
+  
