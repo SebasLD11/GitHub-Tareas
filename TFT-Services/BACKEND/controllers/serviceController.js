@@ -1,7 +1,7 @@
 // controllers/serviceController.js
 const Service = require('../models/Service');
 
-//Crear servicio. Solo admin.
+//Crear servicio
 exports.createService = async (req, res) => {
     const { name, description, category, price } = req.body;
     try {
@@ -23,7 +23,7 @@ exports.getAllServices = async (req, res) => {
     }
 };
 
-//Actualizar servicios. Solo Admin
+//Actualizar servicios
 exports.updateService = async (req, res) => {
 	 const { id } = req.params;
 	    const { name, description, category, price } = req.body;
@@ -35,7 +35,7 @@ exports.updateService = async (req, res) => {
 	    }
 	};
 
-//Eliminar Servicio (solo administrdor)
+//Eliminar Servicio
 exports.deleteService = async (req, res) => {
 	const { id } = req.params;
 	    try {

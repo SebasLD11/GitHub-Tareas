@@ -1,8 +1,7 @@
-/* styles.css */
-body {
-    font-family: Arial, sans-serif;
-    background: #000000;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-}
+/* src/styles.css */
+@import 'src/app/head.component.css';
+@import 'src/app/home.component.css';
+@import 'src/app/footer.component.css';
+@import 'src/app/service.component.css';
+@import 'src/app/pages/sobre-nosotros.component.css';
+@import 'src/app/pages/productos.component.css';
