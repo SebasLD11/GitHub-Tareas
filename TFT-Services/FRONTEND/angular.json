@@ -1,9 +1,9 @@
 {
-  "$schema": "/Users/Sebas/Desktop/GitHub-Tareas/TFT-Services/FRONTEND/node_modules/@angular/cli/lib/config/schema.json",
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "tft-services-frontend": {
+    "tft-services": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,17 +13,18 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/tft-services-frontend",
+            "outputPath": "dist/tft-services",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
+            "aot": true,
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/assets/css/styles.css"
             ],
             "scripts": []
           },
@@ -57,18 +58,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "tft-services-frontend:build"
+            "browserTarget": "tft-services:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "tft-services-frontend:build:production"
+              "browserTarget": "tft-services:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "tft-services-frontend:build"
+            "browserTarget": "tft-services:build"
           }
         },
         "test": {
@@ -83,7 +84,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/assets/css/home.component.css"
             ],
             "scripts": []
           }
@@ -104,8 +105,5 @@
       }
     }
   },
-  "defaultProject": "tft-services-frontend",
-  "cli": {
-    "analytics": false
-  }
+  "defaultProject": "tft-services-frontend"
 }
