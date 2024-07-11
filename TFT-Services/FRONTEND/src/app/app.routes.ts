@@ -1,11 +1,20 @@
-import { Routes } from '@angular/router';
-import { LoginComponent } from './pages/auth/login.component';
-import { RegisterComponent } from './pages/auth/register.component';
-import { ServiceListComponent } from './services/service-list.component';
+import { RouterModule, Routes } from '@angular/router';
+import { ServicesComponent } from './services/services.component';
+import { HomeComponent } from './home/home.component';
+import { SobreNosotrosComponent } from './pages/sobre-nosotros/sobre-nosotros.component';
+import { ColaboradoresComponent } from './pages/colaboradores/colaboradores.component';
+import { ProductosComponent } from './pages/productos/productos.component';
+import { NgModule } from '@angular/core';
 
 export const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'services', component: ServiceListComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' }
+    {path: 'servicios-digitales', component: ServicesComponent },
+    {path: 'home', component: HomeComponent },
+    {path: 'sobre-nosotros', component: SobreNosotrosComponent },
+    {path: 'productos', component: ProductosComponent},
+    {path: 'colaboradores', component: ColaboradoresComponent}
 ];
+@NgModule({
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
+  })
+  export class AppRoutesModule { }

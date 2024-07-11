@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutesModule } from './app.routes';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { BodyComponent } from './home/home.component';
+import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -11,20 +11,20 @@ import { RouterModule } from '@angular/router';
 
 import { LoginComponent } from './pages/auth/login.component';
 import { AuthService } from './pages/auth/auth.service';
-import { ServiceListComponent } from './services/service-list.component';
+import { ServicesComponent } from './services/services.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    BodyComponent,
+    HomeComponent,
     FooterComponent,
     LoginComponent,
-    ServiceListComponent
+    ServicesComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    AppRoutesModule,
     HttpClient,
     FormsModule,
     RouterModule
@@ -33,3 +33,5 @@ import { ServiceListComponent } from './services/service-list.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+export { AppRoutesModule };
+
