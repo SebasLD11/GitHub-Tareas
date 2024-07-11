@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { BodyComponent } from './pages/views/body/body.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
@@ -25,7 +25,7 @@ import { ServiceListComponent } from './pages/views/services/service-list.compon
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
+    HttpClient,
     FormsModule,
     RouterModule
   ],
