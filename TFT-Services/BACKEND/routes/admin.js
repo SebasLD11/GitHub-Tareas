@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const User = require('../models/User');
-const Service = require('../models/Service'); // Asegúrate de que esté importado
 const Booking = require('../models/Booking');
 const auth = require('../middleware/auth');
 const verifyRole = require('../middleware/role');
@@ -60,15 +59,15 @@ router.delete('/users/:id', auth, verifyRole('admin'), async (req, res) => {
 });
 
 // Crear servicio (solo administrador)
-router.post('/', auth, verifyRole('admin'), serviceController.createService);
+router.post('/services', auth, verifyRole('admin'), serviceController.createService);
 
 // Obtener todos los servicios
-router.get('/', serviceController.getAllServices);
+router.get('/services', serviceController.getAllServices);
 
-//Actualizar Servicio (solo admin)
+// Actualizar servicio (solo administrador)
 router.put('/services/:id', auth, verifyRole('admin'), serviceController.updateService);
 
-//Eliminar Servicio(solo admin)
+// Eliminar servicio (solo administrador)
 router.delete('/services/:id', auth, verifyRole('admin'), serviceController.deleteService);
 
 // Obtener todas las reservas (solo accesible para administradores)

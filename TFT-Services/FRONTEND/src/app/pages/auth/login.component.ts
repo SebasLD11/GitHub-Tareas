@@ -1,6 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { AuthService } from './auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppComponent } from '../../app.component';
+import { routes } from '../../app.routes';
+import { FooterComponent } from '../../footer/footer.component';
+import { HeaderComponent } from '../../header/header.component';
+import { HomeComponent } from '../../home/home.component';
+import { ServicesComponent } from '../../services/services.component';
 
 @Component({
   selector: 'app-login',
@@ -19,4 +28,26 @@ export class LoginComponent {
       this.router.navigate(['/']);
     });
   }
+}
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    HomeComponent,
+    FooterComponent,
+    LoginComponent,
+    ServicesComponent
+  ],
+  imports: [
+    BrowserModule,
+    routes,
+    HttpClient,
+    FormsModule,
+    RouterModule
+  ],
+  providers: [AuthService],
+  bootstrap: [AppComponent]
+})
+export class AppModule {
 }

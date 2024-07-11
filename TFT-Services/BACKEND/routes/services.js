@@ -5,7 +5,7 @@ const verifyRole = require('../middleware/role');
 const serviceController = require('../controllers/serviceController');
 
 // Crear servicio (solo administrador)
-router.post('/', auth, verifyRole('admin'), serviceController.createService);
+router.post('/services', auth, verifyRole('admin'), serviceController.createService);
 
 // Obtener todos los servicios
 router.get('/', serviceController.getAllServices);
