@@ -84,7 +84,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/assets/css/home.component.css"
+              "src/assets/css/styles.css"
             ],
             "scripts": []
           }
@@ -105,5 +105,5 @@
       }
     }
   },
-  "defaultProject": "tft-services-frontend"
+  "defaultProject": "tft-services"
 }
