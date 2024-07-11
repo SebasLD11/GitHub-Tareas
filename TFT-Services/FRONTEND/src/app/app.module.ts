@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutesModule } from './app.routes';
+import { routes} from './app.routes';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
@@ -24,7 +24,7 @@ import { ServicesComponent } from './services/services.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutesModule,
+    routes,
     HttpClient,
     FormsModule,
     RouterModule
@@ -33,5 +33,5 @@ import { ServicesComponent } from './services/services.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-export { AppRoutesModule };
+export { routes };
 

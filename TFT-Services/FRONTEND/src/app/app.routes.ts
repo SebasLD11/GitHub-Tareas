@@ -1,10 +1,10 @@
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { ServicesComponent } from './services/services.component';
 import { HomeComponent } from './home/home.component';
 import { SobreNosotrosComponent } from './pages/sobre-nosotros/sobre-nosotros.component';
 import { ColaboradoresComponent } from './pages/colaboradores/colaboradores.component';
 import { ProductosComponent } from './pages/productos/productos.component';
-import { NgModule } from '@angular/core';
+
 
 export const routes: Routes = [
     {path: 'servicios-digitales', component: ServicesComponent },
@@ -13,8 +13,3 @@ export const routes: Routes = [
     {path: 'productos', component: ProductosComponent},
     {path: 'colaboradores', component: ColaboradoresComponent}
 ];
-@NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
-  })
-  export class AppRoutesModule { }

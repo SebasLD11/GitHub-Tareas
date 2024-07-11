@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "proyecto-final-techtalent": {
+    "tft-services": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/proyecto-final-techtalent",
+            "outputPath": "dist/tft-services",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -27,7 +27,12 @@
               }
             ],
             "styles": [
-              "src/styles.css"
+              "src/app/home/home.component.css",
+              "src/app/head.component.css",
+              "src/app/footer.component.css",
+              "src/app/service.component.css",
+              "src/app/pages/sobre-nosotros.coponent.css",
+              "src/app/pages/productos.component.css"
             ],
             "scripts": []
           },
@@ -59,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "proyecto-final-techtalent:build:production"
+              "buildTarget": "tft-services:build:production"
             },
             "development": {
-              "buildTarget": "proyecto-final-techtalent:build:development"
+              "buildTarget": "tft-services:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -92,5 +97,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "dfe10704-72c9-4893-94fa-8ff5b8e51c9d"
   }
 }
