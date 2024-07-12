@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { routes} from './app.routes';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
-import { HttpClient } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-import { AuthComponent } from './auth/auth.component';
-import { AuthService } from './services/auth.service';
+import { AuthComponent } from './auth/auth.component';  // Verifica esta ruta
 import { ServicesComponent } from './services/services.component';
-import { ProfileComponent } from './pages/profile/profile.component';
+import { ProfileComponent } from './pages/profile/profile.component';  // Verifica esta ruta
 import { UserService } from './services/user.service';
-
+import { AuthService } from './auth/auth.service';
+import { routes } from './app.routes';
 
 @NgModule({
   declarations: [
@@ -22,19 +22,17 @@ import { UserService } from './services/user.service';
     HomeComponent,
     FooterComponent,
     AuthComponent,
-    ServicesComponent
+    ServicesComponent,
     ProfileComponent
   ],
   imports: [
     BrowserModule,
-    routes,
-    HttpClient,
+    HttpClientModule,
     FormsModule,
-    RouterModule
+    RouterModule.forRoot(routes)
   ],
   providers: [AuthService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
 export { routes };
-
