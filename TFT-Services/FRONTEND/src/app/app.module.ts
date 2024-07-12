@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
@@ -12,7 +12,7 @@ import { AuthComponent } from './auth/auth.component';  // Verifica esta ruta
 import { ServicesComponent } from './services/services.component';
 import { ProfileComponent } from './pages/profile/profile.component';  // Verifica esta ruta
 import { UserService } from './services/user.service';
-import { AuthService } from './auth/auth.service';
+import { AuthService } from './services/auth.service';
 import { routes } from './app.routes';
 
 @NgModule({
@@ -27,7 +27,7 @@ import { routes } from './app.routes';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
+    HttpClient,
     FormsModule,
     RouterModule.forRoot(routes)
   ],

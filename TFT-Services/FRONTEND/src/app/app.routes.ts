@@ -5,15 +5,18 @@ import { SobreNosotrosComponent } from './pages/sobre-nosotros/sobre-nosotros.co
 import { ColaboradoresComponent } from './pages/colaboradores/colaboradores.component';
 import { ProductosComponent } from './pages/productos/productos.component';
 import { AuthComponent } from './auth/auth.component';
+import { ProfileComponent } from './pages/profile/profile.component';  // Verifica esta ruta
+
 
 
 export const routes: Routes = [
-    {path: 'servicios-digitales', component: ServicesComponent },
+    {path: 'services', component: ServicesComponent },
     {path: 'home', component: HomeComponent },
     {path: 'sobre-nosotros', component: SobreNosotrosComponent },
     {path: 'productos', component: ProductosComponent},
-    { path: 'auth', component: AuthComponent },
-    {path: 'colaboradores', component: ColaboradoresComponent}
+    {path: 'auth', component: AuthComponent },
+    {path: 'colaboradores', component: ColaboradoresComponent},
+    {path: 'profile', component: ProfileComponent},
     
 ];
 
