@@ -8,9 +8,12 @@ import { FooterComponent } from './footer/footer.component';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { AuthComponent } from './pages/auth/auth.component';
-import { AuthService } from './pages/auth/auth.service';
+import { AuthComponent } from './auth/auth.component';
+import { AuthService } from './services/auth.service';
 import { ServicesComponent } from './services/services.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { UserService } from './services/user.service';
+
 
 @NgModule({
   declarations: [
@@ -20,6 +23,7 @@ import { ServicesComponent } from './services/services.component';
     FooterComponent,
     AuthComponent,
     ServicesComponent
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,7 @@ import { ServicesComponent } from './services/services.component';
     FormsModule,
     RouterModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
