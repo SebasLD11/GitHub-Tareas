@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../services/user.service'; // Corrected path to services/user.service
 
 @Component({
   selector: 'app-profile',
@@ -7,33 +7,13 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  user: any = {};
+  userProfile: any;
 
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.loadUserProfile();
-  }
-
-  loadUserProfile(): void {
-    this.userService.getUserProfile().subscribe(
-      (data) => {
-        this.user = data;
-      },
-      (error) => {
-        console.error('Error loading user profile', error);
-      }
-    );
-  }
-
-  updateProfile(): void {
-    this.userService.updateUserProfile(this.user).subscribe(
-      (data) => {
-        console.log('Profile updated successfully', data);
-      },
-      (error) => {
-        console.error('Error updating profile', error);
-      }
-    );
+    this.userService.getUserProfile().subscribe(profile => {
+      this.userProfile = profile;
+    });
   }
 }

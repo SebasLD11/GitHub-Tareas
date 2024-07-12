@@ -5,9 +5,10 @@ import { SobreNosotrosComponent } from './pages/sobre-nosotros/sobre-nosotros.co
 import { ColaboradoresComponent } from './pages/colaboradores/colaboradores.component';
 import { ProductosComponent } from './pages/productos/productos.component';
 import { AuthComponent } from './auth/auth.component';
-import { ProfileComponent } from './pages/profile/profile.component';  // Verifica esta ruta
-
-
+import { ProfileComponent } from './pages/profile/profile.component';  
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { AdminComponent } from './admin/admin.component';
 
 export const routes: Routes = [
     {path: 'services', component: ServicesComponent },
@@ -17,6 +18,8 @@ export const routes: Routes = [
     {path: 'auth', component: AuthComponent },
     {path: 'colaboradores', component: ColaboradoresComponent},
     {path: 'profile', component: ProfileComponent},
-    
+    { path: 'login', component: LoginComponent },
+    { path: 'register', component: RegisterComponent },
+    { path: 'admin', component: AdminComponent }
 ];
 

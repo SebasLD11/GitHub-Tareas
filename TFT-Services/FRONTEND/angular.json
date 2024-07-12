@@ -33,16 +33,10 @@
           },
           "configurations": {
             "production": {
-              "budgets": [
+              "fileReplacements": [
                 {
-                  "type": "initial",
-                  "maximumWarning": "20MB",
-                  "maximumError": "25MB"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "20MB",
-                  "maximumError": "25MB"
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -52,15 +46,36 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            },
+            "development": {
+              "optimization": false,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "namedChunks": true,
+              "aot": false,
+              "extractLicenses": false,
+              "vendorChunk": true,
+              "buildOptimizer": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "buildTarget": "tft-services:build"
-          },
           "configurations": {
             "production": {
               "buildTarget": "tft-services:build:production"
@@ -68,7 +83,8 @@
             "development": {
               "buildTarget": "tft-services:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -93,7 +109,9 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "public/scripts/script.js"
+            ]
           }
         },
         "lint": {
@@ -113,6 +131,6 @@
     }
   },
   "cli": {
-    "analytics": "53a6f4bd-22e3-47f5-b45f-99fe5f5a93d2"
+    "analytics": false
   }
 }
