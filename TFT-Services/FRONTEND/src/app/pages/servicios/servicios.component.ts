@@ -17,10 +17,8 @@ export class ServicesComponent implements OnInit {
     this.loadServices();
   }
 
+ 
   loadServices(): void {
-    this.serviceService.getServices().subscribe(
-      data => this.services = data,
-      error => console.error('Error fetching services', error)
-    );
+    this.serviceService.getServices().subscribe(services => this.services = services);
   }
 }
