@@ -1,23 +1,69 @@
 .footer {
-    margin-top: auto;
-    padding: 10px;
-    background-color: #000000;
-    color: white;
-    width: 100%;
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
-    text-align: center;
-    position: relative; /* Ensure it respects the width of its parent */
-    left: 0; /* Make sure it starts from the left edge */
-    margin-top: 2%;
-    margin-bottom: 3%;
-    border-top: 2px solid #dbb81a; /* Fine line at the top of the frame */
+  background-color: #000000;
+  color: white;
+  width: 100%;
+  padding: 20px 0;
+  box-sizing: border-box;
+  text-align: center;
+  border-top: 2px solid #dbb81a;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  flex: 1;
+  padding: 10px;
+  min-width: 200px;
+}
+
+.footer-section h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+  color: #dbb81a;
+}
+
+.footer-section .socials a {
+  color: white;
+  margin: 0 10px;
+  font-size: 1.2em;
+  transition: color 0.3s;
+}
+
+.footer-section .socials a:hover {
+  color: #dbb81a;
+}
+
+/* Media Queries for Mobile */
+@media (max-width: 768px) {
+  .footer-content {
+      flex-direction: column;
+      align-items: center;
   }
-  
-  
-  /* Media Queries for Mobile */
-  @media (max-width: 768px) {
-    .footer{
-      margin-bottom: 0;
-      padding: 10%;
-    }
+
+  .footer-section {
+      text-align: center;
   }
+}
