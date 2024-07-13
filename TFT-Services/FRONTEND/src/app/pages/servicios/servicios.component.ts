@@ -5,8 +5,8 @@ import { ServiceService } from '../../services/servicios.service';
   selector: 'app-service',
   standalone: true,
   imports: [],
-  templateUrl: './services.component.html',
-  styleUrls: ['./services.component.css']
+  templateUrl: './servicios.component.html',
+  styleUrls: ['./servicios.component.css']
 })
 export class ServicesComponent implements OnInit {
   services: any[] = [];
@@ -14,17 +14,13 @@ export class ServicesComponent implements OnInit {
   constructor(private serviceService: ServiceService) { }
 
   ngOnInit(): void {
-    this.getServices();
+    this.loadServices();
   }
 
-  getServices(): void {
+  loadServices(): void {
     this.serviceService.getServices().subscribe(
-      (data: any[]) => {
-        this.services = data;
-      },
-      (error: any) => {
-        console.error('Error fetching services', error);
-      }
+      data => this.services = data,
+      error => console.error('Error fetching services', error)
     );
   }
 }
