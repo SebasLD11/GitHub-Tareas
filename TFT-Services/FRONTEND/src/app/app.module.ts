@@ -14,10 +14,12 @@ import { ProfileComponent } from './pages/profile/profile.component';  // Asegú
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AdminComponent } from './admin/admin.component';
+import { BookingComponent } from './pages/booking/booking.component'
 
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { AdminService } from './services/admin.service';
+import { BookingService } from './services/booking.service'
 
 import { routes } from './app.routes';
 
@@ -32,6 +34,7 @@ import { routes } from './app.routes';
     ProfileComponent,
     LoginComponent,
     RegisterComponent,
+    BookingComponent,
     AdminComponent
   ],
   imports: [
@@ -43,7 +46,8 @@ import { routes } from './app.routes';
     provideHttpClient(withInterceptorsFromDi()),
     AuthService,
     UserService, 
-    AdminService
+    AdminService,
+    BookingService
   ],
   bootstrap: [AppComponent]
 })

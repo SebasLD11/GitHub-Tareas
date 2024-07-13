@@ -48,6 +48,11 @@ export class AdminService {
   getBookings(): Observable<any> {
     return this.http.get(`${this.apiUrl}/bookings`);
   }
+  
+  getBookingDetails(bookingId: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${bookingId}`);
+  }
+
 
   createBooking(booking: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/bookings`, booking);

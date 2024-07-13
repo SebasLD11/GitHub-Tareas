@@ -9,6 +9,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AdminComponent } from './admin/admin.component';
+import { BookingComponent } from './pages/booking/booking.component'
 
 export const routes: Routes = [
     {path: 'services', component: ServicesComponent },
@@ -18,8 +19,9 @@ export const routes: Routes = [
     {path: 'auth', component: AuthComponent },
     {path: 'colaboradores', component: ColaboradoresComponent},
     {path: 'profile', component: ProfileComponent},
-    { path: 'login', component: LoginComponent },
-    { path: 'register', component: RegisterComponent },
-    { path: 'admin', component: AdminComponent }
+    {path: 'login', component: LoginComponent },
+    {path: 'register', component: RegisterComponent },
+    {path: 'admin', component: AdminComponent },
+    {path: 'booking', component: BookingComponent }
 ];
 

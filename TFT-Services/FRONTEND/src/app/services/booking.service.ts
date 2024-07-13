@@ -19,10 +19,6 @@ export class BookingService {
     return this.http.get<any[]>(`${this.apiUrl}/user/${userId}`);
   }
 
-  getBookingDetails(bookingId: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${bookingId}`);
-  }
-
   updateBooking(bookingId: string, bookingData: any): Observable<any> {
     return this.http.put(`${this.apiUrl}/${bookingId}`, bookingData);
   }
