@@ -28,7 +28,7 @@
               "src/styles.css"
             ],
             "scripts": [
-              "public/scripts/script.js"
+              "public/Scripts/script.js"
             ]
           },
           "configurations": {
