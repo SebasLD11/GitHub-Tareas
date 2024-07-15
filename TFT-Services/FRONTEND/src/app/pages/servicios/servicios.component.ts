@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../../services/servicios.service';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-servicios',
   standalone: true,
-  imports: [],
+  imports: [RouterModule,CommonModule,FormsModule],
   templateUrl: './servicios.component.html',
   styleUrls: ['./servicios.component.css']
 })
