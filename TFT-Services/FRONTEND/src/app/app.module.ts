@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -9,7 +9,7 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { AuthComponent } from './auth/auth.component';  // Asegúrate de que esta ruta es correcta
-import { ServiciosComponent } from './pages/servicios/servicios.component';
+import { ServicesComponent } from './pages/servicios/servicios.component';
 import { ProfileComponent } from './pages/profile/profile.component';  // Asegúrate de que esta ruta es correcta
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -30,7 +30,7 @@ import { routes } from './app.routes';
     HomeComponent,
     FooterComponent,
     AuthComponent,
-    ServiciosComponent,
+    ServicesComponent,
     ProfileComponent,
     LoginComponent,
     RegisterComponent,
@@ -39,8 +39,9 @@ import { routes } from './app.routes';
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
   ],
   providers: [ 
     provideHttpClient(withInterceptorsFromDi()),

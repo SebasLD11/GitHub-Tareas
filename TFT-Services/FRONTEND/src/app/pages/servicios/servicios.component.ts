@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../../services/servicios.service';
 
 @Component({
-  selector: 'app-service',
+  selector: 'app-servicios',
   standalone: true,
   imports: [],
   templateUrl: './servicios.component.html',

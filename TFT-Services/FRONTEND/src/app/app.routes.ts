@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { ServiciosComponent } from './pages/servicios/servicios.component';
+import { ServicesComponent } from './pages/servicios/servicios.component';
 import { HomeComponent } from './home/home.component';
 import { SobreNosotrosComponent } from './pages/sobre-nosotros/sobre-nosotros.component';
 import { ColaboradoresComponent } from './pages/colaboradores/colaboradores.component';
@@ -12,7 +12,7 @@ import { AdminComponent } from './admin/admin.component';
 import { BookingComponent } from './pages/booking/booking.component'
 
 export const routes: Routes = [
-    {path: 'services', component: ServiciosComponent },
+    {path: 'services', component: ServicesComponent },
     {path: 'sobre-nosotros', component: SobreNosotrosComponent },
     {path: 'auth', component: AuthComponent },
     {path: 'colaboradores', component: ColaboradoresComponent},
