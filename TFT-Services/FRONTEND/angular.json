@@ -19,16 +19,19 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": [
+              "src/favicon.ico",
+              "src/assets",
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "public",
+                "output": "/assets/img"
               }
             ],
             "styles": [
               "src/styles.css"
             ],
             "scripts": [
-              "public/Scripts/script.js"
+              "public/assets/scripts/script.js"
             ]
           },
           "configurations": {
@@ -50,8 +53,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "20mb",
+                  "maximumError": "25mb"
                 }
               ]
             },
@@ -67,8 +70,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "20mb",
+                  "maximumError": "25mb"
                 }
               ]
             }
@@ -110,7 +113,7 @@
               "src/styles.css"
             ],
             "scripts": [
-              "public/scripts/script.js"
+              "public/assets/scripts/script.js"
             ]
           }
         },
