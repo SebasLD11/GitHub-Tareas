@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { provideHttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class UserService {
   private apiUrl = 'http://localhost:5000/api/users';
 
-  constructor(private http: provideHttpClient, _withInterceptorsFromDi: any) { }
+  constructor(private http: HttpClient) { }
 
   getProfile(): Observable<any> {
     return this.http.get(`${this.apiUrl}/me`);
