@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
+  standalone: true,
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })

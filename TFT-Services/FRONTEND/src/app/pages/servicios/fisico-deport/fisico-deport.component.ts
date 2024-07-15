@@ -4,8 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-fisico-deportivos',
   standalone: true,
   imports: [],
-  templateUrl: './fisico-deportivos.component.html',
-  styleUrl: './fisico-deportivos.component.css'
+  templateUrl: './fisico-deport.component.html',
+  styleUrl: './fisico-deport.component.css'
 })
 export class FisicoDeportivosComponent {
 

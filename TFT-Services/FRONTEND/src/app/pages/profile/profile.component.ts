@@ -1,19 +1,37 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/user.service'; // Corrected path to services/user.service
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-profile',
+  standalone: true,
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
+  imports: [FormsModule, CommonModule]
 })
-export class ProfileComponent implements OnInit {
-  userProfile: any;
+export class ProfileComponent {
+  user = {
+    username: '',
+    email: '',
+    password: ''
+  };
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {
+    this.loadUserProfile();
+  }
 
-  ngOnInit(): void {
-    this.userService.getUserProfile().subscribe(profile => {
-      this.userProfile = profile;
-    });
+  loadUserProfile(): void {
+    this.userService.getProfile().subscribe(
+      (data) => this.user = data,
+      (error) => console.error('Error fetching profile', error)
+    );
+  }
+
+  updateProfile(): void {
+    this.userService.updateProfile(this.user).subscribe(
+      (data) => console.log('Profile updated successfully', data),
+      (error) => console.error('Error updating profile', error)
+    );
   }
 }

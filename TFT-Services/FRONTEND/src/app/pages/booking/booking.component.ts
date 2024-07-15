@@ -1,9 +1,11 @@
-// src/app/pages/booking/booking.component.ts
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { BookingService } from '../../services/booking.service';
 
 @Component({
   selector: 'app-booking',
+  standalone: true,
+  imports: [CommonModule],  // Importa CommonModule aquí
   templateUrl: './booking.component.html',
   styleUrls: ['./booking.component.css']
 })

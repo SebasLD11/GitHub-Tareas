@@ -3,18 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common'; 
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { HomeComponent } from './home/home.component';
-import { FooterComponent } from './footer/footer.component';
-import { AuthComponent } from './auth/auth.component';  // Asegúrate de que esta ruta es correcta
-import { ServicesComponent } from './pages/servicios/servicios.component';
-import { ProfileComponent } from './pages/profile/profile.component';  // Asegúrate de que esta ruta es correcta
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { AdminComponent } from './admin/admin.component';
-import { BookingComponent } from './pages/booking/booking.component'
 
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
@@ -24,24 +15,13 @@ import { BookingService } from './services/booking.service'
 import { routes } from './app.routes';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    HomeComponent,
-    FooterComponent,
-    AuthComponent,
-    ServicesComponent,
-    ProfileComponent,
-    LoginComponent,
-    RegisterComponent,
-    BookingComponent,
-    AdminComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
     RouterModule.forRoot(routes),
+    CommonModule
   ],
   providers: [ 
     provideHttpClient(withInterceptorsFromDi()),
@@ -53,4 +33,3 @@ import { routes } from './app.routes';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-export { routes };

@@ -4,8 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-educativos-socioculturales',
   standalone: true,
   imports: [],
-  templateUrl: './educativos-socioculturales.component.html',
-  styleUrl: './educativos-socioculturales.component.css'
+  templateUrl: './socio-cult.component.html',
+  styleUrl: './socio-cult.component.css'
 })
 export class EducativosSocioculturalesComponent {
 
