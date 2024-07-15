@@ -1,5 +1,5 @@
 .login-container {
-  background-color: #1a1a1a; 
+  background-color: #1a1a1a; /* Fondo ligeramente más claro que el fondo de la página */
   padding: 40px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -10,7 +10,7 @@
 
 .login-container h1 {
   margin-bottom: 20px;
-  color: #ddb81a; 
+  color: #ddb81a; /* Amarillo */
 }
 
 .login-container input[type="text"],
@@ -26,8 +26,8 @@
 .login-container button {
   width: 100%;
   padding: 10px;
-  background-color: #ddb81a; 
-  color: #000; 
+  background-color: #ddb81a; /* Amarillo */
+  color: #000; /* Texto negro */
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -36,13 +36,13 @@
 }
 
 .login-container button:hover {
-  background-color: #b59517; 
+  background-color: #b59517; /* Amarillo más oscuro al pasar el ratón */
 }
 
 .login-container .signup-link {
   margin-top: 20px;
   display: block;
-  color: #ddb81a; 
+  color: #ddb81a; /* Amarillo */
   text-decoration: none;
 }
 

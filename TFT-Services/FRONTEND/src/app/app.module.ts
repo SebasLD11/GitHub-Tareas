@@ -9,7 +9,7 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { AuthComponent } from './auth/auth.component';  // Asegúrate de que esta ruta es correcta
-import { ServicesComponent } from './pages/servicios/servicios.component';
+import { ServiciosComponent } from './pages/servicios/servicios.component';
 import { ProfileComponent } from './pages/profile/profile.component';  // Asegúrate de que esta ruta es correcta
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -30,7 +30,7 @@ import { routes } from './app.routes';
     HomeComponent,
     FooterComponent,
     AuthComponent,
-    ServicesComponent,
+    ServiciosComponent,
     ProfileComponent,
     LoginComponent,
     RegisterComponent,

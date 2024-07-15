@@ -2,16 +2,25 @@
 <!-- Navigation Bar -->
 <nav class="navbar">
     <div class="logo">
-        <a routerLink="/home">VALODI Services</a>
+        <a href="/">VALODI Services</a>
     </div>
     <ul class="nav-links">
-        <li><a routerLink="/sobre-nosotros">Sobre nosotros</a></li>
-        <li><a routerLink="/servicios-digitales">Servicios</a></li>
-        <li><a routerLink="/productos">Productos</a></li>
-        <li><a routerLink="/colaboradores">Colaboradores</a></li>
+        <li class="dropdown">
+            <a href="/servicios" class="dropbtn">Servicios</a>
+            <div class="dropdown-content">
+                <a href="/terapeuticos">Terapeuticos</a>
+                <a href="/administrativos">Administrativos</a>
+                <a href="/digitales">Digitales</a>
+                <a href="/fisico-deportivos">Físico-Deportivos</a>
+                <a href="/educativos-socioculturales">Educativos y Socioculturales</a>
+            </div>
+        </li>
+        <li><a href="/sobre-nosotros">Sobre nosotros</a></li>
+        <li><a href="/productos">Productos</a></li>
+        <li><a href="/colaboradores">Colaboradores</a></li>
     </ul>
     <div class="auth-buttons">
-        <a href="#" class="login-btn">Login</a>
+        <a href="/login" class="login-btn">Login</a>
         <a href="#" class="signup-btn">Sign Up</a>
     </div>
   </nav>
