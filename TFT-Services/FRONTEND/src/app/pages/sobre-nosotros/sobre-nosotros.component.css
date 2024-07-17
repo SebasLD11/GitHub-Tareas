@@ -11,11 +11,11 @@ body {
   overflow: hidden;
 }
 header {
-  background: #333;
+  background: #000000;
   color: #fff;
   padding-top: 30px;
   min-height: 90px;
-  border-bottom: #0779e4 3px solid;
+  border-bottom: #ddb81a 3px solid;
   text-align:center;
 }
 header a {
