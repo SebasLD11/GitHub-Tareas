@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { BookingService } from '../../services/booking.service';
-import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-booking',
   standalone: true,
-  imports: [CommonModule,RouterModule,FormsModule],  // Importa CommonModule aquí
+  imports: [RouterLink],
   templateUrl: './booking.component.html',
   styleUrls: ['./booking.component.css']
 })

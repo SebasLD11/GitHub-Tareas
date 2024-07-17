@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-terapeuticos',
   standalone: true,
-  imports: [CommonModule,RouterModule,FormsModule],
+  imports: [RouterLink],
   templateUrl: './terapeuticos.component.html',
   styleUrl: './terapeuticos.component.css'
 })

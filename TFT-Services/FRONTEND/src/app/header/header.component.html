@@ -2,25 +2,32 @@
 <!-- Navigation Bar -->
 <nav class="navbar">
     <div class="logo">
-        <a href="/">VALODI Services</a>
+        <a routerLink="/">VALODI Services</a>
     </div>
     <ul class="nav-links">
         <li class="dropdown">
-            <a href="/servicios" class="dropbtn">Servicios</a>
+            <a routerLink="servicios" class="dropbtn">Servicios</a>
             <div class="dropdown-content">
-                <a href="/terapeuticos">Terapeuticos</a>
-                <a href="/administrativos">Administrativos</a>
-                <a href="/digitales">Digitales</a>
-                <a href="/fisico-deportivos">Físico-Deportivos</a>
-                <a href="/educativos-socioculturales">Educativos y Socioculturales</a>
+                <a routerLink="/terapeuticos">Terapeuticos</a>
+                <a routerLink="/administrativos">Administrativos</a>
+                <a routerLink="/digitales">Digitales</a>
+                <a routerLink="/fisico-deport">Físico-Deportivos</a>
+                <a routerLink="/socio-cult">Socioculturales</a>
+                
             </div>
         </li>
-        <li><a href="/sobre-nosotros">Sobre nosotros</a></li>
-        <li><a href="/productos">Productos</a></li>
-        <li><a href="/colaboradores">Colaboradores</a></li>
+        <li><a routerLink="/sobre-nosotros">Sobre nosotros</a></li>
+        <li><a routerLink="/productos">MarketPlace</a></li>
+        <li><a routerLink="/colaboradores">Colaboradores</a></li>
+        <li><a routerLink="/comunidad">Comunidad</a></li>
     </ul>
     <div class="auth-buttons">
-        <a href="/login" class="login-btn">Login</a>
-        <a href="#" class="signup-btn">Sign Up</a>
+        <a routerLink="/login" class="login-btn">Login</a>
+        <a routerLink="#" class="signup-btn">Sign Up</a>
+    </div>
+    <div class="cart">
+      <a routerLink="/carrito">
+        <img src="assets/img/carrito.png" alt="Carrito" class="cart-icon">(0)
+      </a>
     </div>
   </nav>

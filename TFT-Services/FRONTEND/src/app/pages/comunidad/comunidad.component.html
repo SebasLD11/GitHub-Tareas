@@ -1,5 +1,8 @@
 <body>
     <header>
+        <br>
+        <br>
+        <br>
         <h1>Comunidad</h1>
     </header>
     <nav>
@@ -9,37 +12,54 @@
             <li><a href="#eventos">Organizar Eventos</a></li>
         </ul>
     </nav>
-    <section id="subir-fotos">
-        <h2>Subir Fotos</h2>
-        <form>
-            <input type="file" id="foto" name="foto" accept="image/*">
-            <textarea id="descripcion" name="descripcion" placeholder="Descripción..."></textarea>
-            <button type="submit">Subir</button>
-        </form>
-        <div id="galeria">
-            <!-- Aquí se mostrarán las fotos subidas -->
+        <div class="content">
+            <div class="main-content">
+                <section id="subir-fotos" class="subir-fotos">
+                    <h2>Subir Fotos</h2>
+                    <form id="upload-form">
+                        <input type="file" id="foto" name="foto" accept="image/*">
+                        <textarea id="descripcion" name="descripcion" placeholder="Descripción..."></textarea>
+                        <button type="submit">Subir</button>
+                    </form>
+                    <div id="galeria">
+                        <!-- Aquí se mostrarán las fotos subidas -->
+                    </div>
+                </section>
+                <section id="foro" class="foro">
+                    <h2>Foro de Discusión</h2>
+                    <div id="mensajes">
+                        <!-- Aquí se mostrarán los mensajes del foro -->
+                    </div>
+                    <form class="evento-form">
+                        <input type="text" id="nombre-evento" name="nombre-evento" placeholder="Nombre del Evento">
+                        <input type="date" id="fecha-evento" name="fecha-evento">
+                        <textarea id="descripcion-evento" name="descripcion-evento" placeholder="Descripción del Evento..."></textarea>
+                        <button type="submit">Crear Evento</button>
+                    </form>
+                </section>
+                <section id="eventos" class="eventos">
+                    <h2>Organizar Eventos</h2>
+                    <form class="evento-form">
+                        <input type="text" id="nombre-evento" name="nombre-evento" placeholder="Nombre del Evento">
+                        <input type="date" id="fecha-evento" name="fecha-evento">
+                        <textarea id="descripcion-evento" name="descripcion-evento" placeholder="Descripción del Evento..."></textarea>
+                        <button type="submit">Crear Evento</button>
+                    </form>
+                    <div id="lista-eventos">
+                        <!-- Aquí se mostrarán los eventos organizados -->
+                    </div>
+                </section>
+            </div>
+            <aside class="chat">
+                <h2>Chat de la Comunidad</h2>
+                <div id="chat-mensajes">
+                    <!-- Aquí se mostrarán los mensajes del chat -->
+                </div>
+                <form id="chat-form">
+                    <input type="text" id="chat-entrada" name="chat-entrada" placeholder="Escribe un mensaje...">
+                    <button type="submit">Enviar</button>
+                </form>
+            </aside>
         </div>
-    </section>
-    <section id="foro">
-        <h2>Foro de Discusión</h2>
-        <div id="mensajes">
-            <!-- Aquí se mostrarán los mensajes del foro -->
-        </div>
-        <form>
-            <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje..."></textarea>
-            <button type="submit">Enviar</button>
-        </form>
-    </section>
-    <section id="eventos">
-        <h2>Organizar Eventos</h2>
-        <form>
-            <input type="text" id="nombre-evento" name="nombre-evento" placeholder="Nombre del Evento">
-            <input type="date" id="fecha-evento" name="fecha-evento">
-            <textarea id="descripcion-evento" name="descripcion-evento" placeholder="Descripción del Evento..."></textarea>
-            <button type="submit">Crear Evento</button>
-        </form>
-        <div id="lista-eventos">
-            <!-- Aquí se mostrarán los eventos organizados -->
-        </div>
-    </section>
-</body>
+        <script src="public/assets/scripts/scripts.js"></script>
+    </body>
