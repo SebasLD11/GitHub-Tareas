@@ -17,16 +17,12 @@ import { ProductosComponent } from './pages/productos/productos.component';
 import { ColaboradoresComponent } from './pages/colaboradores/colaboradores.component';
 import { ComunidadComponent } from './pages/comunidad/comunidad.component'; 
 
-
- 
-
-
 export const routes: Routes = [
     {path: 'servicios', component: ServiciosComponent },
     {path: 'administrativos', component: AdministrativosComponent },
     {path: 'digitales', component: DigitalesComponent }, 
-    {path: 'fisicodeport', component: FisicoDeportComponent }, 
-    {path: 'socioculurales', component: SocioculturalesComponent },
+    {path: 'fisico-deport', component: FisicoDeportComponent }, 
+    {path: 'socio-cult', component: SocioculturalesComponent },
     {path: 'terapeuticos', component: TerapeuticosComponent },
     {path: 'sobre-nosotros', component: SobreNosotrosComponent },
     {path: 'auth', component: AuthComponent },

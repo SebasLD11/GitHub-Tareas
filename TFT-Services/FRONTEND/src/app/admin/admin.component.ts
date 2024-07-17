@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { AdminService } from '../services/admin.service';
 import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [RouterLink],  
+  imports: [RouterLink,CommonModule],  
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
